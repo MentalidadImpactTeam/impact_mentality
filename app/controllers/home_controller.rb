@@ -45,7 +45,6 @@ class HomeController < ApplicationController
       hash['exe_id'] = exe_id
       array.push(hash)
     end
-    # byebug
     render :json => array
   end
 end
