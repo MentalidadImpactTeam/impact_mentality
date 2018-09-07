@@ -1,0 +1,101 @@
+body {
+    background-color: Grey !important;
+}
+
+.input_error {
+    border: 2px solid red !important;
+    background-color: #ffeaea;
+}
+
+.registro_imagen_logo {
+    width: 70%;
+    animation-delay: .3s;
+}
+
+.input_container {
+    animation-delay: .6s;
+}
+
+.input_container {
+    padding: 0 15px;
+}
+
+#registro_close {
+    float: right;
+    color: grey;
+    opacity: .5;
+    margin: 15px 0;
+    font-size: 25px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+#registro_close:hover {
+    opacity: 1;
+}
+
+#registro_close:active {
+    transform: scale(.9);
+}
+
+.input_container img {
+    display: inline-block;
+    position: relative;
+    width: 35px;
+}
+
+#registro_titulo {
+    color: grey;
+    font-family: Lato;
+    font-weight: bold;
+    margin-top: 0px;
+    animation-delay: .5s;
+}
+
+.input_container input {
+    display: inline-block;
+    position: relative;
+    width: 50%;
+    padding: 10px 15px;
+    margin: 15px 0px;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+.input_container input:hover {
+    background-color: #f2f2f2;
+}
+
+#registro_btn {
+    background-color: #b52434;
+    transform: skew(-10deg);
+    color: white;
+    font-family: Lato;
+    border: none;
+    padding: 10px 15px;
+    margin: 25px 0px;
+    font-size: 20px;
+    animation-delay: .6s;
+    transition: all .5s;
+}
+
+#registro_btn:hover {
+    box-shadow: 0px 0px 8px red;
+    background-color: Red;
+}
+
+#registro_btn:active {
+    transform: scale(.9) skew(-10deg);
+}
+
+#registro_modal {
+    background-color: white;
+    height: auto;
+    transition: all .5s;
+    z-index: -10;
+}
+
+#registro_modal div center img {
+    margin: 20px 7px;
+}

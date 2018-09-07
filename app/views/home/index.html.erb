@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+    <h1>Hola <%= current_user.email %></h1>
+    <br>
+    <%= select_tag "etapas", options_from_collection_for_select(@stages, "id", "name")  %>
+    <br>
+    <%= select_tag "dias", options_for_select(@days) %>
+    <br>
+    <button id="button">Generar</button>
+    <br>
+    <div id="rutina">
+            <table id="tabla_ejercicios">
+                <thead>
+                    <th style="width: 200px;">Categoria</th>
+                    <th style="width: 200px;">Subcategoria</th>
+                    <th>Ejercicio Categoria</th>
+                    <th>Ejercicio</th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+    </div>
+    <br>
+    <br>
+    <%= link_to('Logout', destroy_user_session_path, method: :delete) %> 
+<% else %>
+    <%= link_to('Login', new_user_session_path, method: :get) %> 
+<% end %>

@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div id="contenedor_login" class="animated bounceInDown row">
+        <div class="col-lg-3"></div>
+        <div id="login_modal" class="col-sm-12 col-lg-6">
+
+            <!-- Cierre de Modal -->
+            <i id="login_close" class="fas fa-times-circle"></i>
+            <!-- End Cierre de mdoal -->
+
+            <div style="z-index:-10;" class="col-12">
+                <center>
+                    <%= image_tag("Logo-01.png", class: "login_imagen_logo animated bounceInDown" ) %>
+                </center>
+            </div>
+            <div class="col-12">
+                <center>
+                    <h1 id="login_titulo" class="animated bounceInDown">INICIA SESION</h1>
+                    <hr class="animated bounceIn" style="animation-delay:1s;  border:1px solid red; width: 50%;">
+                </center>
+            </div>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+
+              <div class="input_container animated bounceIn col-lg-12">
+                <center>
+                    <%= image_tag("User-01.png") %>
+                    <%= f.email_field :email, placeholder: "Correo Electrónico" %>
+                </center>
+              </div>
+
+              <div class="input_container animated bounceIn col-lg-12">
+                <center>
+                    <%= image_tag("lock.png") %>
+                    <%= f.password_field :password, placeholder: "Contraseña" %>
+                </center>
+            </div>
+
+            <div class="col-12">
+                <center><button id="login_btn" class="animated bounceInDown">ENTRAR</button></center>
+            </div>
+            <% end %>
+            <%= render "devise/shared/links" %>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+
+
+<style>
+.login_sweetalert{
+    background-color:#b52434 !important;
+    border-radius:0px !important;
+}
+</style>
+

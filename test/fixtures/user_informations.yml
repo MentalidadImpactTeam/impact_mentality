@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyText
+  last_name: MyText
+  birth_date: 2018-09-01
+  genre: 1
+  height: MyString
+  weight: MyString
+  sport: 1
+  position: 
+  next_competition: MyString
+  experience: 1
+  history_injuries: MyText
+  pay_day: 2018-09-01
+  pay_program: 1
+  goal_1: MyText
+  goal_2: MyText
+
+two:
+  first_name: MyText
+  last_name: MyText
+  birth_date: 2018-09-01
+  genre: 1
+  height: MyString
+  weight: MyString
+  sport: 1
+  position: 
+  next_competition: MyString
+  experience: 1
+  history_injuries: MyText
+  pay_day: 2018-09-01
+  pay_program: 1
+  goal_1: MyText
+  goal_2: MyText

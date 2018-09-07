@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  stage_id: 1
+  exercise_id: 1
+  set: 1
+  rep: 1
+  seconds_down: 1
+  seconds_hold: 1
+  seconds_up: 1
+  porcentage: 1
+
+two:
+  user_id: 1
+  stage_id: 1
+  exercise_id: 1
+  set: 1
+  rep: 1
+  seconds_down: 1
+  seconds_hold: 1
+  seconds_up: 1
+  porcentage: 1

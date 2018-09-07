@@ -1,0 +1,65 @@
+.login_imagen_logo {
+    width: 70%;
+    animation-delay: .3s;
+}
+
+#login_close {
+    float: right;
+    color: grey;
+    opacity: .5;
+    margin: 15px 0;
+    font-size: 25px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+#login_close:hover {
+    opacity: 1;
+}
+
+#login_close:active {
+    transform: scale(.9);
+}
+
+
+#login_titulo {
+    color: grey;
+    font-family: Lato;
+    font-weight: bold;
+    margin-top: 0px;
+    animation-delay: .5s;
+}
+
+#login_btn {
+    background-color: #b52434;
+    transform: skew(-10deg);
+    color: white;
+    font-family: Lato;
+    border: none;
+    padding: 10px 15px;
+    margin: 25px 0px;
+    font-size: 20px;
+    animation-delay: .6s;
+    transition: all .5s;
+}
+
+#login_btn:hover {
+    box-shadow: 0px 0px 8px red;
+    background-color: Red;
+}
+
+#login_btn:active {
+    transform: scale(.9) skew(-10deg);
+}
+
+#login_modal {
+    background-color: white;
+    height: auto;
+    transition: all .5s;
+    z-index: -10;
+}
+
+#login_modal div center img {
+    margin: 20px 7px;
+}
