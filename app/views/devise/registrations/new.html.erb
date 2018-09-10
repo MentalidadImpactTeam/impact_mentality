@@ -1,4 +1,5 @@
 <div class="container-fluid">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:novalidate => 'novalidate'}) do |f| %>
     <div id="contenedor_registro" class="animated bounceInDown row">
         <div class="col-lg-3"></div>
         <div id="registro_modal" class="col-sm-12 col-lg-6">
@@ -18,9 +19,7 @@
                     <hr class="animated bounceIn" style="animation-delay:1s;  border:1px solid red; width: 50%;">
                 </center>
             </div>
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <%= devise_error_messages! %>
-
+            
               <div class="input_container animated bounceIn col-lg-12">
                 <center>
                     <%= image_tag("User-01.png") %>
@@ -43,12 +42,144 @@
             </div>
 
             <div class="col-12">
-                <center><button id="registro_btn" class="animated bounceInDown">REGISTRARME</button></center>
+                <center><button id="registro_btn" class="animated bounceInDown">Continuar</button></center>
             </div>
-            <% end %>
         </div>
         <div class="col-lg-3"></div>
     </div>
+    <%= f.fields_for :user_information do |ui_fields| %>
+    <div id="div_datos_personales" class="animated bounceInRight row" style="display: none">
+        <div class="col-lg-3"></div>
+        <div id="DP_modal" class="col-sm-12 col-lg-6">
+            <!-- Cierre de Modal -->
+            <i id="DP_close" class="fas fa-times-circle"></i>
+            <!-- End Cierre de mdoal -->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <center>
+                            <h1 class="DP_titulo">Datos Personales</h1>
+                        </center>
+                    </div>
+
+                    <div class="DP_input col-lg-12">
+                        <div class="input_box DP_nombre_box animated bounceIn">
+                            <%= ui_fields.text_field :first_name, autofocus: true, placeholder: 'Nombres', style: 'border:none; width:80%;' %>
+                        </div>
+                    </div>
+
+                    <div class="DP_input col-lg-12">
+                        <div class="input_box DP_apellido_box animated bounceIn">
+                            <%= ui_fields.text_field :last_name, autofocus: true, placeholder: 'Apellidos', style: 'border:none; width:80%;' %>
+                        </div>
+                    </div>
+
+                    <div class="DP_input col-lg-6 col-md-6">
+                        <div class="input_box animated bounceIn">
+                            <%= image_tag("iconosDPersonales-01.png", style: " margin: 10px;width:40px" ) %>
+                            <%= ui_fields.date_field :birth_date, style: 'border:none; width:80%;' %>
+                        </div>
+                    </div>
+
+                    <div class="DP_input col-lg-6 col-md-6">
+                        <div class="input_box DP_genero_box animated bounceIn">
+                            <%= image_tag("iconosDPersonales-04.png", style: " margin: 10px;width:40px" ) %>
+                            <%= ui_fields.select :genre, options_for_select([['Género', 'vacio'],['Hombre', 'H'],['Mujer', 'M']]), {}, { :style => 'border:none;' } %>
+                        </div>
+                    </div>
+
+                    <div class="DP_input col-lg-6 col-md-6">
+                        <div class="input_box DP_estatura_box animated bounceIn">
+                            <%= image_tag("iconosDPersonales-02.png", style: " margin: 10px;width:30px" ) %>
+                            <%= ui_fields.select :height, options_for_select([['Estatura', 'vacio'],['1.40m', '140'],['1.50m', '150']]), {}, { :style => 'border:none;' } %>
+                        </div>
+                    </div>
+
+                    <div class="DP_input col-lg-6 col-md-6">
+                        <div class="input_box DP_peso_box animated bounceIn">
+                            <%= image_tag("iconosDPersonales-03.png", style: " margin: 10px;width:30px" ) %>
+                            <%= ui_fields.select :weight, options_for_select([['Peso', 'vacio'],['50kg', '50'],['55kg', '55']]), {}, { :style => 'border:none;' } %>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <center><button id="DP_btn" class="animated bounceIn">Continuar</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+
+    <div id="div_informacion_deportiva" class="animated bounceInRight row" style='display: none'>
+        <div class="col-lg-3"></div>
+        <div id="IDep_modal" class="col-sm-12 col-lg-6">
+            <!-- Cierre de Modal -->
+            <i id="IDep_close" class="fas fa-times-circle"></i>
+            <!-- End Cierre de mdoal -->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <center>
+                            <h1 class="IDep_titulo">Datos Deportivos</h1>
+                        </center>
+                    </div>
+
+
+                    <div class="IDep_input col-lg-6 col-md-6">
+                        <div class="input_box IDep_deporte_box animated bounceIn">
+                            <%= image_tag("ID_icono-03.png", style: " margin: 10px;width:40px" ) %>
+                            <%= ui_fields.select :sport, options_for_select([['Deporte', 'vacio'],['Hombre', 'H'],['Mujer', 'M']]), {}, { :style => 'border:none;' } %>
+                        </div>
+                    </div>
+
+                    <div class="IDep_input col-lg-6 col-md-6">
+                        <div class="input_box IDep_posicion_box animated bounceIn">
+                            <%= image_tag("ID_icono-02.png", style: " margin: 10px;width:30px" ) %>
+                            <%= ui_fields.select :position, options_for_select([['Posiciones', 'vacio'],['1.40m', '140'],['1.50m', '150']]), {}, { :style => 'border:none;' } %>
+                        </div>
+                    </div>
+
+                    <div class="IDep_input col-lg-6 col-md-6">
+                        <div class="input_box IDep_lesion_box animated bounceIn">
+                            <%= image_tag("ID_icono-04.png", style: " margin: 10px;width:30px" ) %>
+                            <%= ui_fields.select :history_injuries, options_for_select([['Lesiones', 'vacio'],['Tiron', 'tiron'],['Desgarre', 'desgarre']]), {}, { :style => 'border:none;' } %>
+                        </div>
+                    </div>
+                    <div class="IDep_input col-lg-6 col-md-6">
+                        <div class="input_box IDep_exp_box animated bounceIn">
+                            <%= image_tag("ID_icono-01.png", style: " margin: 10px;width:30px" ) %>
+                            <%= ui_fields.select :experience, options_for_select([['Experiencia', 'vacio'],['Novato', 'novato'],['Experimentado', 'experimentado'], ['Atleta', 'atleta']]), {}, { :style => 'border:none;' } %>
+                        </div>
+                    </div>
+                    <div class="Prox_Competencia animated bounceIn col-lg-6 col-md-6">
+                        <center>
+                            <h3>Próxima Competencia</h3>
+                        </center>
+                    </div>
+                    <div class="IDep_input col-lg-6 col-md-6">
+                        <div class="input_box IDep_date_competencia animated bounceIn">
+                            <%= ui_fields.date_field :next_competition, style: 'border:none;' %>
+                        </div>
+                    </div>
+
+                    <div style="animation-delay:.5s;" class="col-lg-12 animated bounceIn">
+                        <center>
+                            <h5 style="color:#3e3e3e; font-weight: lighter;">Favor de <b>consultar a su médico</b> antes de comenzar la rutina.</h5>
+                        </center>
+                    </div>
+                    <div class="col-lg-12">
+                        <center><button id="IDep_btn" class="animated bounceIn">Registrarme</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <% end %>
+    <% end %>
 </div>
 
 
@@ -57,4 +188,4 @@
     background-color:#b52434 !important;
     border-radius:0px !important;
 }
-</style>
+</style>    </div>

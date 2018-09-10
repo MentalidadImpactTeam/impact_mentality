@@ -99,3 +99,271 @@ body {
 #registro_modal div center img {
     margin: 20px 7px;
 }
+
+
+#DP_close {
+    float: right;
+    color: grey;
+    opacity: .5;
+    margin: 15px 0;
+    font-size: 25px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+#DP_close:hover {
+    opacity: 1;
+}
+
+#DP_close:active {
+    transform: scale(.9);
+}
+
+.input_box {
+    border: 1px solid grey;
+    margin: 20px 0;
+    height: auto;
+    overflow: hidden;
+    animation-delay: .5s;
+}
+
+.DP_input img {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+}
+
+.DP_input input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    font-family: Lato;
+    font-weight: bold;
+    color: #3e3e3e;
+    font-size: 20px;
+}
+
+.DP_input input[type="text"]::placeholder {
+    font-size: 20px;
+    font-family: Lato;
+    color: #d1d1d1;
+}
+
+.DP_input input[type="date"] {
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: grey;
+    font-family: Lato;
+    margin: 15px 0;
+    border: 1px solid grey;
+}
+
+.DP_input select {
+    width: 75%;
+    padding: 15px;
+    margin: 18px 0;
+    font-weight: bold;
+    color: #3e3e3e;
+    font-size: 20px;
+    font-family: Lato;
+}
+
+.DP_titulo {
+    color: red;
+    font-family: Lato;
+    font-weight: bold;
+    margin-top: 0px;
+    font-size: 50px;
+    margin: 15px 0;
+    animation-delay: .5s;
+}
+
+#DP_btn {
+    background-color: #b52434;
+    transform: skew(-10deg);
+    color: white;
+    font-family: Lato;
+    border: none;
+    padding: 15px 22px;
+    margin: 25px 0px;
+    font-size: 20px;
+    animation-delay: 1s;
+    transition: all .5s;
+    cursor: pointer;
+}
+
+#DP_btn:hover {
+    box-shadow: 0px 0px 8px red;
+    background-color: Red;
+}
+
+#DP_btn:active {
+    transform: scale(.9) skew(-10deg) !important;
+}
+
+#DP_modal {
+    background-color: white;
+    height: auto;
+    transition: all .5s;
+    z-index: -10;
+    padding-left: 65px;
+}
+
+#DP_modal div center img {
+    margin: 20px 7px;
+}
+
+.DP_sweetalert {
+    background-color: #b52434 !important;
+    border-radius: 0px !important;
+}
+
+#IDep_close {
+    float: right;
+    color: grey;
+    opacity: .5;
+    margin: 15px 0;
+    font-size: 25px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+#IDep_close:hover {
+    opacity: 1;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+#IDep_close:active {
+    transform: scale(.9);
+}
+
+.input_box {
+    border: 1px solid grey;
+    margin: 20px 0;
+    height: auto;
+    overflow: hidden;
+    animation-delay: .5s;
+}
+
+.Prox_Competencia {
+    animation-delay: .5s;
+}
+
+.input_box select,
+.input_box input {
+    background-color: transparent;
+}
+
+.input_box:hover {
+    background-color: #d1d1d1;
+}
+
+.IDep_input img {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+}
+
+.Prox_Competencia {
+    color: red;
+    margin-top: 7%;
+    display: inline-block;
+    position: relative;
+}
+
+.IDep_input input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    font-family: Lato;
+    font-weight: bold;
+    color: #3e3e3e;
+    font-size: 20px;
+}
+
+.IDep_input input[type="text"]::placeholder {
+    font-size: 20px;
+    font-family: Lato;
+    color: #d1d1d1;
+}
+
+.IDep_input input[type="date"] {
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: grey;
+    font-family: Lato;
+    margin: 15px 0;
+    border: 1px solid grey;
+}
+
+.IDep_input select {
+    width: 75%;
+    padding: 15px;
+    margin: 18px 0;
+    font-weight: bold;
+    color: #3e3e3e;
+    font-size: 20px;
+    font-family: Lato;
+}
+
+.IDep_titulo {
+    color: red;
+    font-family: Lato;
+    font-weight: bold;
+    margin-top: 0px;
+    font-size: 50px;
+    margin: 15px 0;
+    animation-delay: .5s;
+}
+
+#IDep_btn {
+    background-color: #b52434;
+    transform: skew(-10deg);
+    color: white;
+    font-family: Lato;
+    border: none;
+    padding: 15px 22px;
+    margin: 25px 0px;
+    font-size: 20px;
+    animation-delay: 1s;
+    transition: all .5s;
+    cursor: pointer;
+}
+
+#IDep_btn:hover {
+    box-shadow: 0px 0px 8px red;
+    background-color: Red;
+}
+
+#IDep_btn:active {
+    transform: scale(.9) skew(-10deg) !important;
+}
+
+#IDep_modal {
+    background-color: white;
+    height: auto;
+    transition: all .5s;
+    z-index: -10;
+    padding-left: 65px;
+}
+
+#IDep_modal div center img {
+    margin: 20px 7px;
+}
+
+.IDep_sweetalert {
+    background-color: #b52434 !important;
+    border-radius: 0px !important;
+}

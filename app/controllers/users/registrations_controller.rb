@@ -42,6 +42,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def checkuser
+    render :json => { 'existe' => User.find_by(email: params[:username]).present? }
+  end
+
   protected
 
   def configure_permitted_parameters
