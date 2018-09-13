@@ -1,37 +1,28 @@
 RegistrationController = Paloma.controller('Users/Registrations')
 RegistrationController::new = ->
-  $('.DP_nombre_box').on 'click', ->
-    $('.DP_nombre_box').removeClass 'input_error'
-    return
-  $('.DP_apellido_box').on 'click', ->
-    $('.DP_apellido_box').removeClass 'input_error'
-    return
-  $('.DP_genero_box').on 'click', ->
-    $('.DP_genero_box').removeClass 'input_error'
-    return
-  $('.DP_estatura_box').on 'click', ->
-    $('.DP_estatura_box').removeClass 'input_error'
-    return
-  $('.DP_peso_box').on 'click', ->
-    $('.DP_peso_box').removeClass 'input_error'
-    return
-  $('.IDep_deporte_box').on 'click', ->
-    $('.IDep_deporte_box').removeClass 'input_error'
-    return
-  $('.IDep_posicion_box').on 'click', ->
-    $('.IDep_posicion_box').removeClass 'input_error'
-    return
-  $('.IDep_lesion_box').on 'click', ->
-    $('.IDep_lesion_box').removeClass 'input_error'
-    return
-  $('.IDep_exp_box').on 'click', ->
-    $('.IDep_exp_box').removeClass 'input_error'
+  eventos_registro()
+  eventos_datos_personales()
+  eventos_datos_deportivos()
+  eventos_metas_objetivos()
+
+  #END OF CLICK EVENT REGISTRO BTN
+  $('#registro_close').on 'click', ->
+    $('#registro_modal').addClass 'animated bounceOut'
     return
   
-  #CLICK EVENT 
+  $('#DP_close').on 'click', ->
+    $('#DP_modal').addClass 'animated bounceOut'
+    return
+
+  $('#IDep_close').on 'click', ->
+    $('#IDep_modal').addClass 'animated bounceOut'
+    return
+
+eventos_registro = ->
   $('#user_email, #user_password, #user_password_confirmation').on 'keyup', ->
     $(this).removeClass 'input_error'
     return
+
   $('#registro_btn').on 'click', (e) ->
     if $('#user_email').val() == ''
       registro_correoval = 1
@@ -111,6 +102,23 @@ RegistrationController::new = ->
       return false
     return
   
+eventos_datos_personales = ->
+  $('.DP_nombre_box').on 'click', ->
+    $('.DP_nombre_box').removeClass 'input_error'
+    return
+  $('.DP_apellido_box').on 'click', ->
+    $('.DP_apellido_box').removeClass 'input_error'
+    return
+  $('.DP_genero_box').on 'click', ->
+    $('.DP_genero_box').removeClass 'input_error'
+    return
+  $('.DP_estatura_box').on 'click', ->
+    $('.DP_estatura_box').removeClass 'input_error'
+    return
+  $('.DP_peso_box').on 'click', ->
+    $('.DP_peso_box').removeClass 'input_error'
+    return
+
   $('#DP_btn').on 'click', (e) ->
     DP_nombre = '0'
     DP_apellido = '0'
@@ -201,7 +209,20 @@ RegistrationController::new = ->
               ), 500
     return false
 
-  # $('#new_user').on 'submit', (e) ->
+eventos_datos_deportivos = ->
+  $('.IDep_deporte_box').on 'click', ->
+    $('.IDep_deporte_box').removeClass 'input_error'
+    return
+  $('.IDep_posicion_box').on 'click', ->
+    $('.IDep_posicion_box').removeClass 'input_error'
+    return
+  $('.IDep_lesion_box').on 'click', ->
+    $('.IDep_lesion_box').removeClass 'input_error'
+    return
+  $('.IDep_exp_box').on 'click', ->
+    $('.IDep_exp_box').removeClass 'input_error'
+    return
+
   $('#IDep_btn').on 'click', ->
     IDep_sport = '0'
     IDep_experience = '0'
@@ -265,24 +286,22 @@ RegistrationController::new = ->
       return false
     else
       IDep_lesiones = '1'
-    if user_user_information_attributes_position == '1'
+    if IDep_sport == '1'
       if IDep_experience == '1'
         if IDep_lesiones == '1'
           if IDep_posicion == '1'
             $('#div_informacion_deportiva').addClass 'animated bounceOutLeft'
-            return true
-    return
+            setTimeout (->
+              $("#div_informacion_deportiva").css('display','none')
+              $("#div_metas_objetivos").removeAttr("style")
+              return
+            ), 500
+    return false
 
-
-  #END OF CLICK EVENT REGISTRO BTN
-  $('#registro_close').on 'click', ->
-    $('#registro_modal').addClass 'animated bounceOut'
+eventos_metas_objetivos = ->
+  $('#metas_objetivos_btn').on 'click', ->
+    $('#metas_objetivos_modal').addClass 'animated bounceOutLeft'
     return
-  
-  $('#DP_close').on 'click', ->
-    $('#DP_modal').addClass 'animated bounceOut'
-    return
-
-  $('#IDep_close').on 'click', ->
-    $('#IDep_modal').addClass 'animated bounceOut'
+  $('#metas_objetivos_close').on 'click', ->
+    $('#metas_objetivos_modal').addClass 'animated bounceOut'
     return

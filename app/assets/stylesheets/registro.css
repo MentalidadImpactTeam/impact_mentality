@@ -367,3 +367,281 @@ button:focus {
     background-color: #b52434 !important;
     border-radius: 0px !important;
 }
+
+.metas_objetivos_imagen_logo {
+    width: 70%;
+    animation-delay: .3s;
+}
+
+#metas_objetivos_close {
+    float: right;
+    color: grey;
+    opacity: .5;
+    display: inline-block;
+    margin: 15px 0;
+    font-size: 25px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+#metas_objetivos_close:hover {
+    opacity: 1;
+}
+
+#metas_objetivos_close:active {
+    transform: scale(.9);
+}
+
+#metas_objetivos_titulo {
+    color: grey;
+    font-family: Lato;
+    font-weight: bold;
+    margin-top: 0px;
+    animation-delay: .5s;
+}
+
+#metas_objetivos_btn {
+    background-color: #b52434;
+    transform: skew(-10deg);
+    color: white;
+    font-family: Lato;
+    border: none;
+    padding: 10px 15px;
+    margin-bottom: 25px;
+    font-size: 20px;
+    animation-delay: .6s;
+    transition: all .5s;
+}
+
+#metas_objetivos_btn:hover {
+    box-shadow: 0px 0px 8px red;
+    background-color: Red;
+}
+
+#metas_objetivos_btn:active {
+    transform: scale(.9) skew(-10deg);
+}
+
+#metas_objetivos_modal {
+    background-color: white;
+    height: auto;
+    transition: all .5s;
+    z-index: -10;
+}
+
+#metas_objetivos_modal div center img {
+    margin: 20px 7px;
+}
+
+.contenedor_metas {
+    border: 1px solid grey;
+    padding: 25px;
+    animation-delay: .5s
+}
+
+.contenedor_objetivo {
+    border: 1px solid grey;
+    padding: 25px;
+}
+
+.Titulo_seccion {
+    color: red;
+    display: inline-block;
+    font-family: Lato;
+    font-weight: bold;
+    margin-top: 0px;
+    font-size: 50px;
+    margin: 15px 0;
+    animation-delay: .5s;
+}
+
+.titulos_seguimiento {
+    color: red;
+    font-family: Lato;
+}
+
+.subtitulos_seguimiento {
+    font-family: lato;
+    font-size: 15px;
+    line-height: 100%;
+    text-align: left;
+    font-weight: lighter;
+    color: #3e3e3e;
+}
+
+
+/* ---------------------------------- CHECKBOX ---------------------------------------- */
+
+
+/* ---------------------------------- CHECKBOX ---------------------------------------- */
+
+
+/* ---------------------------------- CHECKBOX ---------------------------------------- */
+
+
+/* ---------------------------------- CHECKBOX ---------------------------------------- */
+
+
+/* ---------------------------------- CHECKBOX ---------------------------------------- */
+
+
+/* ---------------------------------- CHECKBOX ---------------------------------------- */
+
+
+/* ---------------------------------- CHECKBOX ---------------------------------------- */
+
+
+/* ---------------------------------- CHECKBOX ---------------------------------------- */
+
+.inputGroup {
+    background-color: #fff;
+    display: block;
+    margin: 10px 0;
+    position: relative;
+}
+
+.inputGroup label {
+    padding: 12px 30px;
+    width: 100%;
+    display: block;
+    text-align: left;
+    color: #3C454C;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: color 200ms ease-in;
+    overflow: hidden;
+}
+
+.inputGroup:hover {
+    background-color: #d1d1d1;
+}
+
+.inputGroup label:before {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    content: '';
+    background-color: #3e3e3e;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%) scale3d(1, 1, 1);
+    transform: translate(-50%, -50%) scale3d(1, 1, 1);
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    z-index: -1;
+}
+
+.inputGroup label:after {
+    width: 32px;
+    height: 32px;
+    content: '';
+    border: 2px solid #D1D7DC;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+    background-repeat: no-repeat;
+    background-position: 2px 3px;
+    border-radius: 50%;
+    z-index: 2;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: all 200ms ease-in;
+}
+
+.inputGroup input:checked~label {
+    color: #fff;
+}
+
+.inputGroup input:checked~label:before {
+    -webkit-transform: translate(-50%, -50%) scale3d(56, 56, 1);
+    transform: translate(-50%, -50%) scale3d(56, 56, 1);
+    opacity: 1;
+}
+
+.inputGroup input:checked~label:after {
+    background-color: red;
+    border-color: red;
+}
+
+.inputGroup input {
+    width: 32px;
+    height: 32px;
+    order: 1;
+    z-index: 2;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.form_metas {
+    padding: 0 16px;
+    max-width: 600px;
+    margin: 0px auto;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 36px;
+}
+
+.form_objetivo {
+    padding: 0 16px;
+    max-width: 600px;
+    margin: 0px auto;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 36px;
+}
+
+body {
+    background-color: #D1D7DC;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+code {
+    background-color: #9AA3AC;
+    padding: 0 8px;
+}
+
+
+/* ---------------------------------- media screen ---------------------------------------- */
+
+
+/* ---------------------------------- media screen ---------------------------------------- */
+
+
+/* ---------------------------------- media screen ---------------------------------------- */
+
+
+/* ---------------------------------- media screen ---------------------------------------- */
+
+
+/* ---------------------------------- media screen ---------------------------------------- */
+
+
+/* ---------------------------------- media screen ---------------------------------------- */
+
+@media only screen and (max-width: 991px) {
+    .contenedor_metas,
+    .contenedor_objetivo {
+        margin: 25px 0;
+    }
+}
