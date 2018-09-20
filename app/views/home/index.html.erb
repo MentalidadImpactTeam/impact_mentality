@@ -1,27 +1,35 @@
-<% if user_signed_in? %>
-    <h1>Hola <%= current_user.email %></h1>
-    <br>
-    <%= select_tag "etapas", options_from_collection_for_select(@stages, "id", "name")  %>
-    <br>
-    <%= select_tag "dias", options_for_select(@days) %>
-    <br>
-    <button id="button">Generar</button>
-    <br>
-    <div id="rutina">
-            <table id="tabla_ejercicios">
-                <thead>
-                    <th style="width: 200px;">Categoria</th>
-                    <th style="width: 200px;">Subcategoria</th>
-                    <th style="width: 300px;">Ejercicio Categoria</th>
-                    <th>Ejercicio</th>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+<div class="sistema_container d-flex">
+    <div class="subbanners_sistema_menu">
+        <div style="background-color:#3e3e3e;" class="sistema_banner"></div>
+        <div style="background-color:#202020;" class="sistema_banner">
+            <h2>LISTA DE EJERCICIOS</h2>
+        </div>
+        <% if user_signed_in? %>
+            <h1>Hola <%= current_user.email %></h1>
+            <br>
+            <%= select_tag "etapas", options_from_collection_for_select(@stages, "id", "name")  %>
+            <br>
+            <%= select_tag "dias", options_for_select(@days) %>
+            <br>
+            <button id="button">Generar</button>
+            <br>
+            <div id="rutina">
+                    <table id="tabla_ejercicios">
+                        <thead>
+                            <th style="background-color: black; color: white; width: 200px;">Categoria</th>
+                            <th style="background-color: black; color: white; width: 200px;">Subcategoria</th>
+                            <th style="background-color: black; color: white; width: 300px;">Ejercicio Categoria</th>
+                            <th style="background-color: black; color: white;">Ejercicio</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+            </div>
+            <br>
+            <br>
+            <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary") %> 
+        <% else %>
+            <%= link_to('Login', new_user_session_path, method: :get, class: "btn btn-primary") %> 
+        <% end %>
     </div>
-    <br>
-    <br>
-    <%= link_to('Logout', destroy_user_session_path, method: :delete) %> 
-<% else %>
-    <%= link_to('Login', new_user_session_path, method: :get) %> 
-<% end %>
+</div>

@@ -35,8 +35,73 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <!-- Menu Cellphone -->
+    <div class="sistema_mobile_menu">
+        <!-- Just an image -->
+        <nav class="navbar navbar-light bg-dark">
+            <a class="navbar-brand" href="#">
+                <%= image_tag("ImpactMentalityIcon-01", style: "height: 30px; width:30px;" ) %>
+            </a>
+            <span class="titulo_mobile_header" style="">LISTA DE EJERCICIOS</span>
+            <img class="burger_menu_mobile" ALIGN=”right” src="img/hamburger-icon.png" width='25' height="25" alt="">
+        </nav>
+        <ul id="menu_mobile_desplegado">
+            <li style="background-color:#5f5f5f;">
+                <a href="http://" target="_blank" rel="noopener noreferrer">Rutina</a>
+            </li>
+            <li style="background-color:#5f5f5f;">
+                <a href="http://" target="_blank" rel="noopener noreferrer">Analíticos</a>
+            </li>
+            <li style="background-color:#5f5f5f;">
+                <a href="http://" target="_blank" rel="noopener noreferrer">Calendario</a>
+            </li>
+            <li style="background-color:#5f5f5f;">
+                <a href="http://" target="_blank" rel="noopener noreferrer">Perfil</a>
+            </li>
+            <li style="background-color:#5f5f5f;">
+                <a href="http://" target="_blank" rel="noopener noreferrer">Información</a>
+            </li>
+            <li style="background-color:red;">
+                <a href="http://" target="_blank" rel="noopener noreferrer">Salir</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Menu Cellphone END  -->
+
+
+    <!-- Menu desktop -->
+    <div class="menuVertical d--flex">
+        <div>
+            <%= image_tag("ImpactMentalityIcon-01", class: "sistema_left_icon", width: "60px" ) %>
+            <%= image_tag("MentalidadImpact-01", class: "sistema_descripcion_menu",  width: "120px" ) %>
+        </div>
+        <div class="seccion_menu_left">
+            <%= image_tag("iconoLeftMenu-01", class: "burger_menu sistema_left_icon") %>
+            <h3 class="sistema_descripcion_menu">Menú</h3>
+        </div>
+        <div class="seccion_menu_left">
+            <%= image_tag("iconoLeftMenu-02", class: "sistema_left_icon") %>
+            <h3 class="sistema_descripcion_menu">Rutina</h3>
+        </div>
+        <div class="seccion_menu_left">
+            <%= image_tag("iconoLeftMenu-03", class: "sistema_left_icon") %>
+            <h3 class="sistema_descripcion_menu">Analíticos</h3>
+        </div>
+        <div class="seccion_menu_left">
+            <%= image_tag("iconoLeftMenu-04", class: "sistema_left_icon") %>
+            <h3 class="sistema_descripcion_menu">Calendario</h3>
+        </div>
+        <div class="seccion_menu_left">
+            <%= image_tag("iconoLeftMenu-05", class: "sistema_left_icon") %>
+            <h3 class="sistema_descripcion_menu">Perfil</h3>
+        </div>
+        <div class="seccion_menu_left">
+            <%= image_tag("iconoLeftMenu-06", class: "sistema_left_icon") %>
+            <h3 class="sistema_descripcion_menu">Información</h3>
+        </div>
+    </div>
+    <!--  END MENU desktop -->
     <%= yield %>
     <%= insert_paloma_hook %>
   </body>

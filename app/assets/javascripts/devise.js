@@ -13,4 +13,5 @@
 //= require rails-ujs
 //= require turbolinks
 //= require paloma
-//= require home
+//= require login
+//= require registration

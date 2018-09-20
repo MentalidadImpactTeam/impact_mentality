@@ -1,0 +1,196 @@
+html {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100%;
+}
+
+.menuVertical {
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  width: 5%;
+  background-color: #3e3e3e;
+  color: White;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.reduce_sidecontainer {
+  width: 20%;
+  transition: all .5s;
+}
+
+.sistema_section_container {
+  display: inline-block;
+  color: grey;
+}
+
+.menuVertical i {
+  font-size: 30px;
+  margin: 25px;
+}
+
+.seccion_menu_left:hover {
+  background-color: Red;
+  cursor: pointer;
+  box-shadow: 0 0px 50px red;
+}
+
+.sistema_left_icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 30px;
+  margin: 25px 25px 25px 15px;
+}
+
+.seccion_menu_left h3 {
+  font-family: lato;
+  vertical-align: middle;
+  font-size: 2vh;
+  font-weight: bold;
+  margin: 0 50px 0 0;
+}
+
+.hide_text_menu {
+  transition: all .5s;
+  transform: scale(1) !important;
+}
+
+.display_text_menu {
+  display: inline-block !important;
+}
+
+.sistema_descripcion_menu {
+  transition: all .5s;
+  transform: scale(0);
+  transform-origin: left;
+  display: none;
+}
+
+.header {
+  background-color: #3e3e3e;
+  height: 80px;
+  width: 100%;
+  display: block;
+  position: fixed;
+  color: white;
+}
+
+@media only screen and (max-width: 1092px) {
+  .sistema_container {
+      background-color: yellow !important;
+      width: 100% !important;
+  }
+  .menuVertical {
+      display: none;
+  }
+  .sistema_mobile_menu {
+      display: block !important;
+  }
+  .subbanners_sistema_menu {
+      display: none !important;
+  }
+}
+
+
+/* menu cellphone CSS*/
+
+.sistema_mobile_menu {
+  display: none;
+}
+
+.burger_menu_mobile {
+  display: inline-block;
+  float: right;
+  margin: 2px;
+  transition: all .5s;
+  cursor: pointer;
+}
+
+.burger_menu_mobile:hover {
+  transform: scale(1.2);
+}
+
+.titulo_mobile_header {
+  font-family: lato;
+  color: white;
+  font-size: 5vw;
+  text-align: left;
+  text-shadow: 0 0 5px white;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+  position: absolute;
+  z-index: 20;
+  width: 100%;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: all 1s cubic-bezier(1, 0, 0, 1);
+}
+
+.desplegado {
+  transform: scaleY(1) !important;
+}
+
+#menu_mobile_desplegado li a {
+  color: white;
+  text-decoration: none;
+  font-family: Lato;
+  margin-left: 15px;
+  font-size: 3vw;
+}
+
+#menu_mobile_desplegado li:hover {
+  background-color: red !important;
+  box-shadow: 0 0 15px red;
+}
+
+ul li {
+  padding: 2px 0;
+}
+
+.subbanners_sistema_menu {
+  width: 100%;
+}
+
+.sistema_banner h2 {
+  font-family: lato;
+  font-weight: bold;
+  color: White;
+  text-shadow: 0 0 10px white;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 10px;
+  margin-left: 25px;
+}
+
+.sistema_banner {
+  display: block;
+  width: 100%;
+  height: 60px;
+  position: relative;
+}
+
+.sistema_container {
+  display: inline-block;
+  position: relative;
+  float: right;
+  height: 100%;
+  width: 95%;
+  background-color: red;
+  transition: all .5s;
+}
+
+.sistema_container_reduce {
+  width: 80% !important;
+}
+/* DASHBOARD */
