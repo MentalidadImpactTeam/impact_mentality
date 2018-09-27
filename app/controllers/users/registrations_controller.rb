@@ -8,6 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   # GET /resource/sign_up
   def new
+    catalogos_registro
     @user_types = UserType.all.order(id: :asc)
     build_resource({})
     resource.build_user_information
@@ -45,6 +46,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def checkuser
     render :json => { 'existe' => User.find_by(email: params[:username]).present? }
+  end
+
+  def catalogos_registro
+    @heights = [['Estatura', 'vacio'],['-1.00m', '-1'],['1.00m', '1'],['1.10m', '1.1'],['1.20m', '1.2'],['1.30m', '1.3'],['1.40m', '1.4'],['1.50m', '1.5'],
+    ['1.60m', '1.6'],['1.70m', '1.7'],['1.80m', '1.8'],['1.90m', '1.9'],['2.00m', '2'],['2.10m', '2.1'],['2.20m', '2.2'],['2.30m', '2.3'],['2.40m', '2.4'],['+2.40m', '+2.4']]
   end
 
   protected

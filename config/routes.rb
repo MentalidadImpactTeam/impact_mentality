@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     post 'checkuser' => 'users/registrations#checkuser'
   end
 
-  root to: 'home#index'
+  root to: 'dashboard#index'
   post 'rutinas' => "home#rutinas"
   resources :routines
 end

@@ -100,48 +100,54 @@ body {
     margin: 20px 7px;
 }
 
+#IP_modal {
+    background-color: white;
+}
 
-#DP_close {
-    float: right;
-    color: grey;
-    opacity: .5;
+#IP_titulo {
+    font-size: 50px;
     margin: 15px 0;
-    font-size: 25px;
-    z-index: 1000;
-    cursor: pointer;
-    transition: all .5s;
-}
-
-#DP_close:hover {
-    opacity: 1;
-}
-
-#DP_close:active {
-    transform: scale(.9);
-}
-
-.input_box {
-    border: 1px solid grey;
-    margin: 20px 0;
-    height: auto;
-    overflow: hidden;
+    color: red !important;
     animation-delay: .5s;
 }
 
-.DP_input img {
-    display: inline-block;
-    position: relative;
-    width: 50px;
+.terminar_mensaje {
+    font-weight: lighter;
+    margin: 25px 0;
+}
+
+#terminar_btn {
+    background-color: #b52434;
+    transform: skew(-10deg);
+    color: white;
+    font-family: Lato;
+    border: none;
+    padding: 15px 22px;
+    margin: 25px 0px;
+    font-size: 20px;
+    animation-delay: 1s;
+    transition: all .6s;
+    cursor: pointer;
+}
+
+.DP_input {
+    margin: 10px 0;
+}
+
+.DP_input input[type="text"]:focus {
+    outline: none;
 }
 
 .DP_input input[type="text"] {
-    width: 100%;
+    width: 75%;
     padding: 15px;
-    margin: 15px 0;
+    margin: 0;
     font-family: Lato;
-    font-weight: bold;
+    border: none;
     color: #3e3e3e;
     font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .DP_input input[type="text"]::placeholder {
@@ -150,38 +156,71 @@ body {
     color: #d1d1d1;
 }
 
-.DP_input input[type="date"] {
-    width: 100%;
-    padding: 15px;
-    font-size: 20px;
-    font-weight: bold;
-    color: grey;
-    font-family: Lato;
-    margin: 15px 0;
+.input_error {
+    border: 2px solid red !important;
+}
+
+.input_box_tutor,
+.input_box_num,
+.input_box_mes,
+.input_box_ano,
+.input_box_cvc {
     border: 1px solid grey;
-}
-
-.DP_input select {
-    width: 75%;
-    padding: 15px;
-    margin: 18px 0;
-    font-weight: bold;
-    color: #3e3e3e;
-    font-size: 20px;
-    font-family: Lato;
-}
-
-.DP_titulo {
-    color: red;
-    font-family: Lato;
-    font-weight: bold;
-    margin-top: 0px;
-    font-size: 50px;
     margin: 15px 0;
+    height: auto;
+    overflow: hidden;
     animation-delay: .5s;
 }
 
-#DP_btn {
+.input_box_num:hover,
+.input_box_tutor:hover,
+.input_box_mes:hover,
+.input_box_ano:hover,
+.input_box_cvc:hover {
+    background-color: #f2f2f2;
+}
+
+.input_box_tutor i,
+.input_box_num i,
+.input_box_mes i,
+.input_box_ano i,
+.input_box_cvc i {
+    font-size: 20px;
+    padding: 25px 15px;
+    border-right: 1px solid grey;
+    color: grey;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #f2f2f2;
+}
+
+#IP_genero,
+#IP_Experiencia,
+#IP_Estatura,
+#IP_peso {
+    padding: 15px;
+    z-index: 109;
+    margin: 0px 0;
+    width: 78%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: Lato;
+}
+
+#IP_genero:focus,
+#IP_Experiencia:focus,
+#IP_Estatura,
+#IP_peso {
+    outline: none;
+}
+
+.CVC_CODE {
+    width: 65% !important;
+}
+
+#IP_btn {
     background-color: #b52434;
     transform: skew(-10deg);
     color: white;
@@ -195,30 +234,20 @@ body {
     cursor: pointer;
 }
 
-#DP_btn:hover {
+#IP_btn:hover {
     box-shadow: 0px 0px 8px red;
     background-color: Red;
 }
 
-#DP_btn:active {
-    transform: scale(.9) skew(-10deg) !important;
+.ID_Competencia_fecha {
+    border: none;
+    font-family: lato;
+    font-size: 20px;
+    background-color: transparent;
 }
 
-#DP_modal {
-    background-color: white;
-    height: auto;
-    transition: all .5s;
-    z-index: -10;
-    padding-left: 65px;
-}
-
-#DP_modal div center img {
-    margin: 20px 7px;
-}
-
-.DP_sweetalert {
-    background-color: #b52434 !important;
-    border-radius: 0px !important;
+.ID_Competencia_fecha:focus {
+    outline: none;
 }
 
 #IDep_close {

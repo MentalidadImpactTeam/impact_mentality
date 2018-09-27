@@ -27,6 +27,8 @@
 
     <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.12/dist/sweetalert2.all.min.js"></script>
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <!-- Metas -->
 
     <meta charset="UTF-8">
@@ -43,7 +45,7 @@
                 <%= image_tag("ImpactMentalityIcon-01", style: "height: 30px; width:30px;" ) %>
             </a>
             <span class="titulo_mobile_header" style="">LISTA DE EJERCICIOS</span>
-            <img class="burger_menu_mobile" ALIGN=”right” src="img/hamburger-icon.png" width='25' height="25" alt="">
+            <%= image_tag("hamburger-icon", class: "burger_menu_mobile", width: "25px", height: "25px" ) %>
         </nav>
         <ul id="menu_mobile_desplegado">
             <li style="background-color:#5f5f5f;">
@@ -76,8 +78,8 @@
             <%= image_tag("ImpactMentalityIcon-01", class: "sistema_left_icon", width: "60px" ) %>
             <%= image_tag("MentalidadImpact-01", class: "sistema_descripcion_menu",  width: "120px" ) %>
         </div>
-        <div class="seccion_menu_left">
-            <%= image_tag("iconoLeftMenu-01", class: "burger_menu sistema_left_icon") %>
+        <div class="seccion_menu_left burger_menu">
+            <%= image_tag("iconoLeftMenu-01", class: "sistema_left_icon") %>
             <h3 class="sistema_descripcion_menu">Menú</h3>
         </div>
         <div class="seccion_menu_left">
@@ -102,7 +104,9 @@
         </div>
     </div>
     <!--  END MENU desktop -->
+    <div class="sistema_container d-flex">
     <%= yield %>
+    </div>
     <%= insert_paloma_hook %>
   </body>
 

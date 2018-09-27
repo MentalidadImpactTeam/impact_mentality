@@ -50,66 +50,75 @@
         <%= f.fields_for :user_information do |ui_fields| %>
         <div id="div_datos_personales" class="animated bounceInRight row" style="display: none">
             <div class="col-lg-3"></div>
-            <div id="DP_modal" class="col-sm-12 col-lg-6">
-                <!-- Cierre de Modal -->
-                <i id="DP_close" class="fas fa-times-circle"></i>
-                <!-- End Cierre de mdoal -->
-
+            <div id="IP_modal" class="col-sm-12 col-lg-6">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div style="margin:25px 0;" class="row">
+                        <div class="col-12">
                             <center>
-                                <h1 class="DP_titulo">Datos Personales</h1>
+                                <h1 id="IP_titulo" class="animated bounceIn">Información Personal</h1>
                             </center>
                         </div>
 
-                        <div class="DP_input col-lg-12">
-                            <div class="input_box DP_nombre_box animated bounceIn">
-                                <%= ui_fields.text_field :first_name, autofocus: true, placeholder: 'Nombres', style: 'border:none; width:80%;' %>
+
+                    </div>
+                    <div id="FPago_full_container">
+                        <div class="row">
+                            <div class="DP_input col-lg-12 col-md-12">
+                                <div id="input_box_nombre" class="input_box_tutor  animated bounceIn">
+                                    <i class="far fa-id-badge"></i>
+                                    <%= ui_fields.text_field :first_name, placeholder: 'Nombres', id: 'IP_nombre' %>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row ">
+                            <div class="DP_input col-lg-12 col-md-12">
+                                <div id="input_box_apellido" class="input_box_tutor animated bounceIn">
+                                    <i class="far fa-id-badge"></i>
+                                    <%= ui_fields.text_field :last_name, placeholder: 'Apellidos', id: 'IP_apellido' %>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row ">
+                            <div class="DP_input col-lg-6 col-md-6">
+                                <div id="input_box_exp" class="input_box_ano animated bounceIn">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <%= ui_fields.select :experience, options_for_select([['Experiencia', 'vacio'],['Novato', 'novato'],['Experimentado', 'experimentado'], ['Atleta', 'atleta']]), {}, { :id => 'IP_Experiencia' } %>
+                                </div>
+                            </div>
+                            <div class="DP_input col-lg-6 col-md-6">
+                                <div id="input_box_gen" class="input_box_ano animated bounceIn">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <%= ui_fields.select :genre, options_for_select([['Género', 'vacio'],['Hombre', 'H'],['Mujer', 'M']]), {}, { :id => 'IP_genero' } %>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="DP_input col-lg-12">
-                            <div class="input_box DP_apellido_box animated bounceIn">
-                                <%= ui_fields.text_field :last_name, autofocus: true, placeholder: 'Apellidos', style: 'border:none; width:80%;' %>
-                            </div>
-                        </div>
 
-                        <div class="DP_input col-lg-6 col-md-6">
-                            <div class="input_box animated bounceIn">
-                                <%= image_tag("iconosDPersonales-01.png", style: " margin: 10px;width:40px" ) %>
-                                <%= ui_fields.date_field :birth_date, style: 'border:none; width:80%;' %>
+                        <div class="row ">
+                            <div class="DP_input col-lg-6 col-md-6">
+                                <div id="input_box_peso" class="input_box_tutor animated bounceIn">
+                                    <i class="far fa-id-badge"></i>
+                                    <%= ui_fields.text_field :weight, placeholder: 'Peso', id: 'IP_peso', onkeypress: 'return event.charCode >= 48 && event.charCode <= 57;' %>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="DP_input col-lg-6 col-md-6">
-                            <div class="input_box DP_genero_box animated bounceIn">
-                                <%= image_tag("iconosDPersonales-04.png", style: " margin: 10px;width:40px" ) %>
-                                <%= ui_fields.select :genre, options_for_select([['Género', 'vacio'],['Hombre', 'H'],['Mujer', 'M']]), {}, { :style => 'border:none;' } %>
+                            <div class="DP_input col-lg-6 col-md-6">
+                                <div id="input_box_estatura" class="input_box_ano animated bounceIn">
+                                    <i class="far fa-calendar-alt "></i>
+                                    <%= ui_fields.select :height, options_for_select(@heights), {}, { :id => 'IP_Estatura' } %>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="DP_input col-lg-6 col-md-6">
-                            <div class="input_box DP_estatura_box animated bounceIn">
-                                <%= image_tag("iconosDPersonales-02.png", style: " margin: 10px;width:30px" ) %>
-                                <%= ui_fields.select :height, options_for_select([['Estatura', 'vacio'],['1.40m', '140'],['1.50m', '150']]), {}, { :style => 'border:none;' } %>
-                            </div>
-                        </div>
-
-                        <div class="DP_input col-lg-6 col-md-6">
-                            <div class="input_box DP_peso_box animated bounceIn">
-                                <%= image_tag("iconosDPersonales-03.png", style: " margin: 10px;width:30px" ) %>
-                                <%= ui_fields.select :weight, options_for_select([['Peso', 'vacio'],['50kg', '50'],['55kg', '55']]), {}, { :style => 'border:none;' } %>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-12">
-                            <center><button id="DP_btn" class="animated bounceIn">Continuar</button></center>
                         </div>
                     </div>
                 </div>
+                <div class="col-12 ">
+                    <center>
+                        <button id="IP_btn" class="animated bounceIn">Continuar</button>
+                    </center>
+                </div>
             </div>
-            <div class="col-lg-3"></div>
+            <div class="col-lg-3 "></div>
         </div>
 
         <div id="div_informacion_deportiva" class="animated bounceInRight row" style='display: none'>

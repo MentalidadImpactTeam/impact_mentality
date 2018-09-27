@@ -12,5 +12,6 @@
  *
  *= require animate
  *= require header_menu
+ *= require dashboard
  *= require_self
  */

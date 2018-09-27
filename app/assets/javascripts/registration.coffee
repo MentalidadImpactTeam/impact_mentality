@@ -1,3 +1,4 @@
+kg_var = 0
 RegistrationController = Paloma.controller('Users/Registrations')
 RegistrationController::new = ->
   eventos_registro()
@@ -103,110 +104,121 @@ eventos_registro = ->
     return
   
 eventos_datos_personales = ->
-  $('.DP_nombre_box').on 'click', ->
-    $('.DP_nombre_box').removeClass 'input_error'
+  $('#IP_nombre').on 'click', ->
+    $('#input_box_nombre').removeClass 'input_error'
     return
-  $('.DP_apellido_box').on 'click', ->
-    $('.DP_apellido_box').removeClass 'input_error'
+  $('#IP_apellido').on 'click', ->
+    $('#input_box_apellido').removeClass 'input_error'
     return
-  $('.DP_genero_box').on 'click', ->
-    $('.DP_genero_box').removeClass 'input_error'
+  $('#IP_Experiencia').on 'click', ->
+    $('#input_box_exp').removeClass 'input_error'
     return
-  $('.DP_estatura_box').on 'click', ->
-    $('.DP_estatura_box').removeClass 'input_error'
+  $('#IP_genero').on 'click', ->
+    $('#input_box_gen').removeClass 'input_error'
     return
-  $('.DP_peso_box').on 'click', ->
-    $('.DP_peso_box').removeClass 'input_error'
+  $('#IP_peso').on 'click', ->
+    $('#input_box_peso').removeClass 'input_error'
+    return
+  $('#IP_Estatura').on 'click', ->
+    $('#input_box_estatura').removeClass 'input_error'
+    return
+  
+  $('#IP_peso').on 'click', ->
+    $('#IP_peso').val ''
+    kg_var = 0
     return
 
-  $('#DP_btn').on 'click', (e) ->
-    DP_nombre = '0'
-    DP_apellido = '0'
-    DP_genero = '0'
-    DP_estatura = '0'
-    DP_peso = '0'
+  $('#IP_modal').on 'mouseover', ->
+    if $('#IP_peso').val() != ''
+      if kg_var == 0
+        addkg()
+    return
 
-    if $('#user_user_information_attributes_first_name').val() == ''
+  $('#IP_btn').on 'click', (e) ->
+    if $('#IP_nombre').val() == ''
       swal
         type: 'error'
         title: 'Alerta'
-        text: 'Por favor Ingrese los espacios en rojo'
+        text: 'Por favor Ingrese su Nombre'
         allowEscapeKey: true
         allowOutsideClick: true
         confirmButtonText: 'Regresar'
         confirmButtonClass: 'login_sweetalert'
-      $('.DP_nombre_box').addClass 'input_error'
-      DP_nombre = '0'
+      $('#input_box_nombre').addClass 'input_error'
       return false
     else
-      DP_nombre = '1'
-    if $('#user_user_information_attributes_last_name').val() == ''
-      swal
-        type: 'error'
-        title: 'Alerta'
-        text: 'Por favor Ingrese los espacios en rojo'
-        allowEscapeKey: true
-        allowOutsideClick: true
-        confirmButtonText: 'Regresar'
-        confirmButtonClass: 'login_sweetalert'
-      $('.DP_apellido_box').addClass 'input_error'
-      DP_apellido = '0'
-      return false
-    else
-      DP_apellido = '1'
-    if $('#user_user_information_attributes_genre').val() == 'vacio'
-      swal
-        type: 'error'
-        title: 'Alerta'
-        text: 'Por favor Ingrese los espacios en rojo'
-        allowEscapeKey: true
-        allowOutsideClick: true
-        confirmButtonText: 'Regresar'
-        confirmButtonClass: 'login_sweetalert'
-      $('.DP_genero_box').addClass 'input_error'
-      DP_genero = '0'
-      return false
-    else
-      DP_genero = '1'
-    if $('#user_user_information_attributes_height').val() == 'vacio'
-      swal
-        type: 'error'
-        title: 'Alerta'
-        text: 'Por favor Ingrese los espacios en rojo'
-        allowEscapeKey: true
-        allowOutsideClick: true
-        confirmButtonText: 'Regresar'
-        confirmButtonClass: 'login_sweetalert'
-      $('.DP_estatura_box').addClass 'input_error'
-      DP_estatura = '0'
-      return false
-    else
-      DP_estatura = '1'
-    if $('#user_user_information_attributes_weight').val() == 'vacio'
-      swal
-        type: 'error'
-        title: 'Alerta'
-        text: 'Por favor Ingrese los espacios en rojo'
-        allowEscapeKey: true
-        allowOutsideClick: true
-        confirmButtonText: 'Regresar'
-        confirmButtonClass: 'login_sweetalert'
-      $('.DP_peso_box').addClass 'input_error'
-      DP_peso = '0'
-      return false
-    else
-      DP_peso = '1'
-    if DP_nombre == '1'
-      if DP_apellido == '1'
-        if DP_estatura == '1'
-          if DP_peso == '1'
-            if DP_genero == '1'
-              $('#div_datos_personales').addClass 'animated bounceOutLeft'
-              setTimeout (->
-                $("#div_datos_personales").css('display','none')
-                $("#div_informacion_deportiva").removeAttr("style")
-                return
-              ), 500
+      $('#input_box_nombre').removeClass 'input_error'
+      if $('#IP_apellido').val() == ''
+        swal
+          type: 'error'
+          title: 'Alerta'
+          text: 'Por favor Ingrese su Apellido'
+          allowEscapeKey: true
+          allowOutsideClick: true
+          confirmButtonText: 'Regresar'
+          confirmButtonClass: 'login_sweetalert'
+        $('#input_box_apellido').addClass 'input_error'
+        return false
+      else
+        $('#input_box_apellido').removeClass 'input_error'
+        if $('#IP_Experiencia').val() == 'vacio'
+          swal
+            type: 'error'
+            title: 'Alerta'
+            text: 'Por favor Ingrese su Experiencia'
+            allowEscapeKey: true
+            allowOutsideClick: true
+            confirmButtonText: 'Regresar'
+            confirmButtonClass: 'login_sweetalert'
+          $('#input_box_exp').addClass 'input_error'
+          return false
+        else
+          $('#input_box_exp').removeClass 'input_error'
+          if $('#IP_genero').val() == 'vacio'
+            swal
+              type: 'error'
+              title: 'Alerta'
+              text: 'Por favor Ingrese su Genero'
+              allowEscapeKey: true
+              allowOutsideClick: true
+              confirmButtonText: 'Regresar'
+              confirmButtonClass: 'login_sweetalert'
+            $('#input_box_gen').addClass 'input_error'
+            return false
+          else
+            $('#input_box_gen').removeClass 'input_error'
+            if $('#IP_peso').val() == ''
+              swal
+                type: 'error'
+                title: 'Alerta'
+                text: 'Por favor Ingrese su Peso'
+                allowEscapeKey: true
+                allowOutsideClick: true
+                confirmButtonText: 'Regresar'
+                confirmButtonClass: 'login_sweetalert'
+              $('#input_box_peso').addClass 'input_error'
+              return false
+            else
+              $('#input_box_peso').removeClass 'input_error'
+              if $('#IP_Estatura').val() == 'vacio'
+                swal
+                  type: 'error'
+                  title: 'Alerta'
+                  text: 'Por favor Ingrese su Estatura'
+                  allowEscapeKey: true
+                  allowOutsideClick: true
+                  confirmButtonText: 'Regresar'
+                  confirmButtonClass: 'login_sweetalert'
+                $('#input_box_estatura').addClass 'input_error'
+                return false
+              else
+                $('#input_box_estatura').removeClass 'input_error'
+                $('#div_datos_personales').addClass 'animated bounceOutLeft'
+                setTimeout (->
+                  $("#div_datos_personales").css('display','none')
+                  $("#div_informacion_deportiva").removeAttr("style")
+                  return
+                ), 500
     return false
 
 eventos_datos_deportivos = ->
@@ -305,3 +317,10 @@ eventos_metas_objetivos = ->
   $('#metas_objetivos_close').on 'click', ->
     $('#metas_objetivos_modal').addClass 'animated bounceOut'
     return
+
+addkg = ->
+  contenido_tmp = $('#IP_peso').val() + ' kg'
+  $('#IP_peso').val ''
+  $('#IP_peso').val contenido_tmp
+  kg_var++
+  return

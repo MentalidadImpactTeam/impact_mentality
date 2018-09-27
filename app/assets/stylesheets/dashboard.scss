@@ -1,0 +1,184 @@
+// Place all the styles related to the Dashboard controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sistema_db_container {
+  background-color: #1F1F1F;
+  width: 100%;
+  height: 100%;
+}
+/*363636*/
+
+.sistema_db_info_superior {
+  width: 100%;
+  background-color: #363636;
+  height: 100%;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 2vw 0;
+  box-shadow: 0 0 25px #131313;
+}
+
+.sistema_db_info_grafica {
+  background-color: #363636;
+  width: 61%;
+  margin-right: 1%;
+  border-radius: 10px;
+  color: white;
+  padding: 25px;
+  box-shadow: 0 0 25px #131313;
+}
+
+.sistema_db_info_tabla {
+  background-color: #363636;
+  box-shadow: 0 0 25px #131313;
+  border-radius: 10px;
+  width: 35%;
+  margin-left: 1%;
+  color: white;
+  padding: 33px 0;
+}
+
+#sistema_db_entradas {
+  width: 100%;
+  color: red;
+  text-shadow: 0 0 2px rgb(255, 36, 36);
+  text-align: center;
+}
+
+#sistema_db_entradas tr {
+  border-bottom: 1px solid #7c7c7c;
+  padding: 15px 0;
+  cursor: pointer;
+}
+
+#sistema_db_entradas tr:hover {
+  background-color: #3e3e3e;
+  font-weight: bold;
+}
+
+#sistema_db_entradas th {
+  font-family: lato;
+  font-weight: 600;
+  padding: 7px 0;
+  font-size: 1.6vw;
+}
+
+#sistema_db_entradas td {
+  color: white;
+  font-family: lato;
+  font-weight: lighter;
+  padding: 7px 0;
+  font-size: 1.1vw;
+}
+
+.sistema_info_three_containers {
+  text-align: center;
+  width: 100%;
+  transform: scale(.95);
+}
+
+.sistemas_p_numero {
+  color: #ff1d25;
+  font-size: 5.7vw;
+  line-height: 5vw;
+  text-shadow: 0 0 20px red;
+  font-weight: bold;
+}
+
+.sistemas_p_numerogris {
+  color: #6f6768;
+  font-weight: bold;
+  font-size: 1.5vw;
+  line-height: 1.9vw;
+}
+
+.sistema_p_ejericios {
+  font-size: 1vw;
+  line-height: 1vw;
+  font-weight: bold;
+  text-align: right;
+}
+
+.progress {
+  background-color: #6f6768 !important;
+  height: .5vw !important;
+  margin-top: .5vw;
+}
+
+.progress-bar {
+  background-color: #ff1d25 !important;
+}
+
+.barra_entrenamientos {
+  width: 85%;
+}
+
+#barra_etapa {
+  width: 96%;
+}
+
+.sistema_lineadiv {
+  height: 100%;
+  width: .2vw;
+  background-color: #414141;
+  margin: 0 5vw 0 5vw;
+}
+
+.sistema_p_etapa {
+  font-size: 1vw;
+  line-height: 1vw;
+  padding-top: .65vw;
+  font-weight: bold;
+  text-align: left;
+}
+
+.sistema_p_etapanombre {
+  font-size: 4vw;
+  line-height: 4vw;
+  color: red;
+  text-align: left;
+  font-weight: bold;
+  text-shadow: 0 0 20px red;
+}
+
+.sistema_etapa {
+  font-size: 3.4vw !important;
+  line-height: 3.4vw !important;
+}
+
+@media (max-width: 991.98px) {
+  .sistema_info_three_containers {
+      transform: scale(1);
+  }
+  .sistema_db_info_superior {
+      flex-direction: column !important;
+  }
+  .db_contenedor_segundafila {
+      flex-direction: column !important;
+  }
+  .sistema_db_info_grafica {
+      width: 100% !important;
+  }
+  .sistema_db_info_tabla {
+      width: 100% !important;
+      margin: 20px 0;
+  }
+  .sistema_info_three_containers {
+      margin: 5px 0;
+  }
+  .sistema_db_info_grafica {
+      background-color: #1F1F1F;
+      box-shadow: none;
+  }
+  #sistema_db_entradas th {
+      font-size: 4vw;
+  }
+  #sistema_db_entradas td {
+      font-size: 3vw;
+  }
+  .sistema_db_info_tabla h1 {
+      font-size: 5vw !important;
+  }
+}
