@@ -51,6 +51,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def catalogos_registro
     @heights = [['Estatura', 'vacio'],['-1.00m', '-1'],['1.00m', '1'],['1.10m', '1.1'],['1.20m', '1.2'],['1.30m', '1.3'],['1.40m', '1.4'],['1.50m', '1.5'],
     ['1.60m', '1.6'],['1.70m', '1.7'],['1.80m', '1.8'],['1.90m', '1.9'],['2.00m', '2'],['2.10m', '2.1'],['2.20m', '2.2'],['2.30m', '2.3'],['2.40m', '2.4'],['+2.40m', '+2.4']]
+    @sports = [['Deporte', 'vacio'],['Multi-deporte', 'Multi'],['Futbol Americano', 'Futbol'],['Balocensto', 'Balocensto'],['Beisbol', 'Beisbol'],['Soccer', 'Soccer'],
+    ['Hockey', 'Hockey'],['Hockey Sobre Pasto', 'Hockeycpasto'],['Atletismo', 'Atletismo'],['Golf', 'Golf'],['Tennis', 'Tennis'],['Tennis Country', 'TennisC'],
+    ['Deporte de Combate', 'Combate'],['Rugby', 'Rugby'],['Lacrosse', 'Lacrosse'],['Natación', 'Natación'],['Voleibol', 'Voleibol'],['Lucha Olímpica', 'LuchaOli'],
+    ['Porras y Baile', 'Porras'],['Ciclismo', 'Ciclismo'],['Maratón', 'Maratón'],['Correr', 'Correr'],['Handball', 'Handball'],['Triathlon', 'Triathlon'],['Carrera de Obstaculos', 'Carrera'],['Water Polo', 'Water']]
   end
 
   protected

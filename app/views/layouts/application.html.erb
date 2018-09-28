@@ -83,7 +83,7 @@
             <h3 class="sistema_descripcion_menu">Menú</h3>
         </div>
         <div class="seccion_menu_left">
-            <%= image_tag("iconoLeftMenu-02", class: "sistema_left_icon") %>
+            <%= link_to image_tag("iconoLeftMenu-02", class: "sistema_left_icon"), routines_path %>
             <h3 class="sistema_descripcion_menu">Rutina</h3>
         </div>
         <div class="seccion_menu_left">
@@ -104,7 +104,7 @@
         </div>
     </div>
     <!--  END MENU desktop -->
-    <div class="sistema_container d-flex">
+    <div class="sistema_container d-flex flex-column">
     <%= yield %>
     </div>
     <%= insert_paloma_hook %>

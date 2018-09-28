@@ -14,3 +14,4 @@
 //= require turbolinks
 //= require paloma
 //= require dashboard
+//= require routines

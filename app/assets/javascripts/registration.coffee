@@ -222,18 +222,159 @@ eventos_datos_personales = ->
     return false
 
 eventos_datos_deportivos = ->
-  $('.IDep_deporte_box').on 'click', ->
-    $('.IDep_deporte_box').removeClass 'input_error'
+  $('#ID_exp').on 'click', ->
+    $('.input_box_exp').removeClass 'input_error'
     return
-  $('.IDep_posicion_box').on 'click', ->
-    $('.IDep_posicion_box').removeClass 'input_error'
+  $('#ID_deporte').on 'click', ->
+    $('#input_box_deporte').removeClass 'input_error'
     return
-  $('.IDep_lesion_box').on 'click', ->
-    $('.IDep_lesion_box').removeClass 'input_error'
+  $('#ID_btn').on 'click', ->
+    if $('#ID_deporte').val() == 'vacio'
+      swal
+        type: 'error'
+        title: 'Alerta'
+        text: 'Por favor Ingrese su Deporte'
+        allowEscapeKey: true
+        allowOutsideClick: true
+        confirmButtonText: 'Regresar'
+        confirmButtonClass: 'login_sweetalert'
+      $('#input_box_deporte').addClass 'input_error'
+      return false
+    else
+      if $('#ID_pos_obj').val() == 'vacio'
+        swal
+          type: 'error'
+          title: 'Alerta'
+          text: 'Por favor Ingrese su Posicion'
+          allowEscapeKey: true
+          allowOutsideClick: true
+          confirmButtonText: 'Regresar'
+          confirmButtonClass: 'login_sweetalert'
+        $('#input_box_p').addClass 'input_error'
+        return false
+      else
+        if $('#lesiones_input').val() == 'vacio'
+          swal
+            type: 'error'
+            title: 'Alerta'
+            text: 'Por favor Ingrese su Lesion'
+            allowEscapeKey: true
+            allowOutsideClick: true
+            confirmButtonText: 'Regresar'
+            confirmButtonClass: 'login_sweetalert'
+          $('#input_box_les').addClass 'input_error'
+          return false
+        else
+          if $('#ID_exp').val() == 'vacio'
+            swal
+              type: 'error'
+              title: 'Alerta'
+              text: 'Por favor Ingrese su Experiencia'
+              allowEscapeKey: true
+              allowOutsideClick: true
+              confirmButtonText: 'Regresar'
+              confirmButtonClass: 'login_sweetalert'
+            $('.input_box_exp').addClass 'input_error'
+            return false
+          else
+            $('#div_informacion_deportiva').addClass 'animated bounceOutLeft'
+            setTimeout (->
+              $("#div_informacion_deportiva").css('display','none')
+              $("#div_metas_objetivos").removeAttr("style")
+              return
+            ), 500
+    return false
+  FootballA = '<option value="skill">Skill</option><option value="linea">Linea</option><option value="pateador">Pateador</option><option value="Mariscal">Mariscal de campo</option>'
+  Basket = '<option value="poste">Poste</option><option value="botador">Batoador-Ala</option>'
+  beisbol = '<option value="field">Infield/Outfield</option><option value="Pitcher">Pitcher</option>'
+  soccer = '<option value="Campo">Campo</option><option value="Portero">Portero</option>'
+  hockey = ''
+  hockeyPasto = ''
+  atletismo = '<option value="Distancia">Distancia</option><option value="Salto">Salto</option><option value="Velocidad">Velocidad</option><option value="Lanzamiento">Lanzamiento</option>'
+  golf = ''
+  tennis = ''
+  crossCountry = ''
+  combate = ''
+  rugby = '<option value="Delantero">Delantero</option><option value="Back">Back</option>'
+  lacrosse = '<option value="Portero">Portero</option><option value="Campo">Campo</option>'
+  natacion = '<option value="Distancia">Distancia</option><option value="Velocidad">Velocidad</option>'
+  voleibol = ''
+  luchaolim = ''
+  porrasbaile = ''
+  ciclismo = ''
+  maraton = ''
+  correr = ''
+  handball = ''
+  obstaculoscarrera = ''
+  waterpolo = ''
+  desaparece = 0
+  $('#ID_deporte').on 'change', ->
+    if $('#ID_deporte').val() == 'Futbol'
+      $('#ID_pos_obj').empty()
+      $('#ID_pos_obj').append FootballA
+      desaparece = 1
+    else
+      desaparece = 0
+      if $('#ID_deporte').val() == 'Balocensto'
+        $('#ID_pos_obj').empty()
+        $('#ID_pos_obj').append Basket
+        desaparece = 1
+      else
+        desaparece = 0
+        if $('#ID_deporte').val() == 'Beisbol'
+          $('#ID_pos_obj').empty()
+          $('#ID_pos_obj').append beisbol
+          desaparece = 1
+        else
+          desaparece = 0
+          if $('#ID_deporte').val() == 'Soccer'
+            $('#ID_pos_obj').empty()
+            $('#ID_pos_obj').append soccer
+            desaparece = 1
+          else
+            desaparece = 0
+            if $('#ID_deporte').val() == 'Atletismo'
+              $('#ID_pos_obj').empty()
+              $('#ID_pos_obj').append atletismo
+              desaparece = 1
+            else
+              desaparece = 0
+              if $('#ID_deporte').val() == 'Rugby'
+                $('#ID_pos_obj').empty()
+                $('#ID_pos_obj').append rugby
+                desaparece = 1
+              else
+                desaparece = 0
+                if $('#ID_deporte').val() == 'Lacrosse'
+                  $('#ID_pos_obj').empty()
+                  $('#ID_pos_obj').append lacrosse
+                  desaparece = 1
+                else
+                  desaparece = 0
+                  if $('#ID_deporte').val() == 'Natación'
+                    $('#ID_pos_obj').empty()
+                    $('#ID_pos_obj').append natacion
+                    desaparece = 1
+    if desaparece == 0
+      $('.input_box_p').removeClass 'bounceIn'
+      $('.input_box_p').addClass 'bounceOut'
+    else
+      $('.input_box_p').addClass 'bounceIn'
+      $('.input_box_p').removeClass 'bounceOut'
     return
-  $('.IDep_exp_box').on 'click', ->
-    $('.IDep_exp_box').removeClass 'input_error'
-    return
+    
+    $('.IDep_deporte_box').on 'click', ->
+      $('.IDep_deporte_box').removeClass 'input_error'
+      return
+    $('.IDep_posicion_box').on 'click', ->
+      $('.IDep_posicion_box').removeClass 'input_error'
+      return
+    $('.IDep_lesion_box').on 'click', ->
+      $('.IDep_lesion_box').removeClass 'input_error'
+      return
+    $('.IDep_exp_box').on 'click', ->
+      $('.IDep_exp_box').removeClass 'input_error'
+      return
 
   $('#IDep_btn').on 'click', ->
     IDep_sport = '0'

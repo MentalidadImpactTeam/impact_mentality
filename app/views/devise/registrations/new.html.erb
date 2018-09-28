@@ -123,66 +123,70 @@
 
         <div id="div_informacion_deportiva" class="animated bounceInRight row" style='display: none'>
             <div class="col-lg-3"></div>
-            <div id="IDep_modal" class="col-sm-12 col-lg-6">
-                <!-- Cierre de Modal -->
-                <i id="IDep_close" class="fas fa-times-circle"></i>
-                <!-- End Cierre de mdoal -->
-
+            <div id="Terminar_modal" class="col-sm-12 col-lg-6">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div style="margin:25px 0;" class="row">
+                        <div class="col-12">
                             <center>
-                                <h1 class="IDep_titulo">Datos Deportivos</h1>
+                                <h1 id="ID_titulo" class="animated bounceIn">Información Deportiva</h1>
                             </center>
                         </div>
 
 
-                        <div class="IDep_input col-lg-6 col-md-6">
-                            <div class="input_box IDep_deporte_box animated bounceIn">
-                                <%= image_tag("ID_icono-03.png", style: " margin: 10px;width:40px" ) %>
-                                <%= ui_fields.select :sport, options_for_select([['Deporte', 'vacio'],['Hombre', 'H'],['Mujer', 'M']]), {}, { :style => 'border:none;' } %>
+                    </div>
+                    <div id="FPago_full_container">
+                        <div class="row">
+                            <div class="DP_input col-lg-6 col-md-6">
+                                <div id="input_box_deporte" class="input_box_mes  animated bounceIn">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <%= ui_fields.select :sport, options_for_select(@sports), {}, { :id => 'ID_deporte' } %>
+                                </div>
+                            </div>
+                            <div class="DP_input col-lg-6 col-md-6">
+                                <div class="input_box_p  animated bounceIn">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <%= ui_fields.select :experience, options_for_select([['Posiciones', 'vacio']]), {}, { :id => 'ID_pos_obj' } %>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="DP_input col-lg-6 col-md-6">
+                                <div id="input_box_les" class="input_box_tutor  animated bounceIn">
+                                    <i class="far fa-id-badge"></i>
+                                    <%= ui_fields.text_field :history_injuries, placeholder: 'Lesiones', id: 'lesiones_input', class: 'FPago_tarjeta_tutor' %>
+                                </div>
+                            </div>
+                            <div class="DP_input col-lg-6 col-md-6">
+                                <div class="input_box_exp animated bounceIn">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <%= ui_fields.select :experience, options_for_select([['Experiencia', 'vacio'],['Novato', 'novato'],['Experimentado', 'experimentado'], ['Atleta', 'atleta']]), {}, { :id => 'ID_exp' } %>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="IDep_input col-lg-6 col-md-6">
-                            <div class="input_box IDep_posicion_box animated bounceIn">
-                                <%= image_tag("ID_icono-02.png", style: " margin: 10px;width:30px" ) %>
-                                <%= ui_fields.select :position, options_for_select([['Posiciones', 'vacio'],['1.40m', '140'],['1.50m', '150']]), {}, { :style => 'border:none;' } %>
+                        <div class="row">
+                            <div class="DP_input col-lg-6 col-md-6">
+                                <div style="animation-delay: .7s;" class="  animated bounceIn">
+                                    <center>
+                                        <h4 style=" color:red;display:inline-block; position:relative; vertical-align: middle; padding-top: 30px; ">Proxima Competencia</h4>
+                                    </center>
+                                </div>
                             </div>
-                        </div>
+                            <div class="DP_input col-lg-6 col-md-6">
+                                <div class="input_box_tutor  animated bounceIn">
+                                    <i class="far fa-id-badge"></i>
+                                    <%= ui_fields.date_field :next_competition, id: 'ID_Competencia_fecha' %>
+                                </div>
+                            </div>
 
-                        <div class="IDep_input col-lg-6 col-md-6">
-                            <div class="input_box IDep_lesion_box animated bounceIn">
-                                <%= image_tag("ID_icono-04.png", style: " margin: 10px;width:30px" ) %>
-                                <%= ui_fields.select :history_injuries, options_for_select([['Lesiones', 'vacio'],['Tiron', 'tiron'],['Desgarre', 'desgarre']]), {}, { :style => 'border:none;' } %>
-                            </div>
-                        </div>
-                        <div class="IDep_input col-lg-6 col-md-6">
-                            <div class="input_box IDep_exp_box animated bounceIn">
-                                <%= image_tag("ID_icono-01.png", style: " margin: 10px;width:30px" ) %>
-                                <%= ui_fields.select :experience, options_for_select([['Experiencia', 'vacio'],['Novato', 'novato'],['Experimentado', 'experimentado'], ['Atleta', 'atleta']]), {}, { :style => 'border:none;' } %>
-                            </div>
-                        </div>
-                        <div class="Prox_Competencia animated bounceIn col-lg-6 col-md-6">
-                            <center>
-                                <h3>Próxima Competencia</h3>
-                            </center>
-                        </div>
-                        <div class="IDep_input col-lg-6 col-md-6">
-                            <div class="input_box IDep_date_competencia animated bounceIn">
-                                <%= ui_fields.date_field :next_competition, style: 'border:none;' %>
-                            </div>
-                        </div>
-
-                        <div style="animation-delay:.5s;" class="col-lg-12 animated bounceIn">
-                            <center>
-                                <h5 style="color:#3e3e3e; font-weight: lighter;">Favor de <b>consultar a su médico</b> antes de comenzar la rutina.</h5>
-                            </center>
-                        </div>
-                        <div class="col-lg-12">
-                            <center><button id="IDep_btn" class="animated bounceIn">Continuar</button></center>
                         </div>
                     </div>
+                </div>
+                <div class="col-12">
+                    <center>
+                        <button id="ID_btn" class="animated bounceIn">Continuar</button>
+                    </center>
                 </div>
             </div>
             <div class="col-lg-3"></div>
@@ -190,126 +194,125 @@
 
         <div id="div_metas_objetivos" class="animated bounceInRight row" style='display: none'>
             <div class="col-lg-2"></div>
-                <div id="metas_objetivos_modal" class="col-sm-12 col-lg-8">
-                    <div class="col-lg-12">
+            <div id="metas_objetivos_modal" class="col-sm-12 col-lg-8">
+                <div class="col-lg-12">
 
-                        <!-- Cierre de Modal -->
-                        <center>
-                            <h1 class="Titulo_seccion">Sistema de Seguimiento</h1>
-                            <i id="metas_objetivos_close" class="fas fa-times-circle"></i>
-                        </center>
+                    <!-- Cierre de Modal -->
+                    <center>
+                        <h1 class="Titulo_seccion">Sistema de Seguimiento</h1>
+                        <i id="metas_objetivos_close" class="fas fa-times-circle"></i>
+                    </center>
 
 
-                        <!-- End Cierre de mdoal -->
-                    </div>
+                    <!-- End Cierre de mdoal -->
+                </div>
 
-                    <div style="margin:45px 0;" class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="contenedor_metas">
+                <div style="margin:45px 0;" class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="contenedor_metas">
 
-                                    <form class="form_metas">
+                                <form class="form_metas">
 
-                                        <center>
-                                            <h2 class="titulos_seguimiento">Objetivo</h2>
-                                        </center>
-                                        <center>
-                                            <p class="subtitulos_seguimiento">Lorem ipsum dolor sit amet consectetur adipiscing elit, vivamus molestie purus accumsan ac id felis, convallis elementum dictum aliquam tincidunt sed</p>
-                                        </center>
-                                        <div class="inputGroup">
-                                            <input id="option1" name="option1" type="checkbox" />
-                                            <label for="option1">Meta #1</label>
-                                        </div>
+                                    <center>
+                                        <h2 class="titulos_seguimiento">Objetivo</h2>
+                                    </center>
+                                    <center>
+                                        <p class="subtitulos_seguimiento">Lorem ipsum dolor sit amet consectetur adipiscing elit, vivamus molestie purus accumsan ac id felis, convallis elementum dictum aliquam tincidunt sed</p>
+                                    </center>
+                                    <div class="inputGroup">
+                                        <input id="option1" name="option1" type="checkbox" />
+                                        <label for="option1">Fuerza</label>
+                                    </div>
 
-                                        <div class="inputGroup">
-                                            <input id="option2" name="option2" type="checkbox" />
-                                            <label for="option2">Meta #2</label>
-                                        </div>
+                                    <div class="inputGroup">
+                                        <input id="option2" name="option2" type="checkbox" />
+                                        <label for="option2">Velocidad</label>
+                                    </div>
 
-                                        <div class="inputGroup">
-                                            <input id="option3" name="option3" type="checkbox" />
-                                            <label for="option3">Meta #3</label>
-                                        </div>
+                                    <div class="inputGroup">
+                                        <input id="option3" name="option3" type="checkbox" />
+                                        <label for="option3">Agilidad</label>
+                                    </div>
 
-                                        <div class="inputGroup">
-                                            <input id="option4" name="option4" type="checkbox" />
-                                            <label for="option4">Meta #4</label>
-                                        </div>
+                                    <div class="inputGroup">
+                                        <input id="option4" name="option4" type="checkbox" />
+                                        <label for="option4">Explosividad</label>
+                                    </div>
 
-                                        <div class="inputGroup">
-                                            <input id="option5" name="option5" type="checkbox" />
-                                            <label for="option5">Meta #5</label>
-                                        </div>
+                                    <div class="inputGroup">
+                                        <input id="option5" name="option5" type="checkbox" />
+                                        <label for="option5">Peso Ideal</label>
+                                    </div>
 
-                                        <div class="inputGroup">
-                                            <input id="option6" name="option6" type="checkbox" />
-                                            <label for="option6">Meta #6</label>
-                                        </div>
+                                    <div class="inputGroup">
+                                        <input id="option6" name="option6" type="checkbox" />
+                                        <label for="option6">Regresar de una lesión</label>
+                                    </div>
+                                </form>
 
-                                    </form>
-
-                                </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="contenedor_objetivo">
-
-                                    <form class="form_objetivo">
-
-                                        <center>
-                                            <h2 class="titulos_seguimiento">Metas</h2>
-                                        </center>
-                                        <center>
-                                            <p class="subtitulos_seguimiento">Lorem ipsum dolor sit amet consectetur adipiscing elit, vivamus molestie purus accumsan ac id felis, convallis elementum dictum aliquam tincidunt sed</p>
-                                        </center>
-                                        <div class="inputGroup">
-                                            <input id="option_obj1" name="option1" type="checkbox" />
-                                            <label for="option_obj1">Objetivo #1</label>
-                                        </div>
-
-                                        <div class="inputGroup">
-                                            <input id="option_obj2" name="option2" type="checkbox" />
-                                            <label for="option_obj2">Objetivo #2</label>
-                                        </div>
-
-                                        <div class="inputGroup">
-                                            <input id="option_obj3" name="option3" type="checkbox" />
-                                            <label for="option_obj3">Objetivo #3</label>
-                                        </div>
-
-                                        <div class="inputGroup">
-                                            <input id="option_obj4" name="option4" type="checkbox" />
-                                            <label for="option_obj4">Objetivo #4</label>
-                                        </div>
-
-                                        <div class="inputGroup">
-                                            <input id="option_obj5" name="option5" type="checkbox" />
-                                            <label for="option_obj5">Objetivo #5</label>
-                                        </div>
-
-                                        <div class="inputGroup">
-                                            <input id="option_obj6" name="option6" type="checkbox" />
-                                            <label for="option_obj6">Objetivo #6</label>
-                                        </div>
-
-                                    </form>
-
-                                </div>
-                            </div>
-
                         </div>
-                    </div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12">
-                                <center>
-                                    <button id="metas_objetivos_btn">Registrarme</button>
-                                </center>
+                        <div class="col-lg-6">
+                            <div class="contenedor_objetivo">
+
+                                <form class="form_objetivo">
+
+                                    <center>
+                                        <h2 class="titulos_seguimiento">Metas</h2>
+                                    </center>
+                                    <center>
+                                        <p class="subtitulos_seguimiento">Lorem ipsum dolor sit amet consectetur adipiscing elit, vivamus molestie purus accumsan ac id felis, convallis elementum dictum aliquam tincidunt sed</p>
+                                    </center>
+                                    <div class="inputGroup">
+                                        <input id="option_obj1" name="option1" type="checkbox" />
+                                        <label for="option_obj1">Jugar un deporte</label>
+                                    </div>
+
+                                    <div class="inputGroup">
+                                        <input id="option_obj2" name="option2" type="checkbox" />
+                                        <label for="option_obj2">Convertirme en titular</label>
+                                    </div>
+
+                                    <div class="inputGroup">
+                                        <input id="option_obj3" name="option3" type="checkbox" />
+                                        <label for="option_obj3">Convertirme en profesional</label>
+                                    </div>
+
+                                    <div class="inputGroup">
+                                        <input id="option_obj4" name="option4" type="checkbox" />
+                                        <label for="option_obj4">Representar a mi país</label>
+                                    </div>
+
+                                    <div class="inputGroup">
+                                        <input id="option_obj5" name="option5" type="checkbox" />
+                                        <label for="option_obj5">Mejorar mi desempeño en competencias</label>
+                                    </div>
+
+                                    <div class="inputGroup">
+                                        <input id="option_obj6" name="option6" type="checkbox" />
+                                        <label for="option_obj6">Mantener un buen estado de salud</label>
+                                    </div>
+
+                                </form>
+
                             </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <center>
+                                <button id="metas_objetivos_btn">Continuar</button>
+                            </center>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-lg-2"></div>
+            <div class="col-lg-2"></div>
         </div>
         <% end %>
     <% end %>

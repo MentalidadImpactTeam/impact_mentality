@@ -15,3 +15,5 @@
 //= require paloma
 //= require login
 //= require registration
+//= require vendor/cleave.min.js
+//= require vendor/inputs_format
