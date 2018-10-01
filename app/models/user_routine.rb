@@ -1,0 +1,2 @@
+class UserRoutine < ApplicationRecord
+end

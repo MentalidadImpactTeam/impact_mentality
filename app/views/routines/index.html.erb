@@ -8,26 +8,24 @@
 <div class="sistema_contenido d-flex flex-column">
     <!-- ARRIBA -->
     <div class="d-flex flex-row justify-content-center align-items-center">
-        <div id="sistema_r_primerdia" class="sistema_r_dia flex-column justify-content-center">
-            <div  class="sistema_r_dia_nombre"> LUNES </div>
-            <div> 9 DE SEPTIEMBRE 2018 </div>
-        </div>
-        <div class="sistema_r_dia flex-column justify-content-center sistema_r_dia_activo">
-            <div class="sistema_r_dia_nombre"> MARTES </div>
-            <div> 10 DE SEPTIEMBRE 2018 </div>
-        </div>
-        <div class="sistema_r_dia flex-column justify-content-center ">
-            <div class="sistema_r_dia_nombre"> MIERCOLES </div>
-            <div> 11 DE SEPTIEMBRE 2018 </div>
-        </div>
-        <div class="sistema_r_dia flex-column justify-content-center">
-            <div class="sistema_r_dia_nombre"> JUEVES </div>
-            <div> 12 DE SEPTIEMBRE 2018 </div>
-        </div>
-        <div id="sistema_r_ultimodia" class="sistema_r_dia flex-column justify-content-center">
-            <div  class="sistema_r_dia_nombre"> VIERNES </div>
-            <div> 13 DE SEPTIEMBRE 2018 </div>
-        </div>
+        <% @week_hash.each do |date| %>
+            <% if date['day'] == 'LUNES' %>
+            <div id="sistema_r_primerdia" class="sistema_r_dia flex-column justify-content-center <%= if date['active'] == 1 then "sistema_r_dia_activo" end %>">
+                <div  class="sistema_r_dia_nombre"> <%= date['day'] %> </div>
+                <div> <%= date['description'] %> </div>
+            </div>
+            <% elsif date['day'] == 'VIERNES' %>
+            <div id="sistema_r_ultimodia" class="sistema_r_dia flex-column justify-content-center <%= if date['active'] == 1 then "sistema_r_dia_activo" end %>">
+                <div  class="sistema_r_dia_nombre"> <%= date['day'] %> </div>
+                <div> <%= date['description'] %> </div>
+            </div>
+            <% else %>
+            <div class="sistema_r_dia flex-column justify-content-center <%= if date['active'] == 1 then "sistema_r_dia_activo" end %>">
+                <div class="sistema_r_dia_nombre"> <%= date['day'] %> </div>
+                <div> <%= date['description'] %> </div>
+            </div>
+            <% end %>
+        <% end %>    
     </div>
     <!-- CENTRO -->
     <div class="sistema_r_contenedorejercicios d-flex">
@@ -185,7 +183,7 @@
         text-shadow: 0 0 10px white;
         display: inline-block;
         margin-bottom: 0;
-        padding-bottom: 0;
+        padding-bottom: 8px;
         margin-left: .5vw;
     }
     

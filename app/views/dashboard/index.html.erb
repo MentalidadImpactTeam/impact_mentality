@@ -1,122 +1,123 @@
 <div class="subbanners_sistema_menu">
-  <div style="background-color:#3e3e3e;" class="sistema_banner"></div>
-  <div style="background-color:#202020;" class="sistema_banner">
-      <h2>LISTA DE EJERCICIOS</h2>
-      <% if user_signed_in? %>
-      <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary") %> 
-      <% end %>
-  </div>
-  <div style="padding: 4vw 5vw;" class="sistema_db_container container-fluid">
-      <div class="row d-flex sistema_contenedor_info_superior">
-          <div class=" animated zoomInUp sistema_db_info_superior d-flex">
-              <div class="sistema_info_three_containers">
-                  <div class="d-flex flex-row align-items-end">
-                      <div class="sistema_p_ejericios" class="d-flex flex-column">
-                          <div>ENTRENAMIENTOS</div>
-                          <div>COMPLETADOS</div>
-                      </div>
+    <div style="background-color:#3e3e3e;" class="sistema_banner"></div>
+    <div style="background-color:#202020;" class="sistema_banner d-flex flex-row align-items-center">
+        <div class="sistema_icono"></div>
+        <h2>DASHBOARD</h2>
+        <% if user_signed_in? %>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary") %> 
+        <% end %>
+    </div>
+</div>
+<div style="padding: 4vw 5vw;" class="sistema_db_container container-fluid">
+    <div class="row d-flex sistema_contenedor_info_superior">
+        <div class=" animated zoomInUp sistema_db_info_superior d-flex">
+            <div class="sistema_info_three_containers">
+                <div class="d-flex flex-row align-items-end">
+                    <div class="sistema_p_ejericios" class="d-flex flex-column">
+                        <div>ENTRENAMIENTOS</div>
+                        <div>COMPLETADOS</div>
+                    </div>
 
-                      <div class="sistemas_p_numero"> 1242 </div>
-                      <div class="sistemas_p_numerogris"> /1450 </div>
-                  </div>
-                  <div>
-                      <div class="progress">
-                          <div class="progress-bar barra_entrenamientos" role="progressbar" aria-valuemin="50" aria-valuemax="100"></div>
-                      </div>
-                  </div>
-              </div>
+                    <div class="sistemas_p_numero"> 1242 </div>
+                    <div class="sistemas_p_numerogris"> /1450 </div>
+                </div>
+                <div>
+                    <div class="progress">
+                        <div class="progress-bar barra_entrenamientos" role="progressbar" aria-valuemin="50" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
 
-              <div class="sistema_info_three_containers">
+            <div class="sistema_info_three_containers">
 
-                  <div class="d-flex flex-column">
-                      <div class="sistema_p_etapa"> ETAPA 2/10</div>
-                      <div class="sistema_p_etapanombre sistema_etapa"> COMPETITIVA </div>
-                      <div class="progress">
-                          <div class="progress-bar" id="barra_etapa" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                  </div>
+                <div class="d-flex flex-column">
+                    <div class="sistema_p_etapa"> ETAPA 2/10</div>
+                    <div class="sistema_p_etapanombre sistema_etapa"> COMPETITIVA </div>
+                    <div class="progress">
+                        <div class="progress-bar" id="barra_etapa" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
 
-              </div>
-              <div class="sistema_info_three_containers">
+            </div>
+            <div class="sistema_info_three_containers">
 
-                  <div class="sistema_info_three_containers">
-                      <div class="d-flex flex-column">
-                          <div class="sistema_p_etapa"> TIEMPO RESTANTE:</div>
-                          <div class="sistema_p_etapanombre"> 43 DIAS </div>
-                          <div class="progress">
-                              <div class="progress-bar" id="barra_etapa" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                      </div>
-                  </div>
+                <div class="sistema_info_three_containers">
+                    <div class="d-flex flex-column">
+                        <div class="sistema_p_etapa"> TIEMPO RESTANTE:</div>
+                        <div class="sistema_p_etapanombre"> 43 DIAS </div>
+                        <div class="progress">
+                            <div class="progress-bar" id="barra_etapa" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
 
-              </div>
-          </div>
+            </div>
+        </div>
 
-      </div>
-      <div style="justify-content:center;" class="animated zoomInUp db_contenedor_segundafila row d-flex">
+    </div>
+    <div style="justify-content:center;" class="animated zoomInUp db_contenedor_segundafila row d-flex">
 
-          <div class="sistema_db_info_grafica">
-              <div class="line-chart">
-                  <div class="aspect-ratio">
-                      <canvas width="100%" id="chart"></canvas>
-                  </div>
-              </div>
-          </div>
+        <div class="sistema_db_info_grafica">
+            <div class="line-chart">
+                <div class="aspect-ratio">
+                    <canvas width="100%" id="chart"></canvas>
+                </div>
+            </div>
+        </div>
 
-          <div class="animated zoomInUp sistema_db_info_tabla">
-              <div>
-                  <center>
-                      <h1 style="font-size:1.5vw;">Entradas Recientes</h1>
-                  </center>
-              </div>
-              <table id="sistema_db_entradas">
-                  <tr>
-                      <th>Ejercicio</th>
-                      <th>Peso</th>
-                      <th>Fecha</th>
-                  </tr>
-                  <tr>
-                      <td>Squat</td>
-                      <td>160kg</td>
-                      <td>13/9/2018</td>
-                  </tr>
-                  <tr>
-                      <td>Squat</td>
-                      <td>160kg</td>
-                      <td>13/9/2018</td>
-                  </tr>
-                  <tr>
-                      <td>Squat</td>
-                      <td>160kg</td>
-                      <td>13/9/2018</td>
-                  </tr>
-                  <tr>
-                      <td>Squat</td>
-                      <td>160kg</td>
-                      <td>13/9/2018</td>
-                  </tr>
-                  <tr>
-                      <td>Squat</td>
-                      <td>160kg</td>
-                      <td>13/9/2018</td>
-                  </tr>
-                  <tr>
-                      <td>Squat</td>
-                      <td>160kg</td>
-                      <td>13/9/2018</td>
-                  </tr>
-                  <tr>
-                      <td>Squat</td>
-                      <td>160kg</td>
-                      <td>13/9/2018</td>
-                  </tr>
-                  <tr>
-                      <td>Squat</td>
-                      <td>160kg</td>
-                      <td>13/9/2018</td>
-                  </tr>
-              </table>
-          </div>
-      </div>
-  </div>
+        <div class="animated zoomInUp sistema_db_info_tabla">
+            <div>
+                <center>
+                    <h1 style="font-size:1.5vw;">Entradas Recientes</h1>
+                </center>
+            </div>
+            <table id="sistema_db_entradas">
+                <tr>
+                    <th>Ejercicio</th>
+                    <th>Peso</th>
+                    <th>Fecha</th>
+                </tr>
+                <tr>
+                    <td>Squat</td>
+                    <td>160kg</td>
+                    <td>13/9/2018</td>
+                </tr>
+                <tr>
+                    <td>Squat</td>
+                    <td>160kg</td>
+                    <td>13/9/2018</td>
+                </tr>
+                <tr>
+                    <td>Squat</td>
+                    <td>160kg</td>
+                    <td>13/9/2018</td>
+                </tr>
+                <tr>
+                    <td>Squat</td>
+                    <td>160kg</td>
+                    <td>13/9/2018</td>
+                </tr>
+                <tr>
+                    <td>Squat</td>
+                    <td>160kg</td>
+                    <td>13/9/2018</td>
+                </tr>
+                <tr>
+                    <td>Squat</td>
+                    <td>160kg</td>
+                    <td>13/9/2018</td>
+                </tr>
+                <tr>
+                    <td>Squat</td>
+                    <td>160kg</td>
+                    <td>13/9/2018</td>
+                </tr>
+                <tr>
+                    <td>Squat</td>
+                    <td>160kg</td>
+                    <td>13/9/2018</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
