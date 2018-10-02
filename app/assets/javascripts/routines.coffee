@@ -1,5 +1,15 @@
 RoutinesController = Paloma.controller('Routines')
 RoutinesController::index = ->
+  $("#sistema_r_siguientearrow").click ->
+    div_active =  $(".active")
+    group = div_active.find(".hidden_group").val()
+    div_active.addClass 'animated bounceOutLeft'
+    setTimeout (->
+      div_active.hide().removeClass("d-flex active")
+      div_active.parent().find(".sistema_r_centro_iz input[value=" + (parseInt(group) + 1) + "]").parent().removeAttr("style").addClass("active")
+      return
+    ), 700
+
   $('.burger_menu').on 'click', ->
     if $('.sistema_descripcion_menu').hasClass('hide_text_menu')
       $('.sistema_descripcion_menu').removeClass 'display_text_menu'

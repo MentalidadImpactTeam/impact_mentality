@@ -14,6 +14,23 @@ class RoutinesController < ApplicationController
             @week_hash[4]["active"] = 1 
         end
 
+        routine = UserRoutine.find_by(user_id: current_user.id, date: Time.now.to_date)
+        if routine.present?
+            exercises = RoutineExercise.where(user_routine_id: routine.id)
+            @hash = { 1 => { "show" => 0, "exercises" => []}, 2 => { "show" => 0, "exercises" => []}, 3 => { "show" => 0, "exercises" => []}, 4 => { "show" => 0, "exercises" => []}, 5 => { "show" => 0, "exercises" => []} }
+            exercises.each do |exercise|
+                @hash[exercise.group]["exercises"].push({ "name" => Exercise.find(exercise.exercise_id).name, "id" => exercise.exercise_id })
+            end
+
+            for i in 1..5
+                group_count = RoutineExercise.where(user_routine_id: routine.id, group: i).count
+                group_done = RoutineExercise.where(user_routine_id: routine.id, group: i, done: 1).count
+
+                @hash[i]["show"] = group_count == group_done ? 0 : 1
+                break
+            end
+            puts @hash
+        end
     end
 
     def date_description(date)

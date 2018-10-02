@@ -30,42 +30,16 @@
     <!-- CENTRO -->
     <div class="sistema_r_contenedorejercicios d-flex">
         <!-- EJERCICIOS -->
-        <div class="sistema_r_centro_iz d-flex">
-            <!-- EJERCICIO -->
-            <div class="sistema_r_ejercicio d-flex">
-                <div class="sistema_r_ejercicio_arriba d-flex align-items-center flex-row justify-content-between">
-                    <div class="sistema_r_tipoejercicio d-flex flex-column"> 
-                        <div> HALF KNEE STRETCH  </div>
-                        <div class="sistema_r_repeticionesmovil"> 2 repeticiones de 175 lbs. </div>
-                    </div>
-                    <div class="sistema_r_cambiaricono"> </div>
-                </div>
-                <div class="sistema_r_ejercicio_centro"></div>
-                <div class="sistema_r_ejercicio_abajo align-items-center flex-row justify-content-between">
-                    <div class="sistema_r_nombreejercicio"> 2 repeticiones de 175 lbs. </div>
-                    <div class="sistema_r_infoicono"> </div>
-                </div>
-            </div>
-            <!-- EJERCICIO -->
-            <div class="sistema_r_ejercicio d-flex">
-                    <div class="sistema_r_ejercicio_arriba d-flex align-items-center flex-row justify-content-between">
-                        <div class="sistema_r_tipoejercicio d-flex flex-column"> 
-                            <div> HALF KNEE STRETCH  </div>
-                            <div class="sistema_r_repeticionesmovil"> 2 repeticiones de 175 lbs. </div>
-                        </div>
-                        <div class="sistema_r_cambiaricono"> </div>
-                    </div>
-                    <div class="sistema_r_ejercicio_centro"></div>
-                    <div class="sistema_r_ejercicio_abajo align-items-center flex-row justify-content-between">
-                        <div class="sistema_r_nombreejercicio"> 2 repeticiones de 175 lbs. </div>
-                        <div class="sistema_r_infoicono"> </div>
-                    </div>
-                </div>
+        <% @hash.keys.each do |group| %>
+            <div class="sistema_r_centro_iz d-flex <%= if @hash[group]["show"] == 1 then "active" end %>" style="<%= if @hash[group]["show"] == 0 then "display: none !important" else "" end %>">
+            <input type="hidden" class="hidden_group" value="<%= group %>">
+            <% @hash[group]["exercises"].each do |exercise| %>
                 <!-- EJERCICIO -->
-            <div class="sistema_r_ejercicio d-flex">
+                <div class="sistema_r_ejercicio d-flex">
+                    <input type="hidden" value="<%= exercise['id'] %>">
                     <div class="sistema_r_ejercicio_arriba d-flex align-items-center flex-row justify-content-between">
                         <div class="sistema_r_tipoejercicio d-flex flex-column"> 
-                            <div> HALF KNEE STRETCH  </div>
+                            <div> <%= exercise['name'] %>  </div>
                             <div class="sistema_r_repeticionesmovil"> 2 repeticiones de 175 lbs. </div>
                         </div>
                         <div class="sistema_r_cambiaricono"> </div>
@@ -76,10 +50,9 @@
                         <div class="sistema_r_infoicono"> </div>
                     </div>
                 </div>
-                
-        </div>
-        
-        
+            <% end %>
+            </div>
+        <% end %>
 
         <!-- SIG -->
         <div class="sistema_r_centro_der d-flex flex-column justify-content-center">

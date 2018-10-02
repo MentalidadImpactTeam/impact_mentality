@@ -18,6 +18,7 @@ class DashboardController < ApplicationController
         routine_exercise = RoutineExercise.new
         routine_exercise.user_routine_id = user_routine.id
         routine_exercise.user_id = current_user.id
+        routine_exercise.group = conf.group
         routine_exercise.done = 0
         # hash = {}
         # hash['category'] = Category.find(conf.category_id).name
