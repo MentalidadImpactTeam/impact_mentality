@@ -1,3 +1,23 @@
+<!-- TABLA DE CAMBIOS -->
+<div id="sistema_rutina_cambio_table" class="animated flex-column justify-content-center align-items-center" >
+    <div id="tabla_container">
+        <table class="tabla_ejercicios table-striped table-hover" data-category="0">
+            <thead>
+                <tr id="tabla_titulos">
+                    <th>EJERCICIO</th>
+                    <th>SETS</th>
+                    <th>DESCRIPCIÓN</th>
+                    <th class="d-flex flex-row justify-content-end"> <div class="sistema_cancel_tabla_ejercicios"></div> </th>
+                </tr>
+            </thead>
+            <tr id="tr_hover">
+                <td > Lagartijas </td>
+                <td> 3 sets de 15 repeticiones </td>
+                <td colspan="2">Lorem itsum rem its ate m arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom ausom au</td>
+            </tr>
+        </table>
+    </div>
+</div>
 <div class="subbanners_sistema_menu">
     <div style="background-color:#3e3e3e;" class="sistema_banner"></div>
     <div style="background-color:#202020;" class="sistema_banner d-flex flex-row align-items-center">
@@ -6,6 +26,14 @@
     </div>
 </div>
 <div class="sistema_contenido d-flex flex-column">
+    <!-- INFORMACION DE EJERCICIO -->
+    <div id="sistema_r_contenedorinfo" class="flex-column justify-content-center align-items-center">
+        <div class="sistema_r_infoejercicio d-flex flex-column align-items-center">
+            <div class="sistema_r_infoejercicio_nombre"> NOMBRE DE EJERCICIO </div>
+            <div class="sistema_r_infoejercicio_texto"> Lorem itsum rem its ate m arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom ausom au Lorem itsum rem its ate m arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom ausom au </div>
+            <div class="sistema_r_infoejercicio_boton"> ENTENDIDO </div>
+        </div>
+    </div>
     <!-- ARRIBA -->
     <div class="d-flex flex-row justify-content-center align-items-center">
         <% @week_hash.each do |date| %>
@@ -36,7 +64,7 @@
             <% @hash[group]["exercises"].each do |exercise| %>
                 <!-- EJERCICIO -->
                 <div class="sistema_r_ejercicio d-flex">
-                    <input type="hidden" value="<%= exercise['id'] %>">
+                    <input type="hidden" class="hidden_exercise" value="<%= exercise['id'] %>" data-routine="<%= exercise['routine_exercise_id']%>">
                     <div class="sistema_r_ejercicio_arriba d-flex align-items-center flex-row justify-content-between">
                         <div class="sistema_r_tipoejercicio d-flex flex-column"> 
                             <div> <%= exercise['name'] %>  </div>
@@ -57,7 +85,7 @@
         <!-- SIG -->
         <div class="sistema_r_centro_der d-flex flex-column justify-content-center">
             <div id="sistema_r_siguiente"> SIGUIENTE: </div>
-            <div id="sistema_r_siguientefase"> FINISHERS </div>
+            <div id="sistema_r_siguientefase"> TRICERIE #1 </div>
             <div id="sistema_r_siguientearrow" class="d-flex flex-column justify-content-center align-items-center">
                 <div class="sistema_r_siguientemovil">SIGUIENTE:</div>
                 <div class="sistema_r_siguientemovil">PREHABS</div>
@@ -68,7 +96,7 @@
     <div class="sistema_r_abajo d-flex flex-column">
         <div id="sistema_r_abajo_arriba" class="d-flex flex-column">
             <div id="sistema_r_progreso"> PROGRESO: </div>
-            <div id="sistema_r_progresonombre"> TRICERIE #1 </div>
+            <div id="sistema_r_progresonombre"> WARM UP/PREHABS </div>
         </div>
         <div id="sistema_r_abajo_abajo" class="d-flex flex-row">
             <div id="sistema_r_warmup" class="d-flex flex-column">
@@ -106,11 +134,10 @@
 
         $(".sistema_cancel_tabla_ejercicios").on("click", function(event){
             tabla.css("display","none");
-        });
-        $(".sistema_r_cambiaricono").on("click", function(event){
-            tabla.css("display","flex");
+            $(this).closest(".sistema_r_ejercicio").removeClass("change")
         });
         $(".sistema_r_infoicono").on("click", function(event){
+            $(".sistema_r_infoejercicio_nombre").text($(this).closest(".sistema_r_ejercicio").find(".sistema_r_tipoejercicio").find("div:first").text())
             info.css("display", "flex");
         });
         $(".sistema_r_infoejercicio_boton").on("click", function(event){

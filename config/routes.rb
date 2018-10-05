@@ -7,5 +7,10 @@ Rails.application.routes.draw do
 
   root to: 'dashboard#index'
   post 'rutinas' => "home#rutinas"
-  resources :routines
+  resources :routines do 
+    collection do 
+      post "list_exercises" => 'routines#list_exercises'
+      post "change_exercise" => 'routines#change_exercise'
+    end
+  end
 end

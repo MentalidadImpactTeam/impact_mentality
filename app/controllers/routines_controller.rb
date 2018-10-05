@@ -19,7 +19,7 @@ class RoutinesController < ApplicationController
             exercises = RoutineExercise.where(user_routine_id: routine.id)
             @hash = { 1 => { "show" => 0, "exercises" => []}, 2 => { "show" => 0, "exercises" => []}, 3 => { "show" => 0, "exercises" => []}, 4 => { "show" => 0, "exercises" => []}, 5 => { "show" => 0, "exercises" => []} }
             exercises.each do |exercise|
-                @hash[exercise.group]["exercises"].push({ "name" => Exercise.find(exercise.exercise_id).name, "id" => exercise.exercise_id })
+                @hash[exercise.group]["exercises"].push({ "name" => Exercise.find(exercise.exercise_id).name, "id" => exercise.exercise_id, "routine_exercise_id" => exercise.id })
             end
 
             for i in 1..5
@@ -63,6 +63,24 @@ class RoutinesController < ApplicationController
             return "NOVIEMBRE"
         when 12
             return "DICIEMBRE"
+        end
+    end
+
+    def list_exercises
+        exercise = Exercise.find(params[:exercise_id])
+        if exercise.present?
+            all_category = Exercise.where(category_id: exercise.category_id).where.not(id: exercise.id)
+            render json: all_category
+        end
+    end
+
+    def change_exercise
+        routine = RoutineExercise.find(params[:routine_id])
+        if routine.present?
+            routine.exercise_id = params[:exercise_id]
+            routine.save
+
+            render json: { "estatus" => "OK" }
         end
     end
 end
