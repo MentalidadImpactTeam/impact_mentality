@@ -99,7 +99,7 @@ RoutinesController::index = ->
               )
             }).then (response) ->
               if response.value
-                swal('Exito','Tu rutina ha sido modificada','success',$(".tabla_ejercicios").css("display","none"))
+                swal('Exito','Tu rutina ha sido modificada','success',$("#sistema_rutina_cambio_table").css("display","none"))
             
 
   $('.burger_menu').on 'click', ->
