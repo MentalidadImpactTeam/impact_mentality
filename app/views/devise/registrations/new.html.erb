@@ -1,182 +1,143 @@
 <div class="container-fluid">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:novalidate => 'novalidate'}) do |f| %>
-    <div id="contenedor_registro" class="animated bounceInDown row">
-        <div class="col-lg-3"></div>
-        <div id="registro_modal" class="col-sm-12 col-lg-6">
-
-            <!-- Cierre de Modal -->
-            <i id="registro_close" class="fas fa-times-circle"></i>
-            <!-- End Cierre de mdoal -->
-
-            <div style="z-index:-10;" class="col-12">
-                <center>
-                    <%= image_tag("Logo-01.png", class: "registro_imagen_logo animated bounceInDown" ) %>
-                </center>
-            </div>
-            <div class="col-12">
-                <center>
-                    <h1 id="registro_titulo" class="animated bounceInDown">REGISTRO</h1>
-                    <hr class="animated bounceIn" style="animation-delay:1s;  border:1px solid red; width: 50%;">
-                </center>
-            </div>
-            
-              <div class="input_container animated bounceIn col-lg-12">
-                <center>
-                    <%= image_tag("User-01.png") %>
-                    <%= f.email_field :email, placeholder: "Correo Electrónico" %>
-                </center>
-              </div>
-
-              <div class="input_container animated bounceIn col-lg-12">
-                <center>
-                    <%= image_tag("lock.png") %>
-                    <%= f.password_field :password, placeholder: "Contraseña" %>
-                </center>
-            </div>
-
-            <div class="input_container animated bounceIn col-lg-12">
-                <center>
-                    <%= image_tag("lock.png", style: "opacity:.5;" ) %>
-                    <%= f.password_field :password_confirmation, placeholder: "Contraseña" %>
-                </center>
-            </div>
-
-            <div class="col-12">
-                <center><button id="registro_btn" class="animated bounceInDown">Continuar</button></center>
-            </div>
-        </div>
-        <div class="col-lg-3"></div>
-    </div>
-        <%= f.fields_for :user_information do |ui_fields| %>
-        <div id="div_datos_personales" class="animated bounceInRight row" style="display: none">
+        <div id="contenedor_registro" class="animated bounceInDown row">
             <div class="col-lg-3"></div>
-            <div id="IP_modal" class="col-sm-12 col-lg-6">
-                <div class="container-fluid">
-                    <div style="margin:25px 0;" class="row">
-                        <div class="col-12">
-                            <center>
-                                <h1 id="IP_titulo" class="animated bounceIn">Información Personal</h1>
-                            </center>
-                        </div>
+            <div id="registro_modal" class="col-sm-12 col-lg-6">
 
+                <!-- Cierre de Modal -->
+                <i id="registro_close" class="fas fa-times-circle"></i>
+                <!-- End Cierre de mdoal -->
 
-                    </div>
-                    <div id="FPago_full_container">
-                        <div class="row">
-                            <div class="DP_input col-lg-12 col-md-12">
-                                <div id="input_box_nombre" class="input_box_tutor  animated bounceIn">
-                                    <i class="far fa-id-badge"></i>
-                                    <%= ui_fields.text_field :first_name, placeholder: 'Nombres', id: 'IP_nombre' %>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row ">
-                            <div class="DP_input col-lg-12 col-md-12">
-                                <div id="input_box_apellido" class="input_box_tutor animated bounceIn">
-                                    <i class="far fa-id-badge"></i>
-                                    <%= ui_fields.text_field :last_name, placeholder: 'Apellidos', id: 'IP_apellido' %>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row ">
-                            <div class="DP_input col-lg-6 col-md-6">
-                                <div id="input_box_exp" class="input_box_ano animated bounceIn">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <%= ui_fields.select :experience, options_for_select([['Experiencia', 'vacio'],['Novato', 'novato'],['Experimentado', 'experimentado'], ['Atleta', 'atleta']]), {}, { :id => 'IP_Experiencia' } %>
-                                </div>
-                            </div>
-                            <div class="DP_input col-lg-6 col-md-6">
-                                <div id="input_box_gen" class="input_box_ano animated bounceIn">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <%= ui_fields.select :genre, options_for_select([['Género', 'vacio'],['Hombre', 'H'],['Mujer', 'M']]), {}, { :id => 'IP_genero' } %>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="row ">
-                            <div class="DP_input col-lg-6 col-md-6">
-                                <div id="input_box_peso" class="input_box_tutor animated bounceIn">
-                                    <i class="far fa-id-badge"></i>
-                                    <%= ui_fields.text_field :weight, placeholder: 'Peso', id: 'IP_peso', onkeypress: 'return event.charCode >= 48 && event.charCode <= 57;' %>
-                                </div>
-                            </div>
-                            <div class="DP_input col-lg-6 col-md-6">
-                                <div id="input_box_estatura" class="input_box_ano animated bounceIn">
-                                    <i class="far fa-calendar-alt "></i>
-                                    <%= ui_fields.select :height, options_for_select(@heights), {}, { :id => 'IP_Estatura' } %>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 ">
+                <div style="z-index:-10;" class="col-12">
                     <center>
-                        <button id="IP_btn" class="animated bounceIn">Continuar</button>
+                        <%= image_tag("Logo-01.png", class: "registro_imagen_logo animated bounceInDown" ) %>
                     </center>
                 </div>
-            </div>
-            <div class="col-lg-3 "></div>
-        </div>
+                <div class="col-12">
+                    <center>
+                        <h1 id="registro_titulo" class="animated bounceInDown">REGISTRO</h1>
+                        <hr class="animated bounceIn" style="animation-delay:1s;  border:1px solid red; width: 50%;">
+                    </center>
+                </div>
+                
+                <div class="input_container animated bounceIn col-lg-12">
+                    <center>
+                        <%= image_tag("User-01.png") %>
+                        <%= f.email_field :email, placeholder: "Correo Electrónico" %>
+                    </center>
+                </div>
 
-        <div id="div_informacion_deportiva" class="animated bounceInRight row" style='display: none'>
+                <div class="input_container animated bounceIn col-lg-12">
+                    <center>
+                        <%= image_tag("lock.png") %>
+                        <%= f.password_field :password, placeholder: "Contraseña" %>
+                    </center>
+                </div>
+
+                <div class="input_container animated bounceIn col-lg-12">
+                    <center>
+                        <%= image_tag("lock.png", style: "opacity:.5;" ) %>
+                        <%= f.password_field :password_confirmation, placeholder: "Contraseña" %>
+                    </center>
+                </div>
+
+                <div class="col-12">
+                    <center><button id="registro_btn" class="animated bounceInDown">Continuar</button></center>
+                </div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+        <div id="div_forma_pago" class="animated bounceInRight row" style='display: none'>
             <div class="col-lg-3"></div>
             <div id="Terminar_modal" class="col-sm-12 col-lg-6">
                 <div class="container-fluid">
                     <div style="margin:25px 0;" class="row">
                         <div class="col-12">
                             <center>
-                                <h1 id="ID_titulo" class="animated bounceIn">Información Deportiva</h1>
+                                <h1 id="FPago_titulo" class="animated bounceIn">Formas de pago</h1>
                             </center>
                         </div>
 
+                        <div class="col-6 ">
+                            <center>
+                                <div class=" animated bounceIn FPago_metodo_tarjeta">
+                                    <i class="far fa-credit-card"></i>
+                                    <h5 style='font-size: 2vw'>Pago por tarjeta</h5>
+                                </div>
+                            </center>
+                        </div>
+
+                        <div class="col-6">
+                            <center>
+                                <div class=" animated bounceIn FPago_metodo_Paypal">
+                                    <i class="fab fa-paypal"></i>
+                                    <h5 style='font-size: 2vw'>Paypal</h5>
+
+                                </div>
+                            </center>
+                        </div>
 
                     </div>
                     <div id="FPago_full_container">
                         <div class="row">
-                            <div class="DP_input col-lg-6 col-md-6">
-                                <div id="input_box_deporte" class="input_box_mes  animated bounceIn">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <%= ui_fields.select :sport, options_for_select(@sports), {}, { :id => 'ID_deporte' } %>
-                                </div>
-                            </div>
-                            <div class="DP_input col-lg-6 col-md-6">
-                                <div class="input_box_p  animated bounceIn">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <%= ui_fields.select :experience, options_for_select([['Posiciones', 'vacio']]), {}, { :id => 'ID_pos_obj' } %>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="DP_input col-lg-6 col-md-6">
-                                <div id="input_box_les" class="input_box_tutor  animated bounceIn">
-                                    <i class="far fa-id-badge"></i>
-                                    <%= ui_fields.text_field :history_injuries, placeholder: 'Lesiones', id: 'lesiones_input', class: 'FPago_tarjeta_tutor' %>
-                                </div>
-                            </div>
-                            <div class="DP_input col-lg-6 col-md-6">
-                                <div class="input_box_exp animated bounceIn">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <%= ui_fields.select :experience, options_for_select([['Experiencia', 'vacio'],['Novato', 'novato'],['Experimentado', 'experimentado'], ['Atleta', 'atleta']]), {}, { :id => 'ID_exp' } %>
+                            <div class="DP_input col-lg-12 col-md-12">
+                                <div class="input_box_num  animated bounceIn">
+                                    <i class="far fa-credit-card"></i>
+                                    <input class="FPago_tarjeta_num" type="text" placeholder="No. de Tarjeta" value="4242424242424242">
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
-                            <div class="DP_input col-lg-6 col-md-6">
-                                <div style="animation-delay: .7s;" class="  animated bounceIn">
-                                    <center>
-                                        <h4 style=" color:red;display:inline-block; position:relative; vertical-align: middle; padding-top: 30px; ">Proxima Competencia</h4>
-                                    </center>
-                                </div>
-                            </div>
                             <div class="DP_input col-lg-6 col-md-6">
                                 <div class="input_box_tutor  animated bounceIn">
                                     <i class="far fa-id-badge"></i>
-                                    <%= ui_fields.date_field :next_competition, id: 'ID_Competencia_fecha' %>
+                                    <input class="FPago_tarjeta_tutor" type="text" placeholder="Tutor de la tarjeta" value="test 0">
+                                </div>
+                            </div>
+                            <div class="DP_input col-lg-6 col-md-6">
+                                <div class="input_box_cvc  animated bounceIn">
+                                    <i class="far fa-credit-card"></i>
+                                    <input class="FPago_tarjeta CVC_CODE" type="text" placeholder="CVC">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div style="color:#3e3e3e; animation-delay: .6s;" class="animated bounceIn col-lg-12 col-md-12">
+                                <h4>Fecha de Expiración</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="DP_input col-lg-6 col-md-6">
+                                <div class="input_box_mes  animated bounceIn">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <select name="" id="FPago_mes_vencimiento">
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="DP_input col-lg-6 col-md-6">
+                                <div class="input_box_ano  animated bounceIn">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <select name="" id="FPago_año_vencimiento">
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -185,135 +146,280 @@
                 </div>
                 <div class="col-12">
                     <center>
-                        <button id="ID_btn" class="animated bounceIn">Continuar</button>
+                        <button id="FPago_btn" class="animated bounceIn">Finalizar</button>
                     </center>
                 </div>
             </div>
             <div class="col-lg-3"></div>
         </div>
+        
+        <%= f.fields_for :user_information do |ui_fields| %>
+            <div id="div_datos_personales" class="animated bounceInRight row" style="display: none">
+                <div class="col-lg-3"></div>
+                <div id="IP_modal" class="col-sm-12 col-lg-6">
+                    <div class="container-fluid">
+                        <div style="margin:25px 0;" class="row">
+                            <div class="col-12">
+                                <center>
+                                    <h1 id="IP_titulo" class="animated bounceIn">Información Personal</h1>
+                                </center>
+                            </div>
 
-        <div id="div_metas_objetivos" class="animated bounceInRight row" style='display: none'>
-            <div class="col-lg-2"></div>
-            <div id="metas_objetivos_modal" class="col-sm-12 col-lg-8">
-                <div class="col-lg-12">
 
-                    <!-- Cierre de Modal -->
-                    <center>
-                        <h1 class="Titulo_seccion">Sistema de Seguimiento</h1>
-                        <i id="metas_objetivos_close" class="fas fa-times-circle"></i>
-                    </center>
-
-
-                    <!-- End Cierre de mdoal -->
-                </div>
-
-                <div style="margin:45px 0;" class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="contenedor_metas">
-
-                                <form class="form_metas">
-
-                                    <center>
-                                        <h2 class="titulos_seguimiento">Objetivo</h2>
-                                    </center>
-                                    <center>
-                                        <p class="subtitulos_seguimiento">Lorem ipsum dolor sit amet consectetur adipiscing elit, vivamus molestie purus accumsan ac id felis, convallis elementum dictum aliquam tincidunt sed</p>
-                                    </center>
-                                    <div class="inputGroup">
-                                        <input id="option1" name="option1" type="checkbox" />
-                                        <label for="option1">Fuerza</label>
+                        </div>
+                        <div id="FPago_full_container">
+                            <div class="row">
+                                <div class="DP_input col-lg-12 col-md-12">
+                                    <div id="input_box_nombre" class="input_box_tutor  animated bounceIn">
+                                        <i class="far fa-id-badge"></i>
+                                        <%= ui_fields.text_field :first_name, placeholder: 'Nombres', id: 'IP_nombre' %>
                                     </div>
-
-                                    <div class="inputGroup">
-                                        <input id="option2" name="option2" type="checkbox" />
-                                        <label for="option2">Velocidad</label>
-                                    </div>
-
-                                    <div class="inputGroup">
-                                        <input id="option3" name="option3" type="checkbox" />
-                                        <label for="option3">Agilidad</label>
-                                    </div>
-
-                                    <div class="inputGroup">
-                                        <input id="option4" name="option4" type="checkbox" />
-                                        <label for="option4">Explosividad</label>
-                                    </div>
-
-                                    <div class="inputGroup">
-                                        <input id="option5" name="option5" type="checkbox" />
-                                        <label for="option5">Peso Ideal</label>
-                                    </div>
-
-                                    <div class="inputGroup">
-                                        <input id="option6" name="option6" type="checkbox" />
-                                        <label for="option6">Regresar de una lesión</label>
-                                    </div>
-                                </form>
+                                </div>
 
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="contenedor_objetivo">
-
-                                <form class="form_objetivo">
-
-                                    <center>
-                                        <h2 class="titulos_seguimiento">Metas</h2>
-                                    </center>
-                                    <center>
-                                        <p class="subtitulos_seguimiento">Lorem ipsum dolor sit amet consectetur adipiscing elit, vivamus molestie purus accumsan ac id felis, convallis elementum dictum aliquam tincidunt sed</p>
-                                    </center>
-                                    <div class="inputGroup">
-                                        <input id="option_obj1" name="option1" type="checkbox" />
-                                        <label for="option_obj1">Jugar un deporte</label>
+                            <div class="row ">
+                                <div class="DP_input col-lg-12 col-md-12">
+                                    <div id="input_box_apellido" class="input_box_tutor animated bounceIn">
+                                        <i class="far fa-id-badge"></i>
+                                        <%= ui_fields.text_field :last_name, placeholder: 'Apellidos', id: 'IP_apellido' %>
                                     </div>
-
-                                    <div class="inputGroup">
-                                        <input id="option_obj2" name="option2" type="checkbox" />
-                                        <label for="option_obj2">Convertirme en titular</label>
-                                    </div>
-
-                                    <div class="inputGroup">
-                                        <input id="option_obj3" name="option3" type="checkbox" />
-                                        <label for="option_obj3">Convertirme en profesional</label>
-                                    </div>
-
-                                    <div class="inputGroup">
-                                        <input id="option_obj4" name="option4" type="checkbox" />
-                                        <label for="option_obj4">Representar a mi país</label>
-                                    </div>
-
-                                    <div class="inputGroup">
-                                        <input id="option_obj5" name="option5" type="checkbox" />
-                                        <label for="option_obj5">Mejorar mi desempeño en competencias</label>
-                                    </div>
-
-                                    <div class="inputGroup">
-                                        <input id="option_obj6" name="option6" type="checkbox" />
-                                        <label for="option_obj6">Mantener un buen estado de salud</label>
-                                    </div>
-
-                                </form>
+                                </div>
 
                             </div>
-                        </div>
+                            <div class="row ">
+                                <div class="DP_input col-lg-6 col-md-6">
+                                    <div id="input_box_exp" class="input_box_ano animated bounceIn">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <%= ui_fields.select :experience, options_for_select([['Experiencia', 'vacio'],['Novato', 'novato'],['Experimentado', 'experimentado'], ['Atleta', 'atleta']]), {}, { :id => 'IP_Experiencia' } %>
+                                    </div>
+                                </div>
+                                <div class="DP_input col-lg-6 col-md-6">
+                                    <div id="input_box_gen" class="input_box_ano animated bounceIn">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <%= ui_fields.select :genre, options_for_select([['Género', 'vacio'],['Hombre', 'H'],['Mujer', 'M']]), {}, { :id => 'IP_genero' } %>
+                                    </div>
+                                </div>
+                            </div>
 
-                    </div>
-                </div>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <center>
-                                <button id="metas_objetivos_btn">Continuar</button>
-                            </center>
+
+                            <div class="row ">
+                                <div class="DP_input col-lg-6 col-md-6">
+                                    <div id="input_box_peso" class="input_box_tutor animated bounceIn">
+                                        <i class="far fa-id-badge"></i>
+                                        <%= ui_fields.text_field :weight, placeholder: 'Peso', id: 'IP_peso', onkeypress: 'return event.charCode >= 48 && event.charCode <= 57;' %>
+                                    </div>
+                                </div>
+                                <div class="DP_input col-lg-6 col-md-6">
+                                    <div id="input_box_estatura" class="input_box_ano animated bounceIn">
+                                        <i class="far fa-calendar-alt "></i>
+                                        <%= ui_fields.select :height, options_for_select(@heights), {}, { :id => 'IP_Estatura' } %>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-12 ">
+                        <center>
+                            <button id="IP_btn" class="animated bounceIn">Continuar</button>
+                        </center>
+                    </div>
                 </div>
+                <div class="col-lg-3 "></div>
             </div>
 
-            <div class="col-lg-2"></div>
-        </div>
+            <div id="div_informacion_deportiva" class="animated bounceInRight row" style='display: none'>
+                <div class="col-lg-3"></div>
+                <div id="Terminar_modal" class="col-sm-12 col-lg-6">
+                    <div class="container-fluid">
+                        <div style="margin:25px 0;" class="row">
+                            <div class="col-12">
+                                <center>
+                                    <h1 id="ID_titulo" class="animated bounceIn">Información Deportiva</h1>
+                                </center>
+                            </div>
+
+
+                        </div>
+                        <div id="FPago_full_container">
+                            <div class="row">
+                                <div class="DP_input col-lg-6 col-md-6">
+                                    <div id="input_box_deporte" class="input_box_mes  animated bounceIn">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <%= ui_fields.select :sport, options_for_select(@sports), {}, { :id => 'ID_deporte' } %>
+                                    </div>
+                                </div>
+                                <div class="DP_input col-lg-6 col-md-6">
+                                    <div class="input_box_p  animated bounceIn">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <%= ui_fields.select :experience, options_for_select([['Posiciones', 'vacio']]), {}, { :id => 'ID_pos_obj' } %>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="DP_input col-lg-6 col-md-6">
+                                    <div id="input_box_les" class="input_box_tutor  animated bounceIn">
+                                        <i class="far fa-id-badge"></i>
+                                        <%= ui_fields.text_field :history_injuries, placeholder: 'Lesiones', id: 'lesiones_input', class: 'FPago_tarjeta_tutor' %>
+                                    </div>
+                                </div>
+                                <div class="DP_input col-lg-6 col-md-6">
+                                    <div class="input_box_exp animated bounceIn">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <%= ui_fields.select :experience, options_for_select([['Experiencia', 'vacio'],['Novato', 'novato'],['Experimentado', 'experimentado'], ['Atleta', 'atleta']]), {}, { :id => 'ID_exp' } %>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="DP_input col-lg-6 col-md-6">
+                                    <div style="animation-delay: .7s;" class="  animated bounceIn">
+                                        <center>
+                                            <h4 style=" color:red;display:inline-block; position:relative; vertical-align: middle; padding-top: 30px; ">Proxima Competencia</h4>
+                                        </center>
+                                    </div>
+                                </div>
+                                <div class="DP_input col-lg-6 col-md-6">
+                                    <div class="input_box_tutor  animated bounceIn">
+                                        <i class="far fa-id-badge"></i>
+                                        <%= ui_fields.date_field :next_competition, id: 'ID_Competencia_fecha' %>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <center>
+                            <button id="ID_btn" class="animated bounceIn">Continuar</button>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+            
+            <div id="div_metas_objetivos" class="animated bounceInRight row" style='display: none'>
+                <div class="col-lg-2"></div>
+                <div id="metas_objetivos_modal" class="col-sm-12 col-lg-8">
+                    <div class="col-lg-12">
+
+                        <!-- Cierre de Modal -->
+                        <center>
+                            <h1 class="Titulo_seccion">Sistema de Seguimiento</h1>
+                            <i id="metas_objetivos_close" class="fas fa-times-circle"></i>
+                        </center>
+
+
+                        <!-- End Cierre de mdoal -->
+                    </div>
+
+                    <div style="margin:45px 0;" class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="contenedor_metas">
+
+                                    <form class="form_metas">
+
+                                        <center>
+                                            <h2 class="titulos_seguimiento">Objetivo</h2>
+                                        </center>
+                                        <center>
+                                            <p class="subtitulos_seguimiento">Lorem ipsum dolor sit amet consectetur adipiscing elit, vivamus molestie purus accumsan ac id felis, convallis elementum dictum aliquam tincidunt sed</p>
+                                        </center>
+                                        <div class="inputGroup">
+                                            <input id="option1" name="option1" type="checkbox" />
+                                            <label for="option1">Fuerza</label>
+                                        </div>
+
+                                        <div class="inputGroup">
+                                            <input id="option2" name="option2" type="checkbox" />
+                                            <label for="option2">Velocidad</label>
+                                        </div>
+
+                                        <div class="inputGroup">
+                                            <input id="option3" name="option3" type="checkbox" />
+                                            <label for="option3">Agilidad</label>
+                                        </div>
+
+                                        <div class="inputGroup">
+                                            <input id="option4" name="option4" type="checkbox" />
+                                            <label for="option4">Explosividad</label>
+                                        </div>
+
+                                        <div class="inputGroup">
+                                            <input id="option5" name="option5" type="checkbox" />
+                                            <label for="option5">Peso Ideal</label>
+                                        </div>
+
+                                        <div class="inputGroup">
+                                            <input id="option6" name="option6" type="checkbox" />
+                                            <label for="option6">Regresar de una lesión</label>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="contenedor_objetivo">
+
+                                    <form class="form_objetivo">
+
+                                        <center>
+                                            <h2 class="titulos_seguimiento">Metas</h2>
+                                        </center>
+                                        <center>
+                                            <p class="subtitulos_seguimiento">Lorem ipsum dolor sit amet consectetur adipiscing elit, vivamus molestie purus accumsan ac id felis, convallis elementum dictum aliquam tincidunt sed</p>
+                                        </center>
+                                        <div class="inputGroup">
+                                            <input id="option_obj1" name="option1" type="checkbox" />
+                                            <label for="option_obj1">Jugar un deporte</label>
+                                        </div>
+
+                                        <div class="inputGroup">
+                                            <input id="option_obj2" name="option2" type="checkbox" />
+                                            <label for="option_obj2">Convertirme en titular</label>
+                                        </div>
+
+                                        <div class="inputGroup">
+                                            <input id="option_obj3" name="option3" type="checkbox" />
+                                            <label for="option_obj3">Convertirme en profesional</label>
+                                        </div>
+
+                                        <div class="inputGroup">
+                                            <input id="option_obj4" name="option4" type="checkbox" />
+                                            <label for="option_obj4">Representar a mi país</label>
+                                        </div>
+
+                                        <div class="inputGroup">
+                                            <input id="option_obj5" name="option5" type="checkbox" />
+                                            <label for="option_obj5">Mejorar mi desempeño en competencias</label>
+                                        </div>
+
+                                        <div class="inputGroup">
+                                            <input id="option_obj6" name="option6" type="checkbox" />
+                                            <label for="option_obj6">Mantener un buen estado de salud</label>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <center>
+                                    <button id="metas_objetivos_btn">Continuar</button>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2"></div>
+            </div>
         <% end %>
     <% end %>
 </div>

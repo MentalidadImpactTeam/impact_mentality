@@ -129,7 +129,6 @@
             if (event.which == 27) {
                 tabla.css("display","none");
             };
-
         });
 
         $(".sistema_cancel_tabla_ejercicios").on("click", function(event){
@@ -143,32 +142,6 @@
         $(".sistema_r_infoejercicio_boton").on("click", function(event){
             $(this).parent().parent().css("display","none");
         });
-
-        $("td").on("click", function(event){
-            swal({
-                title: '¿Quieres este ejercicio?',
-                text: "El ejercicio elegido reemplazará al ejercicio original",
-                type: 'warning',
-                showCancelButton: true,
-                background: '#e5e5e5',
-                confirmButtonColor: '#fff',
-                cancelButtonColor: '#ff1d25',
-                cancelButtonText: 'No',
-                confirmButtonText: 'Sí',
-                showCloseButton: true
-                }).then((result) => {
-                if (result.value) {
-                    swal(
-                    'Exito',
-                    'Tu rutina ha sido modificada',
-                    'success',
-                    tabla.css("display","none")
-                    )
-                }
-            });
-        });
-
-        
 </script>
 
 <style>

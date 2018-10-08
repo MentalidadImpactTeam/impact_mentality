@@ -1,8 +1,10 @@
 class User < ApplicationRecord
   has_one :user_information, dependent: :destroy
   has_one :user_type
+  has_one :user_conekta_token
 
-  accepts_nested_attributes_for :user_information, :user_type
+  accepts_nested_attributes_for :user_information
+  accepts_nested_attributes_for :user_conekta_token
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :confirmable

@@ -13,4 +13,10 @@ Rails.application.routes.draw do
       post "change_exercise" => 'routines#change_exercise'
     end
   end
+
+  resources :webhook, only: [:index] do
+    collection do
+      post "conekta" => "webhook#procesar"
+    end
+  end
 end

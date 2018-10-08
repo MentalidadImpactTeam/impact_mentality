@@ -4,11 +4,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   before_action :configure_permitted_parameters
+  before_action :catalogos_registro, only: [ :create, :new ]
   layout "devise"
   
   # GET /resource/sign_up
   def new
-    catalogos_registro
     @user_types = UserType.all.order(id: :asc)
     build_resource({})
     resource.build_user_information
@@ -16,9 +16,33 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    user = User.find_by(email: params["user"]["email"])
+
+    user_conekta = UserConektaToken.new
+    user_conekta.user_id = user.id
+    user_conekta.token = params["user"]["customer_token"]
+    user_conekta.save
+
+    name = user.user_information.first_name.squish + " " + user.user_information.last_name.squish
+    customer = Conekta::Customer.create({
+      :name => name,
+      :email => user.email,
+      :payment_sources => [{
+        :type => 'card',
+        :token_id => params["user"]["customer_token"]
+      }]
+    })
+
+    user.customer_token = customer.id
+    user.active = 1
+    user.save
+    
+    subscription = customer.create_subscription({
+      :plan => "mensual"
+    })
+  end
 
   # GET /resource/edit
   # def edit
@@ -60,7 +84,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_information_attributes => [:user_type_id, :first_name, :last_name, :birth_date, :genre, :height, :weight, :sport, :position, :next_competition, :experience, :history_injuries, :pay_day, :pay_program, :goal_1, :goal_2]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:customer_token, :user_information_attributes => [:user_type_id, :first_name, :last_name, :birth_date, :genre, :height, :weight, :sport, :position, :next_competition, :experience, :history_injuries, :pay_day, :pay_program, :goal_1, :goal_2]])
   end
 
   # protected

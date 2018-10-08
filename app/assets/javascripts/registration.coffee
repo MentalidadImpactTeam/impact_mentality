@@ -1,10 +1,13 @@
 kg_var = 0
+Conekta.setPublicKey("key_HcFQfz7edHvGnSxP8cettSA");
+
 RegistrationController = Paloma.controller('Users/Registrations')
 RegistrationController::new = ->
   eventos_registro()
   eventos_datos_personales()
   eventos_datos_deportivos()
   eventos_metas_objetivos()
+  eventos_forma_pago()
 
   #END OF CLICK EVENT REGISTRO BTN
   $('#registro_close').on 'click', ->
@@ -56,6 +59,18 @@ eventos_registro = ->
         type: 'error'
         title: 'Alerta'
         text: 'Por favor Ingrese su Contraseña'
+        allowEscapeKey: true
+        allowOutsideClick: true
+        confirmButtonText: 'Regresar'
+        confirmButtonClass: 'registro_sweetalert'
+      $('#user_password').addClass 'input_error'
+      return false
+    if $('#user_password').val().length < 6
+      registro_contval = 1
+      swal
+        type: 'error'
+        title: 'Alerta'
+        text: 'Por favor Ingrese Una Contraseña Con Al Menos 6 Caracteres'
         allowEscapeKey: true
         allowOutsideClick: true
         confirmButtonText: 'Regresar'
@@ -128,7 +143,7 @@ eventos_datos_personales = ->
     kg_var = 0
     return
 
-  $('#IP_modal').on 'mouseover', ->
+  $('#IP_peso').on 'blur', ->
     if $('#IP_peso').val() != ''
       if kg_var == 0
         addkg()
@@ -453,11 +468,93 @@ eventos_datos_deportivos = ->
 
 eventos_metas_objetivos = ->
   $('#metas_objetivos_btn').on 'click', ->
-    $('#metas_objetivos_modal').addClass 'animated bounceOutLeft'
-    return
+    $('#div_metas_objetivos').addClass 'animated bounceOutLeft'
+    setTimeout (->
+      $("#div_metas_objetivos").css('display','none')
+      $("#div_forma_pago").removeAttr("style")
+      return
+    ), 500
+    return false
   $('#metas_objetivos_close').on 'click', ->
     $('#metas_objetivos_modal').addClass 'animated bounceOut'
+    return false
+
+eventos_forma_pago = ->
+  conektaSuccessResponseHandler = (token) ->
+    #Inserta el token_id en la forma para que se envíe al servidor
+    div_forma_pago = $("#div_forma_pago").append($('<input type="hidden" name="user[customer_token]" id="customer_token">').val(token.id))
+    $form = $("#new_user")
+    $form.get(0).submit()
     return
+
+  conektaErrorResponseHandler = (response) ->
+    # $form.find(".card-errors").text(response.message_to_purchaser);
+    # $form.find("button").prop("disabled", false);
+    console.log response.message_to_purchaser
+    return
+
+  $('.FPago_tarjeta_tutor').on 'keypress', ->
+    $('.input_box_tutor').removeClass 'input_error'
+    return
+  $('.FPago_tarjeta_num').on 'keypress', ->
+    $('.input_box_num').removeClass 'input_error'
+    return
+  $('.CVC_CODE').on 'keypress', ->
+    $('.input_box_cvc').removeClass 'input_error'
+    return
+
+  ###  CAMBIO A PAYPAL###
+
+  $('.FPago_metodo_Paypal').on 'click', ->
+    $('#Terminar_modal').addClass 'animated lightSpeedOut '
+    return
+
+  ### CAMBIO A PAYPAL END ###
+
+  $('#FPago_btn').on 'click', ->
+    if $('.FPago_tarjeta_num').val() == ''
+      swal
+        type: 'error'
+        title: 'Alerta'
+        text: 'Por favor Ingrese los espacios en rojo'
+        allowEscapeKey: true
+        allowOutsideClick: true
+        confirmButtonText: 'Regresar'
+        confirmButtonClass: 'login_sweetalert'
+      $('.input_box_num').addClass 'input_error'
+      return false
+    if $('.FPago_tarjeta_tutor').val() == ''
+      swal
+        type: 'error'
+        title: 'Alerta'
+        text: 'Por favor Ingrese los espacios en rojo'
+        allowEscapeKey: true
+        allowOutsideClick: true
+        confirmButtonText: 'Regresar'
+        confirmButtonClass: 'login_sweetalert'
+      $('.input_box_tutor').addClass 'input_error'
+      return false
+    if $('.CVC_CODE').val() == ''
+      swal
+        type: 'error'
+        title: 'Alerta'
+        text: 'Por favor Ingrese los espacios en rojo'
+        allowEscapeKey: true
+        allowOutsideClick: true
+        confirmButtonText: 'Regresar'
+        confirmButtonClass: 'login_sweetalert'
+      $('.input_box_cvc').addClass 'input_error'
+      return false
+    tokenParams = 'card':
+      'number': $('.FPago_tarjeta_num').val()
+      'name': $('.FPago_tarjeta_tutor').val()
+      'exp_year': $('#FPago_año_vencimiento option:selected').text()
+      'exp_month': $('#FPago_mes_vencimiento option:selected').text()
+      'cvc': $('.CVC_CODE').val()
+    Conekta.Token.create tokenParams, conektaSuccessResponseHandler, conektaErrorResponseHandler
+    return false
+  return 
+
 
 addkg = ->
   contenido_tmp = $('#IP_peso').val() + ' kg'

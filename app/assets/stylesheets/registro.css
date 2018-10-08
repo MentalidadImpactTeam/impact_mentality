@@ -805,3 +805,180 @@ code {
         margin: 25px 0;
     }
 }
+
+
+#Terminar_modal {
+    background-color: white;
+}
+
+#FPago_titulo {
+    font-size: 50px;
+    margin: 15px 0;
+    color: red !important;
+    animation-delay: .5s;
+}
+
+.terminar_mensaje {
+    font-weight: lighter;
+    margin: 25px 0;
+}
+
+#terminar_btn {
+    background-color: #b52434;
+    transform: skew(-10deg);
+    color: white;
+    font-family: Lato;
+    border: none;
+    padding: 15px 22px;
+    margin: 25px 0px;
+    font-size: 20px;
+    animation-delay: 1s;
+    transition: all .6s;
+    cursor: pointer;
+}
+
+.FPago_metodo_tarjeta {
+    border: 3px solid red;
+    width: 80%;
+    color: red;
+    font-family: Lato;
+    font-size: 40px;
+    animation-delay: .7s;
+}
+
+.FPago_metodo_Paypal {
+    border: 3px solid grey;
+    width: 80%;
+    color: grey;
+    font-family: Lato;
+    animation-delay: .7s;
+    font-size: 40px;
+}
+
+.FPago_metodo_Paypal:hover,
+.FPago_metodo_Paypal i:hover {
+    color: Red;
+    border: 3px solid red;
+    cursor: pointer;
+}
+
+.FPago_metodo_Paypal i {
+    font-size: 60px;
+    margin: 15px 0;
+    width: 100px;
+    font-size: 50px;
+    display: block;
+    border: none !important;
+}
+
+.FPago_metodo_tarjeta i {
+    font-size: 60px;
+    margin: 15px 0;
+    width: 100px;
+    font-size: 50px;
+    display: block;
+}
+
+.DP_input {
+    margin: 10px 0;
+}
+
+.DP_input input[type="text"]:focus {
+    outline: none;
+}
+
+.DP_input input[type="text"] {
+    width: 75%;
+    padding: 15px;
+    margin: 0;
+    font-family: Lato;
+    border: none;
+    color: #3e3e3e;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.DP_input input[type="text"]::placeholder {
+    font-size: 20px;
+    font-family: Lato;
+    color: #d1d1d1;
+}
+
+.input_error {
+    border: 2px solid red !important;
+}
+
+.input_box_tutor,
+.input_box_num,
+.input_box_mes,
+.input_box_ano,
+.input_box_cvc {
+    border: 1px solid grey;
+    margin: 15px 0;
+    height: auto;
+    overflow: hidden;
+    animation-delay: .5s;
+}
+
+.input_box_num:hover,
+.input_box_tutor:hover,
+.input_box_mes:hover,
+.input_box_ano:hover,
+.input_box_cvc:hover {
+    background-color: #d1d1d1;
+}
+
+.input_box_tutor i,
+.input_box_num i,
+.input_box_mes i,
+.input_box_ano i,
+.input_box_cvc i {
+    font-size: 20px;
+    padding: 25px 15px;
+    border-right: 1px solid grey;
+    color: grey;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #f2f2f2;
+}
+
+#FPago_mes_vencimiento,
+#FPago_año_vencimiento {
+    padding: 15px;
+    margin: 0px 0;
+    width: 78%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: Lato;
+}
+
+#FPago_mes_vencimiento:focus,
+#FPago_año_vencimiento:focus {
+    outline: none;
+}
+
+.CVC_CODE {
+    width: 65% !important;
+}
+
+#FPago_btn {
+    background-color: #b52434;
+    transform: skew(-10deg);
+    color: white;
+    font-family: Lato;
+    border: none;
+    padding: 15px 22px;
+    margin: 25px 0px;
+    font-size: 20px;
+    animation-delay: 1s;
+    transition: all .5s;
+    cursor: pointer;
+}
+
+#FPago_btn:hover {
+    box-shadow: 0px 0px 8px red;
+    background-color: Red;
+}
