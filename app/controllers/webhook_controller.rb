@@ -10,7 +10,7 @@ class WebhookController < ApplicationController
     object = data['data']['object']
     # byebug
     if data['type'] == 'subscription.paid'
-      # payment_method = object['payment_method']['type'
+      # payment_method = object['payment_method']['type']
       # msg = "Tu pago con #{payment_method} ha sido comprobado"
       # puts msg
 
