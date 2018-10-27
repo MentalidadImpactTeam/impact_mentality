@@ -13,4 +13,5 @@ Rails.application.routes.draw do
       post "change_exercise" => 'routines#change_exercise'
     end
   end
+  resources :accounts
 end
