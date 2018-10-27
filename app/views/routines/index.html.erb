@@ -26,6 +26,7 @@
     </div>
 </div>
 <div class="sistema_contenido d-flex flex-column">
+    <input type="hidden" class="hidden_modal" value="<%= @mostrar_modal %>">
     <!-- INFORMACION DE EJERCICIO -->
     <div id="sistema_r_contenedorinfo" class="flex-column justify-content-center align-items-center">
         <div class="sistema_r_infoejercicio d-flex flex-column align-items-center">
@@ -55,8 +56,19 @@
             <% end %>
         <% end %>    
     </div>
+    <% if !@mostrar_modal %>
     <!-- CENTRO -->
     <div class="sistema_r_contenedorejercicios d-flex">
+        <!-- ANTERIOR -->
+        <div id="flecha_anterior" class="sistema_r_centro_der d-flex flex-column justify-content-center" style="display:none !important;">
+            <div id="sistema_r_siguiente"> ANTERIOR: </div>
+            <div id="sistema_r_anteriorfase"> TRICERIE #1 </div>
+            <div id="sistema_r_anteriorarrow" class="d-flex flex-column justify-content-center align-items-center">
+                <div class="sistema_r_anteriormovil">ANTERIOR:</div>
+                <div class="sistema_r_anteriormovil">PREHABS</div>
+            </div>
+        </div>
+
         <!-- EJERCICIOS -->
         <% @hash.keys.each do |group| %>
             <div class="sistema_r_centro_iz d-flex <%= if @hash[group]["show"] == 1 then "active" end %>" style="<%= if @hash[group]["show"] == 0 then "display: none !important" else "" end %>">
@@ -68,13 +80,13 @@
                     <div class="sistema_r_ejercicio_arriba d-flex align-items-center flex-row justify-content-between">
                         <div class="sistema_r_tipoejercicio d-flex flex-column"> 
                             <div> <%= exercise['name'] %>  </div>
-                            <div class="sistema_r_repeticionesmovil"> 2 repeticiones de 175 lbs. </div>
+                            <div class="sistema_r_repeticionesmovil"> <%= exercise["set"] %> set de <%= exercise["rep"] %> repeticiones. </div>
                         </div>
                         <div class="sistema_r_cambiaricono"> </div>
                     </div>
                     <div class="sistema_r_ejercicio_centro"></div>
                     <div class="sistema_r_ejercicio_abajo align-items-center flex-row justify-content-between">
-                        <div class="sistema_r_nombreejercicio"> 2 repeticiones de 175 lbs. </div>
+                        <div class="sistema_r_nombreejercicio"> <%= exercise["sets"] %> set de <%= exercise["reps"] %> repeticiones. </div>
                         <div class="sistema_r_infoicono"> </div>
                     </div>
                 </div>
@@ -119,6 +131,7 @@
             </div>
         </div>
     </div>
+    <% end %>
 </div>
 
 <script>

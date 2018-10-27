@@ -1,0 +1,63 @@
+<div class="subbanners_sistema_menu">
+    <div style="background-color:#3e3e3e;" class="sistema_banner"></div>
+    <div style="background-color:#202020;" class="sistema_banner d-flex flex-row align-items-center">
+        <div class="sistema_icono"></div>
+        <h2>PERFIL</h2>
+        <% if user_signed_in? %>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary") %> 
+        <% end %>
+    </div>
+</div>
+<div class="sistema_contenido d-flex">
+  <div id="sistema_p_iz" class="d-flex flex-column justify-content-between">
+      <div id="sistema_p_iz_arriba" class="d-flex align-items-center">
+              <div id="sistema_p_img"> </div>
+              <div id="sistema_p_texto" class="d-flex flex-column">
+                  <div id="sistema_p_texto_titulo">Doris Walker</div>
+                  <div><i>doris.walker@gmail.com</i> </div>
+                  <div class="d-flex flex-row perfil_editable"> <b class="bold">Edad: </b> <div id="perfil_edad"></div> <input type="text" id="perfil_mod_edad" class="sistema_cuenta_input"> años </div>
+                  <div class="d-flex flex-row perfil_editable"> <b class="bold">Estatura: </b> <div id="perfil_altura"></div>  <input type="text" id="perfil_mod_estatura" class="sistema_cuenta_input"> m </div>
+                  <div class="d-flex flex-row perfil_editable"> <b class="bold">Peso: </b> <div id="perfil_peso"></div>  <input type="text" id="perfil_mod_peso" class="sistema_cuenta_input"> kg</div>
+                  <a href="#" id="sistema_p_confirmar" class="align-self-center">Confirmar cambios</a>
+              </div>
+              <a href="#" class="sistema_p_editar flex-fill">EDITAR</a> 
+      </div>
+      <div id="sistema_p_iz_abajo" class="d-flex justify-content-center align-items-center">
+          <div class="d-flex flex-column justify-content-center">
+              <div class="d-flex flex-row align-items-end">
+                  <div id="sistema_p_ejericios" class="d-flex flex-column">
+                      <div>ENTRENAMIENTOS</div>
+                      <div>COMPLETADOS</div>
+                  </div>
+                  <div id="sistemas_p_numero"> 1242 </div>
+                  <div id="sistemas_p_numerogris"> /1450  </div>
+              </div>
+              <div>
+                  <div class="progress">
+                      <div class="progress-bar" id="barra_entrenamientos" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+              </div>
+          </div>
+          <div class="sistema_lineadiv"></div>
+          <div class="d-flex flex-column">
+              <div id="sistema_p_etapa"> ETAPA 2/10</div>
+              <div id="sistema_p_etapanombre"> COMPETITIVA </div>
+              <div class="progress">
+                  <div class="progress-bar" id="barra_etapa" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div id="sistema_p_der" class="d-flex flex-column justify-content-center">
+      <div id="sistema_p_creditoimg"></div> 
+      <div id="sistema_p_numcredito">**** **** **** 4155</div>
+      <div id="sistema_p_fechacredito" class="d-flex flex-row">
+          <div class="d-flex flex-column">
+              <div> FECHA </div>
+              <div> CAD. </div>
+          </div>
+          <div id="sistema_p_fechacredito_cad"> 01/19 </div>
+      </div>
+      <a href="#" id="sistema_p_botoncredito" class="align-self-center d-flex flex-column justify-content-center"> Cambiar forma de pago </a>
+  </div>
+</div>

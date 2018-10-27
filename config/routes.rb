@@ -19,4 +19,5 @@ Rails.application.routes.draw do
       post "conekta" => "webhook#procesar"
     end
   end
+  resources :accounts
 end

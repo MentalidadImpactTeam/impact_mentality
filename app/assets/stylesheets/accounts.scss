@@ -1,7 +1,3 @@
-// Place all the styles related to the Routines controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 * {
 
   margin:0;
@@ -34,12 +30,16 @@ html, body {
   width: 85%;
 }
 
+#barra_etapa{
+  width: 20%;
+}
+
 #barra_warmup{
-  width: 0%;
+  width: 100%;
 }
 
 #barra_tricerie{
-  width: 0%;
+  width: 28%;
 }
 
 #barra_finisher{
@@ -51,14 +51,6 @@ body{
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   background-color: #1E1E1E;
-}
-
-.container-fluid{
-  /* 
-  background-image: url('bgimg.png');
-  background-repeat: no-repeat;
-  */
-  
 }
 
 .content{
@@ -77,14 +69,6 @@ body{
   text-align: center;
 }
 
-input[type=text]{
-  width: 100%;
-  border-style: solid;
-  border-color: #ff1d25;
-  border-width: 0px;
-  border-radius: 0px;
-  background-color: rgba(255, 255, 255, 0)
-}
 
 textarea{
   width: 100%;
@@ -148,6 +132,7 @@ textarea{
 
 
 
+
 /* ------------------------ HEADER ------------------------ */
 #header_header{
   display: block;
@@ -170,7 +155,7 @@ textarea{
 .header_link{
   display: inline-block;
   position: relative;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Lato', sans-serif !important;
   font-size: 15px;
   color: #ffffff;
   font-weight: bold;
@@ -318,7 +303,7 @@ textarea{
 .footer_link{
   display: inline-block;
   position: relative;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif !important;
   font-size: 12px;
   color: #ffffff;
   font-weight: bold;
@@ -546,8 +531,7 @@ textarea{
 }
 
 #landing_boton1:hover{
-  box-shadow: 0 0 15px #ff1d25;
-  border-color: #fff;
+  box-shadow: 0 0 1vw #ff1d25;
 }
 
 #landing_boton2{
@@ -559,8 +543,7 @@ textarea{
 }
 
 #landing_boton2:hover{
-  box-shadow: 0 0 15px #fff;
-  border-color: #ff1d25;
+  box-shadow: 0 0 1vw #fff;
 }
 
 #landing_revoulucion{
@@ -712,13 +695,25 @@ textarea{
 }
 
 .landing_division2{
-  background: #4D4D4D;
+  background: #fff;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   width: 100%;
-  border-top: 3vw solid #1E1E1E;
+  border-top: 3vw solid #fff;
   border-left: 100vw solid transparent;
 }
+
+.landing_division3{
+  background: #fff;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  width: 100%;
+ /* border-top: 60px solid #fff;
+  border-left: 1600px solid transparent; */
+  border-top: 3vw solid #1e1e1e;
+  border-left: 100vw solid transparent;
+}
+
 
 #landing_mentalidad{
   background: #1E1E1E;
@@ -847,6 +842,8 @@ textarea{
   height: 100%;
   width: 100%;
   background-image: url('../img/testimonio1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .landing_testimonios_center_container_content_img{
@@ -885,6 +882,45 @@ textarea{
   font-size: 12px;
   color: #fff;
   line-height: 15px;
+}
+
+#landing_sistema{
+  color: #fff;
+  font-size: 4vw;
+  font-weight: bold;
+  width: 60%;
+  line-height: 4.2vw;
+  padding-bottom: 3vw;
+  text-shadow: 0 0 1vw #fff;
+  text-align: center;
+}
+
+#landing_deportes{
+  width: 100%;
+  padding: 5vw 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('../img/deportes.png');
+  background-position: bottom;
+  z-index: -1;
+  justify-content: center;
+}
+
+#landing_deportes_deportes{
+  width: 90%;
+}
+
+.landing_deportes_deporte{
+  color: #fff;
+  background-color: #ff1d25;
+  width: 12vw;
+  height: 3.5vw;
+  border-radius: .1vw;
+  font-weight: bold;
+  font-size: 1.2vw;
+  line-height: 1.2vw;
+  margin: 0 2vw 2vw 2vw;
+  opacity: .8;
 }
 
 
@@ -1226,18 +1262,18 @@ textarea{
 }
 
 #landing2_plan_titulo_plan{
-  font-size: 5vw;
+  font-size: 2.5vw;
   margin: 0 0 0 0 ;
   padding: 0 0 0 0;
-  line-height: 2vw;
+  line-height: 1vw;
   font-weight: 300;
   font-style: italic;
   width: 100%;
 }
 
 #landing2_plan_titulo_pz{
-  font-size: 7.3vw;
-  line-height: 8vw;
+  font-size: 3.7vw;
+  line-height: 4vw;
   margin: 0 0 0 0 ;
   padding: 0 0 0 0;
   font-weight: bold;
@@ -1248,7 +1284,7 @@ textarea{
 }
 
 #landing2_plan_linea{
-  width: 50vw;
+  width: 32vw;
   height: .2vw;
   background-color: #ff1d25;
   margin-top: 12px;
@@ -1276,8 +1312,8 @@ textarea{
 }
 
 #landing2_lista{
-  list-style-image: url('../img/icon.png');
-  font-size: 2vw;
+  list-style: disc;
+  font-size: 1.4vw;
 }
 
 #landing2_plan_texto{
@@ -1339,8 +1375,13 @@ textarea{
   overflow: hidden;
 }
 
-.landing2_analytics_bullet{
+/* ------------------------ LANDING EQUIPOS ------------------------ */
+#landingequipos_lista{
+  display: inline-block;
+  color: #000;
 }
+
+
 /* ------------------------ CONTACTO ------------------------ */
 #contacto_body{
   overflow-x: hidden;
@@ -1421,7 +1462,7 @@ textarea{
 #contacto_contenido1_callto{
   display: block;
   position: relative;
-  font-size:14px;
+  font-size: 1.4vw;
   color: #ffffff;
   text-align: center;
 }
@@ -1451,7 +1492,7 @@ textarea{
   display: block;
   position: relative;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 1.4vw;
   font-weight: lighter;
   text-align: center;
   margin-top: 5px;
@@ -1610,6 +1651,7 @@ textarea{
 
 .bold{
   font-weight: bold;
+  margin-right: .5vw;
 }
 
 #sistema_p_texto_titulo{
@@ -1654,14 +1696,29 @@ textarea{
   text-align: center;
   width: 50%;
   height: 8%;
-  border-radius: 3vw;
+  border-radius: 1vw;
   font-weight: bold;
   margin-top: 2vw;
   transition: .5s;
   font-size: 1vw;
 }
 
-#sistema_p_botoncredito:hover{
+#sistema_p_confirmar{
+  background-color: #ff1d25;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  padding: 1vw;
+  position: relative;
+  border-radius: 1vw;
+  font-weight: bold;
+  transition: .5s;
+  font-size: 1vw;
+  margin-top: 1vw;
+
+}
+
+#sistema_p_botoncredito:hover, #sistema_p_confirmar:hover{
   box-shadow: 0 0 2vw #ff1d25;
 }
 
@@ -1702,13 +1759,25 @@ textarea{
   line-height: 3vw;
 }
 
+#perfil_edad, #perfil_altura, #perfil_peso{
+  margin-right: .5vw;
+}
+
+#perfil_mod_edad, #perfil_mod_estatura, #perfil_mod_peso{
+  width: 12%;
+  font-weight: normal;
+  text-align: center;
+  font-size: 2vw;
+  line-height: 2vw;
+}
+
 
 @media (max-width: 1090px) { 
   .sistema_contenido{
       flex-direction: column;
       align-items: center;
       padding: 5vh 8vw;
-      height: 100%;
+      height: auto;
   }
 
   #sistema_p_iz{
@@ -1822,11 +1891,37 @@ textarea{
   }
 
   #sistema_p_botoncredito{
-      width: 55%;
-      height: 4.5vh;
-      border-radius: 5vw;
+      width: 50%;
+      height: 10vw;
+      border-radius: 1vw;
       margin-top: 5vw;
       font-size: 2.5vw;
+  }
+
+  #perfil_edad, #perfil_altura, #perfil_peso{
+      margin-right: 1vw;
+  }
+  
+  #perfil_mod_edad, #perfil_mod_estatura, #perfil_mod_peso{
+      width: 12%;
+      font-size: 5vw;
+      line-height: 5vw;
+  }
+
+  .bold{
+      margin-right: 2vw;
+  }
+
+  .perfil_editable{
+      justify-content: center;
+  }
+
+  #sistema_p_confirmar{
+      margin-top: 5vw;
+      width: 60%;
+      height: 10vw;
+      font-size: 4vw;
+      line-height: 8vw;
   }
 }
 
@@ -2000,15 +2095,6 @@ textarea{
 
 }
 
-#sistema_r_anteriorfase{
-  line-height: .8vw;
-  font-size: 1.2vw;
-  color: #ff1d25;
-  font-style: italic;
-  font-weight: bold;
-
-}
-
 #sistema_r_siguientearrow{
   background-color: #ff1d25;
   background-image: url('../img/arrowrutina.png');
@@ -2030,27 +2116,6 @@ textarea{
   background-size: 1.839vw 3vw;
 }
 
-#sistema_r_anteriorarrow{
-  background-color: #ff1d25;
-  background-image: url('../img/arrowanterior.png');
-  background-size: 1.339vw 2.5vw;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 5vw;
-  height: 5vw;
-  border-radius: 1vw; 
-  margin-top: 6%;
-  transition: .5s;
-  cursor: pointer;
-}
-
-#sistema_r_anteriorarrow:hover{
-  box-shadow: 0 0 1vw #ff1d25;
-  width: 5.5vw;
-  height: 5.5vw;
-  background-size: 1.839vw 3vw;
-}
-
 .sistema_r_repeticionesmovil{
   display: none;
 }
@@ -2060,10 +2125,6 @@ textarea{
 }
 
 .sistema_r_siguientemovil{
-  display:none;
-}
-
-.sistema_r_anteriormovil{
   display:none;
 }
 
@@ -2281,15 +2342,6 @@ textarea{
       font-size: 4vw;
       line-height: 4vw;
   }
-
-  .sistema_r_anteriormovil{
-    color: #fff;
-    display: block;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 4vw;
-    line-height: 4vw;
-}
 
   .sistema_r_abajo{
       width: 100%;
@@ -2775,7 +2827,7 @@ body {
 }
 
 .seccion_menu_left h3 {
-  font-family: lato;
+  font-family: lato !important;
   vertical-align: middle;
   font-size: 2vh;
   font-weight: bold;
@@ -2843,7 +2895,7 @@ body {
 }
 
 .titulo_mobile_header {
-  font-family: lato;
+  font-family: lato !important;
   color: white;
   font-size: 5vw;
   text-align: left;
@@ -2851,18 +2903,7 @@ body {
   font-weight: bold;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: block;
-  position: absolute;
-  z-index: 20;
-  width: 100%;
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: all 1s cubic-bezier(1, 0, 0, 1);
-}
+
 
 .desplegado {
   transform: scaleY(1) !important;
@@ -2871,7 +2912,7 @@ ul {
 #menu_mobile_desplegado li a {
   color: white;
   text-decoration: none;
-  font-family: Lato;
+  font-family: Lato !important;
   margin-left: 15px;
   font-size: 3vw;
 }
@@ -2885,55 +2926,3 @@ ul li {
   padding: 2px 0;
 }
 
-.swal2-popup .swal2-input {
-  background-color: #f2f2f2;
-}
-
-.swal2-popup {
-  background-color: #3e3e3e;
-}
-
-.questionario_modal {
-  background-color: #3e3e3e;
-}
-
-.questionario_modal .swal2-confirm {
-  color: white;
-  background-color: red;
-}
-
-.swal2-popup .swal2-styled.swal2-confirm {
-  background-color: red;
-}
-
-.swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep {
-  background-color: red;
-}
-
-.swal2-popup .swal2-title {
-  color: White;
-}
-
-.swal2-popup .swal2-content {
-  color: white;
-}
-
-.swal2-progresssteps .swal2-progresscircle {
-  background-color: red;
-}
-
-.swal2-progresssteps .swal2-progressline {
-  background-color: red;
-}
-
-.swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep~.swal2-progresscircle {
-  background-color: grey;
-}
-
-.swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep~.swal2-progressline {
-  background-color: grey;
-}
-
-.swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal {
-  background-color: #3e3e3e;
-}

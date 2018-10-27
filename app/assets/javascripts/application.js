@@ -15,3 +15,4 @@
 //= require paloma
 //= require dashboard
 //= require routines
+//= require accounts
