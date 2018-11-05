@@ -12,3 +12,8 @@
 
 conekta_apikey_publica: key_HcFQfz7edHvGnSxP8cettSA
 conekta_apikey_privada: key_uXTpTJWC4txg524YEhYFuw
+
+development:
+  paypal_host: https://api.sandbox.paypal.com
+  paypal_client: AYMopFLPCJegLn_33Wldzdi08-y_V7n7k8JTH3xDpwXeBiT0A8Rwsh1lngEu9c6uOfYoWcg4YKhJs0p4
+  paypal_secret: EIEW4BIa6tlzN5a8t25e0ZXqbJxqRe0aLjZnNcxOmG8sO0Fr9LqhFnPLUAScwfYCrXokMJqpcWowtNp8

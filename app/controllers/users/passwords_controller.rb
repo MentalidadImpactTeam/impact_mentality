@@ -18,9 +18,21 @@ class Users::PasswordsController < Devise::PasswordsController
   # end
 
   # PUT /resource/password
-  # def update
-  #   super
-  # end
+  def update
+    @user = current_user
+    response = @user.update_with_password(user_params)
+    if response
+      # Sign in the user by passing validation in case their password changed
+      bypass_sign_in(@user)
+      render plain: "true"
+    else
+      if user_params["password"] == user_params["password_confirmation"]
+        render plain: "incorrect_password"
+      else
+        render plain: "difference_password"
+      end
+    end
+  end
 
   # protected
 
@@ -32,4 +44,8 @@ class Users::PasswordsController < Devise::PasswordsController
   # def after_sending_reset_password_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
+
+  def user_params
+    params.require(:user).permit(:current_password, :password, :password_confirmation)
+  end
 end

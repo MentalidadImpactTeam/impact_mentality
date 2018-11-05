@@ -1,63 +1,107 @@
 <div class="subbanners_sistema_menu">
-    <div style="background-color:#3e3e3e;" class="sistema_banner"></div>
     <div style="background-color:#202020;" class="sistema_banner d-flex flex-row align-items-center">
         <div class="sistema_icono"></div>
-        <h2>PERFIL</h2>
-        <% if user_signed_in? %>
-        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary") %> 
-        <% end %>
+        <h2>CUENTA </h2>
     </div>
 </div>
-<div class="sistema_contenido d-flex">
-  <div id="sistema_p_iz" class="d-flex flex-column justify-content-between">
-      <div id="sistema_p_iz_arriba" class="d-flex align-items-center">
-              <div id="sistema_p_img"> </div>
-              <div id="sistema_p_texto" class="d-flex flex-column">
-                  <div id="sistema_p_texto_titulo">Doris Walker</div>
-                  <div><i>doris.walker@gmail.com</i> </div>
-                  <div class="d-flex flex-row perfil_editable"> <b class="bold">Edad: </b> <div id="perfil_edad"></div> <input type="text" id="perfil_mod_edad" class="sistema_cuenta_input"> años </div>
-                  <div class="d-flex flex-row perfil_editable"> <b class="bold">Estatura: </b> <div id="perfil_altura"></div>  <input type="text" id="perfil_mod_estatura" class="sistema_cuenta_input"> m </div>
-                  <div class="d-flex flex-row perfil_editable"> <b class="bold">Peso: </b> <div id="perfil_peso"></div>  <input type="text" id="perfil_mod_peso" class="sistema_cuenta_input"> kg</div>
-                  <a href="#" id="sistema_p_confirmar" class="align-self-center">Confirmar cambios</a>
-              </div>
-              <a href="#" class="sistema_p_editar flex-fill">EDITAR</a> 
-      </div>
-      <div id="sistema_p_iz_abajo" class="d-flex justify-content-center align-items-center">
-          <div class="d-flex flex-column justify-content-center">
-              <div class="d-flex flex-row align-items-end">
-                  <div id="sistema_p_ejericios" class="d-flex flex-column">
-                      <div>ENTRENAMIENTOS</div>
-                      <div>COMPLETADOS</div>
-                  </div>
-                  <div id="sistemas_p_numero"> 1242 </div>
-                  <div id="sistemas_p_numerogris"> /1450  </div>
-              </div>
-              <div>
-                  <div class="progress">
-                      <div class="progress-bar" id="barra_entrenamientos" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-              </div>
-          </div>
-          <div class="sistema_lineadiv"></div>
-          <div class="d-flex flex-column">
-              <div id="sistema_p_etapa"> ETAPA 2/10</div>
-              <div id="sistema_p_etapanombre"> COMPETITIVA </div>
-              <div class="progress">
-                  <div class="progress-bar" id="barra_etapa" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div id="sistema_p_der" class="d-flex flex-column justify-content-center">
-      <div id="sistema_p_creditoimg"></div> 
-      <div id="sistema_p_numcredito">**** **** **** 4155</div>
-      <div id="sistema_p_fechacredito" class="d-flex flex-row">
-          <div class="d-flex flex-column">
-              <div> FECHA </div>
-              <div> CAD. </div>
-          </div>
-          <div id="sistema_p_fechacredito_cad"> 01/19 </div>
-      </div>
-      <a href="#" id="sistema_p_botoncredito" class="align-self-center d-flex flex-column justify-content-center"> Cambiar forma de pago </a>
-  </div>
+<div class="sistema_contenido d-flex flex-column">
+    <input type="hidden" class="hidden_user" value="<%= current_user.id %>">
+    <!-- POPUP AGREGAR TARJETA -->
+    <div id="sistema_cuenta_agregartarjeta" class="flex-column justify-content-between"> 
+        <div class="d-flex flex-column">
+            <div class="sistema_cuenta_cerrar align-self-end"></div>
+            <div id="sistema_cuenta_agregartarjeta_top" class="d-flex flex-row justify-content-between align-items-start">
+                <div class="sistema_cuenta_marcanueva"></div>
+                <div class="d-flex flex-column">
+                    <input class="sistema_cuenta_input" id="cuenta_csv" placeholder="CSV">
+                    <p class="cuenta_input_label"> CSV </p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="sistema_cuenta_agregartarjeta_mid">
+            <input class="sistema_cuenta_input" id="cuenta_num" placeholder="NÚMERO DE TARJETA">
+            <p class="cuenta_input_label input-credit-card"> NÚMERO DE TARJETA </p>
+        </div>
+        <div id="sistema_cuenta_agregartarjeta_bot" class="d-flex flex-row justify-content-between align-items-end">
+            <div id="cuenta_nom" class="d-flex flex-column">
+                <input class="sistema_cuenta_input" id="cuenta_nombre"  placeholder="NOMBRE EN LA TARJETA">
+                <p class="cuenta_input_label"> NOMBRE EN LA TARJETA </p>
+            </div>
+            <div id="cuenta_fecha" class="d-flex flex-column">
+                <input class="sistema_cuenta_input" id="cuenta_fechatxt" placeholder="MES/AÑO">
+                <p class="cuenta_input_label"> FECHA DE VENCIMIENTO </p>
+            </div>
+        </div>
+        <div class="sistema_p_botoncredito d-flex flex-row align-items-center justify-content-center align-self-center">AGREGAR TARJETA</div>
+    </div>
+    <div class="sistema_cuenta_elige d-flex flex-row"> ELIGE O AGREGA TARJETA DE CRÉDITO / CUENTA DE PAYPAL </div>
+    <!-- CONTENIDO -->
+    <div id="sistema_cuenta_tarjetas" class="d-flex align-items-center justify-content-between">
+        <!-- TARJETAS -->
+        <div class="sistema_cuenta_tarjetas_division d-flex align-items-center">
+            <% @cards.each do |card| %>
+                <!-- TARJETA -->
+                <div class="sistema_cuenta_tarjeta d-flex flex-column justify-content-between <%= if card.default == 1 then "sistema_cuenta_active" end %>">
+                    <input type="hidden" class="hidden_card" value="<%= card.id %>">
+                    <div class="sistema_cuenta_borrar"></div>
+                    <% if card.brand == "visa" %>
+                    <div><%= image_tag("visa", class: "sistema_cuenta_marca") %></div> 
+                    <% else %>
+                    <div><%= image_tag("mastercard", class: "sistema_cuenta_marca") %></div> 
+                    <% end %>
+                    <div class="sistema_cuenta_numt"> **** **** **** <%= card.last_digits %></div>
+                    <div class="d-flex flex-row">
+                        <div class="sistema_cuenta_fechatxt d-flex flex-column">
+                            <div> FECHA </div>
+                            <div> CAD. </div>
+                        </div>
+                        <div class="sistema_cuenta_num"> <%= card.exp_month %>/<%= card.exp_year %></div>
+                    </div> 
+                    <div class="sistema_cuenta_circulo <%= if card.default == 1 then "sistema_cuenta_circuloactive" end %>"></div>
+                </div>
+            <% end %>
+            
+
+            <!-- BOTON AGREGAR -->
+            <div class="sistema_cuenta_agregar"></div>
+        </div>
+        <!-- INFO FACTURACION -->
+        <div class="sistema_cuenta_tarjetas_division d-flex align-items-center justify-content-end">
+            <div class="sistema_cuenta_contenedorfacturacion d-flex flex-column">
+                <div class="sistema_cuenta_facturacion_texto" id="sistema_cuenta_facturacion_texto_plan">PLAN MENSUAL</div>
+                <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit">MONTO A COBRAR: <div class="sistema_cuenta_facturacion_texto_var">$150 M.N.</div></div>
+                <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit">FECHA DE FACTURACIÓN: <div class="sistema_cuenta_facturacion_texto_var"> 20/SEPT/2019 </div></div>
+            </div>
+        </div>
+        
+
+    </div>
+
+    <div class="sistema_cuenta d-flex flex-column">
+        <div class="sistema_cuenta_detalles d-flex flex-row align-items-center">
+            <div class="sistema_cuenta_estado d-flex align-items-center">DETALLES DE CUENTA</div>
+            <div class="sistema_cuenta_estadotxt d-flex">
+                <div class="sistema_cuenta_estadotxt_sus d-flex ">
+                    <div> ESTADO </div>
+                    <div> SUSCRIPCIÓN:</div>
+                </div>
+                <div class="sistema_cuenta_estadoa"> ACTIVA </div>
+            </div>
+        </div>
+        <div class="sistema_cuenta_datos d-flex flex-row">
+            <div class="sistema_cuenta_datosiz d-flex flex-column justify-content-around">
+                <div class="sistema_cuenta_info d-flex"><b>Correo electrónico: </b> <div id="cuenta_correo"><%= current_user.email %></div></div>
+                <div class="sistema_cuenta_info d-flex"><b>Número telefónico: </b> <div id="cuenta_nums"><%= current_user.user_information.phone %></div> </div>
+                <div class="sistema_cuenta_info d-flex"><b>Contraseña: </b> <div id="cuenta_pass">**********</div> </div>
+            </div>
+            <div class="sistema_cuenta_datosder d-flex flex-column justify-content-around">
+                <div class="sistema_cuenta_datos_editar" id="sistema_cuenta_datos_editar_correo">Cambiar correo electrónico</div>
+                <div class="sistema_cuenta_datos_editar" id="sistema_cuenta_datos_editar_num">Cambiar número teléfonico</div>
+                <div class="sistema_cuenta_datos_editar" id="sistema_cuenta_datos_editar_pass">Cambiar de contraseña</div>
+            </div>
+            
+        </div>
+        <div class="sistema_cuenta_cancelar"> <a id="sistema_cuenta_cancelar_txt">Cancelar subscripción </a></div>
+    </div>
 </div>

@@ -1,11 +1,7 @@
 <div class="subbanners_sistema_menu">
-    <div style="background-color:#3e3e3e;" class="sistema_banner"></div>
     <div style="background-color:#202020;" class="sistema_banner d-flex flex-row align-items-center">
         <div class="sistema_icono"></div>
         <h2>DASHBOARD</h2>
-        <% if user_signed_in? %>
-        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary") %> 
-        <% end %>
     </div>
 </div>
 <div style="padding: 0vw 2vw;" class="sistema_db_container container-fluid">

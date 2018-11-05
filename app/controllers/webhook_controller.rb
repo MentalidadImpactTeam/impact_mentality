@@ -33,4 +33,10 @@ class WebhookController < ApplicationController
 
     render status: 200
   end
+
+  def paypal_payment
+    data = JSON.parse(request.body.read)
+
+    render status: 200
+  end
 end

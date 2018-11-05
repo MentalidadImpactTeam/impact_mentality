@@ -16,3 +16,5 @@
 //= require dashboard
 //= require routines
 //= require accounts
+//= require profiles
+//= require cleave.min

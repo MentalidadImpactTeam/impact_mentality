@@ -982,3 +982,44 @@ code {
     box-shadow: 0px 0px 8px red;
     background-color: Red;
 }
+
+#Terminar_modal {
+    background-color: white;
+    transition: all .5s;
+}
+
+.terminar_titulo h1 {
+    font-size: 50px;
+    margin: 15px 0;
+}
+
+.terminar_mensaje {
+    font-weight: lighter;
+    margin: 25px 0;
+}
+
+#terminar_btn {
+    background-color: #b52434;
+    transform: skew(-10deg);
+    color: white;
+    font-family: Lato;
+    border: none;
+    padding: 15px 22px;
+    margin: 25px 0px;
+    font-size: 20px;
+    animation-delay: 1s;
+    transition: all .5s;
+    cursor: pointer;
+}
+
+#terminar_btn:hover {
+    background-color: red;
+}
+
+.delay_animacion_full {
+    animation-delay: 1s;
+}
+
+.delay_animacion_half {
+    animation-delay: .5s;
+}

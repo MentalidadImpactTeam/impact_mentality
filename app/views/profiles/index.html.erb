@@ -1,0 +1,63 @@
+<div class="subbanners_sistema_menu">
+    <div style="background-color:#202020;" class="sistema_banner d-flex flex-row align-items-center">
+        <div class="sistema_icono"></div>
+        <h2>PERFIL</h2>
+    </div>
+</div>
+<div class="sistema_contenido d-flex">
+    <input type="hidden" class="hidden_user" value="<%= current_user.id %>">
+    <div id="sistema_p_iz" class="d-flex flex-column justify-content-between">
+        <div id="sistema_p_iz_arriba" class="d-flex align-items-center">
+        <div id="sistema_p_img"> </div>
+        <div id="sistema_p_texto" class="d-flex flex-column">
+            <div id="sistema_p_texto_titulo"><%= current_user.user_information.first_name.capitalize %> <%= current_user.user_information.last_name.capitalize %></div>
+            <div><i><%= current_user.email %></i> </div>
+            <div class="d-flex flex-row perfil_editable"> <b class="bold">Edad: </b> <div id="perfil_edad"></div> años </div>
+            <div class="d-flex flex-row perfil_editable"> <b class="bold">Estatura: </b> <div id="perfil_altura"><%= current_user.user_information.height %></div>   m </div>
+            <div class="d-flex flex-row perfil_editable"> <b class="bold">Peso: </b> <div id="perfil_peso"><%= current_user.user_information.weight %></div> kg</div>
+        </div>
+        <a href="#" class="sistema_p_editar flex-fill">EDITAR</a> 
+        </div>
+        <div id="sistema_p_iz_abajo" class="d-flex justify-content-center align-items-center">
+            <div class="d-flex flex-column justify-content-center">
+                <div class="d-flex flex-row align-items-end">
+                    <div id="sistema_p_ejericios" class="d-flex flex-column">
+                        <div>ENTRENAMIENTOS</div>
+                        <div>COMPLETADOS</div>
+                    </div>
+                    <div id="sistemas_p_numero"> <%= @trainings_complete %> </div>
+                    <div id="sistemas_p_numerogris"> /<%= @trainings %>  </div>
+                </div>
+                <div>
+                    <div class="progress">
+                        <div class="progress-bar" id="barra_entrenamientos" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="sistema_lineadiv"></div>
+            <div class="d-flex flex-column">
+                <div id="sistema_p_etapa"> ETAPA 2/10</div>
+                <div id="sistema_p_etapanombre"> <%= profile_stage_name(current_user.user_information.stage_id) %> </div>
+                <div class="progress">
+                    <div class="progress-bar" id="barra_etapa" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="sistema_p_der" class="d-flex flex-column justify-content-center">
+        <% if @card.brand == "visa" %>
+        <div><%= image_tag("visa", id: "sistema_p_creditoimg") %></div> 
+        <% else %>
+        <div><%= image_tag("mastercard", id: "sistema_p_creditoimg") %></div> 
+        <% end %>
+        <div id="sistema_p_numcredito">**** **** **** <%= @card.last_digits %></div>
+        <div id="sistema_p_fechacredito" class="d-flex flex-row">
+            <div class="d-flex flex-column">
+                <div> FECHA </div>
+                <div> CAD. </div>
+            </div>
+            <div id="sistema_p_fechacredito_cad"> <%= @card.exp_month %>/<%= @card.exp_year %> </div>
+        </div>
+        <a href="#" class="sistema_p_botoncredito align-self-center d-flex flex-column justify-content-center"> Cambiar forma de pago </a>
+    </div>
+</div>

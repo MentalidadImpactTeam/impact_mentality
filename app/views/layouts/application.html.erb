@@ -6,6 +6,7 @@
 
     <!-- Lastest Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.conekta.io/js/latest/conekta.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- Latest compiled and minified CSS -->
@@ -78,8 +79,8 @@
             <%= link_to image_tag("ImpactMentalityIcon-01", class: "sistema_left_icon", width: "60px" ), root_path %>
             <%= image_tag("MentalidadImpact-01", class: "sistema_descripcion_menu",  width: "120px" ) %>
         </div>
-        <div class="seccion_menu_left burger_menu">
-            <%= image_tag("iconoLeftMenu-01", class: "sistema_left_icon") %>
+        <div class="seccion_menu_left">
+            <%= image_tag("iconoLeftMenu-01", class: "burger_menu sistema_left_icon") %>
             <h3 class="sistema_descripcion_menu">Menú</h3>
         </div>
         <div class="seccion_menu_left">
@@ -95,12 +96,17 @@
             <h3 class="sistema_descripcion_menu">Calendario</h3>
         </div>
         <div class="seccion_menu_left">
-            <%= link_to image_tag("iconoLeftMenu-05", class: "sistema_left_icon"), accounts_path %>
+            <%= link_to image_tag("iconoLeftMenu-05", class: "sistema_left_icon"), profiles_path %>
             <h3 class="sistema_descripcion_menu">Perfil</h3>
         </div>
         <div class="seccion_menu_left">
-            <%= image_tag("iconoLeftMenu-06", class: "sistema_left_icon") %>
-            <h3 class="sistema_descripcion_menu">Información</h3>
+            <%= link_to image_tag("iconoLeftMenu-06", class: "sistema_left_icon"), accounts_path %>
+            <h3 class="sistema_descripcion_menu">Cuenta</h3>
+        </div>
+        <div  id="sistema_cerrarsesionalign">
+            <%= link_to destroy_user_session_path, method: :delete, style: "color: white;" do %> 
+                <div class="sistema_descripcion_menu" id="sistema_cerrarsesion">Cerrar sesión</div>
+            <% end %>
         </div>
     </div>
     <!--  END MENU desktop -->

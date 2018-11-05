@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  protect_from_forgery with: :null_session
   before_action :configure_permitted_parameters
   before_action :catalogos_registro, only: [ :create, :new ]
   layout "devise"
@@ -25,6 +26,35 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user_conekta.token = params["user"]["customer_token"]
     user_conekta.save
 
+    user.user_information.weight = user.user_information.weight.remove("kg").squish
+
+    if params['user']['user_information_attributes']['next_competition'].present?
+      difference = TimeDifference.between(Time.now.to_date, params['user']['user_information_attributes']['next_competition'].to_date).in_general
+      if difference[:months] >= 6
+        user.user_information.stage_id = 1
+        user.user_information.stage_week = 1
+        user.user_information.save
+      else
+        stage = 7
+        week = 1
+        if difference[:weeks] == 0
+          stage -= (difference[:months])
+        else
+          stage -= (difference[:months])
+          week = 5 - difference[:weeks]
+          week = 1 if week == 0
+        end
+
+        user.user_information.stage_id = stage
+        user.user_information.stage_week = week
+        user.user_information.save
+      end
+    else
+      user.user_information.stage_id = 1
+      user.user_information.stage_week = 1
+      user.user_information.save
+    end
+
     name = user.user_information.first_name.squish + " " + user.user_information.last_name.squish
     customer = Conekta::Customer.create({
       :name => name,
@@ -42,6 +72,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     subscription = customer.create_subscription({
       :plan => "mensual"
     })
+
+    redirect_to active_confirmation_path
   end
 
   # GET /resource/edit
@@ -50,9 +82,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    if current_user.update(user_params)
+      render plain: "OK"
+    else
+      render plain: "NO"
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -73,8 +109,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def catalogos_registro
-    @heights = [['Estatura', 'vacio'],['-1.00m', '-1'],['1.00m', '1'],['1.10m', '1.1'],['1.20m', '1.2'],['1.30m', '1.3'],['1.40m', '1.4'],['1.50m', '1.5'],
-    ['1.60m', '1.6'],['1.70m', '1.7'],['1.80m', '1.8'],['1.90m', '1.9'],['2.00m', '2'],['2.10m', '2.1'],['2.20m', '2.2'],['2.30m', '2.3'],['2.40m', '2.4'],['+2.40m', '+2.4']]
+    @heights = [['Estatura', 'vacio'],['-1.00m', '-1'],['1.00m', '1.00'],['1.10m', '1.10'],['1.20m', '1.20'],['1.30m', '1.30'],['1.40m', '1.40'],['1.50m', '1.50'],
+    ['1.60m', '1.60'],['1.70m', '1.70'],['1.80m', '1.80'],['1.90m', '1.90'],['2.00m', '2.00'],['2.10m', '2.10'],['2.20m', '2.20'],['2.30m', '2.30'],['2.40m', '2.40'],['+2.40m', '+2.4']]
     @sports = [['Deporte', 'vacio'],['Multi-deporte', 'Multi'],['Futbol Americano', 'Futbol'],['Balocensto', 'Balocensto'],['Beisbol', 'Beisbol'],['Soccer', 'Soccer'],
     ['Hockey', 'Hockey'],['Hockey Sobre Pasto', 'Hockeycpasto'],['Atletismo', 'Atletismo'],['Golf', 'Golf'],['Tennis', 'Tennis'],['Tennis Country', 'TennisC'],
     ['Deporte de Combate', 'Combate'],['Rugby', 'Rugby'],['Lacrosse', 'Lacrosse'],['Natación', 'Natación'],['Voleibol', 'Voleibol'],['Lucha Olímpica', 'LuchaOli'],
@@ -85,6 +121,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:customer_token, :user_information_attributes => [:user_type_id, :first_name, :last_name, :birth_date, :genre, :height, :weight, :sport, :position, :next_competition, :experience, :history_injuries, :pay_day, :pay_program, :goal_1, :goal_2]])
+  end
+
+  def user_params
+    params.require(:user).permit(:email)
   end
 
   # protected

@@ -2,6 +2,10 @@
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
   layout "devise"
+
+  def active_confirmation
+  end
+
   # GET /resource/confirmation/new
   # def new
   #   super

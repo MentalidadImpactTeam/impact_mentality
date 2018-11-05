@@ -1,6 +1,7 @@
 question_values = ""
 RoutinesController = Paloma.controller('Routines')
 RoutinesController::index = ->
+  metodos_menu()
   if $(".hidden_modal").val() == "true"
     swal.mixin(
       input: 'number'

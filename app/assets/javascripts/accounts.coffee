@@ -1,46 +1,322 @@
+Conekta.setPublicKey("key_HcFQfz7edHvGnSxP8cettSA");
+
 AccountController = Paloma.controller('Accounts')
 AccountController::index = ->
-  $('#perfil_mod_edad').hide()
-  $('#perfil_mod_estatura').hide()
-  $('#perfil_mod_peso').hide()
-  $('#sistema_p_confirmar').hide()
-  $('#perfil_edad').html '22'
-  $('#perfil_altura').html '1.60'
-  $('#perfil_peso').html '66'
-  ed = document.getElementById('perfil_edad').value
-  es = document.getElementById('perfil_altura').value
-  pe = document.getElementById('perfil_peso').value
-  $('.sistema_p_editar ').on 'click', (e) ->
-    e.preventDefault()
-    $('.sistema_p_editar').hide()
-    $('#perfil_edad').hide()
-    $('#perfil_altura').hide()
-    $('#perfil_peso').hide()
-    $('#perfil_mod_edad').attr 'placeholder', ed
-    $('#perfil_mod_edad').show()
-    $('#perfil_mod_estatura').attr 'placeholder', es
-    $('#perfil_mod_estatura').show()
-    $('#perfil_mod_peso').attr 'placeholder', pe
-    $('#perfil_mod_peso').show()
-    $('#sistema_p_confirmar').show()
+  metodos_menu()
+  account_open_card_modal()
+  account_add_card()
+  account_update()
+  account_cancelar_suscripcion()
+
+  numtarjeta = new Cleave('#cuenta_num',
+    creditCard: true
+    onCreditCardTypeChanged: (type) ->
+      # update UI ...
+      return
+  )
+  csv = new Cleave('#cuenta_csv',
+    numeral: true
+    numeralIntegerScale: 3)
+  fecha = new Cleave('#cuenta_fechatxt',
+    date: true
+    datePattern: [
+      'm'
+      'y'
+    ])
+
+
+account_open_card_modal = ->
+  agregartar = $('#sistema_cuenta_agregartarjeta')
+  $('.sistema_cuenta_agregar').on 'click', (event) ->
+    swal(
+      title: 'AGREGAR MÉTODO DE PAGO'
+      text: 'Elige entre tarjeta de crédito o una cuenta de Paypal'
+      type: 'question'
+      showCancelButton: true
+      showConfirmButton: true
+      confirmButtonColor: '#3085d6'
+      cancelButtonColor: '#d33'
+      cancelButtonText: 'Cuenta de Paypal'
+      confirmButtonText: 'Tarjeta de crédito'
+      showCloseButton: true).then (result) ->
+      if result.value
+        agregartar.css 'display', 'flex'
+      else if result.dismiss == swal.DismissReason.cancel
+        $('<div class="sistema_cuenta_tarjeta d-flex flex-column justify-content-between" id="sistema_cuenta_paypal"> <div class="sistema_cuenta_borrar"></div><div class="sistema_cuenta_circulo"></div></div>').insertBefore '.sistema_cuenta_agregar'
+        $('.sistema_cuenta_circulo').click ->
+          account_card_default(this)
+          
+        $('.sistema_cuenta_borrar').click ->
+          if $('.sistema_cuenta_tarjeta')[1]
+            $(this).parent().remove()
+            if $(this).parent().hasClass('sistema_cuenta_active')
+              $('.sistema_cuenta_tarjeta:first').addClass 'sistema_cuenta_active'
+              $('.sistema_cuenta_circulo:first').addClass 'sistema_cuenta_circuloactive'
+            if $('.sistema_cuenta_tarjeta').length < 2
+              $('.sistema_cuenta_agregar').css 'display', 'flex'
+            else
+              $('.sistema_cuenta_agregar').css 'display', 'none'
+          return
+        if $('.sistema_cuenta_tarjeta').length < 2
+          $('.sistema_cuenta_agregar').css 'display', 'flex'
+        else
+          $('.sistema_cuenta_agregar').css 'display', 'none'
+      return
     return
-  $('#sistema_p_confirmar').on 'click', (e) ->
-    e.preventDefault()
-    ednueva = document.getElementById('perfil_mod_edad').value
-    esnueva = document.getElementById('perfil_mod_estatura').value
-    penueva = document.getElementById('perfil_mod_peso').value
-    $('#perfil_mod_edad').hide()
-    $('#perfil_mod_estatura').hide()
-    $('#perfil_mod_peso').hide()
-    $('#sistema_p_confirmar').hide()
-    ed = ednueva
-    es = esnueva
-    pe = penueva
-    $('.sistema_p_editar').show()
-    $('#perfil_edad').show()
-    $('#perfil_altura').show()
-    $('#perfil_peso').show()
-    $('#perfil_edad').html ednueva
-    $('#perfil_altura').html esnueva
-    $('#perfil_peso').html penueva
+  
+  if $('.sistema_cuenta_tarjeta').length >= 2
+    $('.sistema_cuenta_agregar').css 'display', 'none'
+  $('body').keydown (event) ->
+    if event.which == 27
+      agregartar.css 'display', 'none'
+      $('#cuenta_csv').val ''
+      $('#cuenta_num').val ''
+      $('#cuenta_nombre').val ''
+      $('#cuenta_fechatxt').val ''
     return
+  
+  $('.sistema_cuenta_cerrar').on 'click', (event) ->
+    agregartar.css 'display', 'none'
+    $('#cuenta_csv').val ''
+    $('#cuenta_num').val ''
+    $('#cuenta_nombre').val ''
+    $('#cuenta_fechatxt').val ''
+    return
+  $('.sistema_cuenta_borrar').click ->
+    if $('.sistema_cuenta_tarjeta')[1]
+      $(this).parent().remove()
+      if $(this).parent().hasClass('sistema_cuenta_active')
+        $('.sistema_cuenta_tarjeta:first').addClass 'sistema_cuenta_active'
+        $('.sistema_cuenta_circulo:first').addClass 'sistema_cuenta_circuloactive'
+      if $('.sistema_cuenta_tarjeta').length < 2
+        $('.sistema_cuenta_agregar').css 'display', 'flex'
+      else
+        $('sistema_cuenta_agregar').css 'display', 'none'
+    return
+  
+  $('.sistema_cuenta_circulo').click ->
+    account_card_default(this)
+    return
+
+account_add_card = ->
+  agregartar = $('#sistema_cuenta_agregartarjeta')
+  $('.sistema_p_botoncredito').click ->
+    csvv = $('#cuenta_csv').val()
+    numv = $('#cuenta_num').val()
+    nombrev = $('#cuenta_nombre').val()
+    fechav = $('#cuenta_fechatxt').val()
+    numcont = numv.length
+    numcont = numcont - 6
+    cont = 0
+    while cont <= numcont
+      numv = numv.substr(0, cont) + numv.substr(cont).replace(/[\S]/, '*')
+      cont++
+
+    ### EXITO ###
+
+    if csvv != '' and numv != '' and nombrev != '' and fechav != ''
+      agregartar.css 'display', 'none'
+      num = $('#cuenta_num').val()
+      fecha = $('#cuenta_fechatxt').val()
+      
+      conektaSuccessResponseHandler = (token) ->
+        $.ajax
+            type: "post"
+            url: "/accounts/add_card"
+            data: customer_token: token.id, last_digits: numv.substring(numv.length - 4), exp_month: fechav.split("/")[0], exp_year: fechav.split("/")[1]
+            dataType: "text",
+            success: (data) ->
+              $('<div class="sistema_cuenta_tarjeta d-flex flex-column"> <div class="sistema_cuenta_borrar"></div> <div class="sistema_cuenta_marca"></div> <div class="sistema_cuenta_numt">' + numv + '</div> <div class="d-flex flex-row"> <div class="sistema_cuenta_fechatxt d-flex flex-column"> <div> FECHA </div> <div> CAD. </div> </div> <div class="sistema_cuenta_num">' + fecha + '</div> </div> <div class="sistema_cuenta_circulo"></div> </div>').insertBefore '.sistema_cuenta_agregar'
+              $('.sistema_cuenta_circulo').click ->
+                account_card_default(this)
+              $('.sistema_cuenta_borrar').click ->
+                if $('.sistema_cuenta_tarjeta')[1]
+                  $(this).parent().remove()
+                  if $(this).parent().hasClass('sistema_cuenta_active')
+                    $('.sistema_cuenta_tarjeta:first').addClass 'sistema_cuenta_active'
+                    $('.sistema_cuenta_circulo:first').addClass 'sistema_cuenta_circuloactive'
+                  if $('.sistema_cuenta_tarjeta').length < 2
+                    $('.sistema_cuenta_agregar').css 'display', 'flex'
+                  else
+                    $('.sistema_cuenta_agregar').css 'display', 'none'
+                return
+              if $('.sistema_cuenta_tarjeta').length < 2
+                $('.sistema_cuenta_agregar').css 'display', 'flex'
+              else
+                $('.sistema_cuenta_agregar').css 'display', 'none'
+
+              ### RESET VALUES ###
+
+              $('#cuenta_csv').val ''
+              $('#cuenta_num').val ''
+              $('#cuenta_nombre').val ''
+              $('#cuenta_fechatxt').val ''
+        return
+
+      conektaErrorResponseHandler = (response) ->
+        swal
+          type: 'error'
+          title: 'No se puede agregar su tarjeta'
+          text: response.message_to_purchaser
+          confirmButtonText: 'Entendido'
+        return
+      
+      tokenParams = 'card':
+        'number':num
+        'name': nombrev
+        'exp_year': fechav.split("/")[1]
+        'exp_month': fechav.split("/")[0]
+        'cvc': csvv
+      Conekta.Token.create tokenParams, conektaSuccessResponseHandler, conektaErrorResponseHandler
+    else
+      swal
+        type: 'error'
+        title: 'No se puede agregar su tarjeta'
+        text: 'Hay un campo vacío'
+        confirmButtonText: 'Entendido'
+    return
+
+account_cancelar_suscripcion = ->
+  $('#sistema_cuenta_cancelar_txt').click ->
+    swal
+      title: '¿Estas seguro de cancelar tu suscripción?'
+      footer: 'Al cancelar tu suscripción, perderdas acceso a tus rutinas anteriores al terminar el mes'
+      type: 'warning'
+      showCancelButton: true
+      confirmButtonColor: '#3085d6'
+      cancelButtonColor: '#d33'
+      cancelButtonText: 'No, quiero seguir suscrito'
+      confirmButtonText: 'Sí, quiero cancelar mi suscripción'
+      showCloseButton: true
+    return
+
+account_update = ->
+  ### CORREO ###
+  $('#sistema_cuenta_datos_editar_correo').click ->
+    swal(
+      input: 'text'
+      title: 'Cambiar correo electrónico'
+      text: 'Escribe tu nuevo correo electrónico'
+      inputAttributes: autocapitalize: 'off'
+      showCancelButton: true
+      confirmButtonText: 'Guardar'
+      showCloseButton: true).then (result) ->
+        if result.value
+          $.ajax
+            type: "PUT"
+            url: "/users"
+            data: user: { email: result.value }
+            dataType: "text",
+            success: (data) ->
+              swal
+                type: 'success'
+                title: 'Se le ha enviado un correo de confirmación'
+                text: 'Revise su correo electrónico para encontrar el correo de confirmación para autorizar el cambio de correo electrónico'
+                confirmButtonText: 'Entendido'
+        else
+          swal
+            type: 'error'
+            title: 'No se introdujo nuevo correo electrónico'
+            confirmButtonText: 'Entendido'
+    return
+
+  ### TELEFONO ###
+
+  $('#sistema_cuenta_datos_editar_num').click ->
+    swal(
+      input: 'text'
+      title: 'Cambiar número telefónico'
+      text: 'Escribe tu nuevo número telefónico'
+      inputAttributes: autocapitalize: 'off'
+      showCancelButton: true
+      confirmButtonText: 'Guardar'
+      showCloseButton: true).then (result) ->
+        numnuevo = result.value
+        if result.value
+          user = $(".hidden_user").val()
+          $.ajax
+            type: "PATCH"
+            url: "/profiles/" + user
+            data: phone: numnuevo
+            dataType: "json",
+            success: (data) ->
+              return
+          swal
+            type: 'success'
+            title: 'Su número telefónico ha sido cambiado'
+            confirmButtonText: 'Entendido'
+          $('#cuenta_nums').html numnuevo
+        else
+          swal
+            type: 'error'
+            title: 'No se introdujo número telefónico'
+            confirmButtonText: 'Entendido'
+        return
+    return
+
+  ### PASSWORD ###
+
+  $('#sistema_cuenta_datos_editar_pass').click ->
+    swal(
+      html: '<div> Escribe tu contraseña actual </div>' + '<input type="password" id="passactual" name=[user][current_password] class="swal2-input">' + '<div> Escribe tu nueva contraseña </div>' + '<input type="password" id="passnuevo" name=[user][password] class="swal2-input">' + '<div> Repetir nueva contraseña </div>' + '<input type="password" id="passnuevo2" name=[user][password_confirmation] class="swal2-input">'
+      title: 'Cambiar contraseña'
+      inputAttributes: autocapitalize: 'off'
+      showCancelButton: true
+      confirmButtonText: 'Guardar'
+      showCloseButton: true).then (result) ->
+        passactual = document.getElementById('passactual').value
+        passnuevo = document.getElementById('passnuevo').value
+        passnuevo2 = document.getElementById('passnuevo2').value
+        if passactual == '' or passnuevo == '' or passnuevo2 == ''
+          swal
+            type: 'error'
+            title: 'Su contraseña no pudo ser cambiada'
+            text: 'Dejó un campo vacío'
+            confirmButtonText: 'Entendido'
+        else if passnuevo == passactual
+          swal
+            type: 'error'
+            title: 'Su contraseña no pudo ser cambiada'
+            text: 'La contraseña actual es igual a la contraseña nueva, intente con otra contraseña'
+            confirmButtonText: 'Entendido'
+        else
+          $.ajax
+            type: "PATCH"
+            url: "/users/password"
+            data: user: { current_password: passactual, password: passnuevo, password_confirmation: passnuevo2 }
+            dataType: "text",
+            success: (data) ->
+              if data == "true"
+                swal
+                  type: 'success'
+                  title: 'Su contraseña ha sido cambiada'
+                  confirmButtonText: 'Entendido'
+                $('#cuenta_pass').html '**********'
+              else if data == "incorrect_password"
+                swal
+                  type: 'error'
+                  title: 'Su contraseña no pudo ser cambiada'
+                  text: 'Su contraseña actual no coincide'
+                  confirmButtonText: 'Entendido'
+              else
+                swal
+                  type: 'error'
+                  title: 'Su contraseña no pudo ser cambiada'
+                  text: 'Las contraseñas nuevas no coinciden'
+                  confirmButtonText: 'Entendido'
+              return
+        return
+    return
+
+account_card_default = (obj) ->
+  $this = $(obj)
+  $.ajax
+    type: "POST"
+    url: "/accounts/card_default"
+    data: id: $this.closest(".sistema_cuenta_tarjeta").find(".hidden_card").val()
+    dataType: "text",
+    success: (data) ->
+      $('.sistema_cuenta_circuloactive').removeClass 'sistema_cuenta_circuloactive'
+      $('.sistema_cuenta_active').removeClass 'sistema_cuenta_active'
+      $this.parent().addClass 'sistema_cuenta_active'
+      $this.addClass 'sistema_cuenta_circuloactive'
