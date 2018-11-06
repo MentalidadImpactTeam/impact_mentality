@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :accounts do
     collection do 
       post "add_card" => 'accounts#add_card'
+      post "delete_card" => 'accounts#delete_card'
       post "card_default" => 'accounts#card_default'
     end
   end

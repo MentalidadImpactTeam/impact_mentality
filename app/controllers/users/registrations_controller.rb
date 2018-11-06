@@ -50,6 +50,35 @@ class Users::RegistrationsController < Devise::RegistrationsController
         user.user_information.save
       end
     else
+      first_day_routine = Date.today
+      # 143 dias, 6 etapas de 4 semanas cada una, con 6 dias de rutina por semana
+      last_day_routine = first_day_routine + 143
+      
+      week = 1
+      stage = 1
+      day = 1
+      for date in first_day_routine..last_day_routine
+        user_routine = UserRoutine.new
+        user_routine.user_id = current_user.id
+        user_routine.stage_id = stage
+        user_routine.stage_week = week
+        user_routine.date = date
+        user_routine.done = 0
+        user_routine.save
+
+        day += 1
+        
+        if day == 7
+          day = 1
+          week += 1
+          if week == 5
+            week = 1
+            stage += 1
+          end
+        end
+      end
+
+
       user.user_information.stage_id = 1
       user.user_information.stage_week = 1
       user.user_information.save
@@ -65,7 +94,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       }]
     })
 
-    user.customer_token = customer.id
+    user.customer_token = customer.payment_sources.first.id
     user.active = 1
     user.save
     

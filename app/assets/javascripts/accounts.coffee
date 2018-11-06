@@ -47,15 +47,7 @@ account_open_card_modal = ->
           account_card_default(this)
           
         $('.sistema_cuenta_borrar').click ->
-          if $('.sistema_cuenta_tarjeta')[1]
-            $(this).parent().remove()
-            if $(this).parent().hasClass('sistema_cuenta_active')
-              $('.sistema_cuenta_tarjeta:first').addClass 'sistema_cuenta_active'
-              $('.sistema_cuenta_circulo:first').addClass 'sistema_cuenta_circuloactive'
-            if $('.sistema_cuenta_tarjeta').length < 2
-              $('.sistema_cuenta_agregar').css 'display', 'flex'
-            else
-              $('.sistema_cuenta_agregar').css 'display', 'none'
+          account_card_delete($(this))
           return
         if $('.sistema_cuenta_tarjeta').length < 2
           $('.sistema_cuenta_agregar').css 'display', 'flex'
@@ -83,15 +75,7 @@ account_open_card_modal = ->
     $('#cuenta_fechatxt').val ''
     return
   $('.sistema_cuenta_borrar').click ->
-    if $('.sistema_cuenta_tarjeta')[1]
-      $(this).parent().remove()
-      if $(this).parent().hasClass('sistema_cuenta_active')
-        $('.sistema_cuenta_tarjeta:first').addClass 'sistema_cuenta_active'
-        $('.sistema_cuenta_circulo:first').addClass 'sistema_cuenta_circuloactive'
-      if $('.sistema_cuenta_tarjeta').length < 2
-        $('.sistema_cuenta_agregar').css 'display', 'flex'
-      else
-        $('sistema_cuenta_agregar').css 'display', 'none'
+    account_card_delete($(this))
     return
   
   $('.sistema_cuenta_circulo').click ->
@@ -123,23 +107,14 @@ account_add_card = ->
         $.ajax
             type: "post"
             url: "/accounts/add_card"
-            data: customer_token: token.id, last_digits: numv.substring(numv.length - 4), exp_month: fechav.split("/")[0], exp_year: fechav.split("/")[1]
-            dataType: "text",
+            data: customer_token: token.id
+            dataType: "json",
             success: (data) ->
-              $('<div class="sistema_cuenta_tarjeta d-flex flex-column"> <div class="sistema_cuenta_borrar"></div> <div class="sistema_cuenta_marca"></div> <div class="sistema_cuenta_numt">' + numv + '</div> <div class="d-flex flex-row"> <div class="sistema_cuenta_fechatxt d-flex flex-column"> <div> FECHA </div> <div> CAD. </div> </div> <div class="sistema_cuenta_num">' + fecha + '</div> </div> <div class="sistema_cuenta_circulo"></div> </div>').insertBefore '.sistema_cuenta_agregar'
+              $('<div class="sistema_cuenta_tarjeta d-flex flex-column"><input type="hidden" class="hidden_card" value="'+data["id"]+'"><div class="sistema_cuenta_borrar"></div> <div class="sistema_cuenta_marca"></div> <div class="sistema_cuenta_numt">' + numv + '</div> <div class="d-flex flex-row"> <div class="sistema_cuenta_fechatxt d-flex flex-column"> <div> FECHA </div> <div> CAD. </div> </div> <div class="sistema_cuenta_num">' + fecha + '</div> </div> <div class="sistema_cuenta_circulo"></div> </div>').insertBefore '.sistema_cuenta_agregar'
               $('.sistema_cuenta_circulo').click ->
                 account_card_default(this)
               $('.sistema_cuenta_borrar').click ->
-                if $('.sistema_cuenta_tarjeta')[1]
-                  $(this).parent().remove()
-                  if $(this).parent().hasClass('sistema_cuenta_active')
-                    $('.sistema_cuenta_tarjeta:first').addClass 'sistema_cuenta_active'
-                    $('.sistema_cuenta_circulo:first').addClass 'sistema_cuenta_circuloactive'
-                  if $('.sistema_cuenta_tarjeta').length < 2
-                    $('.sistema_cuenta_agregar').css 'display', 'flex'
-                  else
-                    $('.sistema_cuenta_agregar').css 'display', 'none'
-                return
+                account_card_delete($(this))
               if $('.sistema_cuenta_tarjeta').length < 2
                 $('.sistema_cuenta_agregar').css 'display', 'flex'
               else
@@ -320,3 +295,32 @@ account_card_default = (obj) ->
       $('.sistema_cuenta_active').removeClass 'sistema_cuenta_active'
       $this.parent().addClass 'sistema_cuenta_active'
       $this.addClass 'sistema_cuenta_circuloactive'
+
+account_card_delete = (obj) ->
+  swal(
+    title: 'ELIMINAR MÉTODO DE PAGO'
+    text: '¿Estas seguro de eliminar el metodo de pago?'
+    type: 'warning'
+    showCancelButton: true
+    showConfirmButton: true
+    confirmButtonColor: '#3085d6'
+    cancelButtonColor: '#d33'
+    cancelButtonText: 'Cancelar'
+    confirmButtonText: 'Aceptar'
+    showCloseButton: true).then (result) ->
+      if result.value
+        if $('.sistema_cuenta_tarjeta')[1]
+          $.ajax
+            type: "post"
+            url: "/accounts/delete_card"
+            data: id: obj.closest(".sistema_cuenta_tarjeta").find(".hidden_card").val()
+            dataType: "text",
+            success: (data) ->
+              obj.parent().remove()
+              if obj.parent().hasClass('sistema_cuenta_active')
+                $('.sistema_cuenta_tarjeta:first').addClass 'sistema_cuenta_active'
+                $('.sistema_cuenta_circulo:first').addClass 'sistema_cuenta_circuloactive'
+              if $('.sistema_cuenta_tarjeta').length < 2
+                $('.sistema_cuenta_agregar').css 'display', 'flex'
+              else
+                $('sistema_cuenta_agregar').css 'display', 'none'

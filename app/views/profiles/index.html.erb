@@ -58,6 +58,6 @@
             </div>
             <div id="sistema_p_fechacredito_cad"> <%= @card.exp_month %>/<%= @card.exp_year %> </div>
         </div>
-        <a href="#" class="sistema_p_botoncredito align-self-center d-flex flex-column justify-content-center"> Cambiar forma de pago </a>
+        <%= link_to "Cambiar forma de pago", accounts_path, class: "sistema_p_botoncredito align-self-center d-flex flex-column justify-content-center" %>
     </div>
 </div>
