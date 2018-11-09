@@ -1,5 +1,25 @@
+<div class="subbanners_sistema_menu">
+    <div style="background-color:#202020;" class="sistema_banner d-flex flex-row align-items-center">
+        <div class="sistema_icono"></div>
+        <h2>RUTINA</h2>
+    </div>
+</div>
+<% if @restday %>
+<div style="background-color: #191a1a;" class="container-fluid">
+        <div class="row">
+            <div class="bounceIn col-12">
+                <center>
+                    <img src="img/pillow.png" alt="">
+                </center>
+                <center>
+                    <p class="pillow_txt bounceIn">Hoy es día de descanso</p>
+                </center>
+            </div>
+        </div>
+    </div>
+<% else %>
 <!-- TABLA DE CAMBIOS -->
-<div id="sistema_rutina_cambio_table" class="animated flex-column justify-content-center align-items-center" >
+<div id="sistema_rutina_cambio_table" class="animated flex-column justify-content-center align-items-center" style="display: none;">
     <div id="tabla_container">
         <table class="tabla_ejercicios table-striped table-hover" data-category="0">
             <thead>
@@ -16,12 +36,6 @@
                 <td colspan="2">Lorem itsum rem its ate m arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom ausom au</td>
             </tr>
         </table>
-    </div>
-</div>
-<div class="subbanners_sistema_menu">
-    <div style="background-color:#202020;" class="sistema_banner d-flex flex-row align-items-center">
-        <div class="sistema_icono"></div>
-        <h2>RUTINA</h2>
     </div>
 </div>
 <div class="sistema_contenido d-flex flex-column">
@@ -102,6 +116,18 @@
                 <div class="sistema_r_siguientemovil">PREHABS</div>
             </div>
         </div>
+        <div style="background-color: #191a1a; display: none;" class="container-fluid" id="rutina_finalizada">
+            <div class="row">
+                <div class="bounceIn col-12">
+                    <center>
+                        <img src="img/gym.png" alt="" id="img_rutina_finalizada" style="width: 350px; display: none;">
+                    </center>
+                    <center>
+                        <p class="terminado_txt bounceIn" style="display: none;">Haz terminado tu rutina</p>
+                    </center>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- ABAJO -->
     <div class="sistema_r_abajo d-flex flex-column">
@@ -132,6 +158,8 @@
     </div>
     <% end %>
 </div>
+<% end %>
+
 
 <script>
         var tabla = $("#sistema_rutina_cambio_table");
@@ -157,8 +185,20 @@
 </script>
 
 <style>
-    .subbanners_sistema_menu {
-        width: 100%;
+    .pillow_txt {
+        font-size: 4vw;
+        color: white;
+        font-family: lato;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .terminado_txt {
+        font-size: 4vw;
+        color: white;
+        font-family: lato;
+        text-align: center;
+        font-weight: bold;
     }
     
     .sistema_banner h2 {

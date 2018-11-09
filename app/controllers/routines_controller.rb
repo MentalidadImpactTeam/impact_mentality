@@ -13,10 +13,11 @@ class RoutinesController < ApplicationController
         else
             @week_hash[4]["active"] = 1 
         end
-
+        today = Date.today
+        @restday = today.wday == 0 ? true : false
         @mostrar_modal = false
         routine = UserRoutine.find_by(user_id: current_user.id, date: Time.now.to_date)
-        if routine.blank?
+        if routine.blank? and !@restday
             @mostrar_modal = true
         else
             exercises = RoutineExercise.where(user_routine_id: routine.id)

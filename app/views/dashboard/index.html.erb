@@ -14,8 +14,8 @@
                         <div>COMPLETADOS</div>
                     </div>
 
-                    <div class="sistemas_p_numero"> 1242 </div>
-                    <div class="sistemas_p_numerogris"> /1450 </div>
+                    <div class="sistemas_p_numero"> <%= @trainings_complete %> </div>
+                    <div class="sistemas_p_numerogris"> /<%= @trainings %> </div>
                 </div>
                 <div>
                     <div class="progress">
@@ -40,7 +40,7 @@
                 <div class="sistema_info_three_containers">
                     <div class="d-flex flex-column">
                         <div class="sistema_p_etapa"> TIEMPO RESTANTE:</div>
-                        <div class="sistema_p_etapanombre"> 43 DIAS </div>
+                        <div class="sistema_p_etapanombre"> <%= @trainings_unfinished %> DIAS </div>
                         <div class="progress">
                             <div class="progress-bar" id="barra_etapa" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>

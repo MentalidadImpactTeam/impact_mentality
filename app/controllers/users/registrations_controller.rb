@@ -27,6 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user_conekta.save
 
     user.user_information.weight = user.user_information.weight.remove("kg").squish
+    user.user_information.user_type_id = 3
 
     if params['user']['user_information_attributes']['next_competition'].present?
       difference = TimeDifference.between(Time.now.to_date, params['user']['user_information_attributes']['next_competition'].to_date).in_general
@@ -35,24 +36,46 @@ class Users::RegistrationsController < Devise::RegistrationsController
         user.user_information.stage_week = 1
         user.user_information.save
       else
-        stage = 7
-        week = 1
-        if difference[:weeks] == 0
-          stage -= (difference[:months])
-        else
-          stage -= (difference[:months])
-          week = 5 - difference[:weeks]
-          week = 1 if week == 0
+        week = 4
+        stage = 6
+        day = 6
+        next_competition_date = params['user']['user_information_attributes']['next_competition'].to_date
+        array = []
+        while next_competition_date >= Date.today
+          hash = { :date => next_competition_date, :day => day, :week => week, :stage => stage }
+          array.push(hash)
+          next_competition_date = next_competition_date - 1.day
+
+          day -= 1
+          if day == 0
+            day = 7
+            week -= 1
+            if week == 0
+              stage -= 1
+              week = 4
+            end
+          end
         end
 
+        array.reverse.each do |routine_date|
+          user_routine = UserRoutine.new
+          user_routine.user_id = current_user.id
+          user_routine.stage_id = routine_date[:stage]
+          user_routine.stage_week = routine_date[:week]
+          user_routine.date = routine_date[:date]
+          user_routine.day = routine_date[:day]
+          user_routine.done = 0
+          user_routine.save
+        end
+          
         user.user_information.stage_id = stage
         user.user_information.stage_week = week
         user.user_information.save
       end
     else
       first_day_routine = Date.today
-      # 143 dias, 6 etapas de 4 semanas cada una, con 6 dias de rutina por semana
-      last_day_routine = first_day_routine + 143
+      # 168 dias, 6 etapas de 4 semanas cada una
+      last_day_routine = first_day_routine + 167
       
       week = 1
       stage = 1
@@ -63,12 +86,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
         user_routine.stage_id = stage
         user_routine.stage_week = week
         user_routine.date = date
+        user_routine.day = day
         user_routine.done = 0
         user_routine.save
 
         day += 1
         
-        if day == 7
+        if day == 8
           day = 1
           week += 1
           if week == 5
@@ -77,7 +101,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
           end
         end
       end
-
 
       user.user_information.stage_id = 1
       user.user_information.stage_week = 1

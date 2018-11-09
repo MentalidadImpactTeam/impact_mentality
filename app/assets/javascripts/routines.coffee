@@ -85,6 +85,7 @@ RoutinesController::index = ->
         $("#barra_finishers").css("width", "100%")
         $("#sistema_r_anteriorfase").text(" FINISHERS ")
         $("#sistema_r_progresonombre").text(" DONE ")
+        $("#rutina_finalizada").css("display", "block")
     else if group_total == 5
       if group == "1"
         $("#barra_warmup").css("width", "100%")
@@ -110,17 +111,24 @@ RoutinesController::index = ->
         $("#barra_finishers").css("width", "100%")
         $("#sistema_r_anteriorfase").text(" FINISHERS ")
         $("#sistema_r_progresonombre").text(" DONE ")
+        $("#rutina_finalizada").css("display", "block")
 
     div_active.addClass 'animated bounceOutLeft'
     setTimeout (->
       div_active.hide().removeClass("d-flex active")
       div_active.parent().find(".sistema_r_centro_iz input[value=" + (parseInt(group) + 1) + "]").parent().removeAttr("style").removeClass("bounceInLeft animated bounceOutRight").addClass("d-flex bounceInRight animated active")
       $("#flecha_anterior").removeAttr("style")
+      if $("#sistema_r_progresonombre").text() == " DONE "
+        $("#img_rutina_finalizada").css("display", "block")
+        $(".terminado_txt").css("display", "block")
       return
     ), 700
   
   $("#sistema_r_anteriorarrow").click ->
     div_active =  $(".active")
+    $("#rutina_finalizada").css("display", "none")
+    $("#img_rutina_finalizada").css("display", "none")
+    $(".terminado_txt").css("display", "none")
     if div_active.length == 0
       div_active = $(".sistema_r_centro_iz:last")
     group = div_active.find(".hidden_group").val()

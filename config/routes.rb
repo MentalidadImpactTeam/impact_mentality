@@ -28,4 +28,5 @@ Rails.application.routes.draw do
     end
   end
   resources :profiles
+  resources :administrator
 end
