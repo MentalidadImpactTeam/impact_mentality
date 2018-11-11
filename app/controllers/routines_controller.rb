@@ -2,78 +2,146 @@ class RoutinesController < ApplicationController
 
     def index
         @week_hash = [{ "day" => "LUNES", "description" => "", "active" => "" }, { "day" => "MARTES", "description" => "", "active" => "" }, { "day" => "MIERCOLES", "description" => "", "active" => "" }, 
-                    { "day" => "JUEVES", "description" => "", "active" => "" }, { "day" => "VIERNES", "description" => "", "active" => "" }]
+                    { "day" => "JUEVES", "description" => "", "active" => "" }, { "day" => "VIERNES", "description" => "", "active" => "" }, { "day" => "SABADO", "description" => "", "active" => "" }]
 
         for date in Time.now.to_date.all_week do
-            next if [0,6].include?(date.wday)
+            next if date.wday == 0
             @week_hash[date.wday - 1]["description"] = date_description(date)
         end
-        if ![0,6].include?(Time.now.wday)
-            @week_hash[Time.now.wday - 1]["active"] = 1 
-        else
-            @week_hash[4]["active"] = 1 
-        end
+
         today = Date.today
+        if today.wday != 0
+            @week_hash[today.wday - 1]["active"] = 1 
+        end
+
         @restday = today.wday == 0 ? true : false
         @mostrar_modal = false
-        routine = UserRoutine.find_by(user_id: current_user.id, date: Time.now.to_date)
+        routine = UserRoutine.find_by(user_id: current_user.id, date: today)
         if routine.blank? and !@restday
             @mostrar_modal = true
         else
-            exercises = RoutineExercise.where(user_routine_id: routine.id)
+            routine_exercises = RoutineExercise.where(user_routine_id: routine.id).order(group: :asc)
             @hash = { 1 => { "show" => 0, "exercises" => []}, 2 => { "show" => 0, "exercises" => []}, 3 => { "show" => 0, "exercises" => []}, 4 => { "show" => 0, "exercises" => []}, 5 => { "show" => 0, "exercises" => []} }
-            exercises.each do |exercise|
+            routine_exercises.each do |routine_exercise|
+                exercise = Exercise.find(routine_exercise.exercise_id)
                 hash_exercise = { 
-                    "name" => Exercise.find(exercise.exercise_id).name,
-                    "id" => exercise.exercise_id, 
-                    "routine_exercise_id" => exercise.id,
-                    "sets" => exercise.set,
-                    "reps" => exercise.rep
+                    "name" => exercise.name,
+                    "description" => exercise.description,
+                    "category_id" => exercise.category_id,
+                    "id" => routine_exercise.exercise_id, 
+                    "routine_exercise_id" => routine_exercise.id,
+                    "sets" => routine_exercise.set,
+                    "reps" => routine_exercise.rep,
+                    "done" => routine_exercise.done
                 }
-                @hash[exercise.group]["exercises"].push(hash_exercise)
+                @hash[routine_exercise.group]["exercises"].push(hash_exercise)
             end
-    
+
             for i in 1..5
                 group_count = RoutineExercise.where(user_routine_id: routine.id, group: i).count
                 group_done = RoutineExercise.where(user_routine_id: routine.id, group: i, done: 1).count
-    
-                @hash[i]["show"] = group_count == group_done ? 0 : 1
-                break
+                
+                if group_count != group_done
+                    @hash[i]["show"] = 1
+                    break
+                end
             end
-            puts @hash
-        end
-    end
 
-    def date_description(date)
-        description = date.day.to_s + " DE " + month_description(date.month) + " " + date.year.to_s 
-    end
+            if @hash[5]["exercises"].length == 0
+                groups_total = 4
+                @hash.delete(5)
+            else
+                groups_total = 5
+            end
 
-    def month_description(month)
-        case month
-        when 1
-            return "ENERO"
-        when 2
-            return "FEBRERO"
-        when 3
-            return "MARZO"
-        when 4
-            return "ABRIL"
-        when 5
-            return "MAYO"
-        when 6
-            return "JUNIO"
-        when 7
-            return "JULIO"
-        when 8
-            return "AGOSTO"
-        when 9
-            return "SEPTIEMBRE"
-        when 10
-            return "OCTUBRE"
-        when 11
-            return "NOVIEMBRE"
-        when 12
-            return "DICIEMBRE"
+            array_groups = []
+            @hash.keys.each do |key|
+                group_count = @hash[key]["exercises"].length
+                done_count = 0
+                @hash[key]["exercises"].each do |exercise|
+                    if exercise["done"] == 1
+                        done_count += 1
+                    end
+                end
+                hash_group = { :count => group_count, :done => done_count }
+                array_groups.push(hash_group)
+            end
+
+            @warm_width = 0
+            @triserie_width = 0
+            @finisher_width = 0
+            @progress_name = ""
+            @previous = ""
+            @next = " TRICERIE #1 "
+            @routine_finished = false
+            array_groups.each_with_index do |group_counts, index|
+                group = index + 1
+                if group == 1
+                    if group_counts[:count] == group_counts[:done]
+                        @warm_width = 100
+                    else
+                        @warm_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * 100).to_i
+                    end
+                    @progress_name = " WARM UP / PREHABS "
+                    break if @hash[group]["show"] == 1
+                elsif group == 2
+                    if group_counts[:count] == group_counts[:done]
+                        @triserie_width = groups_total == 4 ? 50 : 33
+                    else
+                        total_porcentage = groups_total == 4 ? 50 : 33
+                        @triserie_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * total_porcentage).to_i
+                    end
+                    @progress_name = " TRICERIE #1 "
+                    @previous = " WARM UP / PREHABS "
+                    @next = " TRICERIE #2 "
+                    break if @hash[group]["show"] == 1
+                elsif group == 3
+                    @progress_name = " TRICERIE #2 "
+                    @previous = " TRICERIE #1 "
+                    @next = groups_total == 4 ? " FINISHERS " : " TRICERIE #3 "
+                    break if @hash[group]["show"] == 1
+                    if group_counts[:count] == group_counts[:done]
+                        @triserie_width = groups_total == 4 ? 100 : 66
+                    else
+                        total_porcentage = groups_total == 4 ? 100 : 66
+                        @triserie_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * total_porcentage).to_i
+                    end
+                elsif group == 4
+                    @progress_name = " TRICERIE #3 "
+                    @previous = " TRICERIE #2 "
+                    @next = " FINISHERS "         
+                    if groups_total == 4
+                        @progress_name = " FINISHERS "
+                        @previous = " TRICERIE #2 "
+                        @next = " DONE "
+                        if group_counts[:count] == group_counts[:done]
+                            @finisher_width = 100
+                            @routine_finished = true
+                            @progress_name = " DONE "
+                            @previous = " FINISHERS"
+                        else
+                            @finisher_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * 100).to_i
+                        end
+                        break if @hash[group]["show"] == 1    
+                    else
+                        if group_counts[:count] == group_counts[:done]
+                            @triserie_width = 100
+                        else
+                            @triserie_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * 100).to_i
+                        end
+                    end       
+                elsif group == 5
+                    @progress_name = " FINISHERS "
+                    @previous = " TRICERIE #3 "
+                    @next = " DONE "
+                    if group_counts[:count] == group_counts[:done]
+                        @finisher_width = 100
+                        @routine_finished = true
+                    else
+                        @finisher_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * 100).to_i
+                    end
+                end
+            end
         end
     end
 
@@ -103,7 +171,8 @@ class RoutinesController < ApplicationController
         user_routine.done = 0
         user_routine.save
 
-        weekday =  [0,6].include?(Time.now.to_date.wday) ? 5 : Time.now.to_date.wday
+        # Si es sabado, hacer rutina de jueves
+        weekday =  Time.now.to_date.wday == 6 ? 4 : Time.now.to_date.wday
         configuration =  StageConfiguration.where(stage_id: user_routine.stage_id, day: weekday)
         # array = []
         configuration.each do |conf|
@@ -188,6 +257,53 @@ class RoutinesController < ApplicationController
             routine.save
 
             render json: { "estatus" => "OK" }
+        end
+    end
+
+    def mark_exercise_done
+        RoutineExercise.find(params[:id]).update(done: 1)
+        today = Date.today
+        routine = UserRoutine.find_by(user_id: current_user.id, date: today)
+        count_routine_exercises = RoutineExercise.where(user_routine_id: routine.id).count
+        count_routine_exercises_done = RoutineExercise.where(user_routine_id: routine.id, done: 1).count
+
+        if count_routine_exercises == count_routine_exercises_done
+            routine.done = 1
+            routine.save
+        end
+        render plain: "OK"
+    end
+
+    def date_description(date)
+        description = date.day.to_s + " DE " + month_description(date.month) + " " + date.year.to_s 
+    end
+
+    def month_description(month)
+        case month
+        when 1
+            return "ENERO"
+        when 2
+            return "FEBRERO"
+        when 3
+            return "MARZO"
+        when 4
+            return "ABRIL"
+        when 5
+            return "MAYO"
+        when 6
+            return "JUNIO"
+        when 7
+            return "JULIO"
+        when 8
+            return "AGOSTO"
+        when 9
+            return "SEPTIEMBRE"
+        when 10
+            return "OCTUBRE"
+        when 11
+            return "NOVIEMBRE"
+        when 12
+            return "DICIEMBRE"
         end
     end
 

@@ -19,7 +19,7 @@
     </div>
 <% else %>
 <!-- TABLA DE CAMBIOS -->
-<div id="sistema_rutina_cambio_table" class="animated flex-column justify-content-center align-items-center" style="display: none;">
+<div id="sistema_rutina_cambio_table" class="animated flex-column justify-content-center align-items-center">
     <div id="tabla_container">
         <table class="tabla_ejercicios table-striped table-hover" data-category="0">
             <thead>
@@ -56,7 +56,7 @@
                 <div  class="sistema_r_dia_nombre"> <%= date['day'] %> </div>
                 <div> <%= date['description'] %> </div>
             </div>
-            <% elsif date['day'] == 'VIERNES' %>
+            <% elsif date['day'] == 'SABADO' %>
             <div id="sistema_r_ultimodia" class="sistema_r_dia flex-column justify-content-center <%= if date['active'] == 1 then "sistema_r_dia_activo" end %>">
                 <div  class="sistema_r_dia_nombre"> <%= date['day'] %> </div>
                 <div> <%= date['description'] %> </div>
@@ -73,12 +73,12 @@
     <!-- CENTRO -->
     <div class="sistema_r_contenedorejercicios d-flex">
         <!-- ANTERIOR -->
-        <div id="flecha_anterior" class="sistema_r_centro_der d-flex flex-column justify-content-center" style="display:none !important;">
+        <div id="flecha_anterior" class="sistema_r_centro_der d-flex flex-column justify-content-center" style="<%= if @previous == "" then  "display:none !important;" end %>">
             <div id="sistema_r_siguiente"> ANTERIOR: </div>
-            <div id="sistema_r_anteriorfase"> TRICERIE #1 </div>
+            <div id="sistema_r_anteriorfase"><%= @previous %></div>
             <div id="sistema_r_anteriorarrow" class="d-flex flex-column justify-content-center align-items-center">
                 <div class="sistema_r_anteriormovil">ANTERIOR:</div>
-                <div class="sistema_r_anteriormovil">PREHABS</div>
+                <div class="sistema_r_anteriormovil"><%= @previous %></div>
             </div>
         </div>
 
@@ -88,18 +88,24 @@
             <input type="hidden" class="hidden_group" value="<%= group %>">
             <% @hash[group]["exercises"].each do |exercise| %>
                 <!-- EJERCICIO -->
-                <div class="sistema_r_ejercicio d-flex">
+                <div class="sistema_r_ejercicio d-flex <%= if exercise["done"] == 1 then "ejer_terminado" end %>">
                     <input type="hidden" class="hidden_exercise" value="<%= exercise['id'] %>" data-routine="<%= exercise['routine_exercise_id']%>">
+                    <input type="hidden" class="hidden_exercise_description" value="<%= exercise['description'] %>">
                     <div class="sistema_r_ejercicio_arriba d-flex align-items-center flex-row justify-content-between">
                         <div class="sistema_r_tipoejercicio d-flex flex-column"> 
                             <div> <%= exercise['name'] %>  </div>
-                            <div class="sistema_r_repeticionesmovil"> <%= exercise["set"] %> set de <%= exercise["rep"] %> repeticiones. </div>
+                            <div class="sistema_r_repeticionesmovil"> <%= exercise["set"] %> set de <%= exercise["rep"] %> reps. </div>
                         </div>
+                        <% if exercise["category_id"] != 1 %>
                         <div class="sistema_r_cambiaricono"> </div>
+                        <% end %>
                     </div>
                     <div class="sistema_r_ejercicio_centro"></div>
                     <div class="sistema_r_ejercicio_abajo align-items-center flex-row justify-content-between">
-                        <div class="sistema_r_nombreejercicio"> <%= exercise["sets"] %> set de <%= exercise["reps"] %> repeticiones. </div>
+                        <div class="sistema_r_nombreejercicio"> <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps. </div>
+                        <% if exercise["done"] == 0 %>
+                        <i class="checkmark_rutina fas fa-check"></i> 
+                        <% end %>
                         <div class="sistema_r_infoicono"> </div>
                     </div>
                 </div>
@@ -108,22 +114,22 @@
         <% end %>
 
         <!-- SIG -->
-        <div class="sistema_r_centro_der d-flex flex-column justify-content-center">
+        <div class="sistema_r_centro_der d-flex flex-column justify-content-center" style="<%= if @routine_finished then  "display:none !important;" end %>">
             <div id="sistema_r_siguiente"> SIGUIENTE: </div>
-            <div id="sistema_r_siguientefase"> TRICERIE #1 </div>
+            <div id="sistema_r_siguientefase"><%= @next %></div>
             <div id="sistema_r_siguientearrow" class="d-flex flex-column justify-content-center align-items-center">
                 <div class="sistema_r_siguientemovil">SIGUIENTE:</div>
-                <div class="sistema_r_siguientemovil">PREHABS</div>
+                <div class="sistema_r_siguientemovil"><%= @next %></div>
             </div>
         </div>
-        <div style="background-color: #191a1a; display: none;" class="container-fluid" id="rutina_finalizada">
+        <div style="background-color: #191a1a; <%= if !@routine_finished then  "display:none !important;" end %>" class="container-fluid" id="rutina_finalizada">
             <div class="row">
                 <div class="bounceIn col-12">
                     <center>
-                        <img src="img/gym.png" alt="" id="img_rutina_finalizada" style="width: 350px; display: none;">
+                        <img src="img/gym.png" alt="" id="img_rutina_finalizada" style="width: 350px;">
                     </center>
                     <center>
-                        <p class="terminado_txt bounceIn" style="display: none;">Haz terminado tu rutina</p>
+                        <p class="terminado_txt bounceIn">Haz terminado tu rutina</p>
                     </center>
                 </div>
             </div>
@@ -133,24 +139,24 @@
     <div class="sistema_r_abajo d-flex flex-column">
         <div id="sistema_r_abajo_arriba" class="d-flex flex-column">
             <div id="sistema_r_progreso"> PROGRESO: </div>
-            <div id="sistema_r_progresonombre"> WARM UP/PREHABS </div>
+            <div id="sistema_r_progresonombre"><%= @progress_name %></div>
         </div>
         <div id="sistema_r_abajo_abajo" class="d-flex flex-row">
             <div id="sistema_r_warmup" class="d-flex flex-column">
                 <div class="progress">
-                    <div class="progress-bar" id="barra_warmup" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar" id="barra_warmup" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: <%= @warm_width.to_s %>%;"></div>
                 </div>
                 <div class="sistema_r_textobarra">WARM UP / PREHABS</div>
             </div>
             <div id="sistema_r_tricerie"  class="d-flex flex-column">
                 <div class="progress barra_activa">
-                    <div class="progress-bar" id="barra_tricerie" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar" id="barra_tricerie" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: <%= @triserie_width.to_s %>%;"></div>
                 </div>
                 <div class="sistema_r_textobarra"> TRICERIES </div>
             </div>
             <div id="sistema_r_finishers" class="d-flex flex-column">
                 <div class="progress">
-                    <div class="progress-bar" id="barra_finishers" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar" id="barra_finishers" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: <%= @finisher_width.to_s %>%;"></div>
                 </div>
                 <div class="sistema_r_textobarra"> FINISHERS </div>
             </div>
@@ -177,6 +183,7 @@
         });
         $(".sistema_r_infoicono").on("click", function(event){
             $(".sistema_r_infoejercicio_nombre").text($(this).closest(".sistema_r_ejercicio").find(".sistema_r_tipoejercicio").find("div:first").text())
+            $(".sistema_r_infoejercicio_texto").text($(this).closest(".sistema_r_ejercicio").find(".hidden_exercise_description").val())
             info.css("display", "flex");
         });
         $(".sistema_r_infoejercicio_boton").on("click", function(event){

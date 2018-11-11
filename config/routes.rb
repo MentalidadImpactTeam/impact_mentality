@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     collection do 
       post "list_exercises" => 'routines#list_exercises'
       post "change_exercise" => 'routines#change_exercise'
+      post "mark_exercise_done" => 'routines#mark_exercise_done'
     end
   end
 

@@ -16,9 +16,9 @@ class WebhookController < ApplicationController
 
       user = User.find_by(customer_token: object['customer_id'])
       if user.present?
-        last_pay = UserConektaSubscription.find_by(user_id: user.id)
+        last_pay = UserConektaSubscription.find_by(user_id: user.id).order(id: :desc)
         if last_pay.present?
-          last_pay.esatus = 0
+          last_pay.estatus = 0
           last_pay.save
         end
         new_pay = UserConektaSubscription.new

@@ -64,7 +64,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
           user_routine.stage_week = routine_date[:week]
           user_routine.date = routine_date[:date]
           user_routine.day = routine_date[:day]
-          user_routine.done = 0
+          user_routine.done = routine_date[:day] == 0 ? 1 : 0 # Guardar los domingos como rutinas acabadas
           user_routine.save
         end
           

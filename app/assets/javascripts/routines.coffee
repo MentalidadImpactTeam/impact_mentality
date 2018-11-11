@@ -57,72 +57,153 @@ RoutinesController::index = ->
       return
     return
 
-  $("#sistema_r_siguientearrow").click ->
+  $('.checkmark_rutina').on 'click', ->
+    $(this).parents('.sistema_r_ejercicio').addClass 'ejer_terminado'
+    $(this).css 'display', 'none'
+
+    parent = $(this).closest(".sistema_r_centro_iz")
+    count_exercises = parent.find(".sistema_r_ejercicio").length
+    count_exercises_done = parent.find(".ejer_terminado").length
+
+    if count_exercises == 2
+      porcentage = 50 * count_exercises_done
+    else if count_exercises == 3
+      porcentage = 33 * count_exercises_done
+    else if count_exercises == 4
+      porcentage = 25 * count_exercises_done
+
     div_active =  $(".active")
     group = div_active.find(".hidden_group").val()
     group_total = $(".sistema_r_centro_iz").find(".hidden_group").length
-    $("#flecha_anterior").addClass("d-flex").show()
-    if parseInt(group) == group_total
-      $(".sistema_r_centro_der").hide().removeClass("d-flex")
-
     if group_total == 4
       if group == "1"
-        $("#barra_warmup").css("width", "100%")
-        $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
-        $("#sistema_r_progresonombre").text(" TRICERIE #1 ")
-        $("#sistema_r_siguientefase").text(" TRICERIE #2 ")
+        $("#barra_warmup").css("width", porcentage + "%")
       else if group == "2"
-        $("#barra_tricerie").css("width", "50%")
-        $("#sistema_r_anteriorfase").text(" TRICERIE #1 ")
-        $("#sistema_r_progresonombre").text(" TRICERIE #2 ")
-        $("#sistema_r_siguientefase").text(" TRICERIE #3 ")
+        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
+        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
+        total_exercises = group_2_exercises_count + group_3_exercises_count
+        porcentage = Math.ceil(100 / total_exercises) * count_exercises_done
+        $("#barra_tricerie").css("width", porcentage + "%")
       else if group == "3"
-        $("#barra_tricerie").css("width", "100%")
-        $("#sistema_r_anteriorfase").text(" TRICERIE #2 ")
-        $("#sistema_r_progresonombre").text(" TRICERIE #3 ")
-        $("#sistema_r_siguientefase").text(" DONE ")
-      else if group == "4"
-        $("#barra_finishers").css("width", "100%")
-        $("#sistema_r_anteriorfase").text(" FINISHERS ")
-        $("#sistema_r_progresonombre").text(" DONE ")
-        $("#rutina_finalizada").css("display", "block")
+        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
+        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
+        total_exercises = group_2_exercises_count + group_3_exercises_count
+        total_exercises_done = group_2_exercises_count + count_exercises_done
+        porcentage = Math.ceil(100 / total_exercises) * total_exercises_done
+        porcentage = 100 if porcentage > 100
+        $("#barra_tricerie").css("width", porcentage + "%")
+      else
+        $("#barra_finishers").css("width", porcentage + "%")
+
     else if group_total == 5
       if group == "1"
-        $("#barra_warmup").css("width", "100%")
-        $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
-        $("#sistema_r_progresonombre").text(" TRICERIE #1 ")
-        $("#sistema_r_siguientefase").text(" TRICERIE #2 ")
+        $("#barra_warmup").css("width", porcentage + "%")
       else if group == "2"
-        $("#barra_tricerie").css("width", "33%")
-        $("#sistema_r_anteriorfase").text(" TRICERIE #1 ")
-        $("#sistema_r_progresonombre").text(" TRICERIE #2 ")
-        $("#sistema_r_siguientefase").text(" TRICERIE #3 ")
+        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
+        porcentage = parseInt(porcentage / group_2_exercises_count)
+        $("#barra_tricerie").css("width", porcentage + "%")
       else if group == "3"
-        $("#barra_tricerie").css("width", "66%")
-        $("#sistema_r_anteriorfase").text(" TRICERIE #2 ")
-        $("#sistema_r_progresonombre").text(" TRICERIE #3 ")
-        $("#sistema_r_siguientefase").text(" FINISHERS ")
+        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
+        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
+        total_exercises = group_2_exercises_count + group_3_exercises_count
+        total_exercises_done = group_2_exercises_count + count_exercises_done
+        porcentage = Math.ceil(66 / total_exercises) * total_exercises_done
+        $("#barra_tricerie").css("width", porcentage + "%")
       else if group == "4"
-        $("#barra_tricerie").css("width", "100%")
-        $("#sistema_r_anteriorfase").text(" TRICERIE #3 ")
-        $("#sistema_r_progresonombre").text(" FINISHERS ")
-        $("#sistema_r_siguientefase").text(" DONE ")
-      else if group == "5"
-        $("#barra_finishers").css("width", "100%")
-        $("#sistema_r_anteriorfase").text(" FINISHERS ")
-        $("#sistema_r_progresonombre").text(" DONE ")
-        $("#rutina_finalizada").css("display", "block")
+        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
+        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
+        group_4_exercises_count = $(".hidden_group[value=4]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
+        total_exercises = group_2_exercises_count + group_3_exercises_count + group_4_exercises_count
+        total_exercises_done = group_2_exercises_count + group_3_exercises_count + count_exercises_done
+        porcentage = Math.ceil(100 / total_exercises) * total_exercises_done
+        porcentage = 100 if porcentage > 100
+        $("#barra_tricerie").css("width", porcentage + "%")
+      else
+        $("#barra_finishers").css("width", porcentage + "%")
+    
+    $.ajax
+      type: "POST"
+      url: "/routines/mark_exercise_done"
+      data: id: $(this).closest(".sistema_r_ejercicio").find(".hidden_exercise").data("routine")
+      dataType: "text",
+      success: (data) ->
+        return
+    return
+  
+  $("#sistema_r_siguientearrow").click ->
+    parent = $(this).closest(".sistema_r_contenedorejercicios").find(".active")
+    count_exercises = parent.find(".sistema_r_ejercicio").length
+    count_exercises_done = parent.find(".ejer_terminado").length
+    if count_exercises != count_exercises_done
+      swal
+        type: 'error'
+        title: 'No se puede continuar con la rutina'
+        text: 'No se han registrado como terminados todos los ejercicios.'
+        confirmButtonText: 'Entendido'
+    else
+      div_active =  $(".active")
+      group = div_active.find(".hidden_group").val()
+      group_total = $(".sistema_r_centro_iz").find(".hidden_group").length
+      $("#flecha_anterior").addClass("d-flex").show()
+      if parseInt(group) == group_total
+        $(".sistema_r_centro_der").hide().removeClass("d-flex")
 
-    div_active.addClass 'animated bounceOutLeft'
-    setTimeout (->
-      div_active.hide().removeClass("d-flex active")
-      div_active.parent().find(".sistema_r_centro_iz input[value=" + (parseInt(group) + 1) + "]").parent().removeAttr("style").removeClass("bounceInLeft animated bounceOutRight").addClass("d-flex bounceInRight animated active")
-      $("#flecha_anterior").removeAttr("style")
-      if $("#sistema_r_progresonombre").text() == " DONE "
-        $("#img_rutina_finalizada").css("display", "block")
-        $(".terminado_txt").css("display", "block")
+      if group_total == 4
+        if group == "1"
+          $("#barra_warmup").css("width", "100%")
+          $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
+          $("#sistema_r_progresonombre").text(" TRICERIE #1 ")
+          $("#sistema_r_siguientefase").text(" TRICERIE #2 ")
+        else if group == "2"
+          $("#sistema_r_anteriorfase").text(" TRICERIE #1 ")
+          $("#sistema_r_progresonombre").text(" TRICERIE #2 ")
+          $("#sistema_r_siguientefase").text(" FINISHERS ")
+        else if group == "3"
+          $("#barra_tricerie").css("width", "100%")
+          $("#sistema_r_anteriorfase").text(" TRICERIE #2 ")
+          $("#sistema_r_progresonombre").text(" FINISHERS ")
+          $("#sistema_r_siguientefase").text(" DONE ")
+        else if group == "4"
+          $("#barra_finishers").css("width", "100%")
+          $("#sistema_r_anteriorfase").text(" FINISHERS ")
+          $("#sistema_r_progresonombre").text(" DONE ")
+          $("#rutina_finalizada").css("display", "block")
+      else if group_total == 5
+        if group == "1"
+          $("#barra_warmup").css("width", "100%")
+          $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
+          $("#sistema_r_progresonombre").text(" TRICERIE #1 ")
+          $("#sistema_r_siguientefase").text(" TRICERIE #2 ")
+        else if group == "2"
+          $("#sistema_r_anteriorfase").text(" TRICERIE #1 ")
+          $("#sistema_r_progresonombre").text(" TRICERIE #2 ")
+          $("#sistema_r_siguientefase").text(" TRICERIE #3 ")
+        else if group == "3"
+          $("#sistema_r_anteriorfase").text(" TRICERIE #2 ")
+          $("#sistema_r_progresonombre").text(" TRICERIE #3 ")
+          $("#sistema_r_siguientefase").text(" FINISHERS ")
+        else if group == "4"
+          $("#barra_tricerie").css("width", "100%")
+          $("#sistema_r_anteriorfase").text(" TRICERIE #3 ")
+          $("#sistema_r_progresonombre").text(" FINISHERS ")
+          $("#sistema_r_siguientefase").text(" DONE ")
+        else if group == "5"
+          $("#barra_finishers").css("width", "100%")
+          $("#sistema_r_anteriorfase").text(" FINISHERS ")
+          $("#sistema_r_progresonombre").text(" DONE ")
+          $("#rutina_finalizada").css("display", "block")
+
+      div_active.addClass 'animated bounceOutLeft'
+      setTimeout (->
+        div_active.hide().removeClass("d-flex active")
+        div_active.parent().find(".sistema_r_centro_iz input[value=" + (parseInt(group) + 1) + "]").parent().removeAttr("style").removeClass("bounceInLeft animated bounceOutRight").addClass("d-flex bounceInRight animated active")
+        $("#flecha_anterior").removeAttr("style")
+        if $("#sistema_r_progresonombre").text() == " DONE "
+          $("#img_rutina_finalizada").css("display", "block")
+          $(".terminado_txt").css("display", "block")
+        return
+      ), 700
       return
-    ), 700
   
   $("#sistema_r_anteriorarrow").click ->
     div_active =  $(".active")
@@ -143,28 +224,38 @@ RoutinesController::index = ->
         $("#sistema_r_progresonombre").text(" WARM UP / PREHABS ")
         $("#sistema_r_siguientefase").text(" TRICERIE #1 ")
       else if group == "3"
+        $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
+        $("#sistema_r_progresonombre").text(" TRICERIE #1 ")
+        $("#sistema_r_siguientefase").text(" TRICERIE #2 ")
+      else if group == "4"
         $("#sistema_r_anteriorfase").text(" TRICERIE #1 ")
         $("#sistema_r_progresonombre").text(" TRICERIE #2 ")
+        $("#sistema_r_siguientefase").text(" FINISHERS ")
+        $(".sistema_r_centro_der").removeAttr("style")
+      else
+        $("#sistema_r_anteriorfase").text(" TRICERIE #2 ")
+        $("#sistema_r_progresonombre").text(" FINISHERS ")
         $("#sistema_r_siguientefase").text(" DONE ")
-      else if group == "4"
-        $("#sistema_r_anteriorfase").text(" FINISHERS ")
+        $(".sistema_r_centro_der").removeAttr("style")
     else if group_total == 5
       if group == "2"
         $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
         $("#sistema_r_progresonombre").text(" WARM UP / PREHABS ")
         $("#sistema_r_siguientefase").text(" TRICERIE #1 ")
       else if group == "3"
+        $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
+        $("#sistema_r_progresonombre").text(" TRICERIE #1 ")
+        $("#sistema_r_siguientefase").text(" TRICERIE #2 ")
+      else if group == "4"
         $("#sistema_r_anteriorfase").text(" TRICERIE #1 ")
         $("#sistema_r_progresonombre").text(" TRICERIE #2 ")
         $("#sistema_r_siguientefase").text(" TRICERIE #3 ")
-      else if group == "4"
+        $(".sistema_r_centro_der").removeAttr("style")
+      else
         $("#sistema_r_anteriorfase").text(" TRICERIE #2 ")
         $("#sistema_r_progresonombre").text(" TRICERIE #3 ")
         $("#sistema_r_siguientefase").text(" FINISHERS ")
-      else
-        $("#sistema_r_anteriorfase").text(" TRICERIE #3 ")
-        $("#sistema_r_progresonombre").text(" FINISHERS ")
-        $("#sistema_r_siguientefase").text(" DONE ")
+        $(".sistema_r_centro_der").removeAttr("style")
 
     if $(".active").length > 0
       div_active.addClass 'animated bounceOutRight'
@@ -198,7 +289,7 @@ RoutinesController::index = ->
           tbody += "<tr id='tr_hover' data-exercise='" + data[hash]["id"] + "'>
               <td> " + data[hash]["name"] + " </td>
               <td> 3 sets de 15 repeticiones </td>
-              <td colspan='2'>Lorem itsum rem its ate m arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom ausom au</td>
+              <td colspan='2'>" + data[hash]["description"] + "</td>
           </tr>"
         $(".tabla_ejercicios tbody").html(tbody)
         $("#sistema_rutina_cambio_table").css("display","flex");
