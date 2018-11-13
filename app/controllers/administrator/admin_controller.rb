@@ -1,9 +1,13 @@
-class AdministratorController < ApplicationController
+class Administrator::AdminController < ApplicationController
   before_action :check_if_admin
   layout "administrator"
 
-  def index
+  def list_users
     @user = User.joins(:user_information).where("user_type_id != 1")
+  end
+
+  def show_user
+    @user = User.find(params[:id])
   end
 
   private

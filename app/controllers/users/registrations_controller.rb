@@ -28,6 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     user.user_information.weight = user.user_information.weight.remove("kg").squish
     user.user_information.user_type_id = 3
+    user.user_information.uid =  Random.rand(000000...999999).to_s.rjust(6, "0")
 
     if params['user']['user_information_attributes']['next_competition'].present?
       difference = TimeDifference.between(Time.now.to_date, params['user']['user_information_attributes']['next_competition'].to_date).in_general
@@ -129,9 +130,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    user = User.find(params[:id])
+    user.skip_reconfirmation! 
+    if user.update(user_params)
+      user.user_information.first_name = params[:first_name]
+      user.user_information.save
+      render plain: "OK"
+    else
+      render plain: "NO"
+    end
+  end
 
   # PUT /resource
   def update
@@ -176,7 +185,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email, :first_name)
   end
 
   # protected

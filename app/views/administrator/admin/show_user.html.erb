@@ -1,0 +1,37 @@
+<div class="admin_verentrenadorcontainer d-flex flex-column align-items-center">
+        
+        <i class="far fa-arrow-alt-circle-left fa-5x admin_regresar align-self-end"></i>
+        <div class="bounceIn admin_infoentrenador d-flex flex-row align-items-center">
+            
+            <div class="admin_infoentrenador_img"></div>
+            <div class="admin_infoentrenador_info d-flex flex-column">
+                <div id="admin_infoentrenador_nombre"> <%= @user.user_information.first_name.capitalize %> <%= @user.user_information.last_name.capitalize %> </div>
+                <!-- CODIGO DE CLIENTE-->
+                <div class="d-flex flex-row"> ID:  <div id="admin_id" class="admin_infos"> <%= @user.user_information.uid %> </div> </div>
+                <div class="d-flex flex-row"> Correo: <div id="admin_correo" class="admin_infos"></div> <%= @user.email %> </div>
+                <div class="d-flex flex-row"> Miembro desde: <div id="admin_fecha" class="admin_infos"> <%= @user.created_at.strftime("%d-%m-%y") %> </div> </div>
+                <div class="d-flex flex-row"> Tipo de usuario: <div id="admin_tipo" class="admin_infos"> <%= if @user.user_information.user_type_id == 3 then "USUARIO" else "ENTRENADOR" end %> </div> </div>
+            </div>
+            <a href="#" class="sistema_p_editar flex-fill sistema_d_editar">EDITAR</a> 
+        </div>
+        <div class="bounceIn admin_infopago d-flex align-items-center justify-content-between">
+            <div class="bounceIn admin_tarjeta d-flex flex-column align-items-center justify-content-center">
+                <div id="admin_formapagotitulo">
+                    <b>FORMA DE PAGO</b>
+                </div>
+                <div id="admin_formapago" class="justify-self-center"></div>
+            </div>
+            <div class="bounceIn admin_fecha d-flex justify-content-center">
+                <div class="sistema_cuenta_contenedorfacturacion d-flex flex-column justify-content-center">
+                    <div class="sistema_cuenta_facturacion_texto admin_fecha_plan" id="sistema_cuenta_facturacion_texto_plan">PLAN MENSUAL</div>
+                    <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit admin_fecha_titulos"><i class="far fa-money-bill-alt"></i> MONTO A COBRAR:
+                        <div class="sistema_cuenta_facturacion_texto_var admin_fecha_titulos"><b>$150 M.N.</b></div>
+                    </div>
+                    <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit admin_fecha_titulos"><i class="far fa-clock"></i>FECHA DE FACTURACIÓN:
+                        <div class="sistema_cuenta_facturacion_texto_var admin_fecha_titulos">
+                            <B>20/SEPT/2019</B> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

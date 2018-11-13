@@ -13,4 +13,4 @@
 //= require rails-ujs
 //= require turbolinks
 //= require paloma
-//= require admin
+//= require administrator/admin

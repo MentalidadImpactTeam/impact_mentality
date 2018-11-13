@@ -277,3 +277,703 @@ input:checked+.slider:before {
 .slider.round:before {
   border-radius: 50%;
 }   
+
+// SHOW
+
+.admin_verentrenadorcontainer {
+  width: 100%;
+  height: auto;
+}
+
+.admin_fecha_titulos i {
+  margin: 0 25px;
+}
+
+.admin_infoentrenador {
+  width: 80%;
+  background-color: #3e3e3e;
+  height: 40vw;
+  box-shadow: 0 0 61px black;
+  border-radius: 1vw;
+  padding: 7vw;
+}
+
+.admin_infoentrenador_img {
+  background-image: url('img/perfil_prueba.jpg');
+  background-position: center;
+  width: 25vw;
+  height: 25vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-right: 4vw;
+  border-color: #ff1d25;
+  border-width: .5vw;
+  border-style: solid;
+  border-radius: 100%;
+}
+
+.admin_infopago {
+  width: 80%;
+  margin-top: 1.5vw;
+  flex-direction: row;
+}
+
+.admin_tarjeta {
+  width: 49%;
+  height: 20.825vw;
+  background-color: #3e3e3e;
+  border-radius: 1vw;
+  padding: 1vw;
+}
+
+.admin_fecha {
+  width: 49%;
+  background-color: #3e3e3e;
+  height: 20.825vw;
+  border-radius: 1vw;
+  color: white;
+}
+
+#admin_formapagotitulo {
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 3vw;
+  font-style: italic;
+  margin-bottom: 1vw;
+}
+
+#admin_formapago {
+  background-image: url("img/visa.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 8vw;
+  width: 24.865vw;
+}
+
+.admin_fecha_titulos {
+  font-size: 2vw !important;
+  margin-bottom: .5vw;
+  margin-top: .5vw;
+}
+
+.admin_fecha_plan {
+  font-size: 3vw !important;
+}
+
+.admin_infoentrenador_info {
+  color: #fff;
+  font-size: 2vw;
+}
+
+#admin_infoentrenador_nombre {
+  font-size: 4vw;
+  font-weight: bold;
+}
+
+.admin_regresar {
+  color: #fff;
+  cursor: pointer;
+  margin: 2vw;
+  transition: all .5s;
+}
+
+.admin_regresar:hover {
+  transform: scale(1.2);
+  color: red;
+}
+
+.sistema_d_editar{
+  margin-top: -5vw;
+  margin-right: -3vw;
+}
+.admin_infos{
+  margin-left: .5vw;
+  font-weight: 300;
+}
+
+@media (max-width: 1090px) {
+  .admin_infoentrenador {
+      width: 90%;
+      height: 45vw;
+  }
+  .admin_infopago {
+      flex-direction: column;
+      width: 90%;
+  }
+  .admin_tarjeta {
+      width: 100%;
+      height: 45vw;
+  }
+  .admin_fecha {
+      width: 100%;
+      height: 45vw;
+      margin-top: 1.5vw;
+  }
+  #admin_formapagotitulo {
+      font-size: 8vw;
+  }
+  #admin_formapago {
+      height: 18vw;
+      width: 55.947vw;
+  }
+  .admin_infoentrenador_img {
+      width: 35vw;
+      height: 30vw;
+  }
+  .admin_infoentrenador_info {
+      font-size: 4vw;
+  }
+  #admin_infoentrenador_nombre {
+      font-size: 6vw;
+  }
+  .admin_fecha_titulos {
+      font-size: 5vw !important;
+  }
+  .admin_fecha_plan {
+      font-size: 8vw !important;
+      text-align: center;
+  }
+}
+
+.sistema_cuenta_contenedorfacturacion{
+  background-color: #ff1d25;
+  border-radius: 1vw;
+  padding: 1vw;
+  
+}
+
+#sistema_cuenta_facturacion_texto_plan{
+  font-size: 2.5vw;
+  font-style: italic;
+  letter-spacing: .1vw;
+  
+}
+
+#sistema_cuenta_facturacion_texto_plan{
+  font-size: 8vw;        
+}
+
+
+#red_button{
+  margin-left:5px;
+}
+#row_con_margen{
+  margin-left:100px;
+}
+#divNewNotifications{
+  padding-top:10px;
+  padding-left:40px;
+  list-style: none;
+}
+#lupita_lupa{
+  padding-left: 5px;
+  cursor: pointer;
+}
+#administrador_searchbar_look{
+  border-radius: 10px;
+  border: 4px solid #4d4d4d;
+  background-color: transparent;
+  color:#4d4d4d;
+  height: 100%;
+  padding:5px;
+}
+.dropdown-item{
+  text-transform: uppercase;
+}
+.admin_tabla_mobil{
+  display: none;
+  width: 100%;
+}
+.aministrador_tabla_body {
+  font-family: 'Lato', sans-serif !important;
+  background-color: #1a1a1a!important;
+  overflow-x:hidden !important;
+  padding-bottom: 50px!important;
+
+}
+.admin_nombre{
+  margin-left:5px!important;
+}
+.administrador_tabla{
+  padding: 30px;
+}
+.container-fluid {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  overflow-x: hidden !important;
+}
+#adminstrador_header{
+  background: #ff1d25;
+  padding: 20px;
+  border-radius: 15px 15px 0 0;
+
+}
+.admin_text_title{
+  color: white;
+  text-shadow: 0px 0px 5px #FFFFFF;
+font-size: 17px;
+font-weight: 700;
+
+}
+
+#administrador_row:nth-child(odd){
+  background: #333333;
+  padding: 15px;
+}
+#administrador_row:nth-child(even){
+  background: #262626;
+  padding: 15px;
+}
+#administrador_row:last-child{
+  border-radius: 0 0 15px 15px;
+}
+
+#administrador_nombre{
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+}
+#administrador_tipo{
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+}
+#administrador_descripcion{
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+}
+.administrador_tacha{
+  padding-left:5px;
+  width: 30px!important;
+  cursor: pointer;
+}
+#administrador_puntos{
+  width: 30px!important;
+}
+#dropdownMenuLink{
+  color:#ff1d25;
+  font-weight: 700;
+font-size:30px;
+text-shadow: 0px 0px 5px #ff1d25;
+text-decoration: none;
+padding-left:40px;
+}
+#administradores_ejercicios_totales{
+  color:#b3b3b3;
+  font-size: 10px;
+  font-weight: 300;
+padding-top:15px;
+}
+.menu_mobil{
+  display: none !important;
+}
+#administrador_boton_rojo{
+  margin-left:5px;
+}
+
+#dropdown_title{
+  color: #ff1d25;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 5px #ff1d25;
+}
+
+#administrador_menu_botones {
+  padding-top:10px;
+  cursor: pointer;
+  margin-left:-40px;
+}
+
+#administrador_searchbar{
+  margin:0;
+  padding-top:12px;
+
+
+}
+.administrador_add{
+  padding-top:10px;
+  cursor:pointer;
+}
+
+
+    table{
+        border-collapse: collapse;
+        margin-top:40px;
+    }
+
+    .tabla_ejercicios{
+    width: 90%;
+    max-height: 100%;
+    color: #fff;
+    background-color: #333333;
+    border-radius: 1vw;
+    overflow: auto;
+    display: block;
+    }
+.tabla_ejercicios_mobil{
+  color: #fff;
+  background-color: #333333;
+  border-radius: 1vw;
+  overflow: auto;
+  margin-left:30px;
+}
+.tabla_ejercicios_mobil td {
+    padding: .5vw 2vw;
+}
+
+.tabla_ejercicios_mobil th{
+    padding: 1vw 2vw;
+}
+    #tabla_container{
+        width: 100%;
+        max-height: 80vh;
+        overflow: hidden;
+        box-shadow: 0 0 100vw 50vw rgba(0,0,0,.7);
+        border-radius: 1vw;
+    }
+
+    #tabla_titulos{
+        background-color: #ff1d25;
+    }
+
+
+
+    .tabla_ejercicios td {
+        padding: .5vw 2vw;
+    }
+
+    .tabla_ejercicios th{
+        padding: 1vw 2vw;
+    }
+
+    .table-striped tbody tr:nth-of-type(2n+1){
+        background-color: rgba(0,0,0,.5) !important;
+    }
+
+    #tr_hover:hover{
+        background-color: #ff1d25 !important;
+        box-shadow: 0 0 5vw #ff1d25;
+        transition: .2s;
+        cursor: pointer;
+    }
+
+
+    #sistema_rutina_cambio_table {
+        z-index: 5;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        padding: 2.5vw;
+        display: none;
+    }
+
+
+
+    /*-------- MODAL -----------*/
+    #sistema_admin_agregar_ejercicio {
+        width: 70%;
+        background-color: #333232;
+        height: 100%;
+        overflow: hidden;
+        transition: all .5s;
+        border-radius: 5px;
+        margin-top:100px;
+    }
+
+    .banner_top {
+        background-color: #1a1a1a;
+    }
+
+    .banner_top i {
+        color: white;
+        float: right;
+        margin: 15px;
+        cursor: pointer;
+        transition: all .5s;
+    }
+
+    .banner_top i:hover {
+        opacity: .5;
+        transform: scale(1.2);
+    }
+
+    #sistema_admin_agregar_ejercicio h1 {
+        font-family: lato;
+        transition: all .5s;
+        font-weight: bold;
+        color: white;
+        padding: 10px 0;
+        font-size: 2vw;
+    }
+
+    #sistema_admin_agregar_ejercicio h5 {
+        font-family: lato;
+        font-weight: bold;
+        color: white;
+        font-size: 1.2vw;
+        text-align: left;
+    }
+
+    #sistema_admin_agregar_ejercicio select {
+        font-family: lato;
+        font-size: 1.5vw;
+        border-radius: 10px;
+        background-color: transparent;
+        color: white;
+        border: 2px solid red;
+        padding: 5px;
+        width: 100%;
+        transition: all .5s;
+    }
+
+    #sistema_admin_agregar_ejercicio option {
+        font-family: lato;
+        font-size: 1vw;
+        border-radius: 5px;
+        background-color: transparent;
+        color: white;
+        border: 1px solid red;
+        padding: 5px;
+    }
+
+    #sistema_admi_nombre_ejercicio_input {
+        background-color: #d1d1d1;
+        border-radius: 5px;
+        border: 1px solid #3e3e3e;
+        padding: 5px;
+        width: 100%;
+        cursor: pointer;
+        font-size: 1.4vw;
+        transition: all .5s;
+    }
+
+    #sistema_admi_nombre_ejercicio_input::placeholder {
+        color: grey;
+        font-size: 1.5vw;
+    }
+
+    .sistema_admi_boxes {
+        margin: 15px 0;
+    }
+
+    #sistema_admi_descrip_ejercicio_input {
+        background-color: #d1d1d1;
+        border-radius: 5px;
+        border: 1px solid #3e3e3e;
+        padding: 5px;
+        width: 100%;
+        height: 100px;
+        font-size: 1.4vw;
+        cursor: pointer;
+        transition: all .5s;
+    }
+
+    #sistema_admi_descrip_ejercicio_input::placeholder {
+        color: grey;
+        font-size: 1.5vw;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    select:focus {
+        outline: none;
+    }
+
+    .btn_aceptar_nuevo_ejer {
+        background-color: red;
+        border-radius: 5px;
+        padding: 10px 30px;
+        font-family: lato;
+        border: none;
+        color: white;
+        font-size: 1.5vw;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .btn_cancelar_nuevo_ejer {
+        font-size: 1.5vw;
+        background-color: grey;
+        border-radius: 5px;
+        padding: 10px 30px;
+        font-family: lato;
+        border: none;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+    }
+
+    .botones_acciones_box {
+        float: right;
+    }
+
+    .botones_acciones_box button {
+        margin: 15px 15px;
+        transition: all .5s;
+    }
+
+    .admi_contenedor_upoload_ejercicio {
+        color: white;
+        font-family: lato;
+    }
+
+    .admi_contenedor_upoload_ejercicio label {
+        cursor: pointer;
+        border: 2px solid red;
+        border-radius: 10px;
+        margin-left: 15px;
+        padding: 10px;
+        font-size: 1.5vw;
+        transition: all .5s;
+    }
+
+    .admi_contenedor_upoload_ejercicio i {
+        margin: 0 10px 0 10px;
+        transition: all .5s;
+    }
+
+    .admi_contenedor_upoload_ejercicio i:hover {
+        color: red;
+    }
+
+    .admi_contenedor_upoload_ejercicio label:hover {
+        font-weight: bold;
+    }
+
+    .overlay_popup {
+      margin-top:-100px;
+        background-color: black;
+        width: 100%;
+        height: 100%;
+        display: block;
+        opacity: .5;
+        position: absolute;
+        opacity: .5;
+        animation-name: overlay;
+        animation-duration: .5s;
+    }
+
+    .overlay_dissapear {
+        opacity: 0 !important;
+        display:none!important;
+    }
+
+    @keyframes overlay {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: .5;
+        }
+    }
+
+#admin_popup{
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  top:0;
+  width: 100%;
+  height: 100%;
+}
+
+.menu_pc{
+  margin-top:20px;
+}
+@media (max-width:  750px) {
+
+  .admin_tabla_pc{
+    display: none!important;
+  }
+  .admin_tabla_mobil{
+    display: block;
+  }
+  #administrador_menu_botones{
+    margin-left:70px;
+    padding-top:0px!important;
+  }
+  #administrador_searchbar{
+    margin-left: 120px!important;
+  }
+  .menu_pc{
+    display: none;
+  }
+  .menu_mobil{
+    display: block!important;
+  }
+.admin_descripcion_delet{
+ display: none!important;
+}
+
+
+  #administradores_ejercicios_totales{
+    color:#b3b3b3;
+    text-align: center;
+    margin-left:20px;
+  }
+
+#administrador_menu{
+  text-align: center;
+  margin-left:20px;
+  list-style: none !important;
+  cursor:pointer;
+}
+
+
+.administrador_add{
+  display: block;
+margin-left: 70px;;
+margin-right: auto;
+padding-top: 0px!important;
+}
+#administrador_puntos{
+  margin-left:40px;
+  width: 30px!important;
+  margin-right:10px;
+
+}
+.administrador_tacha{
+  margin-right:10px;
+  width: 30px!important;
+}
+}
+
+@media (max-width:  1090px) {
+    #tabla_container{
+        width: 90%;
+        max-height: 90vh;
+        overflow: hidden;
+        font-size: 2vw;
+    }
+
+    .tabla_ejercicios tr td{
+        padding: 2vw 0;
+    }
+}
+
+@media (max-width: 900px) {
+    #sistema_admin_agregar_ejercicio {
+        width: 100%;
+    }
+    .admi_contenedor_upoload_ejercicio label {
+        font-size: 2vw;
+    }
+    #sistema_admin_agregar_ejercicio select {
+        font-size: 3vw;
+    }
+    #sistema_admin_agregar_ejercicio h1 {
+        font-size: 4vw;
+    }
+    .btn_aceptar_nuevo_ejer {
+        font-size: 2.5vw;
+    }
+    .btn_cancelar_nuevo_ejer {
+        font-size: 2.5vw;
+    }
+    #label_unpload i {
+        font-size: 3vw;
+    }
+}

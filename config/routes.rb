@@ -29,5 +29,9 @@ Rails.application.routes.draw do
     end
   end
   resources :profiles
-  resources :administrator
+  namespace :administrator do
+    get "users" => "admin#list_users"
+    get "exercises" => "admin#list_exercises"
+    get "users/:id" => "admin#show_user"
+  end
 end

@@ -13,3 +13,536 @@
  *= require animate
  *= require admin
  */
+
+ .swal2-popup{
+  background-color: #333 !important;
+  border-radius: 1vw;
+}
+
+.swal2-title {
+  color: #fff !important;
+}
+
+.swal2-styled.swal2-confirm{
+  color: #ff1d25 !important;
+  background-color: #fff !important;
+}
+
+.swal2-content{
+  color: #fff !important;
+}
+
+.swal2-icon.swal2-success{
+  border-color: #fff;
+}
+
+.swal2-icon.swal2-warning{
+  border-color: rgba(255, 29, 37, .5) !important;
+  color: #ff1d25 !important;
+}
+
+.swal2-icon.swal2-success [class^="swal2-success-line"]{
+  background-color: #ff1d25;
+}
+
+.swal2-icon.swal2-success .swal2-success-ring{
+  border: .25em solid rgba(255, 29, 37, .5) !important;
+}
+
+ .menuHorizontal{
+  display: flex;
+  position: relative;
+  padding: 1vw 3vw;
+  width: 100%;
+  background-color: #3e3e3e;
+  color: White;
+  overflow: hidden;
+  z-index: 1;
+}           
+
+#menuH_logo{
+  background-image: url("img/impactmovil.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 3vw;
+  height: 3vw;
+}
+
+.admin_cerrar{
+      text-decoration: none;
+      font-weight: 300;
+      color: #ff1d25;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #ff1d25;
+      width: 9vw;
+      transform: skew(-10deg);
+      background-color: rgba(255, 29, 37, 0);
+      box-shadow: 0px 0px 15px #ff1d25;
+      transition: 0.5s;
+      padding: .5vw 0;
+      margin-left: 34vw;
+      text-align: center;
+}
+
+.admin_cerrar p{
+  font-size: 15px;
+  padding: 0 0 0 0 ;
+  margin: 0 0 0 0;
+  transform: skew(10deg);
+  text-shadow: 0px 0px 15px #ff1d25;
+
+}
+
+.admin_cerrar:hover{
+  background-color: rgba(255, 29, 37, 1);
+  text-decoration: none;
+  font-weight: bold;
+  color: #ffffff;
+  box-shadow: 0px 0px 30px #ff1d25;
+}
+
+.menuH_items{
+  margin-left: 6vw;
+  font-weight: bold;
+  cursor: pointer;         
+  transition: .5s;
+  font-weight: normal;
+  font-size: 1vw;
+}
+
+.menuH_items:hover{
+  text-shadow: 0 0 1vw #ff1d25;
+  color: #ff1d25;
+}
+
+#menuH_admin{
+  margin-left: 2vw;
+  font-weight: bold;
+  font-size: 2.4vw;
+}
+
+.admin_active{
+  color: #ff1d25;
+  font-weight: bold;
+  font-size: 1.5vw;
+  text-shadow: 0 0 1vw #ff1d25;
+}
+
+@media only screen and (max-width: 1092px) {
+  .menuHorizontal{
+      display: none;
+  }
+}
+
+/* menu cellphone CSS*/
+
+.sistema_mobile_menu {
+  display: none;
+}
+
+.burger_menu_mobile {
+  display: inline-block;
+  float: right;
+  margin: 2px;
+  transition: all .5s;
+  cursor: pointer;
+}
+
+.burger_menu_mobile:hover {
+  transform: scale(1.2);
+}
+
+.titulo_mobile_header {
+  font-family: lato;
+  color: white;
+  font-size: 5vw;
+  text-align: left;
+  text-shadow: 0 0 5px white;
+  font-weight: bold;
+}
+
+
+
+.desplegado {
+  transform: scaleY(1) !important;
+}
+
+#menu_mobile_desplegado{
+  background-color: #333333;
+}
+
+.sistema_icono{
+  background-image: url('../img/sistemaicono.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 1.8vw;
+  width: 1.8vw;
+  margin-left: 1vw;
+}
+
+.sistema_lineadiv{
+  height: 100%;
+  width: .2vw;
+  background-color: #414141;
+  margin: 0 2.5vw 0 2.5vw;
+}
+
+.sistema_contenido{
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #191a1a;
+  padding: 2vw 2vw 2vw 2vw;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+#sistema_p_iz{
+  width: 65%;
+  height: 100%;
+
+}
+
+#sistema_p_iz_abajo{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 30%;
+  background-color: #313434;
+  border-radius: 2vw;
+}
+
+#sistema_p_der{
+  width: 32.5%;
+  height: 100%;
+  background-color: #313434;
+  border-radius: 2vw;
+  color: #fff;
+}
+
+#sistema_p_iz_arriba{
+  width: 100%;
+  height: 60%;
+  background-color: #313434;
+  border-radius: 2vw;
+  flex-direction: row;
+}
+
+.sistema_p_editar{
+  text-align: right;  
+  text-decoration: none;
+  color: #ff1d25;
+  font-weight: bold;
+  font-size: .8vw;
+  align-self: flex-start;
+  flex: 1 1 auto !important;
+  transition: 0.5s;
+}
+
+.sistema_p_editar:hover{
+  text-decoration: none;
+  color: #ff1d25;
+  text-shadow: 0px 0px .5vw #ff1d25;
+}
+
+#sistema_p_img{
+  width: 18vw;
+  height: 18vw;
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #ff1d25;
+  background-image: url('../img/doris.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 3vw;
+}
+
+#sistema_p_texto{
+  margin-left: 3vw;
+  color: #fff;
+  font-size: 2vw;
+  font-weight: 200;
+}
+
+.bold{
+  font-weight: bold;
+  margin-right: .5vw;
+}
+
+#sistema_p_texto_titulo{
+  font-weight: bold;
+  font-size: 3.5vw;
+}
+
+#sistema_p_creditoimg{
+  background-image: url('../img/visa.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 15vw;
+  height: 5vw;
+  margin-left: 3vw;
+}
+
+#sistema_p_numcredito{
+  margin-top: 1vw;
+  margin-left: 3vw;
+  font-size: 2.5vw;
+  font-weight: bold; 
+}
+
+#sistema_p_fechacredito{
+  font-weight: bold;
+  margin-top: 1vw;
+  margin-left: 3vw;
+  font-size: 1.5vw;
+  line-height: 1.6vw;
+}
+
+#sistema_p_fechacredito_cad{
+  margin-left: 1vw;
+  margin-top: .4vw;
+  font-size: 4vw;
+}
+
+.sistema_p_botoncredito{
+  background-color: #ff1d25;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  width: 50%;
+  height: 3vw;
+  border-radius: 1vw;
+  font-weight: bold;
+  margin-top: 2vw;
+  transition: .5s;
+  font-size: 1vw;
+  cursor: pointer;
+  line-height: 2vw;
+}
+
+#sistema_p_confirmar{
+  background-color: #ff1d25;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  padding: 1vw;
+  position: relative;
+  border-radius: 1vw;
+  font-weight: bold;
+  transition: .5s;
+  font-size: 1vw;
+  margin-top: 1vw;
+
+}
+
+.sistema_p_botoncredito:hover, #sistema_p_confirmar:hover{
+  box-shadow: 0 0 2vw #ff1d25;
+  color: #fff;
+  text-decoration: none;
+}
+
+#sistema_p_ejericios{
+  color: #fff;
+  text-align: right;
+  font-weight: bold;
+  font-size: .8vw;
+  line-height: .8vw;
+}
+
+#sistemas_p_numero{
+  color: #ff1d25;
+  font-size: 5vw;
+  line-height: 4.5vw;
+  font-weight: bold;
+}
+
+#sistemas_p_numerogris{
+  color: #6f6768;
+  font-weight: bold;
+  font-size: 1.5vw;
+  line-height: 1.9vw;
+}
+
+#sistema_p_etapa{
+  color: #fff;
+  font-weight: bold;
+  font-size: .8vw;
+  line-height: .8vw;
+  padding-top: .65vw;
+}
+
+#sistema_p_etapanombre{
+  color: #ff1d25;
+  font-weight: bold;
+  font-size: 3vw;
+  line-height: 3vw;
+}
+
+#perfil_edad, #perfil_altura, #perfil_peso{
+  margin-right: .5vw;
+}
+
+#perfil_mod_edad, #perfil_mod_estatura, #perfil_mod_peso{
+  width: 12%;
+  font-weight: normal;
+  text-align: center;
+  font-size: 2vw;
+  line-height: 2vw;
+}
+
+
+@media (max-width: 1090px) { 
+  .sistema_contenido{
+      flex-direction: column;
+      align-items: center;
+      padding: 5vh 8vw;
+      height: auto;
+  }
+
+  #sistema_p_iz{
+      width: 100%;
+      height: 100%;
+      margin-bottom: 8vw;
+  }
+
+  #sistema_p_iz_arriba{
+      flex-direction: column;
+      background-color: #191a1a;
+      height: 100%;
+      width: 100%;
+      margin-bottom: 8vw;
+  }
+
+  #sistema_p_iz_abajo{
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+      width: 100%;
+      height: 100%;
+      padding: 5vw 0vw 5vw 0vw;
+  }
+
+  .sistema_lineadiv{
+      height: .5vw;
+      width: 100%;
+      margin: 5vw 0vw 5vw 0vw;
+  }
+
+  #sistema_p_der{
+      width: 100%;
+      height: 100%;
+      padding: 5vw 2.5vw 5vw 2.5vw;
+  }
+  .sistema_p_editar{
+      text-align: center;
+      margin-right: 0px;
+      margin-top: 3vw;
+      font-size: 3vw;
+      align-self: center;
+      font-weight: normal;
+  }
+  
+  #sistema_p_img{
+      width: 60vw;
+      height: 60vw;
+      border-width: 1vw;
+      border-color: #ff1d25;
+      margin-left: 0;
+      margin-bottom: 3vw;
+  }
+  
+  #sistema_p_texto{
+      margin-left: 0vw;
+      font-size: 5vw;
+      text-align: center;
+  }
+
+  #sistema_p_texto_titulo{
+      margin-left: 0vw;
+      font-size: 10vw;
+      line-height: 10vw;
+  }
+
+  #sistema_p_ejericios{
+      font-size: 2vw;
+      line-height: 2vw;
+  }
+
+  #sistemas_p_numero{
+      font-size: 10vw;
+      line-height: 8.2vw;
+  }
+
+  #sistemas_p_numerogris{
+      font-size: 2.8vw;
+      line-height: 2.9vw;
+  }
+  #sistema_p_etapa{
+      font-size: 2vw;
+      line-height: 2vw;
+      padding-top: .65vw;
+  }
+  
+  #sistema_p_etapanombre{
+      font-size: 7.28vw;
+      line-height: 7.28vw;
+  }
+
+  #sistema_p_creditoimg{
+      width: 25vw;
+      height: 8.3vw;
+      margin-left: 3vw;
+  }
+
+  #sistema_p_numcredito{
+      font-size: 7vw;
+  }
+
+  #sistema_p_fechacredito{
+      font-size: 5vw;
+      line-height: 5.2vw;
+  }
+
+  #sistema_p_fechacredito_cad{
+      font-size: 13vw;
+      line-height: 9vw;
+      margin-left: 4vw;
+  }
+
+  #sistema_p_botoncredito{
+      width: 50%;
+      height: 10vw;
+      border-radius: 1vw;
+      margin-top: 5vw;
+      font-size: 2.5vw;
+  }
+
+  #perfil_edad, #perfil_altura, #perfil_peso{
+      margin-right: 1vw;
+  }
+  
+  #perfil_mod_edad, #perfil_mod_estatura, #perfil_mod_peso{
+      width: 12%;
+      font-size: 5vw;
+      line-height: 5vw;
+  }
+
+  .bold{
+      margin-right: 2vw;
+  }
+
+  .perfil_editable{
+      justify-content: center;
+  }
+
+  #sistema_p_confirmar{
+      margin-top: 5vw;
+      width: 60%;
+      height: 10vw;
+      font-size: 4vw;
+      line-height: 8vw;
+  }
+}
