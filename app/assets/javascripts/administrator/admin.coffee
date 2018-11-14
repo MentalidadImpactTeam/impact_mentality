@@ -78,9 +78,15 @@ AdministratorController::list_exercises = ->
     $('#gray_button').attr 'src', 'img/administrador_button_red@2x copy.png'
     return
   $('#divNewNotifications li').on 'click', ->
-    $('.dropdown-toggle').html $(this).find('a').html()
+    $('.dropdown-toggle').html $(this).find('p').html()
+    $.ajax
+      type: "GET"
+      url: "/administrator/exercises/get_exercises_list"
+      data: category_id: $(this).find('p').attr("id")
+      dataType: "json",
+      success: (data) ->
+        console.log(data)
     return
-  
   $('#cerrar_admi_agregar_ejer').on 'click', ->
     $('#admin_popup').addClass 'animated fadeOutUp'
     return

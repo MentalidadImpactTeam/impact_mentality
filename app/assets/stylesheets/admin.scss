@@ -493,8 +493,17 @@ input:checked+.slider:before {
 
 }
 .admin_nombre{
-  margin-left:5px!important;
+  margin-left: 5px !important;
 }
+
+.admin_descripcion{
+  min-width: 500px;
+}
+
+#tr_hover {
+  min-width: 800px;
+}
+
 .administrador_tabla{
   padding: 30px;
 }
@@ -977,3 +986,4 @@ padding-top: 0px!important;
         font-size: 3vw;
     }
 }
+

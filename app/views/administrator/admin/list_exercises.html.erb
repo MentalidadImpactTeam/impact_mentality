@@ -23,10 +23,10 @@
               <li><a class="dropdown-item" id="admin_pierna" href="#">Pierna </a></li>
               <li><a class="dropdown-item" id="admin_pantorilla" href="#">PANTORILLA </a></li>
               <li><a class="dropdown-item" id="admin_pantorilla_saltando" href="#">PANTORILLAS SALTANDO</a></li>
-              <li><a class="dropdown-item" id="admin_calentamiento" href="#">CALENTAMIENTO</a></li>
-              <li><a class="dropdown-item" id="admin_ACL" href="#">ACL</a></li>
-              <li><a class="dropdown-item" id="admin_rot" href="#">ROT CUFF</a></li>
-              <li><a class="dropdown-item" id="admin_squat" href="#">SQUAT MOBILITY</a></li>
+              <li><a class="dropdown-item" id="dropdown-toggleadmin_calentamiento" href="#">CALENTAMIENTO</a></li>
+              <li><a class="dropdown-item" id="dropdown-toggleadmin_ACL" href="#">ACL</a></li>
+              <li><a class="dropdown-item" id="dropdown-toggleadmin_rot" href="#">ROT CUFF</a></li>
+              <li><a class="dropdown-item" id="dropdown-toggleadmin_squat" href="#">SQUAT MOBILITY</a></li>
             </ul>
           </li>
         </ul>
@@ -68,26 +68,11 @@
       <div class="col-sm-3" id="divNewNotifications">
         <ul id="administrador_menu" style="list-style: none; cursor:pointer;" >
           <li class="active" style="color:#ff1d25;" >
-            <a class="dropdown-toggle" id="dropdown_title" data-toggle="dropdown" >Espalda</a>
+            <p class="dropdown-toggle" id="dropdown_title" data-toggle="dropdown" >FUNDAMENTAL</p>
             <ul id="divNewNotifications" class="dropdown-menu">
-              <li><a class="dropdown-item" id="admin_espalda_corpo" href="#">ESPALDA PESO CORPORAL</a></li>
-              <li><a class="dropdown-item" id="admin_pecho_fuerza" href="#">PECHO FUERZA</a></li>
-              <li><a class="dropdown-item" id="admin_pecho" href="#">PECHO</a></li>
-              <li><a class="dropdown-item" id="admin_press_militar" href="#">PRESS MILITAR</a></li>
-              <li><a class="dropdown-item" id="admin_hombro_front" href="#">HOMBRO FRONTALES</a></li>
-              <li><a class="dropdown-item" id="admin_hombro_lateral" href="#">HOMBRO LATERALES </a></li>
-              <li><a class="dropdown-item" id="admin_pajaros" href="#">PÁJAROS</a></li>
-              <li><a class="dropdown-item" id="admin_lagartija" href="#">LAGARTIJA PIKE</a></li>
-              <li><a class="dropdown-item" id="admin_tricep_fondos" href="#">TRICEP FONDOS </a></li>
-              <li><a class="dropdown-item" id="admin_tricep" href="#">TRICEP </a></li>
-              <li><a class="dropdown-item" id="admin_bicep" href="#">BICEP </a></li>
-              <li><a class="dropdown-item" id="admin_pierna" href="#">PIERNA </a></li>
-              <li><a class="dropdown-item" id="admin_pantorilla" href="#">PANTORILLA </a></li>
-              <li><a class="dropdown-item" id="admin_pantorilla_saltando" href="#">PANTORILLAS SALTANDO</a></li>
-              <li><a class="dropdown-item" id="admin_calentamiento" href="#">CALENTAMIENTO</a></li>
-              <li><a class="dropdown-item" id="admin_ACL" href="#">ACL</a></li>
-              <li><a class="dropdown-item" id="admin_rot" href="#">ROT CUFF</a></li>
-              <li><a class="dropdown-item" id="admin_squat" href="#">SQUAT MOBILITY</a></li>
+              <% @categories.each do |cat| %>
+                <li><p class="dropdown-item" id="<%= cat.id %>" href="#"><%= cat.name %></p></li>
+              <% end %>
             </ul>
           </li>
         </ul>
@@ -121,16 +106,15 @@
           <thead>
             <tr id="tabla_titulos">
               <th>Nombre</th>
-              <th>Reps</th>
               <th class="admin_descripcion_delet">Descripcion</th>
               <th></th>
               <th></th>
             </tr>
           </thead>
+          <% @exercises.each do |exercise| %>
           <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>Lorem itsum rem its ate m arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom ausom au</td>
+            <td class="admin_nombre"> <%= exercise.name %> </td>
+            <td class="admin_descripcion"> <%= exercise.description %> </td>
             <td>
               <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
             </td>
@@ -138,94 +122,7 @@
               <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
             </td>
           </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>Lorem itsum rem its ate m arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom ausom au</td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>Lorem itsum rem its ate m arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom ausom au</td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>Lorem itsum rem its ate m arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom ausom au</td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>Lorem itsum rem its ate m arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom ausom au</td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>Lorem itsum rem its ate m arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom ausom au</td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>Lorem itsum rem its ate m arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom ausom au</td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>Lorem itsum rem its ate m arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom ausom au</td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>Lorem itsum rem its ate m arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom arem itsum rem its atesom ausom au</td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
+          <% end %>
         </table>
       </center>
     </div>
