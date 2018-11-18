@@ -62,7 +62,20 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "impact_mentality_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'mentalidadimpact.com' }
+  config.action_mailer.default_options = {from: 'no-reply@mentalidadimpact.com'}
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.sendgrid.net',
+      port:                 '25',
+      domain:               'sendgrid.net',
+      user_name:            ENV['sendgrid_user_name'],
+      password:             ENV['sendgrid_password'],
+      authentication:       'plain',
+      enable_starttls_auto: true
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
