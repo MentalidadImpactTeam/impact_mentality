@@ -24,5 +24,7 @@
 .byebug_history
 
 # Ignore application configuration
+/config/database.yml
+/config/secrets.yml
 /config/application.yml
 sendgrid.env
