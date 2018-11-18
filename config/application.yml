@@ -17,3 +17,5 @@ development:
   paypal_host: https://api.sandbox.paypal.com
   paypal_client: AYMopFLPCJegLn_33Wldzdi08-y_V7n7k8JTH3xDpwXeBiT0A8Rwsh1lngEu9c6uOfYoWcg4YKhJs0p4
   paypal_secret: EIEW4BIa6tlzN5a8t25e0ZXqbJxqRe0aLjZnNcxOmG8sO0Fr9LqhFnPLUAScwfYCrXokMJqpcWowtNp8
+  sendgrid_user_name: apikey
+  sendgrid_password: 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

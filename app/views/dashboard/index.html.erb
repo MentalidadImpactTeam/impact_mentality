@@ -19,7 +19,7 @@
                 </div>
                 <div>
                     <div class="progress">
-                        <div class="progress-bar barra_entrenamientos" role="progressbar" aria-valuemin="50" aria-valuemax="100"></div>
+                        <div class="progress-bar barra_entrenamientos" role="progressbar" aria-valuemin="50" aria-valuemax="100" style="width: <%= @training_width.to_s %>%;"></div>
                     </div>
                 </div>
             </div>
@@ -27,10 +27,10 @@
             <div class="sistema_info_three_containers">
 
                 <div class="d-flex flex-column">
-                    <div class="sistema_p_etapa"> ETAPA 2/10</div>
-                    <div class="sistema_p_etapanombre sistema_etapa"> COMPETITIVA </div>
+                    <div class="sistema_p_etapa"> ETAPA <%= current_user.user_information.stage_process %>/<%= current_user.user_information.stage_count %></div>
+                    <div class="sistema_p_etapanombre sistema_etapa"> <%= profile_stage_name(current_user.user_information.stage_id) %> </div>
                     <div class="progress">
-                        <div class="progress-bar" id="barra_etapa" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" id="barra_etapa" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: <%= @stage_width.to_s %>%;"></div>
                     </div>
                 </div>
 
@@ -42,7 +42,7 @@
                         <div class="sistema_p_etapa"> TIEMPO RESTANTE:</div>
                         <div class="sistema_p_etapanombre"> <%= @trainings_unfinished %> DIAS </div>
                         <div class="progress">
-                            <div class="progress-bar" id="barra_etapa" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" id="barra_etapa" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: <%= @training_width.to_s %>%;"></div>
                         </div>
                     </div>
                 </div>

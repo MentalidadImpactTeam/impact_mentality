@@ -31,7 +31,7 @@
           </li>
         </ul>
         <div class="col-xs-6">
-          <p id="administradores_ejercicios_totales">31 EJERCICIOS TOTALES</p>
+          <p class="administradores_ejercicios_totales">31 EJERCICIOS TOTALES</p>
         </div>
       </div>
 
@@ -69,16 +69,16 @@
         <ul id="administrador_menu" style="list-style: none; cursor:pointer;" >
           <li class="active" style="color:#ff1d25;" >
             <p class="dropdown-toggle" id="dropdown_title" data-toggle="dropdown" >FUNDAMENTAL</p>
-            <ul id="divNewNotifications" class="dropdown-menu">
+            <ul id="ul_categories" class="dropdown-menu" data-selected="1">
               <% @categories.each do |cat| %>
-                <li><p class="dropdown-item" id="<%= cat.id %>" href="#"><%= cat.name %></p></li>
+                <li><p class="dropdown-item" id="<%= cat.id %>"><%= cat.name %></p></li>
               <% end %>
             </ul>
           </li>
         </ul>
       </div>
       <div class="col-sm-2">
-        <p id="administradores_ejercicios_totales">31 EJERCICIOS TOTALES</p>
+        <p class="administradores_ejercicios_totales"><%= @exercises.length %> EJERCICIOS TOTALES</p>
       </div>
       <div class="col-sm-2" id="administrador_menu_botones">
         <img src="/img/administrador_button_red@2x.png" class="float-right" alt="" width="35px" style="margin-left:5px;" id="red_button">
@@ -111,18 +111,20 @@
               <th></th>
             </tr>
           </thead>
-          <% @exercises.each do |exercise| %>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> <%= exercise.name %> </td>
-            <td class="admin_descripcion"> <%= exercise.description %> </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <% end %>
+          <tbody>
+            <% @exercises.each do |exercise| %>
+            <tr id="tr_hover" data-exercise="<%= exercise.id %>">
+              <td class="admin_nombre"> <%= exercise.name %> </td>
+              <td class="admin_descripcion"> <%= exercise.description %> </td>
+              <td>
+                <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" class="administrador_puntos"></div>
+              </td>
+              <td>
+                <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
         </table>
       </center>
     </div>
@@ -146,87 +148,7 @@
             <td class="admin_nombre"> Lagartijas </td>
             <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
             <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" id="administrador_puntos"></div>
+              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" class="administrador_puntos"></div>
             </td>
             <td>
               <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
@@ -245,7 +167,7 @@
         <div class="overlay_popup">
 
         </div>
-        <div class="animated fadeInUp" id="sistema_admin_agregar_ejercicio">
+        <div class="animated fadeInUp" id="sistema_admin_agregar_ejercicio" data-id="">
 
           <center>
             <div class="banner_top">
@@ -258,19 +180,10 @@
               <div class="col">
                 <div>
                   <h5>CATEGORIA</h5>
-                  <select name="" id="">
-                    <option value="">ESPALDA</option>
-                    <option value="">BICEP</option>
-                    <option value="">PIERNA</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col">
-                <div>
-                  <h5>TIPO</h5>
-                  <select name="" id="">
-                    <option value="">FUNDAMENTAL</option>
-                    <option value="">AUXILIAR</option>
+                  <select name="" id="popup_select_categories">
+                  <% @categories.each do |cat| %>
+                    <option value="<%= cat.id %>"><%= cat.name %></option>
+                  <% end %>
                   </select>
                 </div>
               </div>

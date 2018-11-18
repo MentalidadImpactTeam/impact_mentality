@@ -370,14 +370,14 @@ body {
     background-color: Red;
 }
 
-#ID_Competencia_fecha {
+#ID_Competencia_fecha, #IP_fecha_nacimiento {
     border: none;
     font-family: lato;
     font-size: 20px;
     background-color: transparent;
 }
 
-#ID_Competencia_fecha:focus {
+#ID_Competencia_fecha:focus, #IP_fecha_nacimiento:focus {
     outline: none;
 }
 

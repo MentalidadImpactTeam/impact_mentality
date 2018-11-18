@@ -176,64 +176,90 @@ eventos_datos_personales = ->
         return false
       else
         $('#input_box_apellido').removeClass 'input_error'
-        if $('#IP_Experiencia').val() == 'vacio'
+        if $('#IP_telefono').val() == ''
           swal
             type: 'error'
             title: 'Alerta'
-            text: 'Por favor Ingrese su Experiencia'
+            text: 'Por favor Ingrese su Telefono'
             allowEscapeKey: true
             allowOutsideClick: true
             confirmButtonText: 'Regresar'
             confirmButtonClass: 'login_sweetalert'
-          $('#input_box_exp').addClass 'input_error'
+          $('#input_box_telefono').addClass 'input_error'
           return false
         else
-          $('#input_box_exp').removeClass 'input_error'
-          if $('#IP_genero').val() == 'vacio'
+          $('#input_box_telefono').removeClass 'input_error'
+          if $('#IP_fecha_nacimiento').val() == ''
             swal
               type: 'error'
               title: 'Alerta'
-              text: 'Por favor Ingrese su Genero'
+              text: 'Por favor Ingrese su Fecha de Nacimiento'
               allowEscapeKey: true
               allowOutsideClick: true
               confirmButtonText: 'Regresar'
               confirmButtonClass: 'login_sweetalert'
-            $('#input_box_gen').addClass 'input_error'
+            $('#input_box_fecha_nacimiento').addClass 'input_error'
             return false
           else
-            $('#input_box_gen').removeClass 'input_error'
-            if $('#IP_peso').val() == ''
+            $('#input_box_fecha_nacimiento').removeClass 'input_error'
+            if $('#IP_Experiencia').val() == 'vacio'
               swal
                 type: 'error'
                 title: 'Alerta'
-                text: 'Por favor Ingrese su Peso'
+                text: 'Por favor Ingrese su Experiencia'
                 allowEscapeKey: true
                 allowOutsideClick: true
                 confirmButtonText: 'Regresar'
                 confirmButtonClass: 'login_sweetalert'
-              $('#input_box_peso').addClass 'input_error'
+              $('#input_box_exp').addClass 'input_error'
               return false
             else
-              $('#input_box_peso').removeClass 'input_error'
-              if $('#IP_Estatura').val() == 'vacio'
+              $('#input_box_exp').removeClass 'input_error'
+              if $('#IP_genero').val() == 'vacio'
                 swal
                   type: 'error'
                   title: 'Alerta'
-                  text: 'Por favor Ingrese su Estatura'
+                  text: 'Por favor Ingrese su Genero'
                   allowEscapeKey: true
                   allowOutsideClick: true
                   confirmButtonText: 'Regresar'
                   confirmButtonClass: 'login_sweetalert'
-                $('#input_box_estatura').addClass 'input_error'
+                $('#input_box_gen').addClass 'input_error'
                 return false
               else
-                $('#input_box_estatura').removeClass 'input_error'
-                $('#div_datos_personales').addClass 'animated bounceOutLeft'
-                setTimeout (->
-                  $("#div_datos_personales").css('display','none')
-                  $("#div_informacion_deportiva").removeAttr("style")
-                  return
-                ), 500
+                $('#input_box_gen').removeClass 'input_error'
+                if $('#IP_peso').val() == ''
+                  swal
+                    type: 'error'
+                    title: 'Alerta'
+                    text: 'Por favor Ingrese su Peso'
+                    allowEscapeKey: true
+                    allowOutsideClick: true
+                    confirmButtonText: 'Regresar'
+                    confirmButtonClass: 'login_sweetalert'
+                  $('#input_box_peso').addClass 'input_error'
+                  return false
+                else
+                  $('#input_box_peso').removeClass 'input_error'
+                  if $('#IP_Estatura').val() == 'vacio'
+                    swal
+                      type: 'error'
+                      title: 'Alerta'
+                      text: 'Por favor Ingrese su Estatura'
+                      allowEscapeKey: true
+                      allowOutsideClick: true
+                      confirmButtonText: 'Regresar'
+                      confirmButtonClass: 'login_sweetalert'
+                    $('#input_box_estatura').addClass 'input_error'
+                    return false
+                  else
+                    $('#input_box_estatura').removeClass 'input_error'
+                    $('#div_datos_personales').addClass 'animated bounceOutLeft'
+                    setTimeout (->
+                      $("#div_datos_personales").css('display','none')
+                      $("#div_informacion_deportiva").removeAttr("style")
+                      return
+                    ), 500
     return false
 
 eventos_datos_deportivos = ->
@@ -488,9 +514,14 @@ eventos_forma_pago = ->
     return
 
   conektaErrorResponseHandler = (response) ->
-    # $form.find(".card-errors").text(response.message_to_purchaser);
-    # $form.find("button").prop("disabled", false);
-    console.log response.message_to_purchaser
+    swal
+      type: 'error'
+      title: 'Alerta'
+      text: response.message_to_purchaser
+      allowEscapeKey: true
+      allowOutsideClick: true
+      confirmButtonText: 'Regresar'
+      confirmButtonClass: 'login_sweetalert'
     return
 
   $('.FPago_tarjeta_tutor').on 'keypress', ->
@@ -554,7 +585,6 @@ eventos_forma_pago = ->
     Conekta.Token.create tokenParams, conektaSuccessResponseHandler, conektaErrorResponseHandler
     return false
   return 
-
 
 addkg = ->
   contenido_tmp = $('#IP_peso').val() + ' kg'

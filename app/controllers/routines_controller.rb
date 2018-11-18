@@ -146,34 +146,23 @@ class RoutinesController < ApplicationController
     end
 
     def create
-        last_routine = UserRoutine.where(user_id: current_user.id).order(id: :desc)
-        stage_week = ""
-        if last_routine.present?
-            last_routine = last_routine.first
-            last_date = last_routine.date
-            today = Time.now.to_date
-            same_week = last_date.cweek == today.cweek
-            if same_week
-                stage_week = last_routine.stage_week
-            else
-                week_difference = TimeDifference.between(last_date, today).in_weeks
-                stage_week = last_routine.stage_week + week_difference.to_i
-            end
-        else
-            stage_week = 1
+        today_routine = UserRoutine.where(user_id: current_user.id, date: Date.today)
+        if today_routine.blank?
+            create_routine_complete()
+            today_routine = UserRoutine.where(user_id: current_user.id, date: Date.today)
         end
 
-        user_routine = UserRoutine.new
-        user_routine.user_id = current_user.id
-        user_routine.stage_id = current_user.user_information.stage_id
-        user_routine.stage_week = stage_week
-        user_routine.date = Time.now.to_date
-        user_routine.done = 0
-        user_routine.save
+        current_user.user_information.stage_week = today_routine.stage_week if current_user.user_information.stage_week != today_routine.stage_week
+        
+        if current_user.user_information.stage_id != today_routine.stage_id
+            current_user.user_information.stage_id = today_routine.stage_id 
+            current_user.user_information.stage_process += 1
+        end
+        current_user.user_information.save
 
         # Si es sabado, hacer rutina de jueves
         weekday =  Time.now.to_date.wday == 6 ? 4 : Time.now.to_date.wday
-        configuration =  StageConfiguration.where(stage_id: user_routine.stage_id, day: weekday)
+        configuration =  StageConfiguration.where(stage_id: today_routine.stage_id, day: weekday)
         # array = []
         configuration.each do |conf|
             routine_exercise = RoutineExercise.new
@@ -181,14 +170,8 @@ class RoutinesController < ApplicationController
             routine_exercise.user_id = current_user.id
             routine_exercise.group = conf.group
             routine_exercise.done = 0
-            # hash = {}
-            # hash['category'] = Category.find(conf.category_id).name
-            # hash['subcategory'] = conf.subcategory_id.present? ? Subcategory.find(conf.subcategory_id).name : ""
-            # hash['exercise_cat'] = conf.exercise_id.present? ? Exercise.find(conf.exercise_id).name : ""
             exe_id = 0
             if conf.exercise_id.present?
-                # hash['exercise'] = Exercise.find(conf.exercise_id).name
-                # exe_id = conf.id
                 routine_exercise.exercise_id = conf.exercise_id
             else
                 if conf.subcategory_id.present?
@@ -196,34 +179,19 @@ class RoutinesController < ApplicationController
                 elsif conf.category_id.present?
                     exercises = Exercise.where(category_id: conf.category_id).to_a
                 end
+
+                exercises = exercises.where(bar: 1) if conf.bar == 1
+                exercises = exercises.where(liga: 1) if conf.liga == 1
+
                 exercises = exercises.shuffle
                 exercises.each do |exe_cat|
                     existe = RoutineExercise.find_by(user_routine_id: user_routine.id, exercise_id: exe_cat.id)
                     if existe.present?
                         next
                     else
-                        # hash['exercise'] = exe_cat.name
-                        # exe_id = exe_cat.id
                         routine_exercise.exercise_id = exe_cat.id
                         break
                     end
-                    # if array.length == 0
-                    #   # hash['exercise'] = exe_cat.name
-                    #   # exe_id = exe_cat.id
-                    #   routine_exercise.exercise_id = exe_cat.id
-                    #   break
-                    # else
-                    #   # existe = array.select { |ha| ha['exe_id'] == exe_cat.id }
-                    #   existe = RoutineExercise.find_by(user_routine_id: user_routine.id, exercise_id: exe_cat.id)
-                    #   if existe.present?
-                    #     next
-                    #   else
-                    #     # hash['exercise'] = exe_cat.name
-                    #     # exe_id = exe_cat.id
-                    #     routine_exercise.exercise_id = exe_cat.id
-                    #     break
-                    #   end
-                    # end
                 end
             end
             light_heavy_day = conf.heavy_day.nil? ? conf.light_day.nil? ? nil : "L"  : "H"
@@ -236,10 +204,42 @@ class RoutinesController < ApplicationController
             routine_exercise.seconds_uo = hash[:up] if hash[:up].present?
             routine_exercise.porcentage = hash[:porcentage] if hash[:porcentage].present?
             routine_exercise.save
-            # hash['exe_id'] = exe_id
-            # array.push(hash)
         end    
         render plain: "OK"
+    end
+
+    def create_routine_complete()
+        first_day_routine = Date.today
+        # 168 dias, 6 etapas de 4 semanas cada una
+        last_day_routine = first_day_routine + 167
+        
+        week = 1
+        stage = 1
+        day = first_day_routine.wday == 0 ? 7 : first_day_routine.wday
+        week = 0 if day == 7
+        for date in first_day_routine..last_day_routine
+            user_routine = UserRoutine.new
+            user_routine.user_id = current_user.id
+            user_routine.stage_id = stage
+            user_routine.stage_week = week
+            user_routine.date = date
+            user_routine.day = day
+            user_routine.done = 0
+            user_routine.save
+        
+            break if stage == 6 and week == 4 and day == 7
+
+            day += 1
+            
+            if day == 8
+                day = 1
+                week += 1
+                if week == 5
+                    week = 1
+                    stage += 1
+                end
+            end
+        end
     end
 
     def list_exercises

@@ -47,7 +47,7 @@
                     <div class="sistema_cuenta_borrar"></div>
                     <% if card.brand == "visa" %>
                     <div><%= image_tag("visa", class: "sistema_cuenta_marca") %></div> 
-                    <% else %>
+                    <% elsif card.brand == "mastercard" %>
                     <div><%= image_tag("mastercard", class: "sistema_cuenta_marca") %></div> 
                     <% end %>
                     <div class="sistema_cuenta_numt"> **** **** **** <%= card.last_digits %></div>
@@ -71,7 +71,7 @@
             <div class="sistema_cuenta_contenedorfacturacion d-flex flex-column">
                 <div class="sistema_cuenta_facturacion_texto" id="sistema_cuenta_facturacion_texto_plan">PLAN MENSUAL</div>
                 <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit">MONTO A COBRAR: <div class="sistema_cuenta_facturacion_texto_var">$150 M.N.</div></div>
-                <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit">FECHA DE FACTURACIÓN: <div class="sistema_cuenta_facturacion_texto_var"> 20/SEPT/2019 </div></div>
+                <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit">FECHA DE FACTURACIÓN: <div class="sistema_cuenta_facturacion_texto_var"> <%= account_subscription_billing_date(@subscription)  %> </div></div>
             </div>
         </div>
         
@@ -86,7 +86,7 @@
                     <div> ESTADO </div>
                     <div> SUSCRIPCIÓN:</div>
                 </div>
-                <div class="sistema_cuenta_estadoa"> ACTIVA </div>
+                <div class="sistema_cuenta_estadoa"> <%= account_subscription_description(@estatus)  %> </div>
             </div>
         </div>
         <div class="sistema_cuenta_datos d-flex flex-row">

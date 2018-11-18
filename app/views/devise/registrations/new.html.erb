@@ -186,16 +186,32 @@
                                 </div>
 
                             </div>
+
+                            <div class="row">
+                                <div class="DP_input col-lg-6 col-md-6">
+                                    <div id="input_box_telefono" class="input_box_tutor animated bounceIn">
+                                        <i class="fas fa-phone"></i>
+                                        <%= ui_fields.text_field :phone, placeholder: 'Teléfono', id: 'IP_telefono', onkeypress: 'return event.charCode >= 48 && event.charCode <= 57;', maxlength: "10" %>
+                                    </div>
+                                </div>
+                                <div class="DP_input col-lg-6 col-md-6">
+                                    <div id="input_box_fecha_nacimiento" class="input_box_tutor  animated bounceIn">
+                                        <i class="fas fa-birthday-cake"></i>
+                                        <%= ui_fields.text_field :birth_date, placeholder: 'Fecha Nacimiento', id: 'IP_fecha_nacimiento', class: "textbox-n", onfocus: "(this.type = 'date')" %>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row ">
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div id="input_box_exp" class="input_box_ano animated bounceIn">
-                                        <i class="far fa-calendar-alt"></i>
+                                        <i class="fas fa-clock"></i>
                                         <%= ui_fields.select :experience, options_for_select([['Experiencia', 'vacio'],['Novato', 'novato'],['Experimentado', 'experimentado'], ['Atleta', 'atleta']]), {}, { :id => 'IP_Experiencia' } %>
                                     </div>
                                 </div>
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div id="input_box_gen" class="input_box_ano animated bounceIn">
-                                        <i class="far fa-calendar-alt"></i>
+                                        <i class="fas fa-transgender"></i>
                                         <%= ui_fields.select :genre, options_for_select([['Género', 'vacio'],['Hombre', 'H'],['Mujer', 'M']]), {}, { :id => 'IP_genero' } %>
                                     </div>
                                 </div>
@@ -205,13 +221,13 @@
                             <div class="row ">
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div id="input_box_peso" class="input_box_tutor animated bounceIn">
-                                        <i class="far fa-id-badge"></i>
+                                        <i class="far fa-weight"></i>
                                         <%= ui_fields.text_field :weight, placeholder: 'Peso', id: 'IP_peso', onkeypress: 'return event.charCode >= 48 && event.charCode <= 57;' %>
                                     </div>
                                 </div>
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div id="input_box_estatura" class="input_box_ano animated bounceIn">
-                                        <i class="far fa-calendar-alt "></i>
+                                        <i class="far fa-ruler-vertical "></i>
                                         <%= ui_fields.select :height, options_for_select(@heights), {}, { :id => 'IP_Estatura' } %>
                                     </div>
                                 </div>
@@ -251,7 +267,7 @@
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div class="input_box_p  animated bounceIn">
                                         <i class="far fa-calendar-alt"></i>
-                                        <%= ui_fields.select :experience, options_for_select([['Posiciones', 'vacio']]), {}, { :id => 'ID_pos_obj' } %>
+                                        <%= ui_fields.select :position, options_for_select([['Posiciones', 'vacio']]), {}, { :id => 'ID_pos_obj' } %>
                                     </div>
                                 </div>
 

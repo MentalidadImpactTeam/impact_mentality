@@ -1,6 +1,15 @@
 
 LoginController = Paloma.controller('Users/Sessions')
 LoginController::new = ->
+  if $(".alert").text() != ""
+    swal
+      type: 'error'
+      title: 'Alerta'
+      text: 'Usuario o password Incorrectos'
+      allowEscapeKey: true
+      allowOutsideClick: true
+      confirmButtonText: 'Regresar'
+      confirmButtonClass: 'login_sweetalert'
     #CLICK EVENT 
   $('#user_email, #user_password').on 'keyup', ->
     $(this).removeClass 'input_error'
