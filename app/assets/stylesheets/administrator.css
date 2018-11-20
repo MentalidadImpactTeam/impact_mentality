@@ -109,6 +109,7 @@
   transition: .5s;
   font-weight: normal;
   font-size: 1vw;
+  color: white;
 }
 
 .menuH_items:hover{

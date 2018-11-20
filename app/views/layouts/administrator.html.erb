@@ -74,10 +74,10 @@
         <div id="menuH_logo"></div>
         <div id="menuH_admin"> ADMINISTRADOR </div>
         <%= link_to administrator_users_path, style: "text-decoration: none; color: whitec" do %> 
-            <div class="menuH_items admin_active" id="usuarios">USUARIOS</div>
+            <div class="menuH_items" id="menu_usuarios">USUARIOS</div>
         <% end %>
         <%= link_to administrator_exercises_path, style: "text-decoration: none; color: whitec" do %> 
-            <div class="menuH_items" id="usuarios">EJERCICIOS</div>
+            <div class="menuH_items" id="menu_ejercicios">EJERCICIOS</div>
         <% end %>
         <%= link_to destroy_user_session_path, method: :delete, class: "nav-item nav-link admin_cerrar d-flex justify-content-center" do %> 
             <p class="align-self-center"> CERRAR SESIÓN </p>
