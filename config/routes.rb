@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   namespace :administrator do
     get "users" => "admin#list_users"
     get "exercises" => "admin#list_exercises"
+    get "exercises/change_list_exercises" => "admin#change_list_exercises"
+    post "exercises/edit_exercise" => "admin#edit_exercise"
     get "users/:id" => "admin#show_user"
   end
 end
