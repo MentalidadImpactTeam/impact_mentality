@@ -47,7 +47,7 @@
     <div id="sistema_p_der" class="d-flex flex-column justify-content-center">
         <% if @card.brand == "visa" %>
         <div><%= image_tag("visa", id: "sistema_p_creditoimg") %></div> 
-        <% elsif @card.brand == "mastercard" %>
+        <% elsif @card.brand == "mc" %>
         <div><%= image_tag("mastercard", id: "sistema_p_creditoimg") %></div> 
         <% end %>
         <div id="sistema_p_numcredito">**** **** **** <%= @card.last_digits %></div>

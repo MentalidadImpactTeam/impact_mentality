@@ -47,7 +47,7 @@
                     <div class="sistema_cuenta_borrar"></div>
                     <% if card.brand == "visa" %>
                     <div><%= image_tag("visa", class: "sistema_cuenta_marca") %></div> 
-                    <% elsif card.brand == "mastercard" %>
+                    <% elsif card.brand == "mc" %>
                     <div><%= image_tag("mastercard", class: "sistema_cuenta_marca") %></div> 
                     <% end %>
                     <div class="sistema_cuenta_numt"> **** **** **** <%= card.last_digits %></div>
