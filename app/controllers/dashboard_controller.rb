@@ -2,7 +2,7 @@ class DashboardController < ApplicationController
   before_action :login_required
 
   def index
-    @trainings = UserRoutine.where(user_id: current_user.id).count
+    @trainings = UserRoutine.where("user_id = #{current_user.id} and day != 7").count
     @trainings_complete = UserRoutine.where("user_id = #{current_user.id} and done = 1 and day != 7").count
     @trainings_unfinished = UserRoutine.where("user_id = #{current_user.id} and done = 0 and date >= '#{Date.today}'").count
 
