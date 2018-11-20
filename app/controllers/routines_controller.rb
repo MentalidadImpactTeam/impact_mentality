@@ -16,7 +16,8 @@ class RoutinesController < ApplicationController
         @restday = today.wday == 0 ? true : false
         @mostrar_modal = false
         routine = UserRoutine.find_by(user_id: current_user.id, date: today, done: 0)
-        if routine.present? and !@restday
+        routine_exist = RoutineExercise.where(user_routine_id: routine.id).count
+        if routine_exist == 0 and !@restday
             @mostrar_modal = true
         elsif !@restday
             routine_exercises = RoutineExercise.where(user_routine_id: routine.id).order(group: :asc)
@@ -145,23 +146,25 @@ class RoutinesController < ApplicationController
     end
 
     def create
-        today_routine = UserRoutine.where(user_id: current_user.id, date: Date.today)
-        if today_routine.blank?
+        user_routine = UserRoutine.where(user_id: current_user.id, date: Date.today)
+        if user_routine.blank?
             create_routine_complete()
-            today_routine = UserRoutine.where(user_id: current_user.id, date: Date.today)
+            user_routine = UserRoutine.where(user_id: current_user.id, date: Date.today)
         end
 
-        current_user.user_information.stage_week = today_routine.stage_week if current_user.user_information.stage_week != today_routine.stage_week
+        user_routine = user_routine.first
+
+        current_user.user_information.stage_week = user_routine.stage_week if current_user.user_information.stage_week != user_routine.stage_week
         
-        if current_user.user_information.stage_id != today_routine.stage_id
-            current_user.user_information.stage_id = today_routine.stage_id 
+        if current_user.user_information.stage_id != user_routine.stage_id
+            current_user.user_information.stage_id = user_routine.stage_id 
             current_user.user_information.stage_process += 1
         end
         current_user.user_information.save
 
         # Si es sabado, hacer rutina de jueves
         weekday =  Time.now.to_date.wday == 6 ? 4 : Time.now.to_date.wday
-        configuration =  StageConfiguration.where(stage_id: today_routine.stage_id, day: weekday)
+        configuration =  StageConfiguration.where(stage_id: user_routine.stage_id, day: weekday)
         # array = []
         configuration.each do |conf|
             routine_exercise = RoutineExercise.new
@@ -194,7 +197,7 @@ class RoutinesController < ApplicationController
                 end
             end
             light_heavy_day = conf.heavy_day.nil? ? conf.light_day.nil? ? nil : "L"  : "H"
-            hash = stage_configuration_sets_reps(params["values"], user_routine.stage_id, conf.category_id, routine_exercise.exercise_id, light_heavy_day, stage_week)
+            hash = stage_configuration_sets_reps(params["values"], user_routine.stage_id, conf.category_id, routine_exercise.exercise_id, light_heavy_day, current_user.user_information.stage_week)
 
             routine_exercise.set = hash[:sets]
             routine_exercise.rep = hash[:reps]
