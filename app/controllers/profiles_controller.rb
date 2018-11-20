@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   def index
     @card = UserConektaToken.find_by(user_id: current_user.id, default: 1)
     @trainings = UserRoutine.where(user_id: current_user.id).count
-    @trainings_complete = UserRoutine.where(user_id: current_user.id, done: 1).count
+    @trainings_complete = UserRoutine.where("user_id = #{current_user.id} and done = 1 and day != 7").count
 
     @stage_width = (((current_user.user_information.stage_process.to_f - 1) / current_user.user_information.stage_count.to_f) * 100).round
     @age = TimeDifference.between(current_user.user_information.birth_date, Date.today).in_years.to_i

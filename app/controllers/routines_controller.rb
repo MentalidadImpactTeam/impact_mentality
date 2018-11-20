@@ -9,15 +9,14 @@ class RoutinesController < ApplicationController
             @week_hash[date.wday - 1]["description"] = date_description(date)
         end
 
-        today = Date.today - 1.day
+        today = Date.today
         if today.wday != 0
             @week_hash[today.wday - 1]["active"] = 1 
         end
-
         @restday = today.wday == 0 ? true : false
         @mostrar_modal = false
-        routine = UserRoutine.find_by(user_id: current_user.id, date: today)
-        if routine.blank? and !@restday
+        routine = UserRoutine.find_by(user_id: current_user.id, date: today, done: 0)
+        if routine.present? and !@restday
             @mostrar_modal = true
         elsif !@restday
             routine_exercises = RoutineExercise.where(user_routine_id: routine.id).order(group: :asc)
@@ -224,7 +223,7 @@ class RoutinesController < ApplicationController
             user_routine.stage_week = week
             user_routine.date = date
             user_routine.day = day
-            user_routine.done = 0
+            user_routine.done = day == 7 ? 1 : 0
             user_routine.save
         
             break if stage == 6 and week == 4 and day == 7

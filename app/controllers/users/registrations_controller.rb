@@ -117,8 +117,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user_routine.stage_id = stage
       user_routine.stage_week = week
       user_routine.date = date
-      user_routine.day = day == 7 ? 1 : 0
-      user_routine.done = 0
+      user_routine.day = day
+      user_routine.done = day == 7 ? 1 : 0
       user_routine.save
 
       break if stage == 6 and week == 4 and day == 7
