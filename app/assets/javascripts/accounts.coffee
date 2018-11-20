@@ -2,7 +2,7 @@ Conekta.setPublicKey("key_HcFQfz7edHvGnSxP8cettSA");
 
 AccountController = Paloma.controller('Accounts')
 AccountController::index = ->
-  metodos_menu()
+  metodos_menu("CUENTA")
   account_open_card_modal()
   account_add_card()
   account_update()

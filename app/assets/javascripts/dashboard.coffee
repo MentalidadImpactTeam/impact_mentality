@@ -1,6 +1,6 @@
 DashboardController = Paloma.controller('Dashboard')
 DashboardController::index = ->
-  metodos_menu()
+  metodos_menu("ANALITICOS")
   chart = document.getElementById('chart').getContext('2d')
   gradient = chart.createLinearGradient(0, 0, 0, 450)
   gradient.addColorStop 0, 'rgba(255, 0,0, 0.8)'
@@ -61,7 +61,8 @@ DashboardController::index = ->
     data: data
     options: options)
 
-@metodos_menu = ->
+@metodos_menu = (titulo) ->
+  $(".titulo_mobile_header").text(titulo)
   $('.burger_menu').on 'click', ->
     if $('.sistema_descripcion_menu').hasClass('hide_text_menu')
       $('.sistema_descripcion_menu').removeClass 'display_text_menu'

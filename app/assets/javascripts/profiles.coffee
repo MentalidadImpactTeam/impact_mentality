@@ -1,6 +1,6 @@
 ProfileController = Paloma.controller('Profiles')
 ProfileController::index = ->
-  metodos_menu()
+  metodos_menu("PERFIL")
 
   trainings_complete = parseInt($("#sistemas_p_numero").text())
   trainings = parseInt($("#sistemas_p_numerogris").text().replace("/",""))
