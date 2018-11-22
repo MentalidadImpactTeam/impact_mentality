@@ -16,4 +16,11 @@ class ProfilesController < ApplicationController
 
     render plain: "OK"
   end
+
+  def update_profile_image
+    current_user.user_information.img_url = params[:img_url]
+    current_user.user_information.save
+
+    redirect_to profiles_path
+  end
 end

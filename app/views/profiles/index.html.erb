@@ -8,15 +8,26 @@
     <input type="hidden" class="hidden_user" value="<%= current_user.id %>">
     <div id="sistema_p_iz" class="d-flex flex-column justify-content-between">
         <div id="sistema_p_iz_arriba" class="d-flex align-items-center">
-        <div id="sistema_p_img"> </div>
-        <div id="sistema_p_texto" class="d-flex flex-column">
-            <div id="sistema_p_texto_titulo"><%= current_user.user_information.name %></div>
-            <div><i><%= current_user.email %></i> </div>
-            <div class="d-flex flex-row perfil_editable"> <b class="bold">Edad: </b> <div id="perfil_edad"></div><%= @age %> años </div>
-            <div class="d-flex flex-row perfil_editable"> <b class="bold">Estatura: </b> <div id="perfil_altura"><%= current_user.user_information.height %></div>   m </div>
-            <div class="d-flex flex-row perfil_editable"> <b class="bold">Peso: </b> <div id="perfil_peso"><%= current_user.user_information.weight %></div> kg</div>
-        </div>
-        <a href="#" class="sistema_p_editar flex-fill">EDITAR</a> 
+            <div class="sistema_p_imgcontainer">
+                <div class="sistema_p_imgimg" style="background-image: url(<%= current_user.user_information.img_url %>);"> </div>
+                <div class="sistema_p_imgoverlay">
+                    <div class="sistema_p_imgtext d-flex flex-column justify-content-center align-items-center">
+                        <%= form_tag("/profiles/profile_image", method: "post", multipart: true) do %>
+                            <%= file_field_tag(:img_url, class: "sistema_p_imgupload")  %>
+                        <% end %>
+                        <img src="img/upload.png" style="width: 40%; height: 40%; margin-bottom: 1vw;">
+                        Cambiar imágen
+                    </div>
+                </div>
+            </div>
+            <div id="sistema_p_texto" class="d-flex flex-column">
+                <div id="sistema_p_texto_titulo"><%= current_user.user_information.name %></div>
+                <div><i><%= current_user.email %></i> </div>
+                <div class="d-flex flex-row perfil_editable"> <b class="bold">Edad: </b> <div id="perfil_edad"></div><%= @age %> años </div>
+                <div class="d-flex flex-row perfil_editable"> <b class="bold">Estatura: </b> <div id="perfil_altura"><%= current_user.user_information.height %></div>   m </div>
+                <div class="d-flex flex-row perfil_editable"> <b class="bold">Peso: </b> <div id="perfil_peso"><%= current_user.user_information.weight %></div> kg</div>
+            </div>
+            <a href="#" class="sistema_p_editar flex-fill">EDITAR</a> 
         </div>
         <div id="sistema_p_iz_abajo" class="d-flex justify-content-center align-items-center">
             <div class="d-flex flex-column justify-content-center">

@@ -8,6 +8,10 @@ ProfileController::index = ->
   porcentage = Math.ceil((trainings_complete / trainings) * 100)
 
   $("#barra_entrenamientos").width(porcentage + "%");
+
+  $(".sistema_p_imgupload").change ->
+    $("form").submit()
+    
   $('.sistema_p_editar ').on 'click', (event) -> 
     event.preventDefault()
     $('.sistema_p_editar').hide()

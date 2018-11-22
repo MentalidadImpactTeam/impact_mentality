@@ -28,7 +28,11 @@ Rails.application.routes.draw do
       post "card_default" => 'accounts#card_default'
     end
   end
-  resources :profiles
+  resources :profiles do 
+    collection do 
+      post 'profile_image' => "profiles#update_profile_image"
+    end
+  end
   namespace :administrator do
     get "users" => "admin#list_users"
     get "exercises" => "admin#list_exercises"
