@@ -43,7 +43,7 @@ AdministratorController::show_user = ->
         $.ajax
           type: "GET"
           url: "/users/edit/"
-          data: id: $("#admin_id").text(), user: { email: nuevomail }, first_name: nuevonom 
+          data: id: $(".hidden_user").val(), user: { email: nuevomail }, name: nuevonom 
           dataType: "text",
           success: (data) ->
             return

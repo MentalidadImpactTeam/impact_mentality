@@ -1,14 +1,14 @@
 <div class="admin_verentrenadorcontainer d-flex flex-column align-items-center">
-        
+        <input type="hidden" class="hidden_user" value="<%= @user.id %>">
         <i class="far fa-arrow-alt-circle-left fa-5x admin_regresar align-self-end"></i>
         <div class="bounceIn admin_infoentrenador d-flex flex-row align-items-center">
             
-            <div class="admin_infoentrenador_img"></div>
+            <div class="admin_infoentrenador_img" style="background-image: url(<%= @user.user_information.img_url %>);"></div>
             <div class="admin_infoentrenador_info d-flex flex-column">
-                <div id="admin_infoentrenador_nombre"> <%= @user.user_information.first_name.capitalize %> <%= @user.user_information.last_name.capitalize %> </div>
+                <div id="admin_infoentrenador_nombre"> <%= @user.user_information.name %> </div>
                 <!-- CODIGO DE CLIENTE-->
                 <div class="d-flex flex-row"> ID:  <div id="admin_id" class="admin_infos"> <%= @user.user_information.uid %> </div> </div>
-                <div class="d-flex flex-row"> Correo: <div id="admin_correo" class="admin_infos"></div> <%= @user.email %> </div>
+                <div class="d-flex flex-row"> Correo: <div id="admin_correo" class="admin_infos"><%= @user.email %></div></div>
                 <div class="d-flex flex-row"> Miembro desde: <div id="admin_fecha" class="admin_infos"> <%= @user.created_at.strftime("%d-%m-%y") %> </div> </div>
                 <div class="d-flex flex-row"> Tipo de usuario: <div id="admin_tipo" class="admin_infos"> <%= if @user.user_information.user_type_id == 3 then "USUARIO" else "ENTRENADOR" end %> </div> </div>
             </div>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit admin_fecha_titulos"><i class="far fa-clock"></i>FECHA DE FACTURACIÓN:
                         <div class="sistema_cuenta_facturacion_texto_var admin_fecha_titulos">
-                            <B>20/SEPT/2019</B> </div>
+                            <B><%= account_subscription_billing_date(@subscription)  %></B> </div>
                     </div>
                 </div>
             </div>

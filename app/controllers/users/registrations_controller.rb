@@ -22,6 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user = User.find_by(email: params["user"]["email"])
     
     user.user_information.name = params['user']['user_information_attributes']['first_name'].squish.capitalize + " " + params['user']['user_information_attributes']['last_name'].squish.capitalize
+    user.user_information.name = user.user_information.nam.split.map(&:capitalize).join(' ')
     user.user_information.weight = user.user_information.weight.remove("kg").squish
     user.user_information.user_type_id = 3
     user.user_information.uid =  Random.rand(000000...999999).to_s.rjust(6, "0")
@@ -179,7 +180,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user = User.find(params[:id])
     user.skip_reconfirmation! 
     if user.update(user_params)
-      user.user_information.first_name = params[:first_name]
+      user.user_information.name = params[:name].split.map(&:capitalize).join(' ')
       user.user_information.save
       render plain: "OK"
     else
@@ -230,7 +231,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params
-    params.require(:user).permit(:email, :first_name)
+    params.require(:user).permit(:email, :name)
   end
 
   # protected
