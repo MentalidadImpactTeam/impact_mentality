@@ -16,6 +16,13 @@ body{
   vertical-align: middle;
 }
 
+.jugadores_controlador i{
+  color:white;
+  opacity: .6;
+}
+.jugadores_controlador i:hover{
+  opacity:1;
+}
 .fecha_cobro,
 .fecha_intro,
 .estado_usuario {
@@ -145,7 +152,7 @@ table tbody tr:hover {
 
 @media (max-width: 795px) {
   .switch {
-      transform: scale(1);
+      transform: scale(.5);
   }
   .imagen_jugador {
       width: 10vw;
@@ -182,7 +189,7 @@ table tbody tr:hover {
       padding: 5px 0;
       transition: all .5s;
       color: white;
-      font-size: 3.5vw;
+      font-size: 2vw;
   }
   .contenedor_tabla_jugadores {
       border-radius: 5px;
@@ -221,7 +228,7 @@ table tbody tr:hover {
   width: 60px;
   height: 34px;
   margin: 15px 0;
-  transform: scale(1.5);
+  transform: scale(1);
 }
 
 .switch input {
@@ -969,6 +976,9 @@ padding-top: 0px!important;
 }
 
 @media (max-width: 900px) {
+  .switch{
+    transform: scale(.5);
+  }
     #sistema_admin_agregar_ejercicio {
         width: 100%;
     }
