@@ -489,10 +489,7 @@ input:checked+.slider:before {
 .dropdown-item{
   text-transform: uppercase;
 }
-.admin_tabla_mobil{
-  display: none;
-  width: 100%;
-}
+
 .aministrador_tabla_body {
   font-family: 'Lato', sans-serif;
   overflow-x:hidden;
@@ -501,7 +498,7 @@ input:checked+.slider:before {
 }
 .admin_nombre{
   margin-left: 5px !important;
-  width:20%
+  width:40%
 }
 
 .admin_descripcion{
@@ -906,12 +903,6 @@ padding-top:15px;
 }
 @media (max-width:  750px) {
 
-  .admin_tabla_pc{
-    display: none!important;
-  }
-  .admin_tabla_mobil{
-    display: block;
-  }
   #administrador_menu_botones{
     margin-left:70px;
     padding-top:0px!important;
@@ -925,9 +916,6 @@ padding-top:15px;
   .menu_mobil{
     display: block!important;
   }
-.admin_descripcion_delet{
- display: none!important;
-}
 
 
   .administradores_ejercicios_totales{
