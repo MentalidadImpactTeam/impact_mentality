@@ -174,3 +174,194 @@
       font-size: 5vw !important;
   }
 }
+
+#filtro_jugadores {
+  border-radius: 5vw;
+  border: 1px solid grey;
+  font-family: lato;
+  width: 50%;
+  text-align: center;
+  height: 50px;
+  transition: all .5s;
+  vertical-align: middle;
+}
+
+.imagen_jugador {
+  background-size: contain;
+  width: 7vw;
+  height: 7vw;
+  margin: 20px;
+  border-radius: 100%;
+}
+
+#filtro_jugadores::placeholder {
+  font-family: lato;
+  display: inline-block;
+  color: #d1d1d1;
+  vertical-align: middle;
+}
+
+.contenedor_acciones_controlador_jugadores {
+  float: right;
+  margin: 25px 0;
+}
+
+.contenedor_acciones_controlador_jugadores i:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.contenedor_acciones_controlador_jugadores i {
+  transition: all .5s;
+  font-size: 2vw;
+  vertical-align: middle;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.deporte_jugadores {
+  font-size: 1.3vw;
+  font-weight: bold;
+  margin: 0;
+}
+
+.posicion_jugadores {
+  font-size: 1.3vw;
+  margin: 0;
+}
+
+.correos_jugadores {
+  font-size: 1.3vw;
+  margin: 0;
+}
+
+.nombre_jugador {
+  font-weight: bold;
+  margin: 0;
+}
+
+.escuela_jugador {
+  font-size: .7vw;
+  margin: 0;
+}
+
+.aliniar_contenido_tabla {
+  text-align: center;
+}
+
+.iconos_ajustes_tabla_jugadores i {
+  font-size: 2vw;
+  transition: all .5s;
+  margin: 0 8px;
+}
+
+.row_hover {
+  background-color: #333333;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.row_hover:hover {
+  background-color: red;
+  box-shadow: 0px 0 40px red;
+}
+
+.contenedor_tabla_jugadores {
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+}
+
+table {
+  border-spacing: 10px;
+}
+
+table thead tr th {
+  background-color: red;
+  padding: 15px 0;
+  color: white;
+  font-family: lato;
+  font-size: 1.3vw;
+  transition: all .5s;
+}
+
+table tbody tr td {
+  padding: 10px 0;
+  color: white;
+  font-family: lato;
+  font-size: 1vw;
+  transition: all .5s;
+}
+
+table tbody tr:hover {
+  background-color: red !important;
+}
+
+@media (max-width: 795px) {
+  .imagen_jugador {
+      width: 10vw;
+      margin: 10px;
+      height: 10vw;
+  }
+  .iconos_ajustes_tabla_jugadores i {
+      font-size: 5vw;
+      transition: all .5s;
+      padding: 15px 0;
+  }
+  .columna_eliminada {
+      display: none;
+  }
+  .correos_jugadores {
+      font-size: 2.5vw;
+      transition: all .5s;
+  }
+  .posicion_jugadores {
+      font-size: 3vw;
+  }
+  .deporte_jugadores {
+      font-size: 3vw;
+  }
+  .escuela_jugador {
+      font-size: 1.5vw;
+  }
+  table tbody tr td {
+      font-size: 3vw;
+      padding: 0;
+      transition: all .5s;
+  }
+  table thead tr th {
+      padding: 5px 0;
+      transition: all .5s;
+      color: white;
+      font-size: 3vw;
+  }
+  .contenedor_tabla_jugadores {
+      border-radius: 5px;
+  }
+  #filtro_jugadores {
+      height: 25px;
+  }
+  .contenedor_acciones_controlador_jugadores {
+      margin: 5px 0;
+  }
+  .contenedor_acciones_controlador_jugadores i {
+      font-size: 4vw;
+      vertical-align: middle;
+      margin: 0;
+      display: inline-block;
+  }
+}
+
+#agregar_jugador {
+  border-radius: 25px;
+  border: 1px solid grey;
+  height: 35px;
+  font-family: lato;
+}
+
+#agregar_jugador::placeholder {
+  font-family: lato;
+}
+
+
+/* ------------------------------------------------------ */

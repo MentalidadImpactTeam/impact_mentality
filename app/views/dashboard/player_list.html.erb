@@ -1,0 +1,74 @@
+<div class="subbanners_sistema_menu">
+    <div style="background-color:#202020;" class="sistema_banner d-flex flex-row align-items-center">
+        <div class="sistema_icono"></div>
+        <h2>ANALITICOS</h2>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-12 jugadores_controlador">
+            <div class="contenedor_acciones_controlador_jugadores">
+                <i class="back_arrow_jugadores fas fa-arrow-alt-circle-left"></i>
+                <i class="foward_arrow_jugadores  fas fa-arrow-alt-circle-right"></i>
+                <input id="filtro_jugadores" placeholder=" Buscar" type="text">
+                <i class="add_jugadores fas fa-plus-circle"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <center>
+            <div class="bounceIn contenedor_tabla_jugadores">
+                <table style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>JUGADORES</th>
+                            <th class="columna_eliminada">CORREO</th>
+                            <th>POSICION</th>
+                            <th class="columna_eliminada aliniar_contenido_tabla">SEMANA</th>
+                            <th class="columna_eliminada aliniar_contenido_tabla">FECHA INICIO</th>
+                            <th class="aliniar_contenido_tabla">AJUSTES</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% @array.each do |player| %>
+                          <tr class="row_hover" data-id="<%= player.id %>">
+                              <td>
+                                  <center>
+                                      <div class="imagen_jugador" style="background-image: url(<%= player.user_information.img_url %>);"></div>
+                                  </center>
+                              </td>
+                              <td>
+                                  <p class="nombre_jugador"><%= player.user_information.name %></p>
+                                  <p class="escuela_jugador">Cetys Universidad</p>
+                              </td>
+                              <td class="columna_eliminada">
+                                  <p class="correos_jugadores"> <%= player.email %></p>
+                              </td>
+                              <td>
+                                  <p class="posicion_jugadores"><%= player.user_information.position %></p>
+                                  <p class="deporte_jugadores"><%= player.user_information.sport %></p>
+                              </td>
+                              <td class="columna_eliminada aliniar_contenido_tabla">5/15 </td>
+                              <td class="columna_eliminada aliniar_contenido_tabla"><%= player.created_at.strftime("%d/%m/%Y") %></td>
+                              <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
+                                  <i class="fas fa-poll dashboard_jugador"></i>
+                                  <i class="fas fa-adjust profile_jugador"></i>
+                                  <i class="fas fa-eraser delete_jugador"></i>
+                              </td>
+                          </tr>
+                        <% end %>
+                    </tbody>
+
+                </table>
+            </div>
+        </center>
+    </div>
+</div>

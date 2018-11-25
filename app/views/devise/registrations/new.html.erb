@@ -142,8 +142,137 @@
             </div>
             <div class="col-lg-3"></div>
         </div>
+
+        <div id="div_tipo_usuario" class="animated bounceInRight row" style='display: none'>
+            <div class="col-lg-3"></div>
+            <div id="TU_modal" class="col-sm-12 col-lg-6">
+                <div class="row">
+                    <div class="col-12">
+                        <center>
+                            <h1 id="TU_titulo" class="animated bounceIn">¿Qué tipo de usuario eres?</h1>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <center>
+                            <p id="TU_info_text">Elije el tipo de usuario que seas dependiendo de tus necesidades.</p>
+                        </center>
+                    </div>
+                </div>
+                <center>
+                    <div class="tipos_de_usuario row">
+                        <div class="col-4">
+                            <div id="TU_usuario" class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5>Soy Atleta Individuales </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div id="TU_entrenador" class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <i class="fas fa-chalkboard-teacher"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5>Entrenador Particular </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div id="TU_escuela" class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <i class="fas fa-school"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5>Escuelas o Instituciones </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button style="display:none;" id="TU_btn">Seleccionar Tipo</button>
+                        </div>
+                    </div>
+                </center>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
         
         <%= f.fields_for :user_information do |ui_fields| %>
+            <%= ui_fields.hidden_field :user_type_id, id: "user_type_id" %>
+            <div id="div_entrenador_modal" class="animated bounceInRight row" style='display: none'>
+                <div class="col-lg-3"></div>
+                <div id="ientrenador_modal" class="col-sm-12 col-lg-6">
+
+                    <div id="ientrenador_first_row" class="row">
+                        <div class="col-12">
+                            <center><i class="fas fa-dumbbell"></i></center>
+                        </div>
+                        <div class="col-12">
+                            <center>
+                                <h1 id="TU_titulo" class="animated bounceIn">Contacto de Entrenador</h1>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="ientrenador_input col-lg-12 col-md-12">
+                            <div class="ientrenador_input_box_correo_institucion  animated bounceIn">
+                                <i class="fas fa-envelope"></i>
+                                <input id="ientrenador_correo" type="text" placeholder="Correo de la Institución">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="ientrenador_input col-lg-12 col-md-12">
+                            <div class="ientrenador_input_box_contacto_institucion animated bounceIn">
+                                <i class="far fa-id-badge"></i>
+                                <%= ui_fields.text_field :name, placeholder: 'Nombre de Contacto', id: 'ientrenador_contacto' %>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="ientrenador_input col-lg-12 col-md-12">
+                            <div class="ientrenador_input_box_num  animated bounceIn">
+                                <i class="fas fa-phone"></i>
+                                <%= ui_fields.text_field :phone, placeholder: 'Número de telefono', id: 'ientrenador_telefono', onkeypress: 'return event.charCode >= 48 && event.charCode <= 57;', maxlength: "20" %>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-12 ">
+                            <center>
+                                <button id="ientrenador_btn" class="animated bounceIn">Continuar</button>
+                            </center>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+
             <div id="div_datos_personales" class="animated bounceInRight row" style="display: none">
                 <div class="col-lg-3"></div>
                 <div id="IP_modal" class="col-sm-12 col-lg-6">
@@ -181,7 +310,7 @@
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div id="input_box_telefono" class="input_box_tutor animated bounceIn">
                                         <i class="fas fa-phone"></i>
-                                        <%= ui_fields.text_field :phone, placeholder: 'Teléfono', id: 'IP_telefono', onkeypress: 'return event.charCode >= 48 && event.charCode <= 57;', maxlength: "10" %>
+                                        <%= ui_fields.text_field :phone, placeholder: 'Teléfono', id: 'IP_telefono', onkeypress: 'return event.charCode >= 48 && event.charCode <= 57;', maxlength: "20" %>
                                     </div>
                                 </div>
                                 <div class="DP_input col-lg-6 col-md-6">
@@ -196,13 +325,13 @@
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div id="input_box_exp" class="input_box_ano animated bounceIn">
                                         <i class="fas fa-clock"></i>
-                                        <%= ui_fields.select :experience, options_for_select([['Experiencia', 'vacio'],['Novato', 'novato'],['Experimentado', 'experimentado'], ['Atleta', 'atleta']]), {}, { :id => 'IP_Experiencia' } %>
+                                        <%= ui_fields.select :experience, options_for_select([['Experiencia', ''],['Novato', 'novato'],['Experimentado', 'experimentado'], ['Atleta', 'atleta']]), {}, { :id => 'IP_Experiencia' } %>
                                     </div>
                                 </div>
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div id="input_box_gen" class="input_box_ano animated bounceIn">
                                         <i class="fas fa-transgender"></i>
-                                        <%= ui_fields.select :genre, options_for_select([['Género', 'vacio'],['Hombre', 'H'],['Mujer', 'M']]), {}, { :id => 'IP_genero' } %>
+                                        <%= ui_fields.select :genre, options_for_select([['Género', ''],['Hombre', 'H'],['Mujer', 'M']]), {}, { :id => 'IP_genero' } %>
                                     </div>
                                 </div>
                             </div>
@@ -257,7 +386,7 @@
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div class="input_box_p  animated bounceIn">
                                         <i class="far fa-calendar-alt"></i>
-                                        <%= ui_fields.select :position, options_for_select([['Posiciones', 'vacio']]), {}, { :id => 'ID_pos_obj' } %>
+                                        <%= ui_fields.select :position, options_for_select([['Posiciones', '']]), {}, { :id => 'ID_pos_obj' } %>
                                     </div>
                                 </div>
 
@@ -272,7 +401,7 @@
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div class="input_box_exp animated bounceIn">
                                         <i class="far fa-calendar-alt"></i>
-                                        <%= ui_fields.select :experience, options_for_select([['Experiencia', 'vacio'],['Novato', 'novato'],['Experimentado', 'experimentado'], ['Atleta', 'atleta']]), {}, { :id => 'ID_exp' } %>
+                                        <%= ui_fields.select :experience, options_for_select([['Experiencia', ''],['Novato', 'novato'],['Experimentado', 'experimentado'], ['Atleta', 'atleta']]), {}, { :id => 'ID_exp' } %>
                                     </div>
                                 </div>
                             </div>
