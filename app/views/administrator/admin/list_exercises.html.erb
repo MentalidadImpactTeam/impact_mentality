@@ -4,39 +4,26 @@
     <!--- - - - - - - -!-->
     <!--- - - - - - - -!-->
     <div class="row menu_mobil">
-      <div class="row" style="padding-top:10px; padding-left:40px;" id="divNewNotifications">
-        <ul id="administrador_menu" class="col-xs-6" style="list-style: none; cursor:pointer;">
-          <li class="dropdown active" style="color:#ff1d25;">
-            <a class="dropdown-toggle" id="dropdown_title" data-toggle="dropdown" >Espalda</a>
-            <ul id="divNewNotifications" class="dropdown-menu" style="list-style: none;">
-              <li><a class="dropdown-item" id="admin_espalda_corpo" href="#">ESPALDA PESO CORPORAL</a></li>
-              <li><a class="dropdown-item" id="admin_pecho_fuerza" href="#">PECHO FUERZA</a></li>
-              <li><a class="dropdown-item" id="admin_pecho" href="#">PECHO</a></li>
-              <li><a class="dropdown-item" id="admin_press_militar" href="#">PRESS MILITAR</a></li>
-              <li><a class="dropdown-item" id="admin_hombro_front" href="#">HOMBRO FRONTALES</a></li>
-              <li><a class="dropdown-item" id="admin_hombro_lateral" href="#">HOMBRO LATERALES </a></li>
-              <li><a class="dropdown-item" id="admin_pajaros" href="#">PÁJAROS</a></li>
-              <li><a class="dropdown-item" id="admin_lagartija" href="#">LAGARTIJA PIKE</a></li>
-              <li><a class="dropdown-item" id="admin_tricep_fondos" href="#">TRICEP FONDOS </a></li>
-              <li><a class="dropdown-item" id="admin_tricep" href="#">TRICEP </a></li>
-              <li><a class="dropdown-item" id="admin_bicep" href="#">BICEP </a></li>
-              <li><a class="dropdown-item" id="admin_pierna" href="#">Pierna </a></li>
-              <li><a class="dropdown-item" id="admin_pantorilla" href="#">PANTORILLA </a></li>
-              <li><a class="dropdown-item" id="admin_pantorilla_saltando" href="#">PANTORILLAS SALTANDO</a></li>
-              <li><a class="dropdown-item" id="dropdown-toggleadmin_calentamiento" href="#">CALENTAMIENTO</a></li>
-              <li><a class="dropdown-item" id="dropdown-toggleadmin_ACL" href="#">ACL</a></li>
-              <li><a class="dropdown-item" id="dropdown-toggleadmin_rot" href="#">ROT CUFF</a></li>
-              <li><a class="dropdown-item" id="dropdown-toggleadmin_squat" href="#">SQUAT MOBILITY</a></li>
-            </ul>
-          </li>
-        </ul>
-        <div class="col-xs-6">
-          <p class="administradores_ejercicios_totales">31 EJERCICIOS TOTALES</p>
-        </div>
+
+      <div class="row" style="margin-left:15%;">
+          <ul id="administrador_menu">
+            <li class="active" style="color:#ff1d25;" >
+              <p class="dropdown-toggle" id="dropdown_title" data-toggle="dropdown" >FUNDAMENTAL</p>
+              <ul id="ul_categories" class="dropdown-menu" data-selected="1">
+                <% @categories.each do |cat| %>
+                  <li><p class="dropdown-item" id="<%= cat.id %>"><%= cat.name %></p></li>
+                <% end %>
+              </ul>
+            </li>
+          </ul>
       </div>
 
+          <div class="row">
+        <p class="administradores_ejercicios_totales"><%= @exercises.length %> EJERCICIOS TOTALES</p>
+        </div>
+
       <div class="row">
-        <div class="col-xs-4" style="margin-left:100px;">
+        <div class="col-xs-4" style="margin-left:28%;">
           <center><img src="/img/administrador_button_Gray@2x.png" id="administrador_boton_rojo" alt="" width="35px"></center>
         </div>
 
@@ -65,7 +52,7 @@
 
 
     <div class="row menu_pc">
-      <div class="col-sm-3" id="divNewNotifications">
+      <div class="col-sm-3">
         <ul id="administrador_menu" style="list-style: none; cursor:pointer;" >
           <li class="active" style="color:#ff1d25;" >
             <p class="dropdown-toggle" id="dropdown_title" data-toggle="dropdown" >FUNDAMENTAL</p>
@@ -77,6 +64,7 @@
           </li>
         </ul>
       </div>
+
       <div class="col-sm-2">
         <p class="administradores_ejercicios_totales"><%= @exercises.length %> EJERCICIOS TOTALES</p>
       </div>
@@ -92,6 +80,7 @@
       <div class="col-sm-1">
         <center><img class="administrador_add" src="/img/administrador_add@2x.png" width="35px" alt=""></center>
       </div>
+
     </div>
 
     <!--- - - - - - - -!-->
