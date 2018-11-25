@@ -98,19 +98,19 @@
     <!--- TABLA PC  !--->
     <!--- - - - - - - -!-->
     <!--- - - - - - - -!-->
-    <div class="row admin_tabla_pc" style="margin-left:40px; margin-right:40px;">
+    <div class="row" style="margin-left:40px; margin-right:40px;">
         <table class="tabla_ejercicios table-striped table-hover">
           <thead>
             <tr id="tabla_titulos">
               <th>Nombre</th>
-              <th class="admin_descripcion_delet">Descripcion</th>
+              <th>Descripcion</th>
               <th></th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             <% @exercises.each do |exercise| %>
-            <tr id="tr_hover" data-exercise="<%= exercise.id %>">
+            <tr class="height_tr_admin" id="tr_hover" data-exercise="<%= exercise.id %>">
               <td class="admin_nombre"> <%= exercise.name %> </td>
               <td class="admin_descripcion"> <%= exercise.description %> </td>
               <td class="admin_botones_width">
@@ -125,35 +125,6 @@
         </table>
     </div>
 
-
-    <!--- - - - - - - -!-->
-    <!--- TABLA MOBIL  !--->
-    <!--- - - - - - - -!-->
-    <!--- - - - - - - -!-->
-    <div class="row admin_tabla_mobil">
-      <center>
-        <table class="tabla_ejercicios_mobil table-striped table-hover">
-          <thead>
-            <tr id="tabla_titulos">
-              <th>Nombre</th>
-              <th>Tipo</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tr id="tr_hover">
-            <td class="admin_nombre"> Lagartijas </td>
-            <td class="admin_tipo"> 3 sets de 15 repeticiones </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" class="administrador_puntos"></div>
-            </td>
-            <td>
-              <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
-            </td>
-          </tr>
-        </table>
-      </center>
-    </div>
 
     <!--- - - - - - - -!-->
     <!---      MODAL  !--->
