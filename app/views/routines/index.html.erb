@@ -9,7 +9,7 @@
         <div class="row">
             <div class="bounceIn col-12">
                 <center>
-                    <img src="img/pillow.png" alt="">
+                    <img id="descansa_icono" src="img/pillow.png" alt="">
                 </center>
                 <center>
                     <p class="pillow_txt bounceIn">Hoy es día de descanso</p>
@@ -67,7 +67,7 @@
                 <div> <%= date['description'] %> </div>
             </div>
             <% end %>
-        <% end %>    
+        <% end %>
     </div>
     <% if !@mostrar_modal %>
     <!-- CENTRO -->
@@ -92,7 +92,7 @@
                     <input type="hidden" class="hidden_exercise" value="<%= exercise['id'] %>" data-routine="<%= exercise['routine_exercise_id']%>">
                     <input type="hidden" class="hidden_exercise_description" value="<%= exercise['description'] %>">
                     <div class="sistema_r_ejercicio_arriba d-flex align-items-center flex-row justify-content-between">
-                        <div class="sistema_r_tipoejercicio d-flex flex-column"> 
+                        <div class="sistema_r_tipoejercicio d-flex flex-column">
                             <div> <%= exercise['name'] %>  </div>
                             <div class="sistema_r_repeticionesmovil"> <%= exercise["set"] %> set de <%= exercise["rep"] %> reps. </div>
                         </div>
@@ -104,7 +104,7 @@
                     <div class="sistema_r_ejercicio_abajo align-items-center flex-row justify-content-between">
                         <div class="sistema_r_nombreejercicio"> <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps. </div>
                         <% if exercise["done"] == 0 %>
-                        <i class="checkmark_rutina fas fa-check"></i> 
+                        <i class="checkmark_rutina fas fa-check"></i>
                         <% end %>
                         <div class="sistema_r_infoicono"> </div>
                     </div>
@@ -207,7 +207,7 @@
         text-align: center;
         font-weight: bold;
     }
-    
+
     .sistema_banner h2 {
         font-family: lato;
         font-weight: bold;
@@ -218,14 +218,14 @@
         padding-bottom: 8px;
         margin-left: .5vw;
     }
-    
+
     .sistema_banner {
         display: block;
         width: 100%;
         height: 3.8vw;
         position: relative;
     }
-    
+
     .sistema_container {
         display: inline-block;
         position: relative;
@@ -240,11 +240,11 @@
         width: 80% !important;
     }
 
-    @media (max-width: 1090px) { 
+    @media (max-width: 1090px) {
         .sistema_container {
         height: auto;
         }
     }
-    
+
 
 </style>
