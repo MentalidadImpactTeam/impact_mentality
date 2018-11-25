@@ -58,7 +58,7 @@
 }
 
 .sistema_p_editar{
-  text-align: right;  
+  text-align: right;
   text-decoration: none;
   color: #ff1d25;
   margin-right: 1vw;
@@ -121,7 +121,7 @@
   margin-left: 2vw;
   position: relative;
   width: 18vw;
-  height: 18vw;
+  height: 13vw;
   border-radius: 100%;
   border-style: solid;
   border-color: #ff1d25;
@@ -183,7 +183,7 @@
   margin-top: 1vw;
   margin-left: 3vw;
   font-size: 2.5vw;
-  font-weight: bold; 
+  font-weight: bold;
 }
 
 #sistema_p_fechacredito{
@@ -287,7 +287,10 @@
 }
 
 
-@media (max-width: 1090px) { 
+@media (max-width: 1090px) {
+  .sistema_p_imgcontainer {
+  height:18vw;
+  }
   .sistema_contenido{
       flex-direction: column;
       align-items: center;
@@ -337,7 +340,7 @@
       align-self: center;
       font-weight: normal;
   }
-  
+
   #sistema_p_img{
       width: 60vw;
       height: 60vw;
@@ -346,7 +349,7 @@
       margin-left: 0;
       margin-bottom: 3vw;
   }
-  
+
   #sistema_p_texto{
       margin-left: 0vw;
       font-size: 5vw;
@@ -378,7 +381,7 @@
       line-height: 2vw;
       padding-top: .65vw;
   }
-  
+
   #sistema_p_etapanombre{
       font-size: 7.28vw;
       line-height: 7.28vw;
@@ -416,7 +419,7 @@
   #perfil_edad, #perfil_altura, #perfil_peso{
       margin-right: 1vw;
   }
-  
+
   #perfil_mod_edad, #perfil_mod_estatura, #perfil_mod_peso{
       width: 12%;
       font-size: 5vw;
