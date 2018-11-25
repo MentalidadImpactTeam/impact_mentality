@@ -4,10 +4,12 @@ Conekta.setPublicKey("key_HcFQfz7edHvGnSxP8cettSA");
 RegistrationController = Paloma.controller('Users/Registrations')
 RegistrationController::new = ->
   eventos_registro()
+  eventos_tipos_usuarios()
   eventos_datos_personales()
   eventos_datos_deportivos()
   eventos_metas_objetivos()
   eventos_forma_pago()
+  eventos_entrenador()
 
   #END OF CLICK EVENT REGISTRO BTN
   $('#registro_close').on 'click', ->
@@ -112,12 +114,110 @@ eventos_registro = ->
                 $('#registro_modal').addClass 'animated bounceOutUp'
                 setTimeout (->
                   $("#contenedor_registro").css('display','none')
-                  $("#div_datos_personales").removeAttr("style")
+                  # $("#div_datos_personales").removeAttr("style")
+                  $("#div_tipo_usuario").removeAttr("style")
                   return
                 ), 800
       return false
     return
-  
+
+eventos_tipos_usuarios = ->
+  validacion_usuario = false
+  validacion_entrenador = false
+  validacion_escuela = false
+  $('#TU_entrenador, #TU_escuela, #TU_usuario').mouseover ->
+    $(this).addClass 'tipo_hover'
+    $(this).find('i').addClass 'tipo_unhover'
+    $(this).find('h5').addClass 'tipo_unhover'
+    return
+  $('#TU_entrenador, #TU_escuela, #TU_usuario').mouseout ->
+    $(this).removeClass 'tipo_hover'
+    $(this).find('i').removeClass 'tipo_unhover'
+    $(this).find('h5').removeClass 'tipo_unhover'
+    return
+
+  ### ELECCION ENTRENADOR ###
+
+  $('#TU_entrenador').on 'click', ->
+    $(this).addClass 'animated pulse'
+    $(this).addClass 'tipo_seleccionado'
+    $(this).find('i').addClass 'deseleccion'
+    $(this).find('h5').addClass 'deseleccion'
+    $('#TU_escuela, #TU_usuario').removeClass 'tipo_seleccionado animated pulse'
+    $('#TU_escuela i, #TU_escuela h5, #TU_usuario i, #TU_usuario h5').removeClass 'tipo_seleccionado, deseleccion'
+    $('#TU_btn').show 500
+    validacion_entrenador = true
+    validacion_escuela = false
+    validacion_usuario = false
+    return
+
+  ### ELECCION ESCUELA ###
+
+  $('#TU_escuela').on 'click', ->
+    $(this).addClass 'animated pulse'
+    $(this).addClass 'tipo_seleccionado'
+    $(this).find('i').addClass 'deseleccion'
+    $(this).find('h5').addClass 'deseleccion'
+    $('#TU_entrenador, #TU_usuario').removeClass 'tipo_seleccionado animated pulse'
+    $('#TU_entrenador i, #TU_entrenador h5, #TU_usuario i, #TU_usuario h5').removeClass 'tipo_seleccionado, deseleccion'
+    $('#TU_btn').show 500
+    validacion_escuela = true
+    validacion_entrenador = false
+    validacion_usuario = false
+    return
+
+  ### ELECCION USUARIO ###
+
+  $('#TU_usuario').on 'click', ->
+    $(this).addClass 'animated pulse'
+    $(this).addClass 'tipo_seleccionado'
+    $(this).find('i').addClass 'deseleccion'
+    $(this).find('h5').addClass 'deseleccion'
+    $('#TU_entrenador, #TU_escuela').removeClass 'tipo_seleccionado animated pulse'
+    $('#TU_entrenador i, #TU_entrenador h5, #TU_escuela i, #TU_escuela h5').removeClass 'tipo_seleccionado, deseleccion'
+    $('#TU_btn').show 500
+    validacion_usuario = true
+    validacion_escuela = false
+    validacion_entrenador = false
+    return
+  $('#TU_btn').on 'click', ->
+    if validacion_entrenador == true
+      $('#TU_usuario').hide 400
+      $('#TU_escuela').hide 400
+      $('#TU_modal').addClass 'animated bounceOutLeft'
+      $("#div_datos_personales").remove()
+      $("#div_informacion_deportiva").remove()
+      $("#div_metas_objetivos").remove()
+      $("#user_type_id").val(2)
+      setTimeout (->
+        $("#div_tipo_usuario").css('display','none')
+        $("#div_entrenador_modal").removeAttr("style")
+        return
+      ), 800
+    else
+      if validacion_escuela == true
+        $('#TU_usuario').hide 400
+        $('#TU_entrenador').hide 400
+        $('#TU_modal').addClass 'animated bounceOutLeft'
+        setTimeout (->
+          $("#div_tipo_usuario").css('display','none')
+          $("#div_datos_personales").removeAttr("style")
+          return
+        ), 800
+      else
+        if validacion_usuario == true
+          $('#TU_entrenador').hide 400
+          $('#TU_escuela').hide 400
+          $('#TU_modal').addClass 'animated bounceOutLeft'
+          $("#div_entrenador_modal").remove()
+          $("#user_type_id").val(3)
+          setTimeout (->
+            $("#div_tipo_usuario").css('display','none')
+            $("#div_datos_personales").removeAttr("style")
+            return
+          ), 800
+    return false
+
 eventos_datos_personales = ->
   $('#IP_nombre').on 'click', ->
     $('#input_box_nombre').removeClass 'input_error'
@@ -202,7 +302,7 @@ eventos_datos_personales = ->
             return false
           else
             $('#input_box_fecha_nacimiento').removeClass 'input_error'
-            if $('#IP_Experiencia').val() == 'vacio'
+            if $('#IP_Experiencia').val() == ''
               swal
                 type: 'error'
                 title: 'Alerta'
@@ -215,7 +315,7 @@ eventos_datos_personales = ->
               return false
             else
               $('#input_box_exp').removeClass 'input_error'
-              if $('#IP_genero').val() == 'vacio'
+              if $('#IP_genero').val() == ''
                 swal
                   type: 'error'
                   title: 'Alerta'
@@ -241,7 +341,7 @@ eventos_datos_personales = ->
                   return false
                 else
                   $('#input_box_peso').removeClass 'input_error'
-                  if $('#IP_Estatura').val() == 'vacio'
+                  if $('#IP_Estatura').val() == ''
                     swal
                       type: 'error'
                       title: 'Alerta'
@@ -270,7 +370,7 @@ eventos_datos_deportivos = ->
     $('#input_box_deporte').removeClass 'input_error'
     return
   $('#ID_btn').on 'click', ->
-    if $('#ID_deporte').val() == 'vacio'
+    if $('#ID_deporte').val() == ''
       swal
         type: 'error'
         title: 'Alerta'
@@ -282,7 +382,7 @@ eventos_datos_deportivos = ->
       $('#input_box_deporte').addClass 'input_error'
       return false
     else
-      if $('#ID_pos_obj').val() == 'vacio'
+      if $('#ID_pos_obj').val() == ''
         swal
           type: 'error'
           title: 'Alerta'
@@ -294,7 +394,7 @@ eventos_datos_deportivos = ->
         $('#input_box_p').addClass 'input_error'
         return false
       else
-        if $('#lesiones_input').val() == 'vacio'
+        if $('#lesiones_input').val() == ''
           swal
             type: 'error'
             title: 'Alerta'
@@ -306,7 +406,7 @@ eventos_datos_deportivos = ->
           $('#input_box_les').addClass 'input_error'
           return false
         else
-          if $('#ID_exp').val() == 'vacio'
+          if $('#ID_exp').val() == ''
             swal
               type: 'error'
               title: 'Alerta'
@@ -424,7 +524,7 @@ eventos_datos_deportivos = ->
     IDep_lesiones = '0'
     #FUNCIONES DE VERIFICACION
     
-    if $('#user_user_information_attributes_sport').val() == 'vacio'
+    if $('#user_user_information_attributes_sport').val() == ''
       swal
         type: 'error'
         title: 'Alerta'
@@ -438,7 +538,7 @@ eventos_datos_deportivos = ->
       return false
     else
       IDep_sport = '1'
-    if $('#user_user_information_attributes_experience').val() == 'vacio'
+    if $('#user_user_information_attributes_experience').val() == ''
       swal
         type: 'error'
         title: 'Alerta'
@@ -452,7 +552,7 @@ eventos_datos_deportivos = ->
       return false
     else
       IDep_experience = '1'
-    if $('#user_user_information_attributes_position').val() == 'vacio'
+    if $('#user_user_information_attributes_position').val() == ''
       swal
         type: 'error'
         title: 'Alerta'
@@ -466,7 +566,7 @@ eventos_datos_deportivos = ->
       return false
     else
       IDep_posicion = '1'
-    if $('#user_user_information_attributes_history_injuries').val() == 'vacio'
+    if $('#user_user_information_attributes_history_injuries').val() == ''
       swal
         type: 'error'
         title: 'Alerta'
@@ -510,6 +610,11 @@ eventos_forma_pago = ->
     #Inserta el token_id en la forma para que se envíe al servidor
     div_forma_pago = $("#div_forma_pago").append($('<input type="hidden" name="user[customer_token]" id="customer_token">').val(token.id))
     $form = $("#new_user")
+    swal({
+        title: 'Procesando...',
+        allowOutsideClick: false
+    });
+    swal.showLoading();
     $form.get(0).submit()
     return
 
@@ -585,6 +690,35 @@ eventos_forma_pago = ->
     Conekta.Token.create tokenParams, conektaSuccessResponseHandler, conektaErrorResponseHandler
     return false
   return 
+
+eventos_entrenador = ->
+  $("#ientrenador_btn").click -> 
+    if $("#ientrenador_contacto").val() == ""
+      swal
+        type: 'error'
+        title: 'Alerta'
+        text: 'Por favor Ingrese su Nombre de Contacto'
+        allowEscapeKey: true
+        allowOutsideClick: true
+        confirmButtonText: 'Regresar'
+        confirmButtonClass: 'registro_sweetalert'
+      return false
+    if $("#ientrenador_telefono").val() == ""
+      swal
+        type: 'error'
+        title: 'Alerta'
+        text: 'Por favor Ingrese su Telefono'
+        allowEscapeKey: true
+        allowOutsideClick: true
+        confirmButtonText: 'Regresar'
+        confirmButtonClass: 'registro_sweetalert'
+      return false
+    swal({
+        title: 'Procesando...',
+        allowOutsideClick: false
+    });
+    swal.showLoading();
+  return
 
 addkg = ->
   contenido_tmp = $('#IP_peso').val() + ' kg'

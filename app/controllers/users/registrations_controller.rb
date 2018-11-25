@@ -18,13 +18,73 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+    build_resource(sign_up_params)
+    resource.skip_confirmation! if params['user']['user_information_attributes']['user_type_id'].to_i == 2
+    resource.save
+    yield resource if block_given?
+    if resource.persisted?
+      if resource.active_for_authentication?
+        set_flash_message! :notice, :signed_up
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
+    end
     user = User.find_by(email: params["user"]["email"])
     
-    user.user_information.name = params['user']['user_information_attributes']['first_name'].squish.capitalize + " " + params['user']['user_information_attributes']['last_name'].squish.capitalize
-    user.user_information.name = user.user_information.nam.split.map(&:capitalize).join(' ')
-    user.user_information.weight = user.user_information.weight.remove("kg").squish
-    user.user_information.user_type_id = 3
+    if params['user']['user_information_attributes']['user_type_id'].to_i == 3
+      # Si es usuario
+      user.user_information.name = params['user']['user_information_attributes']['first_name'].squish.capitalize + " " + params['user']['user_information_attributes']['last_name'].squish.capitalize
+      user.user_information.name = user.user_information.name.split.map(&:capitalize).join(' ')
+      user.user_information.weight = user.user_information.weight.remove("kg").squish
+
+      customer = Conekta::Customer.create({
+        :name => user.user_information.name,
+        :email => user.email,
+        :payment_sources => [{
+          :type => 'card',
+          :token_id => params["user"]["customer_token"]
+        }]
+      })
+      payment_source   = customer.payment_sources.first
+  
+      user_conekta = UserConektaToken.new
+      user_conekta.user_id = user.id
+      user_conekta.token =  payment_source["id"]
+      user_conekta.default = 1
+      user_conekta.last_digits = payment_source["last4"]
+      user_conekta.exp_month = payment_source["exp_month"]
+      user_conekta.exp_year = payment_source["exp_year"]
+      user_conekta.brand = payment_source["brand"].downcase
+      user_conekta.save
+  
+      user.customer_token = customer.payment_sources.first.id
+      user.active = 1
+      
+      subscription = customer.create_subscription({
+        :plan => "mensual"
+      })
+  
+      user_subscription = UserConektaSubscription.new
+      user_subscription.user_id = user.id 
+      user_subscription.estatus = 1 
+      user_subscription.start_date = Time.at(subscription.billing_cycle_start).to_date
+      user_subscription.end_date = Time.at(subscription.billing_cycle_end).to_date
+      user_subscription.conekta_subscription_token = subscription.id
+      user_subscription.save
+    elsif params['user']['user_information_attributes']['user_type_id'].to_i == 2
+      # Si es entrenador
+      user.active = 1
+    end
+    user.save
+
     user.user_information.uid =  Random.rand(000000...999999).to_s.rjust(6, "0")
 
     if params['user']['user_information_attributes']['next_competition'].present?
@@ -64,42 +124,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user.user_information.stage_week = 1
       user.user_information.save
     end
-
-    customer = Conekta::Customer.create({
-      :name => user.user_information.name,
-      :email => user.email,
-      :payment_sources => [{
-        :type => 'card',
-        :token_id => params["user"]["customer_token"]
-      }]
-    })
-    payment_source   = customer.payment_sources.first
-
-    user_conekta = UserConektaToken.new
-    user_conekta.user_id = user.id
-    user_conekta.token =  payment_source["id"]
-    user_conekta.default = 1
-    user_conekta.last_digits = payment_source["last4"]
-    user_conekta.exp_month = payment_source["exp_month"]
-    user_conekta.exp_year = payment_source["exp_year"]
-    user_conekta.brand = payment_source["brand"].downcase
-    user_conekta.save
-
-    user.customer_token = customer.payment_sources.first.id
-    user.active = 1
-    user.save
-    
-    subscription = customer.create_subscription({
-      :plan => "mensual"
-    })
-
-    user_subscription = UserConektaSubscription.new
-    user_subscription.user_id = user.id 
-    user_subscription.estatus = 1 
-    user_subscription.start_date = Time.at(subscription.billing_cycle_start).to_date
-    user_subscription.end_date = Time.at(subscription.billing_cycle_end).to_date
-    user_subscription.conekta_subscription_token = subscription.id
-    user_subscription.save
     
   end
 
@@ -216,9 +240,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def catalogos_registro
-    @heights = [['Estatura', 'vacio'],['-1.00m', '-1'],['1.00m', '1.00'],['1.10m', '1.10'],['1.20m', '1.20'],['1.30m', '1.30'],['1.40m', '1.40'],['1.50m', '1.50'],
+    @heights = [['Estatura', ''],['-1.00m', '-1'],['1.00m', '1.00'],['1.10m', '1.10'],['1.20m', '1.20'],['1.30m', '1.30'],['1.40m', '1.40'],['1.50m', '1.50'],
     ['1.60m', '1.60'],['1.70m', '1.70'],['1.80m', '1.80'],['1.90m', '1.90'],['2.00m', '2.00'],['2.10m', '2.10'],['2.20m', '2.20'],['2.30m', '2.30'],['2.40m', '2.40'],['+2.40m', '+2.4']]
-    @sports = [['Deporte', 'vacio'],['Multi-deporte', 'Multi'],['Futbol Americano', 'Futbol'],['Balocensto', 'Balocensto'],['Beisbol', 'Beisbol'],['Soccer', 'Soccer'],
+    @sports = [['Deporte', ''],['Multi-deporte', 'Multi'],['Futbol Americano', 'Futbol'],['Balocensto', 'Balocensto'],['Beisbol', 'Beisbol'],['Soccer', 'Soccer'],
     ['Hockey', 'Hockey'],['Hockey Sobre Pasto', 'Hockeycpasto'],['Atletismo', 'Atletismo'],['Golf', 'Golf'],['Tennis', 'Tennis'],['Tennis Country', 'TennisC'],
     ['Deporte de Combate', 'Combate'],['Rugby', 'Rugby'],['Lacrosse', 'Lacrosse'],['Natación', 'Natación'],['Voleibol', 'Voleibol'],['Lucha Olímpica', 'LuchaOli'],
     ['Porras y Baile', 'Porras'],['Ciclismo', 'Ciclismo'],['Maratón', 'Maratón'],['Correr', 'Correr'],['Handball', 'Handball'],['Triathlon', 'Triathlon'],['Carrera de Obstaculos', 'Carrera'],['Water Polo', 'Water']]
@@ -227,7 +251,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:customer_token, :user_information_attributes => [:user_type_id, :first_name, :last_name, :phone, :birth_date, :genre, :height, :weight, :sport, :position, :next_competition, :experience, :history_injuries, :pay_day, :pay_program, :goal_1, :goal_2]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:customer_token, :user_information_attributes => [:user_type_id, :name, :first_name, :last_name, :phone, :birth_date, :genre, :height, :weight, :sport, :position, :next_competition, :experience, :history_injuries, :pay_day, :pay_program, :goal_1, :goal_2]])
   end
 
   def user_params
@@ -248,11 +272,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    active_confirmation_path
+    if resource.user_information.user_type_id == 2
+      active_trainer_confirmation_path
+    else
+      active_confirmation_path
+    end
   end
 
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
-    active_confirmation_path
+    if resource.user_information.user_type_id == 2
+      active_trainer_confirmation_path
+    else
+      active_confirmation_path
+    end
   end
 end
