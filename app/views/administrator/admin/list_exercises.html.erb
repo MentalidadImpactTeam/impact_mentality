@@ -94,14 +94,11 @@
       </div>
     </div>
 
-
-
-
-
-
-
-    <div class="row admin_tabla_pc">
-      <center>
+    <!--- - - - - - - -!-->
+    <!--- TABLA PC  !--->
+    <!--- - - - - - - -!-->
+    <!--- - - - - - - -!-->
+    <div class="row admin_tabla_pc" style="margin-left:40px; margin-right:40px;">
         <table class="tabla_ejercicios table-striped table-hover">
           <thead>
             <tr id="tabla_titulos">
@@ -116,18 +113,18 @@
             <tr id="tr_hover" data-exercise="<%= exercise.id %>">
               <td class="admin_nombre"> <%= exercise.name %> </td>
               <td class="admin_descripcion"> <%= exercise.description %> </td>
-              <td>
+              <td class="admin_botones_width">
                 <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" class="administrador_puntos"></div>
               </td>
-              <td>
+              <td class="admin_botones_width">
                 <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
               </td>
             </tr>
             <% end %>
           </tbody>
         </table>
-      </center>
     </div>
+
 
     <!--- - - - - - - -!-->
     <!--- TABLA MOBIL  !--->
