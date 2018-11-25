@@ -497,7 +497,7 @@ input:checked+.slider:before {
 .aministrador_tabla_body {
   font-family: 'Lato', sans-serif;
   overflow-x:hidden;
-  height:1000px;
+  min-height:1000px;
   background-color: #191a1a;
 }
 .admin_nombre{
