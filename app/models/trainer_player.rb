@@ -1,0 +1,2 @@
+class TrainerPlayer < ApplicationRecord
+end

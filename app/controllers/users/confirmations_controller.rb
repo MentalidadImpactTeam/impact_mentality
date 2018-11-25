@@ -6,6 +6,9 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   def active_confirmation
   end
 
+  def active_trainer_confirmation
+  end
+
   # GET /resource/confirmation/new
   # def new
   #   super

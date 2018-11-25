@@ -61,6 +61,39 @@ DashboardController::index = ->
     data: data
     options: options)
 
+DashboardController::player_list = ->
+  $('.dashboard_jugador').on 'click', -> 
+    window.location.href = "/dashboard/" + $(this).closest(".row_hover").data("id")
+  $('.profile_jugador').on 'click', -> 
+    window.location.href = "/profiles/" + $(this).closest(".row_hover").data("id")
+  $('.delete_jugador').on 'click', -> 
+    $row =  $(this).closest(".row_hover")
+    swal({
+      title: '¿Quieres eliminar la relacion con el jugador?',
+      type: 'warning',
+      showCancelButton: true,
+      background: '#e5e5e5',
+      confirmButtonColor: '#fff',
+      cancelButtonColor: '#ff1d25',
+      cancelButtonText: 'No',
+      confirmButtonText: 'Sí',
+      showCloseButton: true,
+      preConfirm: ->
+        new Promise((resolve, reject) ->
+          $.ajax
+            type: "POST"
+            url: "/delete_trainer_user"
+            data: id: $row.data("id")
+            dataType: "text",
+            success: (data) ->
+              resolve(data)
+        )
+      }).then (response) ->
+        if response.value
+            $row.remove()
+            swal('Exito','La relacion con el jugador a sido eliminada','success')
+  
+
 @metodos_menu = (titulo) ->
   $(".titulo_mobile_header").text(titulo)
   $('.burger_menu').on 'click', ->

@@ -4,9 +4,15 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'checkuser' => 'users/registrations#checkuser'
     get 'active_confirmation' => 'users/confirmations#active_confirmation'
+    get 'active_trainer_confirmation' => 'users/confirmations#active_trainer_confirmation'
   end
   
   root to: 'dashboard#index'
+
+  get "player_list" => "dashboard#player_list"
+  get "dashboard/:id" => 'dashboard#index'
+  post "delete_trainer_user" => "dashboard#delete_trainer_user"
+
   post 'rutinas' => "home#rutinas"
   resources :routines do 
     collection do 
