@@ -16,9 +16,11 @@ body{
 #filtro_jugadores {
   border-radius: 5vw;
   border: 1px solid grey;
+  background-color:transparent;
   font-family: lato;
   width: 50%;
   text-align: center;
+  color:grey;
   height: 50px;
   transition: all .5s;
   vertical-align: middle;
@@ -55,6 +57,12 @@ body{
   display: inline-block;
   color: #d1d1d1;
   vertical-align: middle;
+}
+#admin_tabla_usuarios{
+  width:100%;
+  border-radius: 5px;
+  overflow: hidden;
+  margin:0;
 }
 
 .contenedor_acciones_controlador_jugadores {
@@ -131,36 +139,40 @@ body{
 .contenedor_tabla_jugadores {
   border-radius: 15px;
   overflow: hidden;
-  width: 100%;
+  width: 95%;
 }
 
-table {
+#admin_tabla_usuarios {
   border-spacing: 10px;
 }
 
-table thead tr th {
+#admin_tabla_usuarios thead tr th {
   background-color: red;
-  padding: 15px 0;
+  padding: 5px 0;
   color: white;
   font-family: lato;
   font-size: 1.3vw;
   transition: all .5s;
 }
 
-table tbody tr td {
-  padding: 10px 0;
+#admin_tabla_usuarios tbody tr td {
+  padding: 0px 0;
   color: white;
   font-family: lato;
   transition: all .5s;
 }
 
-table tbody tr:hover {
+#admin_tabla_usuarios tbody tr:hover {
   background-color: #3e3e3e;
 }
 
 @media (max-width: 795px) {
   .switch {
+      margin:0 !important;
       transform: scale(.5);
+  }
+  #admin_tabla_usuarios{
+    border-radius:3px;
   }
   .imagen_jugador {
       width: 10vw;
@@ -188,20 +200,18 @@ table tbody tr:hover {
   .escuela_jugador {
       font-size: 1.5vw;
   }
-  table tbody tr td {
+  #admin_tabla_usuarios tbody tr td {
       font-size: 3vw;
       padding: 0;
       transition: all .5s;
   }
-  table thead tr th {
+  #admin_tabla_usuarios thead tr th {
       padding: 5px 0;
       transition: all .5s;
       color: white;
       font-size: 2vw;
   }
-  .contenedor_tabla_jugadores {
-      border-radius: 5px;
-  }
+
   #filtro_jugadores {
       height: 25px;
   }
@@ -905,7 +915,9 @@ padding-top:15px;
   margin-top:20px;
 }
 @media (max-width:  750px) {
-
+#admin_tabla_usuarios{
+  border-radius:1px;
+}
   #administrador_menu_botones{
     margin-left:70px;
     padding-top:0px!important;
@@ -963,7 +975,7 @@ padding-top: 0px!important;
     }
 
     .tabla_ejercicios tr td{
-        padding: 2vw 0;
+        padding: 2vw 1vw;
     }
 }
 

@@ -266,11 +266,7 @@
   box-shadow: 0px 0 40px red;
 }
 
-.contenedor_tabla_jugadores {
-  border-radius: 15px;
-  overflow: hidden;
-  width: 100%;
-}
+
 
 table {
   border-spacing: 10px;
@@ -335,9 +331,7 @@ table tbody tr:hover {
       color: white;
       font-size: 3vw;
   }
-  .contenedor_tabla_jugadores {
-      border-radius: 5px;
-  }
+
   #filtro_jugadores {
       height: 25px;
   }
