@@ -43,7 +43,7 @@ AdministratorController::show_user = ->
         $.ajax
           type: "GET"
           url: "/users/edit/"
-          data: id: $(".hidden_user").val(), user: { email: nuevomail }, name: nuevonom 
+          data: id: $(".hidden_user").val(), user: { email: nuevomail }, name: nuevonom
           dataType: "text",
           success: (data) ->
             return
@@ -93,10 +93,10 @@ AdministratorController::list_exercises = ->
 
     return
   $('#cerrar_admi_agregar_ejer').on 'click', ->
-    $('#admin_popup').addClass 'animated fadeOutUp'
+    $('#admin_popup').fadeOut( "slow" );
     return
   $('.btn_cancelar_nuevo_ejer').on 'click', ->
-    $('#admin_popup').addClass 'animated fadeOutUp'
+    $('#admin_popup').fadeOut( "slow" );
     return
   $('.btn_aceptar_nuevo_ejer').on 'click', ->
     categoria = $("#popup_select_categories").val()
