@@ -85,7 +85,7 @@ body {
 }
 
 @media only screen and (max-width: 1092px) {
- 
+
   .menuVertical {
       display: none;
   }
@@ -125,7 +125,7 @@ body {
   font-weight: bold;
 }
 
-ul {
+#menu_mobile_desplegado{
   list-style: none;
   padding: 0;
   margin: 0;
@@ -135,7 +135,7 @@ ul {
   width: 100%;
   transform: scaleY(0);
   transform-origin: top;
-  transition: all 1s cubic-bezier(1, 0, 0, 1);
+  transition: all .2s
 }
 
 .desplegado {
@@ -180,12 +180,17 @@ ul li {
   height: 3.8vw;
   position: relative;
 }
+#descansa_icono{
+  width: 25vw;
+  margin: 4vw 0;
+  opacity: .5;
+}
 
 .sistema_container {
   display: inline-block;
   position: relative;
   float: right;
-  height: 100%;
+  height:auto;
   width: 95%;
   background-color: #202020;
   transition: all .5s;
