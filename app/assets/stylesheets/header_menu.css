@@ -190,7 +190,7 @@ ul li {
   display: inline-block;
   position: relative;
   float: right;
-  height:auto;
+  height: 100%;
   width: 95%;
   background-color: #202020;
   transition: all .5s;
@@ -220,4 +220,14 @@ ul li {
 #sistema_cerrarsesionalign{
   text-align: center;
 }
+
+@media only screen and (max-width: 1092px) {
+  .sistema_container {
+    justify-content: center;
+    float: none !important;
+    height: auto;
+    width: 100%;
+  }
+}
+
 /* DASHBOARD */

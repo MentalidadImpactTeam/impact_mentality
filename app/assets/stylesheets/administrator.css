@@ -238,7 +238,6 @@
   font-weight: bold;
   font-size: .8vw;
   align-self: flex-start;
-  flex: 1 1 auto !important;
   transition: 0.5s;
 }
 
@@ -262,7 +261,6 @@
 }
 
 #sistema_p_texto{
-  margin-left: 3vw;
   color: #fff;
   font-size: 2vw;
   font-weight: 200;
@@ -275,7 +273,7 @@
 
 #sistema_p_texto_titulo{
   font-weight: bold;
-  font-size: 3.5vw;
+  font-size: 3vw;
 }
 
 #sistema_p_creditoimg{
@@ -378,7 +376,7 @@
 #sistema_p_etapanombre{
   color: #ff1d25;
   font-weight: bold;
-  font-size: 3vw;
+  font-size: 2.5vw;
   line-height: 3vw;
 }
 
@@ -463,8 +461,8 @@
 
   #sistema_p_texto_titulo{
       margin-left: 0vw;
-      font-size: 10vw;
-      line-height: 10vw;
+      font-size: 7vw;
+      line-height: 7vw;
   }
 
   #sistema_p_ejericios{
@@ -483,13 +481,16 @@
   }
   #sistema_p_etapa{
       font-size: 2vw;
-      line-height: 2vw;
+      line-height: 2.5vw;
       padding-top: .65vw;
+      text-align: center;
   }
   
   #sistema_p_etapanombre{
-      font-size: 7.28vw;
-      line-height: 7.28vw;
+      font-size: 6vw;
+      line-height: 6vw;
+      text-align: center;
+      margin-bottom: 1vw;
   }
 
   #sistema_p_creditoimg{
@@ -513,9 +514,9 @@
       margin-left: 4vw;
   }
 
-  #sistema_p_botoncredito{
-      width: 50%;
-      height: 10vw;
+  .sistema_p_botoncredito{
+    width: 50%;
+    height: 8vw;
       border-radius: 1vw;
       margin-top: 5vw;
       font-size: 2.5vw;
