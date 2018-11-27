@@ -14,7 +14,6 @@ ProfileController::index = ->
     
   $('.sistema_p_editar ').on 'click', (event) -> 
     event.preventDefault()
-    $('.sistema_p_editar').hide()
     es = $('#perfil_altura').text();
     pe = $('#perfil_peso').text();
     swal(

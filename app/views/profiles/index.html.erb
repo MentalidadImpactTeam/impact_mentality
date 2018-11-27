@@ -7,7 +7,7 @@
 <div class="sistema_contenido d-flex">
     <input type="hidden" class="hidden_user" value="<%= @user.id %>">
     <div id="sistema_p_iz" class="d-flex flex-column justify-content-between">
-        <div id="sistema_p_iz_arriba" class="d-flex align-items-center">
+        <div id="sistema_p_iz_arriba" class="d-flex align-items-center justify-content-around">
             <div class="sistema_p_imgcontainer">
                 <div class="sistema_p_imgimg" style="background-image: url(<%= @user.user_information.img_url %>);"> </div>
                 <div class="sistema_p_imgoverlay">
@@ -27,7 +27,7 @@
                 <div class="d-flex flex-row perfil_editable"> <b class="bold">Estatura: </b> <div id="perfil_altura"><%= @user.user_information.height %></div>   m </div>
                 <div class="d-flex flex-row perfil_editable"> <b class="bold">Peso: </b> <div id="perfil_peso"><%= @user.user_information.weight %></div> kg</div>
             </div>
-            <a href="#" class="sistema_p_editar flex-fill">EDITAR</a> 
+            <a href="#" class="sistema_p_editar">EDITAR</a> 
         </div>
         <div id="sistema_p_iz_abajo" class="d-flex justify-content-center align-items-center">
             <div class="d-flex flex-column justify-content-center">
