@@ -103,6 +103,7 @@ AdministratorController::list_exercises = ->
     nombre = $("#sistema_admi_nombre_ejercicio_input").val()
     descripcion = $("#sistema_admi_descrip_ejercicio_input").val()
     id = $("#sistema_admin_agregar_ejercicio").attr("data-id")
+    $('#admin_popup').fadeOut( "slow" );
 
     $.ajax
       type: "POST"
