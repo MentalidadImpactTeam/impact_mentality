@@ -138,6 +138,7 @@
 .sistema_etapa {
   font-size: 3.4vw !important;
   line-height: 3.4vw !important;
+  margin-bottom: 2vw;
 }
 
 @media (max-width: 991.98px) {
@@ -184,6 +185,21 @@
   height: 50px;
   transition: all .5s;
   vertical-align: middle;
+}
+
+.adminsearch{
+  font-size: 2vw;
+  margin-left: 2vw;
+  padding-top: 1vw;
+  color: white;
+  opacity: .6;
+  transition: .5s;
+  cursor: pointer;
+}
+
+.adminsearch:hover{
+  color: red;
+  opacity: 1;
 }
 
 .imagen_jugador {

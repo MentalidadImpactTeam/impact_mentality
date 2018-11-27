@@ -26,6 +26,21 @@ body{
   vertical-align: middle;
 }
 
+.adminsearch{
+  font-size: 2vw;
+  margin-left: 2vw;
+  padding-top: 1vw;
+  color: white;
+  opacity: .6;
+  transition: .5s;
+  cursor: pointer;
+}
+
+.adminsearch:hover{
+  color: red;
+  opacity: 1;
+}
+
 .jugadores_controlador i{
   color:white;
   opacity: .6;
@@ -493,8 +508,15 @@ input:checked+.slider:before {
   cursor: pointer;
 }
 
-.back_arrow_jugadore0s, .forward_arrow_jugadores{
-  font-size: 3vw;
+.back_arrow_jugadores, .fordward_arrow_jugadores{
+  color: white;
+  opacity: .6;
+  transition: all .5s;
+}
+
+.back_arrow_jugadores:hover, .fordward_arrow_jugadores:hover {
+  color: red;
+  opacity: 1;
 }
 
 #administrador_searchbar_look{
@@ -613,14 +635,10 @@ padding-top:15px;
 }
 
 
-.back_arrow_jugadore0s, .forward_arrow_jugadores{
-  font-size: 3vw;
-}
-
 #administrador_menu_botones {
   padding-top:10px;
   cursor: pointer;
-  margin-left:-40px;
+  font-size: 2vw;
 }
 
 #administrador_searchbar{

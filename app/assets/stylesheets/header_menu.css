@@ -150,6 +150,10 @@ body {
   font-size: 3vw;
 }
 
+#menu_mobile_desplegado li {
+  padding: 2.5vw 0;
+}
+
 #menu_mobile_desplegado li:hover {
   background-color: red !important;
   box-shadow: 0 0 15px red;
