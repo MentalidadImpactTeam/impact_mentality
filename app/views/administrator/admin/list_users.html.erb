@@ -37,27 +37,27 @@
 
                         <tbody>
                             <% @user.each do |user| %>
-                              <tr class="row_hover">
-                                  <input type="hidden" class="hidden_id" value="<%= user['id'] %>">
-                                  <td>
+                                <tr class="row_hover">
+                                    <input type="hidden" class="hidden_id" value="<%= user['id'] %>">
+                                    <td>
 
-                                      <p class="aliniar_contenido_tabla id_usuario"><%= user.user_information.uid %></p>
-                                  </td>
-                                  <td>
-                                      <p class="aliniar_contenido_tabla nombre_usuario"><%= user.user_information.first_name.capitalize %> <%= user.user_information.last_name.capitalize %></p>
-                                  </td>
+                                        <p class="aliniar_contenido_tabla id_usuario"><%= user.user_information.uid %></p>
+                                    </td>
+                                    <td>
+                                        <p class="aliniar_contenido_tabla nombre_usuario"><%= user.user_information.name %></p>
+                                    </td>
 
-                                  <td class="columna_eliminada aliniar_contenido_tabla fecha_cobro"><%= user.user_conekta_subscription.last.end_date.strftime("%d/%m/%Y") %> </td>
-                                  <td class="aliniar_contenido_tabla fecha_intro"><%= user.user_conekta_subscription.last.start_date.strftime("%d/%m/%Y") %></td>
-                                  <td class="aliniar_contenido_tabla estado_usuario <%= if user.active == 1 then "usuario_activo" else "usuario_inactivo" end %>"><%= lista_estatus(user.active) %></td>
-                                  <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
+                                    <td class="columna_eliminada aliniar_contenido_tabla fecha_cobro"><%= if user.user_conekta_subscription.present? then user.user_conekta_subscription.last.end_date.strftime("%d/%m/%Y") end %> </td>
+                                    <td class="aliniar_contenido_tabla fecha_intro"><%= if user.user_conekta_subscription.present? then user.user_conekta_subscription.last.start_date.strftime("%d/%m/%Y") end %></td>
+                                    <td class="aliniar_contenido_tabla estado_usuario <%= if user.active == 1 then "usuario_activo" else "usuario_inactivo" end %>"><%= lista_estatus(user.active) %></td>
+                                    <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
 
-                                      <label class="switch">
-                                          <input type="checkbox">
-                                          <span class="slider round"></span>
-                                  </label>
-                                  </td>
-                              </tr>
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                    </label>
+                                    </td>
+                                </tr>
                             <% end %>
                         </tbody>
                     </table>
