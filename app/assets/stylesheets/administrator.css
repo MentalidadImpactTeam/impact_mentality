@@ -234,14 +234,6 @@
   margin: 0 2.5vw 0 2.5vw;
 }
 
-.sistema_contenido{
-  width: 100% !important;
-  height: 100% !important;
-  background-color: #191a1a;
-  padding: 2vw 2vw 2vw 2vw;
-  flex-direction: row;
-  justify-content: space-between;
-}
 
 
 #sistema_p_iz{
