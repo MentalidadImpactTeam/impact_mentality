@@ -58,7 +58,7 @@
   color: White;
   overflow: hidden;
   z-index: 1;
-}    
+}
 
 .menuAdmin{
   display: flex;
@@ -93,7 +93,7 @@
       transition: 0.5s;
       padding: .5vw 0;
       margin-left: 32vw;
-      text-align: center; 
+      text-align: center;
 }
 
 .admin_cerrar p{
@@ -116,7 +116,7 @@
 .menuH_items{
   margin-left: 6vw;
   font-weight: bold;
-  cursor: pointer;         
+  cursor: pointer;
   transition: .5s;
   font-weight: normal;
   font-size: 1vw;
@@ -151,6 +151,9 @@
 
 .sistema_mobile_menu {
   display: none;
+}
+.sistema_mobile_menu nav{
+  background: color #363636;
 }
 
 .burger_menu_mobile {
@@ -193,7 +196,9 @@
   width: 1.8vw;
   margin-left: 1vw;
 }
-
+#popup_select_categories option{
+  color:Grey;
+}
 .sistema_lineadiv{
   height: 100%;
   width: .2vw;
@@ -243,7 +248,7 @@
 }
 
 .sistema_p_editar{
-  text-align: right;  
+  text-align: right;
   text-decoration: none;
   color: #ff1d25;
   font-weight: bold;
@@ -300,7 +305,7 @@
   margin-top: 1vw;
   margin-left: 3vw;
   font-size: 2.5vw;
-  font-weight: bold; 
+  font-weight: bold;
 }
 
 #sistema_p_fechacredito{
@@ -404,7 +409,7 @@
 }
 
 
-@media (max-width: 1090px) { 
+@media (max-width: 1090px) {
   .sistema_contenido{
       flex-direction: column;
       align-items: center;
@@ -454,7 +459,7 @@
       align-self: center;
       font-weight: normal;
   }
-  
+
   #sistema_p_img{
       width: 60vw;
       height: 60vw;
@@ -463,7 +468,7 @@
       margin-left: 0;
       margin-bottom: 3vw;
   }
-  
+
   #sistema_p_texto{
       margin-left: 0vw;
       font-size: 5vw;
@@ -497,7 +502,7 @@
       padding-top: .65vw;
       text-align: center;
   }
-  
+
   #sistema_p_etapanombre{
       font-size: 6vw;
       line-height: 6vw;
@@ -537,7 +542,7 @@
   #perfil_edad, #perfil_altura, #perfil_peso{
       margin-right: 1vw;
   }
-  
+
   #perfil_mod_edad, #perfil_mod_estatura, #perfil_mod_peso{
       width: 12%;
       font-size: 5vw;

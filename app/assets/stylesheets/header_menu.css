@@ -11,7 +11,9 @@ body {
 }
 
 
-
+#menu_administrador_mobile{
+  background-color:red;
+}
 .menuVertical {
   display: inline-block;
   position: relative;
@@ -49,6 +51,9 @@ body {
   vertical-align: middle;
   width: 30px;
   margin: 25px 25px 25px 15px;
+}
+.sistema_mobile_menu{
+  background-color:#363636;
 }
 
 .seccion_menu_left h3 {
@@ -108,6 +113,8 @@ body {
   display: inline-block;
   float: right;
   margin: 2px;
+  width:4vw;
+  height:4vw;
   transition: all .5s;
   cursor: pointer;
 }
@@ -147,11 +154,7 @@ body {
   text-decoration: none;
   font-family: Lato;
   margin-left: 15px;
-  font-size: 3vw;
-}
-
-#menu_mobile_desplegado li {
-  padding: 2.5vw 0;
+  font-size: 5vw;
 }
 
 #menu_mobile_desplegado li:hover {
@@ -159,8 +162,10 @@ body {
   box-shadow: 0 0 15px red;
 }
 
-ul li {
-  padding: 2px 0;
+#menu_mobile_desplegado li {
+  padding: 13px 0;
+  border-top:1px solid #363636;
+  border-bottom: 1px solid #363636;
 }
 
 .subbanners_sistema_menu {
@@ -194,7 +199,7 @@ ul li {
   display: inline-block;
   position: relative;
   float: right;
-  height: 100%;
+  height:auto;
   width: 95%;
   background-color: #202020;
   transition: all .5s;
@@ -224,14 +229,4 @@ ul li {
 #sistema_cerrarsesionalign{
   text-align: center;
 }
-
-@media only screen and (max-width: 1092px) {
-  .sistema_container {
-    justify-content: center;
-    float: none !important;
-    height: auto;
-    width: 100%;
-  }
-}
-
 /* DASHBOARD */

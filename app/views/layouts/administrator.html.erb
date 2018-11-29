@@ -16,7 +16,7 @@
     <!-- Latest compiled and minified JavaScript -->
 
     <!-- Lastest Icons Library -->
-    
+
 
     <!-- SweetAlert -->
     <!-- Metas -->
@@ -46,13 +46,13 @@
    <!-- Menu Cellphone -->
     <div class="sistema_mobile_menu">
         <!-- Just an image -->
-        <nav class="navbar navbar-light bg-dark">
+        <nav id="menu_administrador_mobile" class="navbar">
             <img class="burger_menu_mobile" src="img/hamburger-icon.png" width='25' height="25" alt="">
             <span class="titulo_mobile_header" style="">ADMINISTRADOR</span>
             <a class="navbar-brand" href="#">
                     <img src="img/ImpactMentalityIcon-01.png" width="30" height="30" alt="">
             </a>
-            
+
         </nav>
         <ul id="menu_mobile_desplegado">
             <li>
@@ -75,13 +75,13 @@
     <div class="menuAdmin flex-row align-items-center">
         <div id="menuH_logo"></div>
         <div id="menuH_admin"> ADMINISTRADOR </div>
-        <%= link_to administrator_users_path, style: "text-decoration: none; color: whitec" do %> 
+        <%= link_to administrator_users_path, style: "text-decoration: none; color: whitec" do %>
             <div class="menuH_items" id="menu_usuarios">USUARIOS</div>
         <% end %>
-        <%= link_to administrator_exercises_path, style: "text-decoration: none; color: whitec" do %> 
+        <%= link_to administrator_exercises_path, style: "text-decoration: none; color: whitec" do %>
             <div class="menuH_items" id="menu_ejercicios">EJERCICIOS</div>
         <% end %>
-        <%= link_to destroy_user_session_path, method: :delete, class: "nav-item nav-link admin_cerrar d-flex justify-content-center" do %> 
+        <%= link_to destroy_user_session_path, method: :delete, class: "nav-item nav-link admin_cerrar d-flex justify-content-center" do %>
             <p class="align-self-center"> CERRAR SESIÓN </p>
         <% end %>
     </div>

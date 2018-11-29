@@ -12,7 +12,9 @@ body{
     -o-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
 }
-
+#menu_administrador_mobile{
+  background-color:#363636 !important;
+}
 #filtro_jugadores {
   border-radius: 5vw;
   border: 1px solid grey;
@@ -117,7 +119,7 @@ body{
 .nombre_usuario {
   font-weight: bold;
   margin: 0;
-  font-size: 2vw;
+  font-size: 1.5vw;
 }
 
 .escuela_jugador {
@@ -900,6 +902,7 @@ padding-top:15px;
     }
 
     .overlay_popup {
+      z-index: -1;
         margin-top:-100px;
         background-color: black;
         width: 100%;
