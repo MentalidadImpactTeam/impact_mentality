@@ -72,8 +72,8 @@
 }
 
 #menuH_logo{
-  background-image: url("img/impactmovil.png");
-  background-size: cover;
+  background-image: url("../img/impactmovil.png");
+  background-size: contain;
   background-repeat: no-repeat;
   width: 3vw;
   height: 3vw;
@@ -145,6 +145,34 @@
   .menuHorizontal{
       display: none;
   }
+
+  .menuAdmin{
+    padding: 3vw 3vw;
+  }
+
+  #menuH_admin{
+    font-size: 4vw;
+  }
+
+  .menuH_items{
+    margin-left: 6vw;
+    font-size: 2vw;
+  }
+
+  .admin_cerrar{
+    margin-left: 6vw;
+  }
+
+  .admin_cerrar p{
+    font-size: 2vw;
+  }
+
+  #menuH_logo{
+    margin-left: 0;
+    width: 5vw;
+    height: 5vw;
+  }
+
 }
 
 /* menu cellphone CSS*/
