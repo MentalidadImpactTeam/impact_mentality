@@ -233,7 +233,7 @@
   background-color: #414141;
   margin: 0 2.5vw 0 2.5vw;
 }
-
+#sistema_admi_nombre_ejercicio_input{}
 
 
 #sistema_p_iz{
@@ -433,8 +433,9 @@
   .sistema_contenido{
       flex-direction: column;
       align-items: center;
-      padding: 5vh 8vw;
+      padding: 2vh 8vw;
       height: auto;
+      display:none;
   }
 
   #sistema_p_iz{
