@@ -19,13 +19,16 @@
 
 .sistema_r_ejercicio{
   background-color: #333333;
-  height: 20vw;
-  width: 20vw;
+  height: 18vw;
+  width: 18vw;
   border-radius: 1.5vw;
   box-shadow: 1vw 2vw 5vw .5vw rgba(0,0,0,0.75);
   flex-direction: column;
   flex-shrink: 1;
-  border: 6px solid #ff1d25;
+  border-style: solid;
+  border-width: .3vw;
+  border-color: #ff1d25;
+  box-shadow: 0 0 1vw #ff1d25;
 }
 
 .sistema_r_ejercicio_arriba, .sistema_r_ejercicio_abajo{
@@ -149,7 +152,7 @@
 .sistema_r_centro_der{
   width: 10%;
   height: 100%;
-  align-items: flex-start;
+  align-items: flex-end;
 }
 
 #sistema_r_siguiente{
@@ -170,12 +173,12 @@
 }
 
 #sistema_r_anteriorfase{
-  line-height: .8vw;
+  line-height: 1.2vw;
   font-size: 1.2vw;
   color: #ff1d25;
   font-style: italic;
   font-weight: bold;
-
+  text-align: end;
 }
 
 #sistema_r_siguientearrow{
@@ -361,7 +364,9 @@
 }
 
 .ejer_terminado {
-  border: 6px solid #45bd45;
+    border-width: .3vw;
+  border-color: #45bd45;
+  box-shadow: 0 0 1vw #45bd45;
 }
 .checkmark_rutina {
   color: white;
@@ -466,6 +471,7 @@
       width: 100%;
       height: 20vw;
       margin-bottom: 2vh;
+      justify-content: center;
   }
 
   .sistema_r_repeticionesmovil{
