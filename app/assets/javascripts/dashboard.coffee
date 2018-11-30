@@ -62,10 +62,23 @@ DashboardController::index = ->
     options: options)
 
 DashboardController::player_list = ->
+  metodos_menu("LISTA JUGADORES")
   $('.dashboard_jugador').on 'click', -> 
     window.location.href = "/dashboard/" + $(this).closest(".row_hover").data("id")
   $('.profile_jugador').on 'click', -> 
     window.location.href = "/profiles/" + $(this).closest(".row_hover").data("id")
+  $('.add_jugadores').on 'click', ->
+      swal({
+        title: '<strong>Agrega Jugador</strong>',
+        type: 'info',
+        html: '<input id="agregar_jugador" placeholder="  ID, Nombre, Correo Electrónico">',
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: true,
+        confirmButtonText: 'Agregar',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        cancelButtonText: 'Cancelar'
+      })
   $('.delete_jugador').on 'click', -> 
     $row =  $(this).closest(".row_hover")
     swal({

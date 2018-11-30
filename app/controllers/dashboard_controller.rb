@@ -25,6 +25,10 @@ class DashboardController < ApplicationController
     end
   end
 
+  def add_trainer_user
+    search_user = User.find_by(uid: params[:id])
+  end
+
   def delete_trainer_user
     TrainerPlayer.where(trainer_user_id: current_user.id, user_id: params[:id]).destroy_all
     render plain: "OK"
