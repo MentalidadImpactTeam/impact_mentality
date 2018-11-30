@@ -1,4 +1,4 @@
-<div class="container_fluid aministrador_tabla_body">
+<div class="animated fadeInDown container_fluid aministrador_tabla_body">
 
       <!--- - - - - - - -!-->
       <!---      MODAL  !--->
@@ -9,7 +9,7 @@
           <div class="overlay_popup">
 
           </div>
-          <div class="animated fadeInUp" id="sistema_admin_agregar_ejercicio" data-id="">
+          <div  id="sistema_admin_agregar_ejercicio" data-id="">
 
             <center>
               <div class="banner_top">
@@ -44,6 +44,14 @@
                   <div>
                     <h5>DESCRIPCION</h5>
                     <input id="sistema_admi_descrip_ejercicio_input" placeholder="Escribe la descripción aquí" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class=" sistema_admi_boxes row">
+                <div class="col">
+                  <div>
+                    <h5>LINK DE VIDEO DE YOUTUBE DE EJERCICIO</h5>
+                    <input id="sistema_admi_nombre_ejercicio_input" placeholder="Escribe el nombre aquí" type="text">
                   </div>
                 </div>
               </div>
@@ -130,7 +138,7 @@
         </ul>
       </div>
 
-      <div class="col-sm-2">
+      <div class="d-flex align-items-center col-sm-2">
         <p class="administradores_ejercicios_totales"><%= @exercises.length %> EJERCICIOS TOTALES</p>
       </div>
       <div class="col-sm-2" id="administrador_menu_botones">
@@ -138,8 +146,8 @@
         <i class="fordward_arrow_jugadores fas fa-arrow-alt-circle-right"></i>
       </div>
       <div class="col-sm-4" style="padding:0;">
-        <input type="text" name="" value="search" placeholder="Buscar..." id="filtro_jugadores">
-        <i class="fas fa-search"></i>
+        <input type="text" name="" placeholder="Buscar" id="filtro_jugadores">
+        <i class="adminsearch fas fa-search"></i>
       </div>
 
       <div class="col-sm-1">

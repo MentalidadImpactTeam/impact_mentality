@@ -42,7 +42,7 @@
     <!-- Menu Cellphone -->
     <div class="sistema_mobile_menu">
         <!-- Just an image -->
-        <nav class="navbar navbar-light bg-dark">
+        <nav class="navbar">
             <a class="navbar-brand" href="#">
                 <%= image_tag("ImpactMentalityIcon-01", style: "height: 30px; width:30px;" ) %>
             </a>
@@ -106,7 +106,7 @@
             <h3 class="sistema_descripcion_menu">Cuenta</h3>
         </div>
         <div  id="sistema_cerrarsesionalign">
-            <%= link_to destroy_user_session_path, method: :delete, style: "color: white;" do %> 
+            <%= link_to destroy_user_session_path, method: :delete, style: "color: white;" do %>
                 <div class="sistema_descripcion_menu" id="sistema_cerrarsesion">Cerrar sesión</div>
             <% end %>
         </div>
