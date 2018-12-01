@@ -31,6 +31,10 @@ class Administrator::AdminController < ApplicationController
     render plain: "OK"
   end
 
+  def search_exercises
+    render json: { :exercises => Exercise.where("name like '%" + params[:search] + "%' and category_id = #{params[:category_id]}") }
+  end
+
   private
   def check_if_admin
     redirect_back(fallback_location: root_path) if current_user.user_information.user_type_id != 1

@@ -56,6 +56,34 @@ AdministratorController::show_user = ->
 AdministratorController::list_exercises = ->
   $("#menu_ejercicios").addClass("admin_active")
   administrator_exercises_edit()
+  $(".adminsearch").click ->
+    if $("#filtro_jugadores").val() == ""
+      swal 'Error', 'Favor de ingresar un valor de busqueda.', 'warning'
+    else
+      $.ajax
+        type: "POST"
+        url: "/administrator/exercises/search_exercises"
+        data: search: $("#filtro_jugadores").val(), category_id: $('#ul_categories').attr('data-selected')
+        dataType: "json",
+        success: (data) ->
+          if data.exercises.length == 0
+            swal 'Error', 'No se encontraron registros con la busqueda ingresada.', 'warning'
+          else
+            html = ""
+            data.exercises.forEach (value) ->
+              html += '<tr id="tr_hover" data-exercise="' + value.id + '">
+                        <td class="admin_nombre"> ' + value.name + ' </td>
+                        <td class="admin_descripcion"> ' + value.description + ' </td>
+                        <td>
+                          <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" class="administrador_puntos"></div>
+                        </td>
+                        <td>
+                          <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
+                        </td>
+                      </tr>'
+            $(".tabla_ejercicios tbody").html(html)
+            $(".administradores_ejercicios_totales").text( data.exercises.length + " EJERCICIOS TOTALES")
+            administrator_exercises_edit()
   $('.administrador_tacha').click ->
     swal(
       title: '¿Estás seguro que deseas borrar?'
@@ -158,6 +186,7 @@ administrator_exercises_fill_table = (category_id) ->
     data: category_id: category_id
     dataType: "json",
     success: (data) ->
+      $("#filtro_jugadores").val("")
       if data.exercises.length > 0
         html = ""
         data.exercises.forEach (value) ->

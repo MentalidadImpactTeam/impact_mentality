@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     get "exercises" => "admin#list_exercises"
     get "exercises/change_list_exercises" => "admin#change_list_exercises"
     post "exercises/edit_exercise" => "admin#edit_exercise"
+    post "exercises/search_exercises" => "admin#search_exercises"
     get "users/:id" => "admin#show_user"
   end
 end
