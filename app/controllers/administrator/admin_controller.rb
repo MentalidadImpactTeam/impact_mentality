@@ -11,6 +11,22 @@ class Administrator::AdminController < ApplicationController
     @subscription = UserConektaSubscription.where(user_id: params[:id]).order(id: :desc).limit(1).first
   end
 
+  def search_users
+    uis = UserInformation.where("name like '%" + params[:search] + "%'")
+    users = []
+    if uis.present?
+      uis.each do |ui|
+        suscription = UserConektaSubscription.find_by(user_id: ui.user.id, estatus: 1)
+        information = UserInformation.select(:uid, :name).find_by(user_id: ui.user.id)
+        user = eval(ui.user.to_json)
+        user["suscription"] = suscription
+        user["information"] = information
+        users.push(user)
+      end
+    end
+    render json: { :users => users }
+  end
+
   def list_exercises
     @categories = Category.all.order(id: :asc)
     @exercises = Exercise.where(category_id: 1).order(id: :asc)
