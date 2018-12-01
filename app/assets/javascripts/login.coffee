@@ -1,7 +1,16 @@
 
 LoginController = Paloma.controller('Users/Sessions')
 LoginController::new = ->
-  if $(".alert").text() != ""
+  if $(".alert").text() == "You have to confirm your email address before continuing."
+    swal
+      type: 'error'
+      title: 'Alerta'
+      text: 'Favor de confirmar su cuenta.'
+      allowEscapeKey: true
+      allowOutsideClick: true
+      confirmButtonText: 'Regresar'
+      confirmButtonClass: 'login_sweetalert'
+  else if $(".alert").text() != "Your email address has been successfully confirmed." and $(".alert").text() != ""
     swal
       type: 'error'
       title: 'Alerta'
