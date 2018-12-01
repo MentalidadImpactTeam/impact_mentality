@@ -62,7 +62,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "impact_mentality_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: '138.197.192.68' }
+  config.action_mailer.default_url_options = { host: 'mentalidadimpact.com' }
   config.action_mailer.default_options = {from: 'no-reply@mentalidadimpact.com'}
 
   config.action_mailer.delivery_method = :smtp

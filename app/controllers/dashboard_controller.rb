@@ -26,7 +26,31 @@ class DashboardController < ApplicationController
   end
 
   def add_trainer_user
-    search_user = User.find_by(uid: params[:id])
+    user = User.find_by(email: params["search_param"])
+    user_information = UserInformation.find_by(uid: params["search_param"])
+    
+    user_obj = ""
+    if user.present?
+      user_obj = user
+    elsif user_information.present?
+      user_obj = user_information.user
+    end
+
+    if user_obj == ""
+      response =  { :error => true }
+    else
+      player_exists = TrainerPlayer.where(user_id: user_obj.id, trainer_user_id: current_user.id)
+      if player_exists.present?
+        response =  { :existe => true }
+      else
+        response = user_obj.to_json(:include => [:user_information])
+        tp = TrainerPlayer.new
+        tp.trainer_user_id = current_user.id
+        tp.user_id = user_obj.id
+        tp.save
+      end
+    end
+    render json: response
   end
 
   def delete_trainer_user

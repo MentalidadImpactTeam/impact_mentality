@@ -18,8 +18,8 @@ class RoutinesController < ApplicationController
         if @restday
             routine_exist = 0
         else
-            routine = UserRoutine.find_by(user_id: current_user.id, date: today, done: 0)
-            routine_exist = RoutineExercise.where(user_routine_id: routine.id).count
+            routine = UserRoutine.find_by(user_id: current_user.id, date: today)
+            routine_exist = routine.present? ? RoutineExercise.where(user_routine_id: routine.id).count : 0
         end
         if routine_exist == 0 and !@restday
             @mostrar_modal = true
