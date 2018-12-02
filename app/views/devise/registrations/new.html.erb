@@ -215,6 +215,99 @@
             <div class="col-lg-3"></div>
         </div>
 
+        <div id="div_planes" class="animated bounceInRight row" style='display: none'>
+            <input type="hidden" id="conekta_plan">
+            <div class="col-lg-3"></div>
+            <div id="PP_modal" class="col-sm-12 col-lg-6">
+                <div class="row">
+                    <div class="col-12">
+                        <i class=" PP_regresar fas fa-arrow-circle-left"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <center>
+
+                            <h1 class="PP_titulo animated bounceIn">Planes de pago</h1>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <center>
+                            <h1 class="PP_subtitulo animated bounceIn">¿A que plan te quieres suscribir?</h1>
+                        </center>
+                    </div>
+                </div>
+                <center>
+                    <div class="tipos_de_usuario row">
+                        <div class="col-4">
+                            <div id="PP_usuario" class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <i class="fas fa-box-open"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5>Plan de pago Mensual Impact</h5>
+                                        <p class="PP_descuento">$360 MXN</p>
+                                        <p class="PP_precio">$150 MXN</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div id="PP_entrenador" class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <i class="fas fa-boxes"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5>Plan de pago Trimestral Impact</h5>
+                                        <p class="PP_descuento">$450 MXN (-20%)</p>
+                                        <p class="PP_precio">$360 MXN</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div id="PP_escuela" class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5>Plan de pago Anual Impact </h5>
+                                        <p class="PP_descuento">$1800 MXN (-20%)</p>
+                                        <p class="PP_precio">$1460 MXN</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button style="display:none;" id="PP_btn">Seleccionar Plan</button>
+                        </div>
+                    </div>
+                </center>
+
+                <div class="row">
+                    <div class="col-12">
+                        <center>
+                            <p id="PP_info_text">Se contratará una suscripción al elegir un plan de los previos mostrados..</p>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+        
         <%= f.fields_for :user_information do |ui_fields| %>
             <%= ui_fields.hidden_field :user_type_id, id: "user_type_id" %>
             <div id="div_entrenador_modal" class="animated bounceInRight row" style='display: none'>

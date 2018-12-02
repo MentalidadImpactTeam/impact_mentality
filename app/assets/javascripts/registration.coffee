@@ -9,6 +9,7 @@ RegistrationController::new = ->
   eventos_datos_deportivos()
   eventos_metas_objetivos()
   eventos_forma_pago()
+  eventos_planes()
   eventos_entrenador()
 
   #END OF CLICK EVENT REGISTRO BTN
@@ -597,6 +598,100 @@ eventos_metas_objetivos = ->
     $('#div_metas_objetivos').addClass 'animated bounceOutLeft'
     setTimeout (->
       $("#div_metas_objetivos").css('display','none')
+      $("#div_planes").removeAttr("style")
+      return
+    ), 500
+    return false
+  $('#metas_objetivos_close').on 'click', ->
+    $('#metas_objetivos_modal').addClass 'animated bounceOut'
+    return false
+
+eventos_planes = ->
+  validacion_usuario = false
+  validacion_entrenador = false
+  validacion_escuela = false
+  $('#PP_entrenador, #PP_escuela, #PP_usuario').mouseover ->
+    $(this).addClass 'tipo_hover'
+    $(this).find('i').addClass 'tipo_unhover'
+    $(this).find('h5').addClass 'tipo_unhover'
+    $(this).find('p').addClass 'tipo_unhover'
+    return
+  $('#PP_entrenador, #PP_escuela, #PP_usuario').mouseout ->
+    $(this).removeClass 'tipo_hover'
+    $(this).find('i').removeClass 'tipo_unhover'
+    $(this).find('h5').removeClass 'tipo_unhover'
+    $(this).find('p').removeClass 'tipo_unhover'
+    return
+
+  ### ELECCION ENTRENADOR ###
+
+  $('#PP_entrenador').on 'click', ->
+    $(this).addClass 'animated pulse'
+    $(this).addClass 'tipo_seleccionado'
+    $(this).find('i').addClass 'deseleccion'
+    $(this).find('h5').addClass 'deseleccion'
+    $(this).find('p').addClass 'deseleccion'
+    $('#PP_escuela, #PP_usuario').removeClass 'tipo_seleccionado animated pulse'
+    $('#PP_escuela i, #PP_escuela h5, #PP_usuario i, #PP_usuario h5').removeClass 'tipo_seleccionado, deseleccion'
+    $('#PP_escuela p, #PP_usuario p').removeClass 'deseleccion'
+    $('#PP_btn').show 500
+    validacion_entrenador = true
+    validacion_escuela = false
+    validacion_usuario = false
+    return
+
+  ### ELECCION ESCUELA ###
+
+  $('#PP_escuela').on 'click', ->
+    $(this).addClass 'animated pulse'
+    $(this).addClass 'tipo_seleccionado'
+    $(this).find('i').addClass 'deseleccion'
+    $(this).find('h5').addClass 'deseleccion'
+    $(this).find('p').addClass 'deseleccion'
+    $('#PP_entrenador, #PP_usuario').removeClass 'tipo_seleccionado animated pulse'
+    $('#PP_entrenador i, #PP_entrenador h5, #PP_usuario i, #PP_usuario h5').removeClass 'tipo_seleccionado, deseleccion'
+    $('#PP_entrenador p, #PP_usuario p').removeClass 'deseleccion'
+    $('#PP_btn').show 500
+    validacion_escuela = true
+    validacion_entrenador = false
+    validacion_usuario = false
+    return
+
+  ### ELECCION USUARIO ###
+
+  $('#PP_usuario').on 'click', ->
+    $(this).addClass 'animated pulse'
+    $(this).addClass 'tipo_seleccionado'
+    $(this).find('i').addClass 'deseleccion'
+    $(this).find('h5').addClass 'deseleccion'
+    $(this).find('p').addClass 'deseleccion'
+    $('#PP_entrenador, #PP_escuela').removeClass 'tipo_seleccionado animated pulse'
+    $('#PP_entrenador i, #PP_entrenador h5, #PP_escuela i, #PP_escuela h5').removeClass 'tipo_seleccionado, deseleccion'
+    $('#PP_entrenador p, #PP_usuario p').removeClass 'deseleccion'
+    $('#PP_btn').show 500
+    validacion_usuario = true
+    validacion_escuela = false
+    validacion_entrenador = false
+    return
+
+  $('#PP_btn').on 'click', ->
+    if validacion_entrenador == true
+      $("#conekta_plan").val("trimestral")
+      $('#PP_usuario').hide 400
+      $('#PP_escuela').hide 400
+    else
+      if validacion_escuela == true
+        $("#conekta_plan").val("anual")
+        $('#PP_usuario').hide 400
+        $('#PP_entrenador').hide 400
+      else
+        if validacion_usuario == true
+          $("#conekta_plan").val("mensual")
+          $('#PP_entrenador').hide 400
+          $('#PP_escuela').hide 400
+    $('#div_planes').addClass 'animated bounceOutLeft'
+    setTimeout (->
+      $("#div_metas_objetivos").css('display','none')
       $("#div_forma_pago").removeAttr("style")
       return
     ), 500
@@ -610,15 +705,23 @@ eventos_forma_pago = ->
     #Inserta el token_id en la forma para que se envíe al servidor
     div_forma_pago = $("#div_forma_pago").append($('<input type="hidden" name="user[customer_token]" id="customer_token">').val(token.id))
     $form = $("#new_user")
-    swal({
-        title: 'Procesando...',
-        allowOutsideClick: false
-    });
-    swal.showLoading();
-    $form.get(0).submit()
+    $.ajax
+      type: "POST"
+      url: "/create_conekta_subscription"
+      data: token: token.id, name: $('.FPago_tarjeta_tutor').val(), email: $("#user_email").val(), plan: $("#conekta_plan").val()
+      dataType: "json",
+      success: (data) ->
+        if data.response.status == "active"
+          $("#customer_token").val(data.response.customer_id)
+          $form.get(0).submit()
+        else
+          swal.close();
+          swal 'Error', 'Hubo un problema con la tarjeta ingresada.', 'warning'
     return
 
   conektaErrorResponseHandler = (response) ->
+    swal.stopLoading();
+    swal.close();
     swal
       type: 'error'
       title: 'Alerta'
@@ -681,6 +784,11 @@ eventos_forma_pago = ->
         confirmButtonClass: 'login_sweetalert'
       $('.input_box_cvc').addClass 'input_error'
       return false
+    swal({
+        title: 'Procesando...',
+        allowOutsideClick: false
+    });
+    swal.showLoading();
     tokenParams = 'card':
       'number': $('.FPago_tarjeta_num').val()
       'name': $('.FPago_tarjeta_tutor').val()
