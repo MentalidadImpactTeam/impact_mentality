@@ -11,6 +11,8 @@ body {
     margin: 15px 0;
     color: red !important;
     animation-delay: .5s;
+    font-weight: bold;
+    font-family:lato;
 }
 
 .terminar_mensaje {
@@ -244,7 +246,7 @@ body {
 }
 
 #registro_btn {
-    background-color: #b52434;
+    background-color: red;
     transform: skew(-10deg);
     color: white;
     font-family: Lato;
@@ -258,7 +260,7 @@ body {
 
 #registro_btn:hover {
     box-shadow: 0px 0px 8px red;
-    background-color: Red;
+    background-color: #b52434;
 }
 
 #registro_btn:active {
@@ -283,6 +285,8 @@ body {
 #IP_titulo {
     font-size: 50px;
     margin: 15px 0;
+    font-weight: bold;
+    font-family: lato;
     color: red !important;
     animation-delay: .5s;
 }
@@ -352,7 +356,7 @@ body {
 }
 
 #IP_btn {
-    background-color: #b52434;
+    background-color: RED;
     transform: skew(-10deg);
     color: white;
     font-family: Lato;
@@ -367,7 +371,7 @@ body {
 
 #IP_btn:hover {
     box-shadow: 0px 0px 8px red;
-    background-color: Red;
+    background-color: #b52434;
 }
 
 #ID_Competencia_fecha, #IP_fecha_nacimiento {
@@ -562,7 +566,7 @@ button:focus {
 }
 
 #metas_objetivos_btn {
-    background-color: #b52434;
+    background-color: red;
     transform: skew(-10deg);
     color: white;
     font-family: Lato;
@@ -837,14 +841,6 @@ code {
     cursor: pointer;
 }
 
-.FPago_metodo_tarjeta {
-    border: 3px solid red;
-    width: 80%;
-    color: red;
-    font-family: Lato;
-    font-size: 40px;
-    animation-delay: .7s;
-}
 
 .FPago_metodo_Paypal {
     border: 3px solid grey;
@@ -871,13 +867,7 @@ code {
     border: none !important;
 }
 
-.FPago_metodo_tarjeta i {
-    font-size: 60px;
-    margin: 15px 0;
-    width: 100px;
-    font-size: 50px;
-    display: block;
-}
+
 
 .DP_input {
     margin: 10px 0;
@@ -965,7 +955,7 @@ code {
 }
 
 #FPago_btn {
-    background-color: #b52434;
+    background-color: red;
     transform: skew(-10deg);
     color: white;
     font-family: Lato;
@@ -980,7 +970,7 @@ code {
 
 #FPago_btn:hover {
     box-shadow: 0px 0px 8px red;
-    background-color: Red;
+    background-color: #b52434;
 }
 
 #Terminar_modal {
@@ -1054,13 +1044,7 @@ code {
     transition: all .5s;
 }
 
-#TU_titulo {
-    font-size: 50px;
-    margin: 15px 0;
-    color: red;
-    animation-delay: .5s;
-    margin: 25px 0;
-}
+
 
 .tipos_de_usuario i {
     color: red;
@@ -1207,7 +1191,7 @@ code {
 }
 
 #ientrenador_btn {
-    background-color: #b52434;
+    background-color: red;
     transform: skew(-10deg);
     color: white;
     font-family: Lato;
@@ -1222,7 +1206,7 @@ code {
 
 #ientrenador_btn:hover {
     box-shadow: 0px 0px 8px red;
-    background-color: Red;
+    background-color: #b52434;
 }
 
 #TU_info_text {
@@ -1242,6 +1226,8 @@ code {
     color: red;
     animation-delay: .5s;
     margin: 25px 0;
+    font-family: lato;
+    font-weight: bold;
 }
 
 .tipos_de_usuario i {

@@ -19,7 +19,7 @@
                         <hr class="animated bounceIn" style="animation-delay:1s;  border:1px solid red; width: 50%;">
                     </center>
                 </div>
-                
+
                 <div class="input_container animated bounceIn col-lg-12">
                     <center>
                         <%= image_tag("User-01.png") %>
@@ -58,7 +58,7 @@
                             </center>
                         </div>
 
-                        <div class="col-6 ">
+                        <div class="col-12">
                             <center>
                                 <div class=" animated bounceIn FPago_metodo_tarjeta">
                                     <i class="far fa-credit-card"></i>
@@ -433,13 +433,13 @@
                             <div class="row ">
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div id="input_box_peso" class="input_box_tutor animated bounceIn">
-                                        <i class="far fa-weight"></i>
+                                        <i class="fas fa-weight"></i>
                                         <%= ui_fields.text_field :weight, placeholder: 'Peso', id: 'IP_peso', onkeypress: 'return event.charCode >= 48 && event.charCode <= 57;' %>
                                     </div>
                                 </div>
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div id="input_box_estatura" class="input_box_ano animated bounceIn">
-                                        <i class="far fa-ruler-vertical "></i>
+                                      <i class="fas fa-ruler-vertical"></i>
                                         <%= ui_fields.select :height, options_for_select(@heights), {}, { :id => 'IP_Estatura' } %>
                                     </div>
                                 </div>
@@ -472,13 +472,13 @@
                             <div class="row">
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div id="input_box_deporte" class="input_box_mes  animated bounceIn">
-                                        <i class="far fa-calendar-alt"></i>
+                                        <i class="fas fa-football-ball"></i>
                                         <%= ui_fields.select :sport, options_for_select(@sports), {}, { :id => 'ID_deporte' } %>
                                     </div>
                                 </div>
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div class="input_box_p  animated bounceIn">
-                                        <i class="far fa-calendar-alt"></i>
+                                        <i class="fas fa-crosshairs"></i>
                                         <%= ui_fields.select :position, options_for_select([['Posiciones', '']]), {}, { :id => 'ID_pos_obj' } %>
                                     </div>
                                 </div>
@@ -525,7 +525,7 @@
                 </div>
                 <div class="col-lg-3"></div>
             </div>
-            
+
             <div id="div_metas_objetivos" class="animated bounceInRight row" style='display: none'>
                 <div class="col-lg-2"></div>
                 <div id="metas_objetivos_modal" class="col-sm-12 col-lg-8">
