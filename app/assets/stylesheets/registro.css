@@ -1361,3 +1361,151 @@ code {
     box-shadow: 0px 0px 8px red;
     background-color: Red;
 }
+
+/* PLANES */
+
+.PP_regresar {
+    color: #3e3e3e;
+    opacity: .2;
+    font-size: 2vw;
+    cursor: pointer;
+    margin: 15px 0 0 15px;
+    transition: all .5s;
+}
+
+.PP_regresar:hover {
+    opacity: 1;
+}
+
+.PP_descuento {
+    margin: 0;
+    text-decoration: line-through;
+    color: red;
+    opacity: .5;
+}
+
+.PP_precio {
+    font-size: 1.5vw;
+    color: red;
+    font-family: Lato;
+}
+
+#PP_info_text {
+    color: red;
+    font-family: Lato;
+    font-size: 1.5vw;
+}
+
+#PP_btn {
+    background-color: red;
+    color: white;
+    font-family: Lato;
+    border: none;
+    padding: 15px 45px;
+    margin: 25px 0px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#PP_btn:hover {
+    box-shadow: 0px 0px 8px red;
+    background-color: Red;
+}
+
+#PP_modal {
+    background-color: white;
+    transition: all .5s;
+}
+
+.PP_titulo {
+    font-size: 4vw;
+    margin: 15px 0;
+    color: red;
+    animation-delay: .5s;
+    margin: 0px;
+    font-family: lato;
+    font-weight: bold;
+}
+
+.PP_subtitulo {
+    font-family: lato;
+    font-size: 2vwpx;
+    margin: 15px 0;
+    font-weight: medium;
+    color: red;
+    animation-delay: .5s;
+    margin: 0px;
+}
+
+.tipos_de_usuario i {
+    color: red;
+    font-size: 3vw;
+    margin: 40px 10px;
+}
+
+.tipos_de_usuario {
+    margin: 35px 0;
+}
+
+.tipos_de_usuario h5 {
+    color: red;
+    font-size: 1.5vw;
+    font-family: Lato;
+    font-weight: bold;
+}
+
+#PP_entrenador,
+#PP_escuela,
+#PP_usuario {
+    border: 2px solid red;
+    border-radius: 10px;
+    cursor: pointer;
+    cursor: pointer;
+}
+
+.tipo_hover {
+    background-color: red;
+}
+
+.tipo_unhover {
+    color: white !important;
+}
+
+.tipo_seleccionado {
+    background-color: red;
+}
+
+.deseleccion {
+    color: white !important;
+}
+
+@media only screen and (max-width: 992px) {
+    .tipos_de_usuario i {
+        font-size: 6vw;
+    }
+    .tipos_de_usuario h5 {
+        font-size: 3vw;
+    }
+    #PP_info_text {
+        font-size: 4vw;
+    }
+    #PP_info_text {
+        font-size: 4vw;
+    }
+    .PP_precio {
+        font-size: 3vw;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .tipos_de_usuario i {
+        font-size: 6vw;
+        margin: 20px 10px;
+    }
+    .tipos_de_usuario h5 {
+        font-size: 2.5vw;
+    }
+    #PP_info_text {
+        font-size: 5vw;
+    }
+}

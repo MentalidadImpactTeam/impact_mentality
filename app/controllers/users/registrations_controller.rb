@@ -45,15 +45,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user.user_information.name = user.user_information.name.split.map(&:capitalize).join(' ')
       user.user_information.weight = user.user_information.weight.remove("kg").squish
 
-      customer = Conekta::Customer.create({
-        :name => user.user_information.name,
-        :email => user.email,
-        :payment_sources => [{
-          :type => 'card',
-          :token_id => params["user"]["customer_token"]
-        }]
-      })
-      payment_source   = customer.payment_sources.first
+      customer = Conekta::Customer.find(params["user"]["customer_token"])
+      payment_source = customer.payment_sources.last
   
       user_conekta = UserConektaToken.new
       user_conekta.user_id = user.id
@@ -65,12 +58,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user_conekta.brand = payment_source["brand"].downcase
       user_conekta.save
   
-      user.customer_token = customer.payment_sources.first.id
+      user.customer_token = params["user"]["customer_token"]
       user.active = 1
       
-      subscription = customer.create_subscription({
-        :plan => "mensual"
-      })
+      subscription = customer.subscription
+      
+      user.plan = subscription.plan_id
   
       user_subscription = UserConektaSubscription.new
       user_subscription.user_id = user.id 
@@ -79,6 +72,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user_subscription.end_date = Time.at(subscription.billing_cycle_end).to_date
       user_subscription.conekta_subscription_token = subscription.id
       user_subscription.save
+
     elsif params['user']['user_information_attributes']['user_type_id'].to_i == 2
       # Si es entrenador
       user.active = 1
@@ -125,6 +119,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user.user_information.save
     end
     
+  end
+
+  def create_conekta_subscription
+    customer = Conekta::Customer.create({
+      :name => params["name"],
+      :email => params["email"],
+      :payment_sources => [{
+        :type => 'card',
+        :token_id => params["token"]
+      }]
+    })
+    payment_source   = customer.payment_sources.first
+    subscription = customer.create_subscription({
+      :plan => params["plan"]
+    })
+
+    render json: { :response => subscription } 
   end
 
   def create_routine_complete(user)
