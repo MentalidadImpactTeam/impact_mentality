@@ -2,7 +2,7 @@
         <input type="hidden" class="hidden_user" value="<%= @user.id %>">
         <i class="far fa-arrow-alt-circle-left fa-5x admin_regresar align-self-end"></i>
         <div class="bounceIn admin_infoentrenador d-flex flex-row align-items-center">
-            
+
             <div class="admin_infoentrenador_img" style="background-image: url(<%= @user.user_information.img_url %>);"></div>
             <div class="admin_infoentrenador_info d-flex flex-column">
                 <div id="admin_infoentrenador_nombre"> <%= @user.user_information.name %> </div>
@@ -12,7 +12,7 @@
                 <div class="d-flex flex-row"> Miembro desde: <div id="admin_fecha" class="admin_infos"> <%= @user.created_at.strftime("%d-%m-%y") %> </div> </div>
                 <div class="d-flex flex-row"> Tipo de usuario: <div id="admin_tipo" class="admin_infos"> <%= if @user.user_information.user_type_id == 3 then "USUARIO" else "ENTRENADOR" end %> </div> </div>
             </div>
-            <a href="#" class="sistema_p_editar flex-fill sistema_d_editar">EDITAR</a> 
+            <a href="#" class="sistema_p_editar flex-fill sistema_d_editar">EDITAR</a>
         </div>
         <div class="bounceIn admin_infopago d-flex align-items-center justify-content-between">
             <div class="bounceIn admin_tarjeta d-flex flex-column align-items-center justify-content-center">
@@ -23,7 +23,9 @@
             </div>
             <div class="bounceIn admin_fecha d-flex justify-content-center">
                 <div class="sistema_cuenta_contenedorfacturacion d-flex flex-column justify-content-center">
+                    <center>
                     <div class="sistema_cuenta_facturacion_texto admin_fecha_plan" id="sistema_cuenta_facturacion_texto_plan">PLAN MENSUAL</div>
+                    </center>
                     <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit admin_fecha_titulos"><i class="far fa-money-bill-alt"></i> MONTO A COBRAR:
                         <div class="sistema_cuenta_facturacion_texto_var admin_fecha_titulos"><b>$150 M.N.</b></div>
                     </div>

@@ -56,7 +56,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="admi_contenedor_upoload_ejercicio" class="col">
+                <div class="admi_contenedor_upoload_ejercicio">
                   <input id="unpload_image" style="display:none;" type="file">
                   <label id="label_unpload" for="unpload_image"><i class="fas fa-file-upload"></i>Carga tu imagen</label>
                 </div>
@@ -172,13 +172,13 @@
           </thead>
           <tbody>
             <% @exercises.each do |exercise| %>
-            <tr class="height_tr_admin" id="tr_hover" data-exercise="<%= exercise.id %>">
+            <tr class="administrador_botones height_tr_admin" id="tr_hover" data-exercise="<%= exercise.id %>">
               <td class="admin_nombre"> <%= exercise.name %> </td>
               <td class="admin_descripcion"> <%= exercise.description %> </td>
               <td class="admin_botones_width">
                 <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" class="administrador_puntos"></div>
               </td>
-              <td class="admin_botones_width">
+              <td class="administrador_botones admin_botones_width">
                 <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
               </td>
             </tr>
