@@ -32,7 +32,7 @@
 }
 
 #login_btn {
-    background-color: #b52434;
+    background-color:red;
     transform: skew(-10deg);
     color: white;
     font-family: Lato;
@@ -46,7 +46,7 @@
 
 #login_btn:hover {
     box-shadow: 0px 0px 8px red;
-    background-color: Red;
+    background-color: rgb(160, 0, 0);
 }
 
 #login_btn:active {
@@ -62,4 +62,15 @@
 
 #login_modal div center img {
     margin: 20px 7px;
+}
+
+.links_ventana_login{
+    color:red;
+    text-decoration: none !important;
+    font-family: lato;
+}
+.links_ventana_login:hover{
+  font-weight: bold;
+  color:red !important;
+  text-decoration: none;
 }

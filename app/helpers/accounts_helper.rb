@@ -8,6 +8,30 @@ module AccountsHelper
     end
   end
 
+  def account_subscription_plan(user)
+    if user.plan == "mensual"
+      "PLAN MENSUAL"
+    elsif user.plan == "trimestral"
+      "PLAN TRIMESTRAL"
+    elsif user.plan == "anual"
+      "PLAN ANUAL"
+    else
+      ""
+    end
+  end
+
+  def account_subscription_payment(user)
+    if user.plan == "mensual"
+      "$150 M.N."
+    elsif user.plan == "trimestral"
+      "$360 M.N."
+    elsif user.plan == "anual"
+      "$1460 M.N."
+    else
+      ""
+    end
+  end
+
   def account_subscription_billing_date(suscripcion)
     if suscripcion.present?
       billing_date = suscripcion.end_date

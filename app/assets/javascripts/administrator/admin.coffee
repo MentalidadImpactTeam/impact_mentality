@@ -1,6 +1,62 @@
 AdministratorController = Paloma.controller('Administrator/Admin')
 AdministratorController::list_users = ->
   $("#menu_usuarios").addClass("admin_active")
+  $(".fa-search").click ->
+    if $("#filtro_jugadores").val() == ""
+      swal 'Error', 'Favor de ingresar un valor de busqueda.', 'warning'
+    else
+      $.ajax
+        type: "POST"
+        url: "/administrator/users/search"
+        data: search: $("#filtro_jugadores").val()
+        dataType: "json",
+        success: (data) ->
+          if data.users.length == 0
+            swal 'Error', 'No se encontraron registros con la busqueda ingresada.', 'warning'
+          else
+            html = ""
+            data.users.forEach (value) ->
+              if value.active == 1
+                active_class = "usuario_activo"
+                status = "ACTIVO"
+              else
+                active_class = "usuario_inactivo"
+                status = "INACTIVO"
+
+              if value.suscription != null
+                end_date = value.suscription.end_date.substring(8,10) + "/" + value.suscription.end_date.substring(5,7) + "/" + value.suscription.end_date.substring(0,4)
+                intro_date = value.suscription.start_date.substring(8,10) + "/" + value.suscription.start_date.substring(5,7) + "/" + value.suscription.start_date.substring(0,4)
+              else
+                end_date = ""
+                intro_date = ""
+
+              html += '<tr class="row_hover">
+                      <input type="hidden" class="hidden_id" value="' + value.id + '">
+                      <td>
+
+                          <p class="aliniar_contenido_tabla id_usuario">' + value.information.uid + '</p>
+                      </td>
+                      <td>
+                          <p class="aliniar_contenido_tabla nombre_usuario">' + value.information.name + '</p>
+                      </td>
+
+                      <td class="columna_eliminada aliniar_contenido_tabla fecha_cobro">' + end_date + ' </td>
+                      <td class="aliniar_contenido_tabla fecha_intro">' + intro_date + '</td>
+                      <td class="aliniar_contenido_tabla estado_usuario ' + active_class + '">' + status + '</td>
+                      <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
+
+                          <label class="switch">
+                              <input type="checkbox">
+                              <span class="slider round"></span>
+                      </label>
+                      </td>
+                  </tr>'
+
+            $("#admin_tabla_usuarios tbody").html(html)
+            $('.row_hover').on 'click', ->
+              window.location.href = "/administrator/users/" + $(this).find(".hidden_id").val()
+              return
+
   $('.back_arrow_jugadores').on 'click', ->
     alert 'flecha para atras'
     return
@@ -56,6 +112,34 @@ AdministratorController::show_user = ->
 AdministratorController::list_exercises = ->
   $("#menu_ejercicios").addClass("admin_active")
   administrator_exercises_edit()
+  $(".adminsearch").click ->
+    if $("#filtro_jugadores").val() == ""
+      swal 'Error', 'Favor de ingresar un valor de busqueda.', 'warning'
+    else
+      $.ajax
+        type: "POST"
+        url: "/administrator/exercises/search"
+        data: search: $("#filtro_jugadores").val(), category_id: $('#ul_categories').attr('data-selected')
+        dataType: "json",
+        success: (data) ->
+          if data.exercises.length == 0
+            swal 'Error', 'No se encontraron registros con la busqueda ingresada.', 'warning'
+          else
+            html = ""
+            data.exercises.forEach (value) ->
+              html += '<tr id="tr_hover" data-exercise="' + value.id + '">
+                        <td class="admin_nombre"> ' + value.name + ' </td>
+                        <td class="admin_descripcion"> ' + value.description + ' </td>
+                        <td>
+                          <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" class="administrador_puntos"></div>
+                        </td>
+                        <td>
+                          <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
+                        </td>
+                      </tr>'
+            $(".tabla_ejercicios tbody").html(html)
+            $(".administradores_ejercicios_totales").text( data.exercises.length + " EJERCICIOS TOTALES")
+            administrator_exercises_edit()
   $('.administrador_tacha').click ->
     swal(
       title: '¿Estás seguro que deseas borrar?'
@@ -158,6 +242,7 @@ administrator_exercises_fill_table = (category_id) ->
     data: category_id: category_id
     dataType: "json",
     success: (data) ->
+      $("#filtro_jugadores").val("")
       if data.exercises.length > 0
         html = ""
         data.exercises.forEach (value) ->

@@ -71,14 +71,63 @@ DashboardController::player_list = ->
       swal({
         title: '<strong>Agrega Jugador</strong>',
         type: 'info',
-        html: '<input id="agregar_jugador" placeholder="  ID, Nombre, Correo Electrónico">',
+        html: '<input id="agregar_jugador" placeholder="  ID, Correo Electrónico">',
         showCloseButton: true,
         showCancelButton: true,
         focusConfirm: true,
         confirmButtonText: 'Agregar',
         confirmButtonAriaLabel: 'Thumbs up, great!',
-        cancelButtonText: 'Cancelar'
-      })
+        cancelButtonText: 'Cancelar',
+        preConfirm: ->
+          new Promise((resolve, reject) ->
+            $.ajax
+              type: "POST"
+              url: "/add_trainer_user"
+              data: search_param: $("#agregar_jugador").val()
+              dataType: "json",
+              success: (data) ->
+                resolve(data)
+          )
+        }).then (response) ->
+          if response.value.error
+            swal('Alerta','No se encontro el jugador ingresado','warning')
+          else if response.value.existe
+            swal('Alerta','El jugador ingresado ya fue agregado anteriormente','warning')
+          else
+            user = response.value
+            date = user.created_at.substring(8,10) + "/" + user.created_at.substring(5,7) + "/" + user.created_at.substring(0,4)
+            tr = '<tr class="row_hover" data-id="' + user.id + '">
+                    <td>
+                        <center>
+                            <div class="imagen_jugador" style="background-image: url(' + user.user_information.img_url.url + ');"></div>
+                        </center>
+                    </td>
+                    <td>
+                        <p class="nombre_jugador">' + user.user_information.name + '</p>
+                        <p class="escuela_jugador">Cetys Universidad</p>
+                    </td>
+                    <td class="columna_eliminada">
+                        <p class="correos_jugadores"> ' + user.email + '</p>
+                    </td>
+                    <td>
+                        <p class="posicion_jugadores">' + user.user_information.position + '</p>
+                        <p class="deporte_jugadores">' + user.user_information.sport + '</p>
+                    </td>
+                    <td class="columna_eliminada aliniar_contenido_tabla">5/15 </td>
+                    <td class="columna_eliminada aliniar_contenido_tabla">' + date + '</td>
+                    <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
+                        <i class="fas fa-poll dashboard_jugador"></i>
+                        <i class="fas fa-adjust profile_jugador"></i>
+                        <i class="fas fa-eraser delete_jugador"></i>
+                    </td>
+                </tr>'
+            $(".contenedor_tabla_jugadores tbody").append(tr)
+            $('.dashboard_jugador').on 'click', -> 
+              window.location.href = "/dashboard/" + $(this).closest(".row_hover").data("id")
+            $('.profile_jugador').on 'click', -> 
+              window.location.href = "/profiles/" + $(this).closest(".row_hover").data("id")
+            swal('Exito','Se agrego el jugador','success')
+  
   $('.delete_jugador').on 'click', -> 
     $row =  $(this).closest(".row_hover")
     swal({

@@ -28,32 +28,33 @@ AccountController::index = ->
 account_open_card_modal = ->
   agregartar = $('#sistema_cuenta_agregartarjeta')
   $('.sistema_cuenta_agregar').on 'click', (event) ->
-    swal(
-      title: 'AGREGAR MÉTODO DE PAGO'
-      text: 'Elige entre tarjeta de crédito o una cuenta de Paypal'
-      type: 'question'
-      showCancelButton: true
-      showConfirmButton: true
-      confirmButtonColor: '#3085d6'
-      cancelButtonColor: '#d33'
-      cancelButtonText: 'Cuenta de Paypal'
-      confirmButtonText: 'Tarjeta de crédito'
-      showCloseButton: true).then (result) ->
-      if result.value
-        agregartar.css 'display', 'flex'
-      else if result.dismiss == swal.DismissReason.cancel
-        $('<div class="sistema_cuenta_tarjeta d-flex flex-column justify-content-between" id="sistema_cuenta_paypal"> <div class="sistema_cuenta_borrar"></div><div class="sistema_cuenta_circulo"></div></div>').insertBefore '.sistema_cuenta_agregar'
-        $('.sistema_cuenta_circulo').click ->
-          account_card_default(this)
+    agregartar.css 'display', 'flex'
+    # swal(
+    #   title: 'AGREGAR MÉTODO DE PAGO'
+    #   text: 'Elige entre tarjeta de crédito o una cuenta de Paypal'
+    #   type: 'question'
+    #   showCancelButton: true
+    #   showConfirmButton: true
+    #   confirmButtonColor: '#3085d6'
+    #   cancelButtonColor: '#d33'
+    #   cancelButtonText: 'Cuenta de Paypal'
+    #   confirmButtonText: 'Tarjeta de crédito'
+    #   showCloseButton: true).then (result) ->
+    #   if result.value
+    #     agregartar.css 'display', 'flex'
+    #   else if result.dismiss == swal.DismissReason.cancel
+    #     $('<div class="sistema_cuenta_tarjeta d-flex flex-column justify-content-between" id="sistema_cuenta_paypal"> <div class="sistema_cuenta_borrar"></div><div class="sistema_cuenta_circulo"></div></div>').insertBefore '.sistema_cuenta_agregar'
+    #     $('.sistema_cuenta_circulo').click ->
+    #       account_card_default(this)
           
-        $('.sistema_cuenta_borrar').click ->
-          account_card_delete($(this))
-          return
-        if $('.sistema_cuenta_tarjeta').length < 2
-          $('.sistema_cuenta_agregar').css 'display', 'flex'
-        else
-          $('.sistema_cuenta_agregar').css 'display', 'none'
-      return
+    #     $('.sistema_cuenta_borrar').click ->
+    #       account_card_delete($(this))
+    #       return
+    #     if $('.sistema_cuenta_tarjeta').length < 2
+    #       $('.sistema_cuenta_agregar').css 'display', 'flex'
+    #     else
+    #       $('.sistema_cuenta_agregar').css 'display', 'none'
+    #   return
     return
   
   if $('.sistema_cuenta_tarjeta').length >= 2

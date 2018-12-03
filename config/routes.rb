@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_scope :user do
     post 'checkuser' => 'users/registrations#checkuser'
+    post 'create_conekta_subscription' => 'users/registrations#create_conekta_subscription'
     get 'active_confirmation' => 'users/confirmations#active_confirmation'
     get 'active_trainer_confirmation' => 'users/confirmations#active_trainer_confirmation'
   end
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
 
   get "player_list" => "dashboard#player_list"
   get "dashboard/:id" => 'dashboard#index'
+  post "add_trainer_user" => "dashboard#add_trainer_user"
   post "delete_trainer_user" => "dashboard#delete_trainer_user"
 
   post 'rutinas' => "home#rutinas"
@@ -41,9 +43,11 @@ Rails.application.routes.draw do
   end
   namespace :administrator do
     get "users" => "admin#list_users"
+    post "users/search" => "admin#search_users"
     get "exercises" => "admin#list_exercises"
     get "exercises/change_list_exercises" => "admin#change_list_exercises"
     post "exercises/edit_exercise" => "admin#edit_exercise"
+    post "exercises/search" => "admin#search_exercises"
     get "users/:id" => "admin#show_user"
   end
 end

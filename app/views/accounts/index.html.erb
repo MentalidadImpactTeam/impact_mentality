@@ -69,9 +69,9 @@
         <!-- INFO FACTURACION -->
         <div class="sistema_cuenta_tarjetas_division d-flex align-items-center justify-content-end">
             <div class="sistema_cuenta_contenedorfacturacion d-flex flex-column">
-                <div class="sistema_cuenta_facturacion_texto" id="sistema_cuenta_facturacion_texto_plan">PLAN MENSUAL</div>
-                <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit">MONTO A COBRAR: <div class="sistema_cuenta_facturacion_texto_var">$150 M.N.</div></div>
-                <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit">FECHA DE FACTURACIÓN: <div class="sistema_cuenta_facturacion_texto_var"> <%= account_subscription_billing_date(@subscription)  %> </div></div>
+                <div class="sistema_cuenta_facturacion_texto" id="sistema_cuenta_facturacion_texto_plan"><%= account_subscription_plan(current_user.user_information) %></div>
+                <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit">MONTO A COBRAR: <div class="sistema_cuenta_facturacion_texto_var"><%= account_subscription_payment(current_user.user_information) %></div></div>
+                <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit">FECHA DE FACTURACIÓN: <div class="sistema_cuenta_facturacion_texto_var"> <%= account_subscription_billing_date(@subscription) %> </div></div>
             </div>
         </div>
         
