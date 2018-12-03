@@ -100,6 +100,10 @@ body {
   .subbanners_sistema_menu {
       display: none !important;
   }
+
+  .sistema_container {
+    height: auto;
+  }
 }
 
 
@@ -199,7 +203,7 @@ body {
   display: inline-block;
   position: relative;
   float: right;
-  height:auto;
+  height:100%;
   width: 95%;
   background-color: #202020;
   transition: all .5s;

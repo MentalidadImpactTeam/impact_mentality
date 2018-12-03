@@ -165,6 +165,7 @@ account_cancelar_suscripcion = ->
       confirmButtonText: 'Sí, quiero cancelar mi suscripción'
       showCloseButton: true
     return
+      
 
 account_update = ->
   ### CORREO ###
