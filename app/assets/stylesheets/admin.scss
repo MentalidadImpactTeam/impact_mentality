@@ -382,7 +382,6 @@ input:checked+.slider:before {
   text-align: center;
   font-weight: bold;
   font-size: 3vw;
-  font-style: italic;
   margin-bottom: 1vw;
 }
 
@@ -395,9 +394,10 @@ input:checked+.slider:before {
 }
 
 .admin_fecha_titulos {
-  font-size: 2vw !important;
+  font-size: 1.5vw !important;
   margin-bottom: .5vw;
   margin-top: .5vw;
+  display:inline-block;
 }
 
 .admin_fecha_plan {
@@ -488,9 +488,7 @@ input:checked+.slider:before {
 
 #sistema_cuenta_facturacion_texto_plan{
   font-size: 2.5vw;
-  font-style: italic;
-  letter-spacing: .1vw;
-
+  font-weight: bold;
 }
 
 #sistema_cuenta_facturacion_texto_plan{
@@ -698,7 +696,7 @@ padding-top:15px;
 
 
     .tabla_ejercicios td {
-        padding: .5vw 2vw;
+        padding: 1.5vw 2vw;
     }
 
     .tabla_ejercicios th{
@@ -736,7 +734,7 @@ padding-top:15px;
         overflow: hidden;
         transition: all .5s;
         border-radius: 5px;
-        margin-top:100px;
+        margin-top:25px;
     }
 
     .banner_top {
@@ -883,8 +881,9 @@ padding-top:15px;
         border: 2px solid red;
         border-radius: 10px;
         margin-left: 30px;
-        padding: 10px;
         font-size: 1.5vw;
+        padding: 7px;
+
         transition: all .5s;
     }
 
@@ -1012,9 +1011,7 @@ padding-top: 0px!important;
     #sistema_admin_agregar_ejercicio {
         width: 100%;
     }
-    .admi_contenedor_upoload_ejercicio label {
-        font-size: 2vw;
-    }
+
     #sistema_admin_agregar_ejercicio select {
         font-size: 3vw;
     }

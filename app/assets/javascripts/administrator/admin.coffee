@@ -127,7 +127,7 @@ AdministratorController::list_exercises = ->
           else
             html = ""
             data.exercises.forEach (value) ->
-              html += '<tr id="tr_hover" data-exercise="' + value.id + '">
+              html += '<tr class="administrador_botones" id="tr_hover" data-exercise="' + value.id + '">
                         <td class="admin_nombre"> ' + value.name + ' </td>
                         <td class="admin_descripcion"> ' + value.description + ' </td>
                         <td>
