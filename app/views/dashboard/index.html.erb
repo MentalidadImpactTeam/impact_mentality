@@ -4,18 +4,18 @@
         <h2>ANALITICOS</h2>
     </div>
 </div>
-<div style="padding: 0vw 2vw;" class="sistema_db_container container-fluid">
-    <div class="row d-flex sistema_contenedor_info_superior">
-        <div class=" animated zoomInUp sistema_db_info_superior d-flex">
+<div class="sistema_db_container">
+    
+        <div class=" animated zoomInUp sistema_db_info_superior d-flex justify-content-betweeen align-items-end">
             <div class="sistema_info_three_containers">
-                <div class="d-flex flex-row align-items-end">
+                <div class="d-flex flex-row align-items-end flex-wrap justify-content-center">
                     <div class="sistema_p_ejericios" class="d-flex flex-column">
-                        <div>ENTRENAMIENTOS</div>
+                        <div class="sistema_d_entrenamientos">ENTRENAMIENTOS</div>
                         <div>COMPLETADOS</div>
                     </div>
 
-                    <div class="sistemas_p_numero"> <%= @trainings_complete %> </div>
-                    <div class="sistemas_p_numerogris"> /<%= @trainings %> </div>
+                    <div id="sistemas_p_numero"> <%= @trainings_complete %> </div>
+                    <div id="sistemas_p_numerogris"> /<%= @trainings %> </div>
                 </div>
                 <div>
                     <div class="progress">
@@ -35,9 +35,9 @@
                 </div>
 
             </div>
-            <div class="sistema_info_three_containers">
+            <div class="sistema_info_three_containers" style="margin-bottom:-.08vw;">
 
-                <div class="sistema_info_three_containers">
+               
                     <div class="d-flex flex-column">
                         <div class="sistema_p_etapa"> TIEMPO RESTANTE:</div>
                         <div class="sistema_p_etapanombre"> <%= @trainings_unfinished %> DIAS </div>
@@ -45,15 +45,15 @@
                             <div class="progress-bar" id="barra_etapa" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: <%= @training_days_width.to_s %>%;"></div>
                         </div>
                     </div>
-                </div>
+              
 
             </div>
-        </div>
+        
 
     </div>
-    <div style="justify-content:center;" class="animated zoomInUp db_contenedor_segundafila row d-flex">
+    <div style="justify-content:center;" class="animated zoomInUp db_contenedor_segundafila d-flex justify-content-between">
 
-        <div class="sistema_db_info_grafica">
+        <div class="sistema_db_info_grafica d-flex flex-column justify-content-center">
             <div class="line-chart">
                 <div class="aspect-ratio">
                     <canvas width="100%" id="chart"></canvas>

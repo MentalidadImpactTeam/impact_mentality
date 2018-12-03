@@ -3,41 +3,43 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .sistema_db_container {
+  flex-direction: column;
+  width: 100% !important;
+  height: 100% !important;
   background-color: #191a1a;
-  width: 100%;
-  height: 100%;
+  padding: 2vw 2vw 2vw 2vw;
+  justify-content: space-between;
 }
 /*363636*/
 
 .sistema_db_info_superior {
   width: 100%;
   background-color: #363636;
-  height: 100%;
+  height: auto;
   color: white;
-  border-radius: 10px;
-  padding: 10px;
+  border-radius: 1vw;
+  padding: 2vw 1.5vw;
   margin: 2vw 0;
   box-shadow: 0 0 25px #131313;
+  flex-direction: row;
 }
 
 .sistema_db_info_grafica {
   background-color: #363636;
   width: 61%;
-  margin-right: 1%;
-  border-radius: 10px;
+  border-radius: 1vw;
   color: white;
-  padding: 25px;
+  padding: 2.5vw;
   box-shadow: 0 0 25px #131313;
 }
 
 .sistema_db_info_tabla {
   background-color: #363636;
   box-shadow: 0 0 25px #131313;
-  border-radius: 10px;
+  border-radius: 1vw;
   width: 35%;
-  margin-left: 1%;
   color: white;
-  padding: 33px 0;
+  padding: 2.5vw 0;
 }
 
 #sistema_db_entradas {
@@ -85,6 +87,7 @@
   line-height: 5vw;
   text-shadow: 0 0 20px red;
   font-weight: bold;
+  margin-left: 1vw;
 }
 
 .sistemas_p_numerogris {
@@ -121,35 +124,81 @@
 .sistema_p_etapa {
   font-size: 1vw;
   line-height: 1vw;
-  padding-top: .65vw;
   font-weight: bold;
   text-align: left;
 }
 
 .sistema_p_etapanombre {
   font-size: 4vw;
-  line-height: 4vw;
+  line-height: 3.8vw;
   color: red;
   text-align: left;
   font-weight: bold;
   text-shadow: 0 0 20px red;
 }
 
+.sistema_p_etapanombre{
+  font-size: 4vw;
+  line-height: 4vw;
+  text-align: center;
+  margin-bottom: 1vw;
+}
+
+.db_contenedor_segundafila {
+  flex-direction: row;
+}
+
 .sistema_etapa {
-  font-size: 2.3vw !important;
-  line-height: 2.6vw !important;
+  font-size: 2.3vw;
+  line-height: 2.6vw;
 }
 
 @media (max-width: 991.98px) {
+  .sistema_db_container{
+    flex-direction: column;
+    align-items: center;
+    padding: 5vh 8vw;
+    height: auto;
+  }
+
+  .sistema_p_ejericios{
+    font-size: 4vw;
+    line-height: 4vw;
+    margin-right: 2vw;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .sistema_d_entrenamientos{
+      margin-right: 2vw;
+  }
+
+  .sistema_etapa {
+    font-size: 4vw;
+    line-height: 4vw;
+    text-align: center;
+    margin-bottom: 1vw;
+  }
+
+  .progress {
+    background-color: #6f6768 !important;
+    height: 2.5vw !important;
+    margin-top: 1vw;
+  }
+
   .sistema_info_three_containers {
       transform: scale(1);
   }
   .sistema_db_info_superior {
       flex-direction: column !important;
+      padding: 4vw;
   }
   .db_contenedor_segundafila {
-      flex-direction: column !important;
+      flex-direction: column;
   }
+
   .sistema_db_info_grafica {
       width: 100% !important;
   }
@@ -310,6 +359,12 @@ table tbody tr:hover {
 }
 
 @media (max-width: 795px) {
+  .sistema_p_etapa{
+    font-size: 4vw;
+    line-height: 4.5vw;
+    padding-top: .65vw;
+    text-align: center;
+  }
   .imagen_jugador {
       width: 10vw;
       margin: 10px;

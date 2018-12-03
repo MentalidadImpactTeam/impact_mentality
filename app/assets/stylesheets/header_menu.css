@@ -103,6 +103,7 @@ body {
 
   .sistema_container {
     height: auto;
+    float: none;
   }
 }
 
@@ -232,5 +233,14 @@ body {
 
 #sistema_cerrarsesionalign{
   text-align: center;
+}
+
+@media only screen and (max-width: 1092px) {
+  .sistema_container {
+    height: auto;
+    float: none;
+    justify-content: center;
+    width: 100%;
+  }
 }
 /* DASHBOARD */
