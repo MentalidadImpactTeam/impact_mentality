@@ -19,7 +19,7 @@ LoginController::new = ->
       allowOutsideClick: true
       confirmButtonText: 'Regresar'
       confirmButtonClass: 'login_sweetalert'
-    #CLICK EVENT 
+    #CLICK EVENT
   $('#user_email, #user_password').on 'keyup', ->
     $(this).removeClass 'input_error'
     return
