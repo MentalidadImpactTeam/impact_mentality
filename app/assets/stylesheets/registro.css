@@ -606,7 +606,7 @@ button:focus {
 
 .contenedor_objetivo {
     border: 1px solid grey;
-    padding: 25px;
+    padding: 25px 0px;
 }
 
 .Titulo_seccion {
@@ -666,7 +666,7 @@ button:focus {
 }
 
 .inputGroup label {
-    padding: 12px 30px;
+    padding: 12px 12px;
     width: 100%;
     display: block;
     text-align: left;
