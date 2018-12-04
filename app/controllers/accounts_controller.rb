@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
   def index
     @cards = UserConektaToken.where(user_id: current_user.id)
-    @subscription = UserConektaSubscription.where(user_id: current_user.id).order(id: :desc).limit(1).first
+    @subscription = UserConektaSubscription.where(user_id: current_user.id).last
     if @subscription.present?
       @estatus = @subscription.estatus
     else
