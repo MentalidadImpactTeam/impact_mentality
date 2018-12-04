@@ -673,6 +673,7 @@ button:focus {
     color: #3C454C;
     cursor: pointer;
     position: relative;
+    font-weight: lighter;
     z-index: 2;
     transition: color 200ms ease-in;
     overflow: hidden;
