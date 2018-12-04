@@ -63,7 +63,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       
       subscription = customer.subscription
       
-      user.plan = subscription.plan_id
+      user.user_information.plan = subscription.plan_id
   
       user_subscription = UserConektaSubscription.new
       user_subscription.user_id = user.id 
@@ -130,12 +130,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
         :token_id => params["token"]
       }]
     })
-    payment_source   = customer.payment_sources.first
+    customer.payment_sources.first
     subscription = customer.create_subscription({
       :plan => params["plan"]
     })
 
-    render json: { :response => subscription } 
+    if subscription['status'] == "active"
+      json = { :response => subscription } 
+    else
+      customer.delete
+      json = { :error => true } 
+    end
+
+    render json: json
   end
 
   def create_routine_complete(user)

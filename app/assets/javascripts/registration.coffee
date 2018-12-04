@@ -703,7 +703,8 @@ eventos_planes = ->
 eventos_forma_pago = ->
   conektaSuccessResponseHandler = (token) ->
     #Inserta el token_id en la forma para que se envíe al servidor
-    div_forma_pago = $("#div_forma_pago").append($('<input type="hidden" name="user[customer_token]" id="customer_token">').val(token.id))
+    if $("#customer_token").length == 0
+      $("#div_forma_pago").append($('<input type="hidden" name="user[customer_token]" id="customer_token">').val(token.id))
     $form = $("#new_user")
     $.ajax
       type: "POST"
@@ -711,12 +712,12 @@ eventos_forma_pago = ->
       data: token: token.id, name: $('.FPago_tarjeta_tutor').val(), email: $("#user_email").val(), plan: $("#conekta_plan").val()
       dataType: "json",
       success: (data) ->
-        if data.response.status == "active"
-          $("#customer_token").val(data.response.customer_id)
-          $form.get(0).submit()
-        else
+        if data.error
           swal.close();
           swal 'Error', 'Hubo un problema con la tarjeta ingresada.', 'warning'
+        else
+          $("#customer_token").val(data.response.customer_id)
+          $form.get(0).submit()
     return
 
   conektaErrorResponseHandler = (response) ->

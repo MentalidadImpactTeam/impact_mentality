@@ -1,0 +1,2 @@
+class ConektaTransaction < ApplicationRecord
+end

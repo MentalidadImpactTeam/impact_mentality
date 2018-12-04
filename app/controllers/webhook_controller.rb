@@ -2,21 +2,20 @@ class WebhookController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    render plain: "OK"
+    render status: 200
   end
 
   def procesar
     data = JSON.parse(request.body.read)
-    object = data['data']['object']
-    # byebug
-    if data['type'] == 'subscription.paid'
-      # payment_method = object['payment_method']['type']
-      # msg = "Tu pago con #{payment_method} ha sido comprobado"
-      # puts msg
 
+    object = data['data']['object']
+    if data['type'] == 'subscription.paid'
+      ct = ConektaTransaction.new
+      ct.json = data
+      ct.save
       user = User.find_by(customer_token: object['customer_id'])
       if user.present?
-        last_pay = UserConektaSubscription.find_by(user_id: user.id).order(id: :desc)
+        last_pay = UserConektaSubscription.find_by(user_id: user.id, estatus: 1)
         if last_pay.present?
           last_pay.estatus = 0
           last_pay.save
@@ -28,10 +27,24 @@ class WebhookController < ApplicationController
         new_pay.end_date = Time.at(object['billing_cycle_end']).to_date
         new_pay.save
       end
-      # ExampleMailer.email(data, msg)
     end
 
-    render status: 200
+    if data['type'] == 'subscription.payment_failed'
+      ct = ConektaTransaction.new
+      ct.json = data
+      ct.save
+      user = User.find_by(customer_token: object['customer_id'])
+      if user.present?
+        subscription = UserConektaSubscription.find_by(user_id: user.id, estatus: 1)
+        if subscription.present?
+          subscription.estatus = 0
+          subscription.payment_attemps += 1
+          subscription.save
+        end
+      end
+    end
+
+    render status: 200, layout: false
   end
 
   def paypal_payment

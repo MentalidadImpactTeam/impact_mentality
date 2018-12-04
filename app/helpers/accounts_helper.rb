@@ -3,7 +3,7 @@ module AccountsHelper
     case estatus
     when 1
       "ACTIVA"
-    when 2
+    when 0
       "SUSPENDIDA"
     end
   end

@@ -48,7 +48,7 @@
 
                                     <td class="columna_eliminada aliniar_contenido_tabla fecha_cobro"><%= if user.user_conekta_subscription.present? then user.user_conekta_subscription.last.end_date.strftime("%d/%m/%Y") end %> </td>
                                     <td class="aliniar_contenido_tabla fecha_intro"><%= if user.user_conekta_subscription.present? then user.user_conekta_subscription.last.start_date.strftime("%d/%m/%Y") end %></td>
-                                    <td class="aliniar_contenido_tabla estado_usuario <%= if user.active == 1 then "usuario_activo" else "usuario_inactivo" end %>"><%= lista_estatus(user.active) %></td>
+                                    <td class="aliniar_contenido_tabla estado_usuario <%= if user.user_conekta_subscription.present? then if user.user_conekta_subscription.last.estatus == 1 then "usuario_activo" else "usuario_inactivo" end else "usuario_activo" end  %>"><%= lista_estatus(user.user_conekta_subscription) %></td>
                                     <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
 
                                         <label class="switch">
