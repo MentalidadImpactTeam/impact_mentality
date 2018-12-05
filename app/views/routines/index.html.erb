@@ -71,7 +71,7 @@
     </div>
     <% if !@mostrar_modal %>
     <!-- CENTRO -->
-    <div class="sistema_r_contenedorejercicios d-flex">
+    <div class="sistema_r_contenedorejercicios d-flex flex-row">
         <!-- ANTERIOR -->
         <div class="sistema_r_centro_iz d-flex flex-column justify-content-center" style="<%= if @routine_finished then  "display:none !important;" end %>">
             <div id="sistema_r_siguiente"> ANTERIOR: </div>
@@ -85,7 +85,7 @@
 
         <!-- EJERCICIOS -->
         <% @hash.keys.each do |group| %>
-            <div class="sistema_r_centro_iz d-flex <%= if @hash[group]["show"] == 1 then "active" end %>" style="<%= if @hash[group]["show"] == 0 then "display: none !important" else "" end %>">
+            <div class="sistema_r_centro d-flex <%= if @hash[group]["show"] == 1 then "active" end %>" style="<%= if @hash[group]["show"] == 0 then "display: none !important" else "" end %>">
             <input type="hidden" class="hidden_group" value="<%= group %>">
             <% @hash[group]["exercises"].each do |exercise| %>
                 <!-- EJERCICIO -->
