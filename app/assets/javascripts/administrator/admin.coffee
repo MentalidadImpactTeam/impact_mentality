@@ -248,7 +248,7 @@ administrator_exercises_fill_table = (category_id) ->
         data.exercises.forEach (value) ->
           html += '<tr id="tr_hover" data-exercise="' + value.id + '">
                     <td class="admin_nombre"> ' + value.name + ' </td>
-                    <td class="admin_descripcion"> ' + value.description + ' </td>
+                    <td class="admin_descripcion"> <textarea> ' + value.description + '</textarea> </td>
                     <td>
                       <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" class="administrador_puntos"></div>
                     </td>

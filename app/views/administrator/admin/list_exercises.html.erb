@@ -174,7 +174,11 @@
             <% @exercises.each do |exercise| %>
             <tr class="administrador_botones height_tr_admin" id="tr_hover" data-exercise="<%= exercise.id %>">
               <td class="admin_nombre"> <%= exercise.name %> </td>
-              <td class="admin_descripcion"> <%= exercise.description %> </td>
+              <td class="admin_descripcion">
+             <textarea>
+               <%= exercise.description %>
+               </textarea>
+                </td>
               <td class="admin_botones_width">
                 <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" class="administrador_puntos"></div>
               </td>

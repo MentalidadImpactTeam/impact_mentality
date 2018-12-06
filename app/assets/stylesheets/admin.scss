@@ -540,6 +540,31 @@ input:checked+.slider:before {
 .admin_descripcion{
   width:70%
 }
+.admin_descripcion textarea{
+  width:100%;
+  background-color:transparent;
+  border:none;
+  color:white;
+}
+/* width */
+.admin_descripcion textarea::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.admin_descripcion textarea::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.admin_descripcion textarea::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.admin_descripcion textarea::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
 .admin_botones_width{
   width:10%
