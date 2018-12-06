@@ -12,7 +12,7 @@
 #sistema_r_progresonombre{
   color: #ff1d25;
   font-weight: bold;
-  font-size: 3vw; 
+  font-size: 3vw;
   line-height: 2.5vw;
   text-shadow: 0 0 1.5vw #ff1d25;
 }
@@ -82,7 +82,7 @@
   width: 100%;
 }
 
-#sistema_r_warmup{  
+#sistema_r_warmup{
   width: 22%;
 }
 
@@ -122,7 +122,7 @@
 .sistema_r_dia_nombre{
   font-size: 2.5vw;
   line-height: 2.5vw;
-  
+
 }
 
 .sistema_r_dia_activo{
@@ -163,7 +163,7 @@
   color: #fff;
   font-style: italic;
   font-weight: bold;
-  
+
 }
 
 #sistema_r_siguientefase{
@@ -192,7 +192,7 @@
   background-position: center;
   width: 5vw;
   height: 5vw;
-  border-radius: 1vw; 
+  border-radius: 1vw;
   margin-top: 6%;
   transition: .5s;
   cursor: pointer;
@@ -213,7 +213,7 @@
   background-position: center;
   width: 5vw;
   height: 5vw;
-  border-radius: 1vw; 
+  border-radius: 1vw;
   margin-top: 6%;
   transition: .5s;
   cursor: pointer;
@@ -271,6 +271,32 @@
   line-height: 1vw;
   color: #fff;
   margin: 1.7vw 0vw;
+  border:1px solid #3e3e3e;
+  background-color:transparent;
+ height:200px;
+  width:100%;
+}
+
+.sistema_r_infoejercicio_texto::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.sistema_r_infoejercicio_texto::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.sistema_r_infoejercicio_texto::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.sistema_r_infoejercicio_texto::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.sistema_contenedor_textarea_rutina{
+  width:100%;
 }
 
 .sistema_r_infoejercicio_boton{
@@ -283,7 +309,7 @@
   transition: .5s;
   font-weight: bold;
   cursor: pointer;
-  
+
 }
 
 .sistema_r_infoejercicio_boton:hover{
@@ -301,7 +327,7 @@
   border: 0;
   cursor: pointer;
   transition: all .5s !important;
-  
+
 }
 
 #sistema_rutina_cambio_table {
@@ -355,8 +381,8 @@
 
 @media (min-width: 612px) and (max-width: 1090px) {
   .sistema_r_abajo{
-     
-      
+
+
   }
 
   .sistema_r_infoejercicio{
@@ -364,7 +390,7 @@
       max-height: 60vw;
   }
 
-  
+
 }
 
 .ejer_terminado {
@@ -384,7 +410,7 @@
 }
 
 
-@media (max-width:  1090px) { 
+@media (max-width:  1090px) {
   .checkmark_rutina {
     margin-left: 5vw;
   }
@@ -396,19 +422,21 @@
       padding: 7vw 5vw;
       justify-content: center;
   }
-  
+
   .sistema_r_infoejercicio_nombre{
       font-size: 5vw;
       line-height: 5vw;
       text-align: center;
   }
-  
+
   .sistema_r_infoejercicio_texto{
       font-size: 3vw;
       line-height: 3.5vw;
-      margin: 5vw 0;
+      margin: 3vw 0;
+      height:150px;
+      border:1px solid #3e3e3e;
   }
-  
+
   .sistema_r_infoejercicio_boton{
       border-radius: 1vw;
       padding: 3vw 5vw;
@@ -419,7 +447,7 @@
   .sistema_r_infoejercicio_boton:hover{
       box-shadow: 0 0 5vw #ff1d25;
   }
-  
+
   .sistema_r_contenedorejercicios{
       flex-direction: column;
       width: 100%;
@@ -451,7 +479,7 @@
       margin-left: 3vw;
       cursor: pointer;
       width: 95%;
-  }   
+  }
 
   .sistema_r_ejercicio_centro{
       width: 30vw;
@@ -517,7 +545,7 @@
       flex-direction: column;
 
   }
-  
+
   .sistema_r_centro_der{
       width: 100%;
       justify-content: center;
@@ -560,7 +588,7 @@
     width: 60%;
     height: 12vw;
 }
-  
+
   #sistema_r_siguientearrow:hover{
       box-shadow: 0 0 5vw #ff1d25;
       width: 60%;
@@ -603,5 +631,5 @@
   #sistema_r_progresonombre{
       font-size: 10vw;
       line-height: 10vw;
-  }  
+  }
 }
