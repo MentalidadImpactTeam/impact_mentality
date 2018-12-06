@@ -2,7 +2,7 @@
 lock "~> 3.11.0"
 
 set :application, "impact_mentality"
-set :repo_url, "git@github.com:miguelbq01/impact_mentality.git"
+set :repo_url, "git@github.com:MentalidadImpactTeam/impact_mentality.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
