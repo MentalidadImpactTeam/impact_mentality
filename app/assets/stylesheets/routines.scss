@@ -56,6 +56,7 @@
   width: 2vw;
   height: 1.5vw;
   cursor: pointer;
+  margin-right: 1.5vw;
 }
 
 .sistema_r_cambiaricono:hover{
@@ -140,13 +141,15 @@
 }
 
 .sistema_r_centro{
-  justify-content: space-around;
-}
-
-.sistema_r_centro_iz{
   width: 90%;
   justify-content: space-around;
   flex-direction: row;
+}
+
+.sistema_r_centro_iz{
+  width: 10%;
+  height: 100%;
+  align-items: flex-start;
 }
 
 .sistema_r_centro_der{
@@ -164,7 +167,7 @@
 }
 
 #sistema_r_siguientefase{
-  line-height: .8vw;
+  line-height: 1.2vw;
   font-size: 1.2vw;
   color: #ff1d25;
   font-style: italic;
@@ -500,6 +503,12 @@
       margin-left: 5vw;
   }
 
+  .sistema_r_centro{
+    width: 100%;
+    justify-content: start;
+    flex-direction: column;
+  }
+
   .sistema_r_centro_iz{
       height: fit-content;
       width: 100%;
@@ -540,11 +549,17 @@
       background-image: none;
   }
 
-  #sistema_r_anteriorfase{
+  #sistema_r_anteriorarrow{
     width: 60%;
       height: 12vw;
       background-image: none;
   }
+
+  #sistema_r_anteriorarrow:hover{
+    box-shadow: 0 0 5vw #ff1d25;
+    width: 60%;
+    height: 12vw;
+}
   
   #sistema_r_siguientearrow:hover{
       box-shadow: 0 0 5vw #ff1d25;
