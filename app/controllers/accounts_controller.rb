@@ -59,4 +59,11 @@ class AccountsController < ApplicationController
 
     render plain: "OK"
   end
+
+  def cancel_subscription
+    customer = Conekta::Customer.find(current_user.customer_token)
+    subscription = customer.subscription.pause
+
+    render plain: "OK"
+  end
 end

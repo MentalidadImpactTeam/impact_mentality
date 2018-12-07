@@ -44,6 +44,18 @@ class WebhookController < ApplicationController
       end
     end
 
+    if data['type'] == 'subscription.paused'
+      ct = ConektaTransaction.new
+      ct.json = data
+      ct.save
+      user = User.find_by(customer_token: object['customer_id'])
+      subscription = UserConektaSubscription.find_by(user_id: user.id, estatus: 1)
+        if subscription.present?
+          subscription.estatus = 0
+          subscription.save
+        end
+    end
+
     render status: 200, layout: false
   end
 

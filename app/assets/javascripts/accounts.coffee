@@ -154,7 +154,7 @@ account_add_card = ->
 
 account_cancelar_suscripcion = ->
   $('#sistema_cuenta_cancelar_txt').click ->
-    swal
+    swal(
       title: '¿Estas seguro de cancelar tu suscripción?'
       footer: 'Al cancelar tu suscripción, perderdas acceso a tus rutinas anteriores al terminar el mes'
       type: 'warning'
@@ -163,10 +163,22 @@ account_cancelar_suscripcion = ->
       cancelButtonColor: '#d33'
       cancelButtonText: 'No, quiero seguir suscrito'
       confirmButtonText: 'Sí, quiero cancelar mi suscripción'
-      showCloseButton: true
+      showCloseButton: true).then (result) ->
+        if result.value
+           $.ajax
+            type: "POST"
+            url: "/accounts/cancel_subscription"
+            dataType: "text",
+            success: (data) ->
+              $(".sistema_cuenta_estadoa").text("SUSPENDIDA")
+              swal
+                type: 'success'
+                title: 'Exito'
+                text: 'Suscripcion Cancelada'
+                confirmButtonText: 'Entendido'
+        
     return
       
-
 account_update = ->
   ### CORREO ###
   $('#sistema_cuenta_datos_editar_correo').click ->
