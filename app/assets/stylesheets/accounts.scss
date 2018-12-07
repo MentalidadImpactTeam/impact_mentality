@@ -415,13 +415,16 @@ font-weight: bold;
 @media (max-width:  1090px) {
   #sistema_cuenta_tarjetas{
       flex-direction: column;
+      justify-content: center;
   }
 
   .sistema_cuenta_elige{
       font-size: 5vw;
       text-shadow: 0 0 5vw #fff;
       margin-bottom: 5vw;
+      text-align: center;
   }
+
   .sistema_cuenta_tarjeta, #sistema_cuenta_paypal{
       width: 80vw;
       height: 40vw;
@@ -429,6 +432,7 @@ font-weight: bold;
       padding-left: 3vw;
       padding-right: 2vw;
       margin-bottom: 5vw;
+      margin-right: 0;
   }
 
   #sistema_cuenta_paypal:hover{
