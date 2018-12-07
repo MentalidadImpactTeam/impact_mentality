@@ -247,10 +247,16 @@
   position: fixed;
   left: 28vw;
   display: none;
+  flex-direction: column;
   padding: 0vw 2vw 2vw 2vw;
   box-shadow: 0 0 100vw 50vw rgba(0,0,0,.9);
   z-index: 500;
 }
+
+#sistema_cuenta_agregartarjeta_top{
+  flex-direction: row;
+}
+
 
 .sistema_cuenta_marcanueva{
   background-image: url('../img/visa.png');
@@ -301,6 +307,8 @@
   font-size: .5vw;
   line-height: .8vw;
   margin: 0;
+  font-size: 1vw;
+      line-height: 1vw;
 }
 
 .sistema_cuenta_agregartarjeta_mid, #cuenta_num{
@@ -412,7 +420,37 @@ font-weight: bold;
   margin-bottom: .5vw;
 }
 
+#sistema_cuenta_agregartarjeta_bot{
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
 @media (max-width:  1090px) {
+  #cuenta_num::placeholder, #cuenta_nombre::placeholder, #cuenta_fechatxt::placeholder, #cuenta_csv::placeholder, #cuenta_num::placeholder{
+    font-size: 2vw;
+  }
+
+  #sistema_cuenta_agregartarjeta_top{
+    flex-direction: column;
+    order: 3;
+    width: 100%;
+  }
+
+  #sistema_cuenta_agregartarjeta_mid{
+    order: 1;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #sistema_cuenta_agregartarjeta_bot{
+    order: 2;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    width: 100%;
+  }
+
   #sistema_cuenta_tarjetas{
       flex-direction: column;
       justify-content: center;
@@ -427,7 +465,7 @@ font-weight: bold;
 
   .sistema_cuenta_tarjeta, #sistema_cuenta_paypal{
       width: 80vw;
-      height: 40vw;
+      height: auto;
       border-radius: 2vw;
       padding-left: 3vw;
       padding-right: 2vw;
@@ -440,10 +478,10 @@ font-weight: bold;
   }
 
   .sistema_cuenta_borrar{
-      width: 5vw;
-      height: 5vw;
-      margin-left: 74vw;
-      margin-top: -1vw;
+      width: 8vw;
+      height: 8vw;
+      margin-left: 72vw;
+      margin-top: -3vw;
   }
   .sistema_cuenta_marca{
       width: 25vw;
@@ -452,6 +490,7 @@ font-weight: bold;
 
   .sistema_cuenta_numt{
       margin-top: 5vw;
+      margin-bottom: 1vw;
   }
 
   .sistema_cuenta_numt, .sistema_cuenta_num{
@@ -462,16 +501,20 @@ font-weight: bold;
   .sistema_cuenta_num{
       margin-top: 2vw;
       margin-left: 3vw;
+      width: 100%;
   }
   .sistema_cuenta_fechatxt{
       font-size: 4vw;
       line-height: 4vw;
       margin-top: 2vw;
+      width: 100%;
   }
 
   .sistema_cuenta_circulo{
-      width: 5vw;
-      height: 5vw;
+      width: 8vw;
+      height: 8vw;
+      margin-bottom: 2vw;
+      margin-top: 2vw;
   }
 
   .sistema_cuenta_agregar{
@@ -537,54 +580,91 @@ font-weight: bold;
 
   #sistema_cuenta_agregartarjeta{
       width: 80vw;
-      height: 41.818vw;
+      height: auto;
       left: 10vw;
       top: 50vw;
       padding: 3vw;
+      font-weight: bold;
   }
 
   #cuenta_num{
       font-size: 5vw;
+      line-height: 5vw;
+      order: 2;
+      width: 100%;
+      margin-bottom: 4vw;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      
   }
 
-  #cuenta_nombre, #cuenta_fecha{
-      font-size: 2vw;
+  #cuenta_fecha, #cuenta_nom{
+    width: 100%;
+  }
+
+  #cuenta_csvv{
+    width: 100%;
+  }
+
+  #cuenta_nombre, #cuenta_fechatxt{
+      font-size: 5vw;
+      line-height: 5vw;
+      order: 2;
+      margin-bottom: 4vw;
+  }
+
+  .sistema_cuenta_input{
+    background-color: rgba(0, 0, 0, .4);
+    color: #fff;
+    border: none;
+    border: .15vw solid #ff1d25;
+    font-weight: bold;
+    border-radius: 1vw;
+    padding: 1.5vw;
   }
 
   .sistema_cuenta_input::placeholder{
       font-size: 2vw;
   }
 
-  .cuenta_input_label{
-      font-size: 1vw;
-      line-height: 1vw;
-
-  }
 
   .sistema_cuenta_marcanueva{
-      width: 50vw;
-      height: 8vw;
+      width: 0vw;
+      height: 0vw;
+      display: none;
   }
 
   .sistema_p_botoncredito{
       height: 6vw;
       font-size: 3vw;
+      margin-top: 3vw;
+      margin-bottom: 2vw;
   }
 
   .cuenta_input_label{
-      margin-top: .5vw;
+      margin-top: 0vw;
+      margin-bottom: 1.5vw;
+      font-size: 3vw;
+      line-height: 3vw;
   }
 
   .sistema_cuenta_cerrar{
-      width: 5vw;
-      height: 5vw;
-      margin-top: -2vw;
+      width: 8vw;
+      height: 8vw;
       top: 50vw;
       margin-right: -6vw;
+      margin-top: -5vw;
+      margin-bottom: 2vw;
   }
 
   #cuenta_csv{
-      margin-top: 2vw;
+      font-size: 5vw;
+      line-height: 5vw;
+      order: 2;
+      width: 100%;
+      text-align: start;
+      margin-bottom: 4vw;
   }
 
   #cuenta_mod_correo::placeholder, #cuenta_mod_num::placeholder, #cuenta_mod_pass::placeholder{
