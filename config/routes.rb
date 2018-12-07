@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       post "add_card" => 'accounts#add_card'
       post "delete_card" => 'accounts#delete_card'
       post "card_default" => 'accounts#card_default'
+      post "cancel_subscription" => 'accounts#cancel_subscription'
     end
   end
   resources :profiles do 

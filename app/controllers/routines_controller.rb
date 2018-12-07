@@ -1,4 +1,5 @@
 class RoutinesController < ApplicationController
+    before_action :check_user_subscription
 
     def index
         @week_hash = [{ "day" => "LUNES", "description" => "", "active" => "" }, { "day" => "MARTES", "description" => "", "active" => "" }, { "day" => "MIERCOLES", "description" => "", "active" => "" }, 
@@ -667,5 +668,14 @@ class RoutinesController < ApplicationController
                 end
         end
         hash
+    end
+
+    private
+    def check_user_subscription
+        if current_user.user_conekta_subscription.present?
+            if current_user.user_conekta_subscription.last.estatus == 0
+                redirect_back(fallback_location: root_path)
+            end
+        end
     end
 end
