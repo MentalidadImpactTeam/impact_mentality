@@ -186,13 +186,14 @@ AdministratorController::list_exercises = ->
     categoria = $("#popup_select_categories").val()
     nombre = $("#sistema_admi_nombre_ejercicio_input").val()
     descripcion = $("#sistema_admi_descrip_ejercicio_input").val()
+    link = $("#sistema_admi_link_ejercicio_input").val()
     id = $("#sistema_admin_agregar_ejercicio").attr("data-id")
     $('#admin_popup').fadeOut( "slow" );
 
     $.ajax
       type: "POST"
       url: "/administrator/exercises/edit_exercise"
-      data: id: id, name: nombre, description: descripcion, category_id: categoria
+      data: id: id, name: nombre, description: descripcion, category_id: categoria, link: link
       dataType: "text",
       success: (data) ->
         administrator_exercises_fill_table($("#popup_select_categories").val())
@@ -224,9 +225,11 @@ administrator_exercises_edit = ->
     id = $(tr).data("exercise")
     name = $(tr).find(".admin_nombre").text()
     description = $(tr).find(".admin_descripcion").text()
+    url = $(tr).find("#hidden_link").val()
 
     $("#sistema_admi_nombre_ejercicio_input").val(name)
     $("#sistema_admi_descrip_ejercicio_input").val(description)
+    $("#sistema_admi_link_ejercicio_input").val(url)
     $("#popup_select_categories").val($('#ul_categories').attr('data-selected'))
 
     $("#sistema_admin_agregar_ejercicio").attr("data-id", id)
@@ -246,14 +249,15 @@ administrator_exercises_fill_table = (category_id) ->
       if data.exercises.length > 0
         html = ""
         data.exercises.forEach (value) ->
-          html += '<tr id="tr_hover" data-exercise="' + value.id + '">
+          html += '<tr class="administrador_botones height_tr_admin" id="tr_hover" data-exercise="' + value.id + '">
+                    <input type="hidden" class="hidden_link" value="' + value.url + '">
                     <td class="admin_nombre"> ' + value.name + ' </td>
                     <td class="admin_descripcion"> <textarea> ' + value.description + '</textarea> </td>
                     <td>
                       <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" class="administrador_puntos"></div>
                     </td>
                     <td>
-                      <div class="administrador_botones"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
+                      <div class="administrador_botones admin_botones_width"> <img src="/img/tacha_blanca.png" alt="" class="administrador_tacha"></div>
                     </td>
                   </tr>'
         $(".tabla_ejercicios tbody").html(html)

@@ -42,6 +42,7 @@ class Administrator::AdminController < ApplicationController
       exercise.category_id = params[:category_id]
       exercise.name = params[:name].squish
       exercise.description = params[:description]
+      exercise.url = params[:link]
       exercise.save
     end
     render plain: "OK"
