@@ -43,7 +43,7 @@
                 <div class="col">
                   <div>
                     <h5>DESCRIPCION</h5>
-                    <textarea id="sistema_admi_descrip_ejercicio_input" placeholder="Escribe la descripción aquí" type="text"> </textarea>
+                    <textarea id="sistema_admi_descrip_ejercicio_input" placeholder="Escribe la descripción aquí" type="text"></textarea>
                   </div>
                 </div>
               </div>
@@ -176,9 +176,7 @@
               <input type="hidden" class="hidden_link" value="<%= exercise.url %>">
               <td class="admin_nombre"> <%= exercise.name %> </td>
               <td class="admin_descripcion">
-                <textarea>
-                <%= exercise.description %>
-                </textarea>
+                <textarea><%= exercise.description %></textarea>
               </td>
               <td class="admin_botones_width">
                 <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" class="administrador_puntos"></div>

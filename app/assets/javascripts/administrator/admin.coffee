@@ -143,14 +143,14 @@ AdministratorController::list_exercises = ->
   $('.administrador_tacha').click ->
     swal(
       title: '¿Estás seguro que deseas borrar?'
-      text: 'No podras recuperar esta rutina'
+      text: 'No podras recuperar este ejercicio'
       type: 'warning'
       showCancelButton: true
       confirmButtonColor: '#ff1d25'
       cancelButtonColor: '#333333'
       confirmButtonText: 'Eliminar').then (result) ->
       if result.value
-        swal 'Eliminada', 'Tu rutina a sido borrada', 'success'
+        swal 'Eliminada', 'Tu ejercicio a sido borrado', 'success'
       return
     return
   $('.swal2-confirm').click ->
@@ -161,6 +161,7 @@ AdministratorController::list_exercises = ->
     $(".btn_aceptar_nuevo_ejer").text("Agregar")
     $("#sistema_admi_nombre_ejercicio_input").val("")
     $("#sistema_admi_descrip_ejercicio_input").val("")
+    $("#sistema_admi_link_ejercicio_input").val("")
     $("#popup_select_categories").val(1)
     $("#sistema_admin_agregar_ejercicio").attr("data-id", "")
     $('#admin_popup').removeClass 'animated bounceOutUp'
@@ -224,8 +225,8 @@ administrator_exercises_edit = ->
     tr = $(this).closest("tr")
     id = $(tr).data("exercise")
     name = $(tr).find(".admin_nombre").text()
-    description = $(tr).find(".admin_descripcion").text()
-    url = $(tr).find("#hidden_link").val()
+    description = $(tr).find(".admin_descripcion textarea").text()
+    url = $(tr).find(".hidden_link").val()
 
     $("#sistema_admi_nombre_ejercicio_input").val(name)
     $("#sistema_admi_descrip_ejercicio_input").val(description)
@@ -252,7 +253,7 @@ administrator_exercises_fill_table = (category_id) ->
           html += '<tr class="administrador_botones height_tr_admin" id="tr_hover" data-exercise="' + value.id + '">
                     <input type="hidden" class="hidden_link" value="' + value.url + '">
                     <td class="admin_nombre"> ' + value.name + ' </td>
-                    <td class="admin_descripcion"> <textarea> ' + value.description + '</textarea> </td>
+                    <td class="admin_descripcion"><textarea>' + value.description + '</textarea> </td>
                     <td>
                       <div class="administrador_botones"> <img src="/img/circulos_icono.png" alt="" width="30px" class="administrador_puntos"></div>
                     </td>
