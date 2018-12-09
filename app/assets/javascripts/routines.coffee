@@ -61,7 +61,7 @@ RoutinesController::index = ->
     $(this).parents('.sistema_r_ejercicio').addClass 'ejer_terminado'
     $(this).css 'display', 'none'
 
-    parent = $(this).closest(".sistema_r_centro_iz")
+    parent = $(this).closest(".sistema_r_centro")
     count_exercises = parent.find(".sistema_r_ejercicio").length
     count_exercises_done = parent.find(".ejer_terminado").length
 
@@ -74,19 +74,19 @@ RoutinesController::index = ->
 
     div_active =  $(".active")
     group = div_active.find(".hidden_group").val()
-    group_total = $(".sistema_r_centro_iz").find(".hidden_group").length
+    group_total = $(".sistema_r_centro").find(".hidden_group").length
     if group_total == 4
       if group == "1"
         $("#barra_warmup").css("width", porcentage + "%")
       else if group == "2"
-        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
-        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
+        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
+        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
         total_exercises = group_2_exercises_count + group_3_exercises_count
         porcentage = Math.ceil(100 / total_exercises) * count_exercises_done
         $("#barra_tricerie").css("width", porcentage + "%")
       else if group == "3"
-        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
-        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
+        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
+        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
         total_exercises = group_2_exercises_count + group_3_exercises_count
         total_exercises_done = group_2_exercises_count + count_exercises_done
         porcentage = Math.ceil(100 / total_exercises) * total_exercises_done
@@ -99,20 +99,20 @@ RoutinesController::index = ->
       if group == "1"
         $("#barra_warmup").css("width", porcentage + "%")
       else if group == "2"
-        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
+        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
         porcentage = parseInt(porcentage / group_2_exercises_count)
         $("#barra_tricerie").css("width", porcentage + "%")
       else if group == "3"
-        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
-        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
+        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
+        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
         total_exercises = group_2_exercises_count + group_3_exercises_count
         total_exercises_done = group_2_exercises_count + count_exercises_done
         porcentage = Math.ceil(66 / total_exercises) * total_exercises_done
         $("#barra_tricerie").css("width", porcentage + "%")
       else if group == "4"
-        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
-        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
-        group_4_exercises_count = $(".hidden_group[value=4]").closest(".sistema_r_centro_iz").find(".sistema_r_ejercicio").length
+        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
+        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
+        group_4_exercises_count = $(".hidden_group[value=4]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
         total_exercises = group_2_exercises_count + group_3_exercises_count + group_4_exercises_count
         total_exercises_done = group_2_exercises_count + group_3_exercises_count + count_exercises_done
         porcentage = Math.ceil(100 / total_exercises) * total_exercises_done
@@ -143,7 +143,7 @@ RoutinesController::index = ->
     else
       div_active =  $(".active")
       group = div_active.find(".hidden_group").val()
-      group_total = $(".sistema_r_centro_iz").find(".hidden_group").length
+      group_total = $(".sistema_r_centro").find(".hidden_group").length
       $("#flecha_anterior").addClass("d-flex").show()
       if parseInt(group) == group_total
         $(".sistema_r_centro_der").hide().removeClass("d-flex")
@@ -196,7 +196,7 @@ RoutinesController::index = ->
       div_active.addClass 'animated bounceOutLeft'
       setTimeout (->
         div_active.hide().removeClass("d-flex active")
-        div_active.parent().find(".sistema_r_centro_iz input[value=" + (parseInt(group) + 1) + "]").parent().removeAttr("style").removeClass("bounceInLeft animated bounceOutRight").addClass("d-flex bounceInRight animated active")
+        div_active.parent().find(".sistema_r_centro input[value=" + (parseInt(group) + 1) + "]").parent().removeAttr("style").removeClass("bounceInLeft animated bounceOutRight").addClass("d-flex bounceInRight animated active")
         $("#flecha_anterior").removeAttr("style")
         if $("#sistema_r_progresonombre").text() == " DONE "
           $("#img_rutina_finalizada").css("display", "block")
@@ -211,9 +211,9 @@ RoutinesController::index = ->
     $("#img_rutina_finalizada").css("display", "none")
     $(".terminado_txt").css("display", "none")
     if div_active.length == 0
-      div_active = $(".sistema_r_centro_iz:last")
+      div_active = $(".sistema_r_centro:last")
     group = div_active.find(".hidden_group").val()
-    group_total = $(".sistema_r_centro_iz").find(".hidden_group").length
+    group_total = $(".sistema_r_centro").find(".hidden_group").length
     if group == "2"
       $("#flecha_anterior").removeClass("d-flex").hide()
     else
@@ -261,14 +261,14 @@ RoutinesController::index = ->
       div_active.addClass 'animated bounceOutRight'
       setTimeout (->
         div_active.hide().removeClass("d-flex active")
-        div_active.parent().find(".sistema_r_centro_iz input[value=" + (parseInt(group) - 1) + "]").parent().removeAttr("style").removeClass("bounceInRight animated bounceOutLeft").addClass("d-flex bounceInLeft animated active")
+        div_active.parent().find(".sistema_r_centro input[value=" + (parseInt(group) - 1) + "]").parent().removeAttr("style").removeClass("bounceInRight animated bounceOutLeft").addClass("d-flex bounceInLeft animated active")
         if group != "2"
           $("#flecha_anterior").removeAttr("style")
         return
       ), 700
     else
       div_active.hide().removeClass("d-flex active")
-      div_active.parent().find(".sistema_r_centro_iz input[value=" + (parseInt(group) - 1) + "]").parent().removeAttr("style").removeClass("bounceInRight animated bounceOutLeft").addClass("d-flex bounceInLeft animated active")
+      div_active.parent().find(".sistema_r_centro input[value=" + (parseInt(group) - 1) + "]").parent().removeAttr("style").removeClass("bounceInRight animated bounceOutLeft").addClass("d-flex bounceInLeft animated active")
       if group != "2"
         $("#flecha_anterior").removeAttr("style")
 
