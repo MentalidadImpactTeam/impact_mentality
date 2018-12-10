@@ -22,6 +22,7 @@ ProfileController::index = ->
       inputAttributes: autocapitalize: 'off'
       showCancelButton: true
       confirmButtonText: 'Guardar'
+      heightAuto: false
       showCloseButton: true).then (result) ->
         altura1 = document.getElementById('altura').value
         peso1 = document.getElementById('peso').value

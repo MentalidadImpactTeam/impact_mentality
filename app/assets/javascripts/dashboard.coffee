@@ -75,6 +75,7 @@ DashboardController::player_list = ->
         showCloseButton: true,
         showCancelButton: true,
         focusConfirm: true,
+        heightAuto: false
         confirmButtonText: 'Agregar',
         confirmButtonAriaLabel: 'Thumbs up, great!',
         cancelButtonText: 'Cancelar',
@@ -90,9 +91,9 @@ DashboardController::player_list = ->
           )
         }).then (response) ->
           if response.value.error
-            swal('Alerta','No se encontro el jugador ingresado','warning')
+            swal('Alerta','No se encontro el jugador ingresado','warning',"heightAuto: false")
           else if response.value.existe
-            swal('Alerta','El jugador ingresado ya fue agregado anteriormente','warning')
+            swal('Alerta','El jugador ingresado ya fue agregado anteriormente','warning',"heightAuto: false")
           else
             user = response.value
             date = user.created_at.substring(8,10) + "/" + user.created_at.substring(5,7) + "/" + user.created_at.substring(0,4)
@@ -126,7 +127,7 @@ DashboardController::player_list = ->
               window.location.href = "/dashboard/" + $(this).closest(".row_hover").data("id")
             $('.profile_jugador').on 'click', -> 
               window.location.href = "/profiles/" + $(this).closest(".row_hover").data("id")
-            swal('Exito','Se agrego el jugador','success')
+            swal('Exito','Se agrego el jugador','success',"heightAuto: false")
   
   $('.delete_jugador').on 'click', -> 
     $row =  $(this).closest(".row_hover")
@@ -139,6 +140,7 @@ DashboardController::player_list = ->
       cancelButtonColor: '#ff1d25',
       cancelButtonText: 'No',
       confirmButtonText: 'Sí',
+      heightAuto: false,
       showCloseButton: true,
       preConfirm: ->
         new Promise((resolve, reject) ->
@@ -153,7 +155,7 @@ DashboardController::player_list = ->
       }).then (response) ->
         if response.value
             $row.remove()
-            swal('Exito','La relacion con el jugador a sido eliminada','success')
+            swal('Exito','La relacion con el jugador a sido eliminada','success','heightAuto: false')
   
 
 @metodos_menu = (titulo) ->

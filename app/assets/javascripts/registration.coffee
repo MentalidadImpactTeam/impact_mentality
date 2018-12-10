@@ -39,6 +39,7 @@ eventos_registro = ->
         text: 'Por favor Ingrese su Correo Electrónico'
         allowEscapeKey: true
         allowOutsideClick: true
+        heightAuto: false
         confirmButtonText: 'Regresar'
         confirmButtonClass: 'registro_sweetalert'
       $('#user_email').addClass 'input_error'
@@ -52,6 +53,7 @@ eventos_registro = ->
         text: 'Por favor Ingrese un Correo Electrónico Valido'
         allowEscapeKey: true
         allowOutsideClick: true
+        heightAuto: false
         confirmButtonText: 'Regresar'
         confirmButtonClass: 'registro_sweetalert'
       $('#user_email').addClass 'input_error'
@@ -61,6 +63,7 @@ eventos_registro = ->
       swal
         type: 'error'
         title: 'Alerta'
+        heightAuto: false
         text: 'Por favor Ingrese su Contraseña'
         allowEscapeKey: true
         allowOutsideClick: true
@@ -72,6 +75,7 @@ eventos_registro = ->
       registro_contval = 1
       swal
         type: 'error'
+        heightAuto: false
         title: 'Alerta'
         text: 'Por favor Ingrese Una Contraseña Con Al Menos 6 Caracteres'
         allowEscapeKey: true
@@ -84,6 +88,7 @@ eventos_registro = ->
       swal
         type: 'error'
         title: 'Alerta'
+        heightAuto: false
         text: 'Las Contraseñas no son complatibles.'
         allowEscapeKey: true
         allowOutsideClick: true
@@ -101,6 +106,7 @@ eventos_registro = ->
           if data.existe
             swal
               type: 'error'
+              heightAuto: false
               title: 'Alerta'
               text: 'El usuario ya existe.'
               allowEscapeKey: true
@@ -257,6 +263,7 @@ eventos_datos_personales = ->
         title: 'Alerta'
         text: 'Por favor Ingrese su Nombre'
         allowEscapeKey: true
+        heightAuto: false
         allowOutsideClick: true
         confirmButtonText: 'Regresar'
         confirmButtonClass: 'login_sweetalert'
@@ -269,6 +276,7 @@ eventos_datos_personales = ->
           type: 'error'
           title: 'Alerta'
           text: 'Por favor Ingrese su Apellido'
+          heightAuto: false
           allowEscapeKey: true
           allowOutsideClick: true
           confirmButtonText: 'Regresar'
@@ -283,6 +291,7 @@ eventos_datos_personales = ->
             title: 'Alerta'
             text: 'Por favor Ingrese su Telefono'
             allowEscapeKey: true
+            heightAuto: false
             allowOutsideClick: true
             confirmButtonText: 'Regresar'
             confirmButtonClass: 'login_sweetalert'
@@ -294,6 +303,7 @@ eventos_datos_personales = ->
             swal
               type: 'error'
               title: 'Alerta'
+              heightAuto: false
               text: 'Por favor Ingrese su Fecha de Nacimiento'
               allowEscapeKey: true
               allowOutsideClick: true
@@ -307,6 +317,7 @@ eventos_datos_personales = ->
               swal
                 type: 'error'
                 title: 'Alerta'
+                heightAuto: false
                 text: 'Por favor Ingrese su Experiencia'
                 allowEscapeKey: true
                 allowOutsideClick: true
@@ -323,6 +334,7 @@ eventos_datos_personales = ->
                   text: 'Por favor Ingrese su Genero'
                   allowEscapeKey: true
                   allowOutsideClick: true
+                  heightAuto: false
                   confirmButtonText: 'Regresar'
                   confirmButtonClass: 'login_sweetalert'
                 $('#input_box_gen').addClass 'input_error'
@@ -336,6 +348,7 @@ eventos_datos_personales = ->
                     text: 'Por favor Ingrese su Peso'
                     allowEscapeKey: true
                     allowOutsideClick: true
+                    heightAuto: false
                     confirmButtonText: 'Regresar'
                     confirmButtonClass: 'login_sweetalert'
                   $('#input_box_peso').addClass 'input_error'
@@ -347,6 +360,7 @@ eventos_datos_personales = ->
                       type: 'error'
                       title: 'Alerta'
                       text: 'Por favor Ingrese su Estatura'
+                      heightAuto: false
                       allowEscapeKey: true
                       allowOutsideClick: true
                       confirmButtonText: 'Regresar'
@@ -374,6 +388,7 @@ eventos_datos_deportivos = ->
     if $('#ID_deporte').val() == ''
       swal
         type: 'error'
+        heightAuto: false
         title: 'Alerta'
         text: 'Por favor Ingrese su Deporte'
         allowEscapeKey: true
@@ -386,6 +401,7 @@ eventos_datos_deportivos = ->
       if $('#ID_pos_obj').val() == ''
         swal
           type: 'error'
+          heightAuto: false
           title: 'Alerta'
           text: 'Por favor Ingrese su Posicion'
           allowEscapeKey: true
@@ -401,6 +417,7 @@ eventos_datos_deportivos = ->
             title: 'Alerta'
             text: 'Por favor Ingrese su Lesion'
             allowEscapeKey: true
+            heightAuto: false
             allowOutsideClick: true
             confirmButtonText: 'Regresar'
             confirmButtonClass: 'login_sweetalert'
@@ -411,6 +428,7 @@ eventos_datos_deportivos = ->
             swal
               type: 'error'
               title: 'Alerta'
+              heightAuto: false
               text: 'Por favor Ingrese su Experiencia'
               allowEscapeKey: true
               allowOutsideClick: true
@@ -528,6 +546,7 @@ eventos_datos_deportivos = ->
     if $('#user_user_information_attributes_sport').val() == ''
       swal
         type: 'error'
+        heightAuto: false
         title: 'Alerta'
         text: 'Por favor Ingrese los espacios en rojo'
         allowEscapeKey: true
@@ -546,6 +565,7 @@ eventos_datos_deportivos = ->
         text: 'Por favor Ingrese los espacios en rojo'
         allowEscapeKey: true
         allowOutsideClick: true
+        heightAuto: false
         confirmButtonText: 'Regresar'
         confirmButtonClass: 'login_sweetalert'
       $('.IDep_exp_box').addClass 'input_error'
@@ -557,6 +577,7 @@ eventos_datos_deportivos = ->
       swal
         type: 'error'
         title: 'Alerta'
+        heightAuto: false
         text: 'Por favor Ingrese los espacios en rojo'
         allowEscapeKey: true
         allowOutsideClick: true
@@ -571,6 +592,7 @@ eventos_datos_deportivos = ->
       swal
         type: 'error'
         title: 'Alerta'
+        heightAuto: false
         text: 'Por favor Ingrese los espacios en rojo'
         allowEscapeKey: true
         allowOutsideClick: true
@@ -714,7 +736,7 @@ eventos_forma_pago = ->
       success: (data) ->
         if data.error
           swal.close();
-          swal 'Error', 'Hubo un problema con la tarjeta ingresada.', 'warning'
+          swal 'Error', 'Hubo un problema con la tarjeta ingresada.', 'warning', 'heightAuto: false'
         else
           $("#customer_token").val(data.response.customer_id)
           $form.get(0).submit()
@@ -726,6 +748,7 @@ eventos_forma_pago = ->
     swal
       type: 'error'
       title: 'Alerta'
+      heightAuto: false
       text: response.message_to_purchaser
       allowEscapeKey: true
       allowOutsideClick: true
@@ -759,6 +782,7 @@ eventos_forma_pago = ->
         text: 'Por favor Ingrese los espacios en rojo'
         allowEscapeKey: true
         allowOutsideClick: true
+        heightAuto: false
         confirmButtonText: 'Regresar'
         confirmButtonClass: 'login_sweetalert'
       $('.input_box_num').addClass 'input_error'
@@ -770,6 +794,7 @@ eventos_forma_pago = ->
         text: 'Por favor Ingrese los espacios en rojo'
         allowEscapeKey: true
         allowOutsideClick: true
+        heightAuto: false
         confirmButtonText: 'Regresar'
         confirmButtonClass: 'login_sweetalert'
       $('.input_box_tutor').addClass 'input_error'
@@ -781,6 +806,7 @@ eventos_forma_pago = ->
         text: 'Por favor Ingrese los espacios en rojo'
         allowEscapeKey: true
         allowOutsideClick: true
+        heightAuto: false
         confirmButtonText: 'Regresar'
         confirmButtonClass: 'login_sweetalert'
       $('.input_box_cvc').addClass 'input_error'
@@ -806,6 +832,7 @@ eventos_entrenador = ->
       swal
         type: 'error'
         title: 'Alerta'
+        heightAuto: false
         text: 'Por favor Ingrese su Nombre de Contacto'
         allowEscapeKey: true
         allowOutsideClick: true
@@ -815,6 +842,7 @@ eventos_entrenador = ->
     if $("#ientrenador_telefono").val() == ""
       swal
         type: 'error'
+        heightAuto: false
         title: 'Alerta'
         text: 'Por favor Ingrese su Telefono'
         allowEscapeKey: true
@@ -825,6 +853,7 @@ eventos_entrenador = ->
     swal({
         title: 'Procesando...',
         allowOutsideClick: false
+        heightAuto: false
     });
     swal.showLoading();
   return

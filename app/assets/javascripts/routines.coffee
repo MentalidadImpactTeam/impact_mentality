@@ -30,6 +30,7 @@ RoutinesController::index = ->
           swal({
             title: 'Tu rutina a sido generada!',
             confirmButtonText: 'Listo para tu rutina!',
+            heightAuto: false
             preConfirm: (result) ->
               new Promise((resolve, reject) ->
                 $.ajax
@@ -49,6 +50,7 @@ RoutinesController::index = ->
                 window.location.href = "/routines"
         else
           swal({
+            heightAuto: false
             title: 'Favor de ingresar solo valores entre el rango del 1 al 5',
             confirmButtonText: 'Aceptar'
             }).then (response) ->
@@ -137,6 +139,7 @@ RoutinesController::index = ->
     if count_exercises != count_exercises_done
       swal
         type: 'error'
+        heightAuto: false
         title: 'No se puede continuar con la rutina'
         text: 'No se han registrado como terminados todos los ejercicios.'
         confirmButtonText: 'Entendido'
@@ -297,6 +300,7 @@ RoutinesController::index = ->
           $this = $(this)
           swal({
             title: '¿Quieres este ejercicio?',
+            heightAuto: false,
             text: "El ejercicio elegido reemplazará al ejercicio original",
             type: 'warning',
             showCancelButton: true,
@@ -324,4 +328,4 @@ RoutinesController::index = ->
               )
             }).then (response) ->
               if response.value
-                swal('Exito','Tu rutina ha sido modificada','success',$("#sistema_rutina_cambio_table").css("display","none"))
+                swal('Exito','Tu rutina ha sido modificada','heightAuto: false','success',$("#sistema_rutina_cambio_table").css("display","none"))
