@@ -54,6 +54,9 @@ body {
 }
 .sistema_mobile_menu{
   background-color:#363636;
+  z-index: 100;
+  position:fixed;
+  width:100%;
 }
 
 .seccion_menu_left h3 {

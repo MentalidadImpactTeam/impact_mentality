@@ -179,6 +179,7 @@
 
 .sistema_mobile_menu {
   display: none;
+
 }
 .sistema_mobile_menu nav{
   background: color #363636;
@@ -428,7 +429,14 @@
   font-size: 2vw;
   line-height: 2vw;
 }
-
+.aliniar_contenido_tabla i{
+  vertical-align: middle;
+  margin:15px 10px 10px 15px;
+  opacity:.4;
+}
+.aliniar_contenido_tabla i:hover{
+opacity:1;
+}
 
 @media (max-width: 1090px) {
   .sistema_contenido{

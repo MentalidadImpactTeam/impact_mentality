@@ -1,6 +1,4 @@
-body{
-  background-color: #191a1a;
-}
+
 
 .dropdown-menu{
   font-size: 12px;
@@ -525,7 +523,11 @@ input:checked+.slider:before {
 .dropdown-item{
   text-transform: uppercase;
 }
-
+.administrador_contenedor_tabla_user{
+  background-color:#191a1a;
+  padding: 0 0 200px 0;
+                          
+}
 .aministrador_tabla_body {
   font-family: 'Lato', sans-serif;
   overflow-x:hidden;

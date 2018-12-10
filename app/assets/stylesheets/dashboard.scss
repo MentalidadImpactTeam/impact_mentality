@@ -137,30 +137,28 @@
   text-shadow: 0 0 20px red;
 }
 
-
+.sistema_p_etapanombre{
+  font-size: 4vw;
+  line-height: 4vw;
+  text-align: center;
+  margin-bottom: 1vw;
+}
 
 .db_contenedor_segundafila {
   flex-direction: row;
 }
 
 .sistema_etapa {
-  font-size: 2vw;
-  line-height: 2.3vw;
+  font-size: 2.3vw;
+  line-height: 2.6vw;
 }
 
 @media (max-width: 991.98px) {
   .sistema_db_container{
     flex-direction: column;
     align-items: center;
-    padding: 5vh 8vw;
+    padding: 10vh 8vw 5vh 8vw;
     height: auto;
-  }
-
-  .sistema_p_etapanombre{
-    font-size: 4vw;
-    line-height: 4vw;
-    text-align: center;
-    margin-bottom: 1vw;
   }
 
   .sistema_p_ejericios{
@@ -202,8 +200,8 @@
   }
   .sistema_db_info_grafica {
       width: 100% !important;
-      margin-bottom: 4vw;
   }
+
   .sistema_db_info_tabla {
       width: 100% !important;
       margin: 20px 0;

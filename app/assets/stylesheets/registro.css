@@ -1,6 +1,4 @@
-body {
-    background-color: Grey !important;
-}
+
 
 #Terminar_modal {
     background-color: white;
@@ -764,11 +762,6 @@ button:focus {
     font-size: 18px;
     font-weight: 600;
     line-height: 36px;
-}
-
-body {
-    background-color: #D1D7DC;
-    font-family: 'Fira Sans', sans-serif;
 }
 
 *,
