@@ -245,5 +245,19 @@ body {
     justify-content: center;
     width: 100%;
   }
+
+  #descansa_icono{
+    width: 80vw;
+    margin: 4vw 0;
+    opacity: .5;
+  }
+
+  .pillow_txt {
+    font-size: 10vw !important;
+    line-height: 10vw;
+  }
+  .descansa_movil{
+    height: 100vh;
+  }
 }
 /* DASHBOARD */
