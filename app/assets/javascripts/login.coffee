@@ -17,6 +17,7 @@ LoginController::new = ->
       text: 'Usuario o password Incorrectos'
       allowEscapeKey: true
       allowOutsideClick: true
+      heightAuto: false
       confirmButtonText: 'Regresar'
       confirmButtonClass: 'login_sweetalert'
     #CLICK EVENT
@@ -31,6 +32,7 @@ LoginController::new = ->
         title: 'Alerta'
         text: 'Por favor Ingrese su Contraseña'
         allowEscapeKey: true
+        heightAuto: false
         allowOutsideClick: true
         confirmButtonText: 'Regresar'
         confirmButtonClass: 'login_sweetalert'
@@ -43,6 +45,7 @@ LoginController::new = ->
         title: 'Alerta'
         text: 'Por favor Ingrese su Correo Electrónico'
         allowEscapeKey: true
+        heightAuto: false
         allowOutsideClick: true
         confirmButtonText: 'Regresar'
         confirmButtonClass: 'login_sweetalert'

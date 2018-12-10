@@ -135,7 +135,9 @@ account_add_card = ->
           title: 'No se puede agregar su tarjeta'
           text: response.message_to_purchaser
           confirmButtonText: 'Entendido'
+          heightAuto: false
         return
+       
       
       tokenParams = 'card':
         'number':num
@@ -150,6 +152,7 @@ account_add_card = ->
         title: 'No se puede agregar su tarjeta'
         text: 'Hay un campo vacío'
         confirmButtonText: 'Entendido'
+        heightAuto: false
     return
 
 account_cancelar_suscripcion = ->
@@ -163,6 +166,7 @@ account_cancelar_suscripcion = ->
       cancelButtonColor: '#d33'
       cancelButtonText: 'No, quiero seguir suscrito'
       confirmButtonText: 'Sí, quiero cancelar mi suscripción'
+      heightAuto: false
       showCloseButton: true).then (result) ->
         if result.value
            $.ajax
@@ -176,20 +180,26 @@ account_cancelar_suscripcion = ->
                 title: 'Exito'
                 text: 'Suscripcion Cancelada'
                 confirmButtonText: 'Entendido'
+                heightAuto: false
         
     return
+    
       
 account_update = ->
   ### CORREO ###
   $('#sistema_cuenta_datos_editar_correo').click ->
+  
     swal(
       input: 'text'
       title: 'Cambiar correo electrónico'
       text: 'Escribe tu nuevo correo electrónico'
+      heightAuto: false
       inputAttributes: autocapitalize: 'off'
       showCancelButton: true
       confirmButtonText: 'Guardar'
-      showCloseButton: true).then (result) ->
+      showCloseButton: true
+      heightAuto: false
+      ).then (result) ->
         if result.value
           $.ajax
             type: "PUT"
@@ -202,11 +212,13 @@ account_update = ->
                 title: 'Se le ha enviado un correo de confirmación'
                 text: 'Revise su correo electrónico para encontrar el correo de confirmación para autorizar el cambio de correo electrónico'
                 confirmButtonText: 'Entendido'
+                heightAuto: false
         else
           swal
             type: 'error'
             title: 'No se introdujo nuevo correo electrónico'
             confirmButtonText: 'Entendido'
+            heightAuto: false
     return
 
   ### TELEFONO ###
@@ -219,6 +231,7 @@ account_update = ->
       inputAttributes: autocapitalize: 'off'
       showCancelButton: true
       confirmButtonText: 'Guardar'
+      heightAuto: false
       showCloseButton: true).then (result) ->
         numnuevo = result.value
         if result.value
@@ -234,11 +247,13 @@ account_update = ->
             type: 'success'
             title: 'Su número telefónico ha sido cambiado'
             confirmButtonText: 'Entendido'
+            heightAuto: false
           $('#cuenta_nums').html numnuevo
         else
           swal
             type: 'error'
             title: 'No se introdujo número telefónico'
+            heightAuto: false
             confirmButtonText: 'Entendido'
         return
     return
@@ -252,6 +267,7 @@ account_update = ->
       inputAttributes: autocapitalize: 'off'
       showCancelButton: true
       confirmButtonText: 'Guardar'
+      heightAuto: false
       showCloseButton: true).then (result) ->
         passactual = document.getElementById('passactual').value
         passnuevo = document.getElementById('passnuevo').value
@@ -259,12 +275,14 @@ account_update = ->
         if passactual == '' or passnuevo == '' or passnuevo2 == ''
           swal
             type: 'error'
+            heightAuto: false
             title: 'Su contraseña no pudo ser cambiada'
             text: 'Dejó un campo vacío'
             confirmButtonText: 'Entendido'
         else if passnuevo == passactual
           swal
             type: 'error'
+            heightAuto: false
             title: 'Su contraseña no pudo ser cambiada'
             text: 'La contraseña actual es igual a la contraseña nueva, intente con otra contraseña'
             confirmButtonText: 'Entendido'
@@ -278,6 +296,7 @@ account_update = ->
               if data == "true"
                 swal
                   type: 'success'
+                  heightAuto: false
                   title: 'Su contraseña ha sido cambiada'
                   confirmButtonText: 'Entendido'
                 $('#cuenta_pass').html '**********'
@@ -285,11 +304,13 @@ account_update = ->
                 swal
                   type: 'error'
                   title: 'Su contraseña no pudo ser cambiada'
+                  heightAuto: false
                   text: 'Su contraseña actual no coincide'
                   confirmButtonText: 'Entendido'
               else
                 swal
                   type: 'error'
+                  heightAuto: false
                   title: 'Su contraseña no pudo ser cambiada'
                   text: 'Las contraseñas nuevas no coinciden'
                   confirmButtonText: 'Entendido'
@@ -320,6 +341,7 @@ account_card_delete = (obj) ->
     confirmButtonColor: '#3085d6'
     cancelButtonColor: '#d33'
     cancelButtonText: 'Cancelar'
+    heightAuto: false
     confirmButtonText: 'Aceptar'
     showCloseButton: true).then (result) ->
       if result.value

@@ -14,6 +14,7 @@ AdministratorController::index = ->
       showCloseButton: true
       showCancelButton: true
       focusConfirm: true
+      heightAuto: false
       confirmButtonText: 'Agregar'
       confirmButtonAriaLabel: 'Thumbs up, great!'
       cancelButtonText: 'Cancelar'
@@ -35,6 +36,7 @@ AdministratorController::show = ->
       title: 'Modifica la información del usuario'
       inputAttributes: autocapitalize: 'off'
       showCancelButton: true
+      heightAuto: false
       confirmButtonText: 'Guardar'
       showCloseButton: true).then (result) ->
         nuevonom = $('#nombre').val()
