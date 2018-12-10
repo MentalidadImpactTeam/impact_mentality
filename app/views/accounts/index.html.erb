@@ -8,22 +8,24 @@
     <input type="hidden" class="hidden_user" value="<%= current_user.id %>">
     <!-- POPUP AGREGAR TARJETA -->
     <div id="sistema_cuenta_agregartarjeta" class="flex-column justify-content-between"> 
-        <div class="d-flex flex-column">
-            <div class="sistema_cuenta_cerrar align-self-end"></div>
-            <div id="sistema_cuenta_agregartarjeta_top" class="d-flex flex-row justify-content-between align-items-start">
+    <div class="sistema_cuenta_cerrar align-self-end"></div>
+    <div class="sistema_cuenta_marcanuevamov"></div>
+        <div class="d-flex flex-column" id="sistema_cuenta_agregartarjeta_top">
+            
+            <div class="d-flex justify-content-between align-items-start">
                 <div class="sistema_cuenta_marcanueva"></div>
-                <div class="d-flex flex-column">
+                <div class="d-flex flex-column" id="cuenta_csvv">
                     <input class="sistema_cuenta_input" id="cuenta_csv" placeholder="CSV">
                     <p class="cuenta_input_label"> CSV </p>
                 </div>
             </div>
         </div>
         
-        <div id="sistema_cuenta_agregartarjeta_mid">
+        <div id="sistema_cuenta_agregartarjeta_mid" class="d-flex flex-column">
             <input class="sistema_cuenta_input" id="cuenta_num" placeholder="NÚMERO DE TARJETA">
             <p class="cuenta_input_label input-credit-card"> NÚMERO DE TARJETA </p>
         </div>
-        <div id="sistema_cuenta_agregartarjeta_bot" class="d-flex flex-row justify-content-between align-items-end">
+        <div id="sistema_cuenta_agregartarjeta_bot" class="d-flex justify-content-between">
             <div id="cuenta_nom" class="d-flex flex-column">
                 <input class="sistema_cuenta_input" id="cuenta_nombre"  placeholder="NOMBRE EN LA TARJETA">
                 <p class="cuenta_input_label"> NOMBRE EN LA TARJETA </p>
@@ -35,7 +37,7 @@
         </div>
         <div class="sistema_p_botoncredito d-flex flex-row align-items-center justify-content-center align-self-center">AGREGAR TARJETA</div>
     </div>
-    <div class="sistema_cuenta_elige d-flex flex-row"> ELIGE O AGREGA TARJETA DE CRÉDITO / CUENTA DE PAYPAL </div>
+    <div class="sistema_cuenta_elige d-flex flex-row"> ELIGE O AGREGA TARJETA DE CRÉDITO </div>
     <!-- CONTENIDO -->
     <div id="sistema_cuenta_tarjetas" class="d-flex align-items-center justify-content-between">
         <!-- TARJETAS -->

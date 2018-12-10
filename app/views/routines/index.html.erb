@@ -79,9 +79,9 @@
     <!-- CENTRO -->
     <div class="sistema_r_contenedorejercicios d-flex justify-content-center">
         <!-- ANTERIOR -->
-        <div class="sistema_r_centro_iz d-flex flex-column justify-content-center" style="<%= if @routine_finished then  "display:none !important;" end %>">
+        <div id="flecha_anterior" class="sistema_r_centro_iz d-flex flex-column justify-content-center" style="<%= if @routine_finished then  "display:none !important;" end %>">
             <div id="sistema_r_siguiente"> ANTERIOR: </div>
-            <div id="sistema_r_siguientefase"><%= @previous %></div>
+            <div id="sistema_r_anteriorfase"><%= @previous %></div>
             <div id="sistema_r_anteriorarrow" class="d-flex flex-column justify-content-center align-items-center">
                 <div class="sistema_r_anteriormovil">ANTERIOR:</div>
                 <div class="sistema_r_anteriormovil"><%= @previous %></div>
