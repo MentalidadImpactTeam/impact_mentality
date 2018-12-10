@@ -379,7 +379,7 @@
   color: #ff1d25;
   border-radius: 0vw 0vw 1vw 1vw;
   text-align: left;
-  padding: 0 2vw 1vw 2vw;
+  padding: 0 2vw 2vw 2vw;
   font-weight: 600;
   font-size: 1rem;
 }
@@ -387,6 +387,14 @@
 #sistema_cuenta_cancelar_txt{
   cursor: pointer;
   transition: .2s;
+}
+.reanudar_suscripcion{
+  background-color: red;
+  color: white !important;
+  font-family: lato;
+  padding: 1vw 4vw;
+  border-radius: 21px;
+  margin: 11px 0;
 }
 
 .sistema_cuenta_contenedorfacturacion{
@@ -601,7 +609,7 @@ font-weight: bold;
       display: flex;
       flex-direction: row;
       align-items: center;
-      
+
   }
 
   #cuenta_fecha, #cuenta_nom{
