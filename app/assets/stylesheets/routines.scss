@@ -252,7 +252,7 @@
 }
 
 .sistema_r_infoejercicio{
-  max-width: 40vw;
+  width: 50vw;
   background-color: #333;
   padding: 3vw 2.5vw;
   border-radius: 1vw;
@@ -352,7 +352,7 @@
 #tabla_container{
   width: 90%;
   max-height: 80vh;
-  overflow: hidden;
+  overflow: auto;
   box-shadow: 0 0 100vw 50vw rgba(0,0,0,.7);
   border-radius: 1vw;
 }
@@ -379,10 +379,9 @@
   transition: .2s;
 }
 
-@media (min-width: 612px) and (max-width: 1090px) {
-  .sistema_r_abajo{
-
-
+@media (max-width: 1090px) {
+  #sistema_r_anteriorfase{
+    display: none !important;
   }
 
   .sistema_r_infoejercicio{
