@@ -277,6 +277,7 @@ RoutinesController::index = ->
 
   $(".sistema_r_cambiaricono").click ->
     $(".tabla_ejercicios tbody").html("")
+    $(".sistema_contenido").css("overflow","hidden");
     exercise_id = $(this).closest(".sistema_r_ejercicio").find(".hidden_exercise").val()
     routine_id = $(this).closest(".sistema_r_ejercicio").find(".hidden_exercise").attr("data-routine")
     $(this).closest(".sistema_r_ejercicio").addClass("change")

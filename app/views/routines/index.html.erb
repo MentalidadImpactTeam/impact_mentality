@@ -188,14 +188,17 @@
         });
 
         $(".sistema_cancel_tabla_ejercicios").on("click", function(event){
+            $(".sistema_contenido").css("overflow","auto");
             tabla.css("display","none");
             $(this).closest(".sistema_r_ejercicio").removeClass("change")
         });
+        
         $(".sistema_r_infoicono").on("click", function(event){
             $(".sistema_r_infoejercicio_nombre").text($(this).closest(".sistema_r_ejercicio").find(".sistema_r_tipoejercicio").find("div:first").text())
             $(".sistema_r_infoejercicio_texto").text($(this).closest(".sistema_r_ejercicio").find(".hidden_exercise_description").val())
             info.css("display", "flex");
         });
+
         $(".sistema_r_infoejercicio_boton").on("click", function(event){
             $(this).parent().parent().css("display","none");
         });
