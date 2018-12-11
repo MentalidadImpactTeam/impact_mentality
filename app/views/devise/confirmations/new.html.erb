@@ -1,4 +1,12 @@
-<h2>Resend confirmation instructions</h2>
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-lg-3'>
+    </div>
+
+    <div style="background-color:white; box-shadow: 0px 0px 15px #888888;" class='col-lg-6'>
+      <center><h2 id="confirmacion_instructions">Reenviar correo de confirmación</h2></center>
+
+
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
@@ -8,9 +16,63 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
+  <div class="btn_confirmation_instructions actions">
+    <%= f.submit "Reenviar instrucciones de confirmación" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+    </div>
+
+    <div class='col-lg-3'>
+    </div>
+  </div>
+</div>
+<style>
+.btn_confirmation_instructions input[type="submit"] {
+  background-color:red;
+  border:none;
+  font-family:lato;
+  padding:10px;
+  color:white;
+  margin-bottom:5vw;
+}
+#user_email{
+  border:1px solid grey;
+  margin:0 0 25px 0;
+  padding:10px;
+}
+#confirmacion_instructions{
+  color:red;
+  font-weight:bold;
+  margin:35px 0;
+  font-family:lato;
+  font-size:3vw;
+  transition:all .5s;
+}
+
+@media only screen and (max-width: 1000px) {
+ #confirmacion_instructions{
+  font-size:6vw;
+}
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -44,6 +44,11 @@
                 <div class="col-12">
                     <center><button id="registro_btn" class="animated bounceInDown">Continuar</button></center>
                 </div>
+
+                <%- if controller_name != 'sessions' %>
+  <%= link_to "<< Log in", new_session_path(resource_name),:class=> 'links_ventana_login' %><br />
+<% end -%>
+
             </div>
             <div class="col-lg-3"></div>
         </div>
