@@ -1,12 +1,12 @@
 DashboardController = Paloma.controller('Dashboard')
 DashboardController::index = ->
-  metodos_menu("ANALITICOS")
+  metodos_menu("ANALÍTICOS")
   chart = document.getElementById('chart').getContext('2d')
   gradient = chart.createLinearGradient(0, 0, 0, 450)
   gradient.addColorStop 0, 'rgba(255, 0,0, 0.8)'
   gradient.addColorStop 0.5, 'rgba(255, 115, 0, 0.50)'
   gradient.addColorStop 1, 'rgba(255, 115, 0, .30)'
-  data = 
+  data =
     labels: [
       'Etapa 1'
       'Etapa 2'
@@ -32,7 +32,7 @@ DashboardController::index = ->
         180
       ]
     } ]
-  options = 
+  options =
     responsive: true
     maintainAspectRatio: true
     animation:
@@ -63,9 +63,9 @@ DashboardController::index = ->
 
 DashboardController::player_list = ->
   metodos_menu("LISTA JUGADORES")
-  $('.dashboard_jugador').on 'click', -> 
+  $('.dashboard_jugador').on 'click', ->
     window.location.href = "/dashboard/" + $(this).closest(".row_hover").data("id")
-  $('.profile_jugador').on 'click', -> 
+  $('.profile_jugador').on 'click', ->
     window.location.href = "/profiles/" + $(this).closest(".row_hover").data("id")
   $('.add_jugadores').on 'click', ->
       swal({
@@ -123,13 +123,13 @@ DashboardController::player_list = ->
                     </td>
                 </tr>'
             $(".contenedor_tabla_jugadores tbody").append(tr)
-            $('.dashboard_jugador').on 'click', -> 
+            $('.dashboard_jugador').on 'click', ->
               window.location.href = "/dashboard/" + $(this).closest(".row_hover").data("id")
-            $('.profile_jugador').on 'click', -> 
+            $('.profile_jugador').on 'click', ->
               window.location.href = "/profiles/" + $(this).closest(".row_hover").data("id")
             swal('Exito','Se agrego el jugador','success',"heightAuto: false")
-  
-  $('.delete_jugador').on 'click', -> 
+
+  $('.delete_jugador').on 'click', ->
     $row =  $(this).closest(".row_hover")
     swal({
       title: '¿Quieres eliminar la relacion con el jugador?',
@@ -156,7 +156,7 @@ DashboardController::player_list = ->
         if response.value
             $row.remove()
             swal('Exito','La relacion con el jugador a sido eliminada','success','heightAuto: false')
-  
+
 
 @metodos_menu = (titulo) ->
   $(".titulo_mobile_header").text(titulo)
