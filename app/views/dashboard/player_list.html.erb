@@ -7,15 +7,19 @@
 
 <div class="container-fluid">
     <div class="row">
-
-        <div class="col-12 jugadores_controlador">
+        <div class="col-sm-12 col-lg-6">
+            <center><p class="cantidad_jugadores">Se muestran 10 jugadores de 50</p></center>
+        </div>
+        <div class="col-sm-12 col-lg-6 jugadores_controlador">
             <div class="contenedor_acciones_controlador_jugadores">
                 <i class="back_arrow_jugadores fas fa-arrow-alt-circle-left"></i>
                 <i class="foward_arrow_jugadores  fas fa-arrow-alt-circle-right"></i>
                 <input id="filtro_jugadores" placeholder="Buscar" type="text">
+                <i class="fas fa-search"></i>
                 <i class="add_jugadores fas fa-plus-circle"></i>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -60,8 +64,8 @@
                               <td class="columna_eliminada aliniar_contenido_tabla"><%= player.created_at.strftime("%d/%m/%Y") %></td>
                               <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
                                   <i class="fas fa-poll dashboard_jugador"></i>
-                                  <i class="fas fa-adjust profile_jugador"></i>
-                                  <i class="fas fa-eraser delete_jugador"></i>
+                                  <i class="fas fa-user profile_jugador"></i>
+                                  <i class="fas fa-trash-alt delete_jugador"></i>
                               </td>
                           </tr>
                         <% end %>

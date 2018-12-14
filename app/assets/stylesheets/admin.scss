@@ -80,23 +80,7 @@
   margin:0;
 }
 
-.contenedor_acciones_controlador_jugadores {
-  float: right;
-  margin: 25px 0;
-}
 
-.contenedor_acciones_controlador_jugadores i:hover {
-  color: red;
-  cursor: pointer;
-}
-
-.contenedor_acciones_controlador_jugadores i {
-  transition: all .5s;
-  font-size: 2vw;
-  vertical-align: middle;
-  margin: 0 5px;
-  display: inline-block;
-}
 
 .deporte_jugadores {
   font-size: 1.3vw;
@@ -155,6 +139,10 @@
   border-radius: 15px;
   overflow: hidden;
   width: 95%;
+}
+.tabla_jugadores_entrenador{
+  width:100% !important;
+  margin-top:100px;
 }
 
 #admin_tabla_usuarios {
@@ -230,15 +218,8 @@
   #filtro_jugadores {
       height: 25px;
   }
-  .contenedor_acciones_controlador_jugadores {
-      margin: 5px 0;
-  }
-  .contenedor_acciones_controlador_jugadores i {
-      font-size: 4vw;
-      vertical-align: middle;
-      margin: 0;
-      display: inline-block;
-  }
+
+
 }
 
 #agregar_jugador {

@@ -289,16 +289,25 @@
 .contenedor_acciones_controlador_jugadores i:hover {
   color: red;
   cursor: pointer;
+  opacity:1;
 }
 
 .contenedor_acciones_controlador_jugadores i {
   transition: all .5s;
   font-size: 2vw;
+  opacity:.5;
   vertical-align: middle;
+  color:white;
   margin: 0 5px;
   display: inline-block;
 }
-
+.cantidad_jugadores{
+  color:grey;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 42px;
+  font-family:lato;
+}
 .deporte_jugadores {
   font-size: 1.3vw;
   font-weight: bold;
@@ -375,6 +384,8 @@ table tbody tr:hover {
 }
 
 @media (max-width: 795px) {
+
+
   .sistema_p_etapa{
     font-size: 4vw;
     line-height: 4.5vw;
@@ -423,13 +434,21 @@ table tbody tr:hover {
       height: 25px;
   }
   .contenedor_acciones_controlador_jugadores {
-      margin: 5px 0;
+      margin: 25px 0;
   }
   .contenedor_acciones_controlador_jugadores i {
-      font-size: 4vw;
+      font-size: 8vw;
       vertical-align: middle;
-      margin: 0;
+      margin: 0 2px;
       display: inline-block;
+  }
+  .cantidad_jugadores{
+    color:grey;
+    margin-top:80px;
+    display:block;
+    vertical-align: middle;
+    padding: 0;
+    font-family:lato;
   }
 }
 
