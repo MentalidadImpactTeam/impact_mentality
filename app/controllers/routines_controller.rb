@@ -10,12 +10,14 @@ class RoutinesController < ApplicationController
             @week_hash[date.wday - 1]["description"] = date_description(date)
         end
 
-        today = Date.today
+        # today = Date.today
+        today = Date.parse("20181218")
         if today.wday != 0
             @week_hash[today.wday - 1]["active"] = 1 
         end
         @restday = today.wday == 0 ? true : false
-        @mostrar_modal = false
+        @mostrar_modal =  false
+        @test = current_user.user_information.stage_week == 4 ? true : false
         if @restday
             routine_exist = 0
         else
@@ -151,7 +153,7 @@ class RoutinesController < ApplicationController
     end
 
     def create
-        user_routine = UserRoutine.where(user_id: current_user.id, date: Date.today)
+        user_routine = UserRoutine.where(user_id: current_user.id, date:  Date.parse("20181218"))
         if user_routine.blank?
             create_routine_complete()
             user_routine = UserRoutine.where(user_id: current_user.id, date: Date.today)
@@ -168,9 +170,15 @@ class RoutinesController < ApplicationController
         current_user.user_information.save
 
         # Si es sabado, hacer rutina de jueves
-        weekday =  Time.now.to_date.wday == 6 ? 4 : Time.now.to_date.wday
-        configuration =  StageConfiguration.where(stage_id: user_routine.stage_id, day: weekday)
-        # array = []
+        # weekday =  Time.now.to_date.wday == 6 ? 4 : Time.now.to_date.wday
+        weekday =  2
+        if current_user.user_information.stage_week == 4
+            # Si es la cuarta semana, es semana de pruebas, crear rutina de pruebas
+            configuration =  TestConfiguration.where(day: weekday)
+        else
+            configuration =  StageConfiguration.where(stage_id: user_routine.stage_id, day: weekday)
+        end
+        
         configuration.each do |conf|
             routine_exercise = RoutineExercise.new
             routine_exercise.user_routine_id = user_routine.id
@@ -201,15 +209,20 @@ class RoutinesController < ApplicationController
                     end
                 end
             end
-            light_heavy_day = conf.heavy_day.nil? ? conf.light_day.nil? ? nil : "L"  : "H"
-            hash = stage_configuration_sets_reps(params["values"], user_routine.stage_id, conf.category_id, routine_exercise.exercise_id, light_heavy_day, current_user.user_information.stage_week)
+            if current_user.user_information.stage_week == 4
+                hash = test_configuration_sets_reps(params["values"], conf.category_id, weekday, current_user.user_information) 
+            else
+                light_heavy_day = conf.heavy_day.nil? ? conf.light_day.nil? ? nil : "L"  : "H"
+                hash = stage_configuration_sets_reps(params["values"], user_routine.stage_id, conf.category_id, routine_exercise.exercise_id, light_heavy_day, current_user.user_information.stage_week)
+            end
 
-            routine_exercise.set = hash[:sets]
-            routine_exercise.rep = hash[:reps]
+            routine_exercise.set = hash[:sets] if hash[:sets].present?
+            routine_exercise.rep = hash[:reps] if hash[:reps].present?
             routine_exercise.seconds_down = hash[:down] if hash[:down].present?
             routine_exercise.seconds_hold = hash[:hold] if hash[:hold].present?
             routine_exercise.seconds_uo = hash[:up] if hash[:up].present?
             routine_exercise.porcentage = hash[:porcentage] if hash[:porcentage].present?
+            routine_exercise.yards = hash[:yards] if hash[:yards].present?
             routine_exercise.save
         end    
         render plain: "OK"
@@ -666,6 +679,35 @@ class RoutinesController < ApplicationController
                         hash[:reps] = hash[:reps] + (week - 1)
                     end
                 end
+        end
+        hash
+    end
+
+    def test_configuration_sets_reps(values, category, weekday, ui) 
+        result = 0
+        values.each {|a| result += a.to_i }
+        result_quiz = result
+        hash = { :sets => 0, :reps => 0 }
+
+        if category == 1
+            # FUNDAMENTALES
+            hash[:sets] = 3 if result_quiz <= 15
+            hash[:sets] = 2 if result_quiz <= 10
+
+            hash[:reps] = 10 
+        elsif category == 20 or weekday != 2 
+            # AUXILIARES
+            hash[:sets] = 2 
+
+            hash[:reps] = 12
+        end
+
+        if weekday == 1
+            if ui.sport == "Beisbol"
+                hash[:yards] = 60
+            else
+                hash[:yards] = 40
+            end
         end
         hash
     end

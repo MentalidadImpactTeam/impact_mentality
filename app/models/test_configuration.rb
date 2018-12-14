@@ -1,0 +1,2 @@
+class TestConfiguration < ApplicationRecord
+end
