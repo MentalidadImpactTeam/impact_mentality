@@ -175,7 +175,7 @@
                     <div class="progress barra_activa">
                         <div class="progress-bar" id="barra_tricerie" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: <%= @triserie_width.to_s %>%;"></div>
                     </div>
-                    <div class="sistema_r_textobarra"> TRICERIES </div>
+                    <div class="sistema_r_textobarra"> SERIES </div>
                 </div>
                 <div id="sistema_r_finishers" class="d-flex flex-column">
                     <div class="progress">
@@ -207,7 +207,7 @@
             tabla.css("display","none");
             $(this).closest(".sistema_r_ejercicio").removeClass("change")
         });
-        
+
         $(".sistema_r_infoicono").on("click", function(event){
             $(".sistema_r_infoejercicio_nombre").text($(this).closest(".sistema_r_ejercicio").find(".sistema_r_tipoejercicio").find("div:first").text())
             $(".sistema_r_infoejercicio_texto").text($(this).closest(".sistema_r_ejercicio").find(".hidden_exercise_description").val())

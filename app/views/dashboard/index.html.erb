@@ -1,11 +1,14 @@
 <div class="subbanners_sistema_menu">
     <div style="background-color:#202020;" class="sistema_banner d-flex flex-row align-items-center">
         <div class="sistema_icono"></div>
-        <h2>ANALITICOS</h2>
+        <h2>ANALÍTICOS</h2>
     </div>
 </div>
+
 <div class="sistema_db_container">
-    
+    <div id="contenedor_entrenador_institucion">
+       <center class='animated zoomInUp'><span>Tu entrenador es:</span><span class="entrenador_institucion">  Hector Vildosola</span></center>
+    </div>
         <div class=" animated zoomInUp sistema_db_info_superior d-flex justify-content-betweeen align-items-end">
             <div class="sistema_info_three_containers">
                 <div class="d-flex flex-row align-items-end flex-wrap justify-content-center">
@@ -37,7 +40,7 @@
             </div>
             <div class="sistema_info_three_containers" style="margin-bottom:-.08vw;">
 
-               
+
                     <div class="d-flex flex-column">
                         <div class="sistema_p_etapa"> TIEMPO RESTANTE:</div>
                         <div class="sistema_p_etapanombre"> <%= @trainings_unfinished %> DIAS </div>
@@ -45,10 +48,10 @@
                             <div class="progress-bar" id="barra_etapa" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: <%= @training_days_width.to_s %>%;"></div>
                         </div>
                     </div>
-              
+
 
             </div>
-        
+
 
     </div>
     <div style="justify-content:center;" class="animated zoomInUp db_contenedor_segundafila d-flex justify-content-between">
