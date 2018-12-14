@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "dashboard/:id" => 'dashboard#index'
   post "add_trainer_user" => "dashboard#add_trainer_user"
   post "delete_trainer_user" => "dashboard#delete_trainer_user"
+  post "exercise_graph" => "dashboard#exercise_graph"
 
   post 'rutinas' => "home#rutinas"
   resources :routines do 
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
       post "list_exercises" => 'routines#list_exercises'
       post "change_exercise" => 'routines#change_exercise'
       post "mark_exercise_done" => 'routines#mark_exercise_done'
+      post "test_result" => 'routines#test_result'
     end
   end
 

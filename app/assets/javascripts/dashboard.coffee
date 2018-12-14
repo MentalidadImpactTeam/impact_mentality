@@ -1,66 +1,11 @@
+chartInstance = ""
 DashboardController = Paloma.controller('Dashboard')
 DashboardController::index = ->
   metodos_menu("ANALÍTICOS")
-  chart = document.getElementById('chart').getContext('2d')
-  gradient = chart.createLinearGradient(0, 0, 0, 450)
-  gradient.addColorStop 0, 'rgba(255, 0,0, 0.8)'
-  gradient.addColorStop 0.5, 'rgba(255, 115, 0, 0.50)'
-  gradient.addColorStop 1, 'rgba(255, 115, 0, .30)'
-  data =
-    labels: [
-      'Etapa 1'
-      'Etapa 2'
-      'Etapa 3'
-      'Etapa 4'
-      'Etapa 5'
-      'Etapa 6'
-      'Etapa 7'
-    ]
-    datasets: [ {
-      label: 'Custom Label Name'
-      backgroundColor: gradient
-      pointBackgroundColor: 'white'
-      borderWidth: 2
-      borderColor: 'rgba(255,255,255, 1)'
-      data: [
-        100
-        175
-        90
-        125
-        75
-        175
-        180
-      ]
-    } ]
-  options =
-    responsive: true
-    maintainAspectRatio: true
-    animation:
-      easing: 'easeInOutQuad'
-      duration: 800
-    scales:
-      xAxes: [ { gridLines:
-        color: 'rgba(255, 255, 255, 0.08)'
-        lineWidth: 2 } ]
-      yAxes: [ { gridLines:
-        color: 'rgba(255, 255, 255, 0.08)'
-        lineWidth: 2 } ]
-    elements: line: tension: 0
-    legend: display: false
-    point: backgroundColor: 'white'
-    tooltips:
-      titleFontFamily: 'lato'
-      backgroundColor: 'rgba(25,25,25,0.5)'
-      titleFontColor: 'red'
-      caretSize: 8
-      cornerRadius: 0
-      xPadding: 10
-      yPadding: 10
-  chartInstance = new Chart(chart,
-    type: 'line'
-    data: data
-    options: options)
-
+  exercise_graph()
+  $("#exercise_graph").change ->
+    exercise_graph()
+  
 DashboardController::player_list = ->
   metodos_menu("LISTA JUGADORES")
   $('.dashboard_jugador').on 'click', ->
@@ -157,7 +102,66 @@ DashboardController::player_list = ->
             $row.remove()
             swal('Exito','La relacion con el jugador a sido eliminada','success','heightAuto: false')
 
+exercise_graph = ->
+  labels = []
+  data_graph = []
+  $.ajax
+    type: "POST"
+    url: "/exercise_graph"
+    data: exercise_id: $("#exercise_graph").val()
+    dataType: "json",
+    success: (data) ->
+      data.results.forEach (value) ->
+        labels.push('Etapa ' + value.stage_id)
+        data_graph.push(value.result)
 
+      chart = document.getElementById('chart').getContext('2d')
+      gradient = chart.createLinearGradient(0, 0, 0, 450)
+      gradient.addColorStop 0, 'rgba(255, 0,0, 0.8)'
+      gradient.addColorStop 0.5, 'rgba(255, 115, 0, 0.50)'
+      gradient.addColorStop 1, 'rgba(255, 115, 0, .30)'
+      data =
+        labels: labels
+        datasets: [ {
+          label: 'Repeticiones'
+          backgroundColor: gradient
+          pointBackgroundColor: 'white'
+          borderWidth: 2
+          borderColor: 'rgba(255,255,255, 1)'
+          data: data_graph
+        } ]
+      options =
+        responsive: true
+        maintainAspectRatio: true
+        animation:
+          easing: 'easeInOutQuad'
+          duration: 800
+        scales:
+          xAxes: [ { gridLines:
+            color: 'rgba(255, 255, 255, 0.08)'
+            lineWidth: 2 } ]
+          yAxes: [ { gridLines:
+            color: 'rgba(255, 255, 255, 0.08)'
+            lineWidth: 2 } ]
+        elements: line: tension: 0
+        legend: display: false
+        point: backgroundColor: 'white'
+        tooltips:
+          titleFontFamily: 'lato'
+          backgroundColor: 'rgba(25,25,25,0.5)'
+          titleFontColor: 'red'
+          caretSize: 8
+          cornerRadius: 0
+          xPadding: 10
+          yPadding: 10
+
+      if chartInstance != ""
+        chartInstance.destroy()
+      chartInstance = new Chart(chart,
+        type: 'line'
+        data: data
+        options: options)
+      
 @metodos_menu = (titulo) ->
   $(".titulo_mobile_header").text(titulo)
   $('.burger_menu').on 'click', ->

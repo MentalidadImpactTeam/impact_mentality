@@ -39,8 +39,6 @@
 
             </div>
             <div class="sistema_info_three_containers" style="margin-bottom:-.08vw;">
-
-
                     <div class="d-flex flex-column">
                         <div class="sistema_p_etapa"> TIEMPO RESTANTE:</div>
                         <div class="sistema_p_etapanombre"> <%= @trainings_unfinished %> DIAS </div>
@@ -57,8 +55,19 @@
     <div style="justify-content:center;" class="animated zoomInUp db_contenedor_segundafila d-flex justify-content-between">
 
         <div class="sistema_db_info_grafica d-flex flex-column justify-content-center">
+            <select id="exercise_graph">
+                <option value="171">Sprint</option>
+                <option value="172">Salto Horizontal</option>
+                <option value="173">Pro Agility</option>
+                <option value="174">Sentadillas</option>
+                <option value="175">Bench Press</option>
+                <option value="176">Peso Muerto</option>
+                <option value="177">Pull Ups</option>
+                <option value="178">Lagartijas</option>
+                <option value="179">Plancha</option>
+            </select>
             <div class="line-chart">
-                <div class="aspect-ratio">
+                <div class="aspect-ratio" id="div_chart">
                     <canvas style="margin-top:30px;" width="100%" id="chart"></canvas>
                 </div>
             </div>
@@ -76,46 +85,13 @@
                     <th>Peso</th>
                     <th>Fecha</th>
                 </tr>
+                <% @last_entries.each do |entry| %>
                 <tr>
-                    <td>Squat</td>
-                    <td>160kg</td>
-                    <td>13/9/2018</td>
+                    <td><%= dashboard_exercise_name(entry.exercise_id) %></td>
+                    <td><%= entry.result %></td>
+                    <td><%= entry.created_at.strftime("%d/%m/%Y") %></td>
                 </tr>
-                <tr>
-                    <td>Squat</td>
-                    <td>160kg</td>
-                    <td>13/9/2018</td>
-                </tr>
-                <tr>
-                    <td>Squat</td>
-                    <td>160kg</td>
-                    <td>13/9/2018</td>
-                </tr>
-                <tr>
-                    <td>Squat</td>
-                    <td>160kg</td>
-                    <td>13/9/2018</td>
-                </tr>
-                <tr>
-                    <td>Squat</td>
-                    <td>160kg</td>
-                    <td>13/9/2018</td>
-                </tr>
-                <tr>
-                    <td>Squat</td>
-                    <td>160kg</td>
-                    <td>13/9/2018</td>
-                </tr>
-                <tr>
-                    <td>Squat</td>
-                    <td>160kg</td>
-                    <td>13/9/2018</td>
-                </tr>
-                <tr>
-                    <td>Squat</td>
-                    <td>160kg</td>
-                    <td>13/9/2018</td>
-                </tr>
+                <% end %>
             </table>
         </div>
     </div>

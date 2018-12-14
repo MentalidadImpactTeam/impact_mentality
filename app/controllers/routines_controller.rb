@@ -10,8 +10,8 @@ class RoutinesController < ApplicationController
             @week_hash[date.wday - 1]["description"] = date_description(date)
         end
 
-        # today = Date.today
-        today = Date.parse("20181218")
+        today = Date.today
+        # today = Date.parse("20181218")
         if today.wday != 0
             @week_hash[today.wday - 1]["active"] = 1 
         end
@@ -39,7 +39,8 @@ class RoutinesController < ApplicationController
                     "routine_exercise_id" => routine_exercise.id,
                     "sets" => routine_exercise.set,
                     "reps" => routine_exercise.rep,
-                    "done" => routine_exercise.done
+                    "done" => routine_exercise.done,
+                    "test" => routine_exercise.test
                 }
                 @hash[routine_exercise.group]["exercises"].push(hash_exercise)
             end
@@ -79,7 +80,7 @@ class RoutinesController < ApplicationController
             @finisher_width = 0
             @progress_name = ""
             @previous = ""
-            @next = " TRICERIE #1 "
+            @next = " SERIE #1 "
             @routine_finished = false
             array_groups.each_with_index do |group_counts, index|
                 group = index + 1
@@ -98,14 +99,14 @@ class RoutinesController < ApplicationController
                         total_porcentage = groups_total == 4 ? 50 : 33
                         @triserie_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * total_porcentage).to_i
                     end
-                    @progress_name = " TRICERIE #1 "
+                    @progress_name = " SERIE #1 "
                     @previous = " WARM UP / PREHABS "
-                    @next = " TRICERIE #2 "
+                    @next = " SERIE #2 "
                     break if @hash[group]["show"] == 1
                 elsif group == 3
-                    @progress_name = " TRICERIE #2 "
-                    @previous = " TRICERIE #1 "
-                    @next = groups_total == 4 ? " FINISHERS " : " TRICERIE #3 "
+                    @progress_name = " SERIE #2 "
+                    @previous = " SERIE #1 "
+                    @next = groups_total == 4 ? " FINISHERS " : " SERIE #3 "
                     break if @hash[group]["show"] == 1
                     if group_counts[:count] == group_counts[:done]
                         @triserie_width = groups_total == 4 ? 100 : 66
@@ -114,12 +115,12 @@ class RoutinesController < ApplicationController
                         @triserie_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * total_porcentage).to_i
                     end
                 elsif group == 4
-                    @progress_name = " TRICERIE #3 "
-                    @previous = " TRICERIE #2 "
+                    @progress_name = " SERIE #3 "
+                    @previous = " SERIE #2 "
                     @next = " FINISHERS "         
                     if groups_total == 4
                         @progress_name = " FINISHERS "
-                        @previous = " TRICERIE #2 "
+                        @previous = " SERIE #2 "
                         @next = " DONE "
                         if group_counts[:count] == group_counts[:done]
                             @finisher_width = 100
@@ -139,7 +140,7 @@ class RoutinesController < ApplicationController
                     end       
                 elsif group == 5
                     @progress_name = " FINISHERS "
-                    @previous = " TRICERIE #3 "
+                    @previous = " SERIE #3 "
                     @next = " DONE "
                     if group_counts[:count] == group_counts[:done]
                         @finisher_width = 100
@@ -153,7 +154,7 @@ class RoutinesController < ApplicationController
     end
 
     def create
-        user_routine = UserRoutine.where(user_id: current_user.id, date:  Date.parse("20181218"))
+        user_routine = UserRoutine.where(user_id: current_user.id, date:  Date.today)
         if user_routine.blank?
             create_routine_complete()
             user_routine = UserRoutine.where(user_id: current_user.id, date: Date.today)
@@ -170,8 +171,8 @@ class RoutinesController < ApplicationController
         current_user.user_information.save
 
         # Si es sabado, hacer rutina de jueves
-        # weekday =  Time.now.to_date.wday == 6 ? 4 : Time.now.to_date.wday
-        weekday =  2
+        weekday =  Time.now.to_date.wday == 6 ? 4 : Time.now.to_date.wday
+        # weekday =  2
         if current_user.user_information.stage_week == 4
             # Si es la cuarta semana, es semana de pruebas, crear rutina de pruebas
             configuration =  TestConfiguration.where(day: weekday)
@@ -210,8 +211,14 @@ class RoutinesController < ApplicationController
                 end
             end
             if current_user.user_information.stage_week == 4
+                if [1,2].include?(weekday) and routine_exercise.group != 1
+                    routine_exercise.test = 1
+                else
+                    routine_exercise.test = 0
+                end
                 hash = test_configuration_sets_reps(params["values"], conf.category_id, weekday, current_user.user_information) 
             else
+                routine_exercise.test = 0
                 light_heavy_day = conf.heavy_day.nil? ? conf.light_day.nil? ? nil : "L"  : "H"
                 hash = stage_configuration_sets_reps(params["values"], user_routine.stage_id, conf.category_id, routine_exercise.exercise_id, light_heavy_day, current_user.user_information.stage_week)
             end
@@ -292,6 +299,17 @@ class RoutinesController < ApplicationController
             routine.save
         end
         render plain: "OK"
+    end
+
+    def test_result
+        test_result = TestResult.new
+        test_result.user_id = current_user.id
+        test_result.exercise_id = params["exercise_id"]
+        test_result.routine_exercise_id = params["routine_exercise_id"]
+        test_result.result = params["result"]
+        test_result.stage_id = UserRoutine.where(user_id: current_user.id, date:  Date.today).first.stage_id
+        test_result.save
+        render plain: "OK"    
     end
 
     def date_description(date)

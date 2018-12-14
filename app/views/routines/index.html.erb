@@ -96,17 +96,19 @@
                 <div class="sistema_r_ejercicio d-flex <%= if exercise["done"] == 1 then "ejer_terminado" end %>">
                     <input type="hidden" class="hidden_exercise" value="<%= exercise['id'] %>" data-routine="<%= exercise['routine_exercise_id']%>">
                     <input type="hidden" class="hidden_exercise_description" value="<%= exercise['description'] %>">
+                    <input type="hidden" class="hidden_exercise_test" value="<%= exercise['test'] %>">
                     <div class="sistema_r_ejercicio_arriba d-flex align-items-center flex-row justify-content-between">
                         <div class="sistema_r_tipoejercicio d-flex flex-column">
                             <div> <%= exercise['name'] %>  </div>
                             <div class="sistema_r_repeticionesmovil">
                                 <% if @test %>
                                     <% if group == 1 %>
-                                        <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps. </div>
+                                        <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps.
                                     <% end %>
                                 <% else %>
-                                    <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps. </div>
+                                    <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps.
                                 <% end %>
+                            </div>
                         </div>
                         <% if exercise["category_id"] != 1 %>
                         <div class="sistema_r_cambiaricono"> </div>

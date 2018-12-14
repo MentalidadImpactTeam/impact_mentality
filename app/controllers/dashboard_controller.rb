@@ -14,6 +14,8 @@ class DashboardController < ApplicationController
     @training_width = ((@trainings_complete.to_f / @trainings.to_f) * 100).round
     @training_days_width = ((@trainings.to_f / @trainings_unfinished.to_f)).round
     @stage_width = (((@user.user_information.stage_process.to_f - 1) / @user.user_information.stage_count.to_f) * 100).round
+
+    @last_entries = TestResult.where(user_id: current_user.id).order(id: :desc).limit(10)
   end
 
   def player_list
@@ -56,5 +58,10 @@ class DashboardController < ApplicationController
   def delete_trainer_user
     TrainerPlayer.where(trainer_user_id: current_user.id, user_id: params[:id]).destroy_all
     render plain: "OK"
+  end
+
+  def exercise_graph
+    results = TestResult.where(user_id: current_user.id, exercise_id: params[:exercise_id]).order(id: :asc)
+    render json: { :results => results }
   end
 end

@@ -60,77 +60,37 @@ RoutinesController::index = ->
     return
 
   $('.checkmark_rutina').on 'click', ->
-    $(this).parents('.sistema_r_ejercicio').addClass 'ejer_terminado'
-    $(this).css 'display', 'none'
-
-    parent = $(this).closest(".sistema_r_centro")
-    count_exercises = parent.find(".sistema_r_ejercicio").length
-    count_exercises_done = parent.find(".ejer_terminado").length
-
-    if count_exercises == 2
-      porcentage = 50 * count_exercises_done
-    else if count_exercises == 3
-      porcentage = 33 * count_exercises_done
-    else if count_exercises == 4
-      porcentage = 25 * count_exercises_done
-
-    div_active =  $(".active")
-    group = div_active.find(".hidden_group").val()
-    group_total = $(".sistema_r_centro").find(".hidden_group").length
-    if group_total == 4
-      if group == "1"
-        $("#barra_warmup").css("width", porcentage + "%")
-      else if group == "2"
-        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
-        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
-        total_exercises = group_2_exercises_count + group_3_exercises_count
-        porcentage = Math.ceil(100 / total_exercises) * count_exercises_done
-        $("#barra_tricerie").css("width", porcentage + "%")
-      else if group == "3"
-        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
-        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
-        total_exercises = group_2_exercises_count + group_3_exercises_count
-        total_exercises_done = group_2_exercises_count + count_exercises_done
-        porcentage = Math.ceil(100 / total_exercises) * total_exercises_done
-        porcentage = 100 if porcentage > 100
-        $("#barra_tricerie").css("width", porcentage + "%")
-      else
-        $("#barra_finishers").css("width", porcentage + "%")
-
-    else if group_total == 5
-      if group == "1"
-        $("#barra_warmup").css("width", porcentage + "%")
-      else if group == "2"
-        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
-        porcentage = parseInt(porcentage / group_2_exercises_count)
-        $("#barra_tricerie").css("width", porcentage + "%")
-      else if group == "3"
-        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
-        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
-        total_exercises = group_2_exercises_count + group_3_exercises_count
-        total_exercises_done = group_2_exercises_count + count_exercises_done
-        porcentage = Math.ceil(66 / total_exercises) * total_exercises_done
-        $("#barra_tricerie").css("width", porcentage + "%")
-      else if group == "4"
-        group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
-        group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
-        group_4_exercises_count = $(".hidden_group[value=4]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
-        total_exercises = group_2_exercises_count + group_3_exercises_count + group_4_exercises_count
-        total_exercises_done = group_2_exercises_count + group_3_exercises_count + count_exercises_done
-        porcentage = Math.ceil(100 / total_exercises) * total_exercises_done
-        porcentage = 100 if porcentage > 100
-        $("#barra_tricerie").css("width", porcentage + "%")
-      else
-        $("#barra_finishers").css("width", porcentage + "%")
-    
-    $.ajax
-      type: "POST"
-      url: "/routines/mark_exercise_done"
-      data: id: $(this).closest(".sistema_r_ejercicio").find(".hidden_exercise").data("routine")
-      dataType: "text",
-      success: (data) ->
-        return
-    return
+    $this = $(this)
+    is_test = $this.closest(".sistema_r_ejercicio").find(".hidden_exercise_test").val()
+    if is_test == "1"
+      swal(
+        title: '<strong style="font-family:lato;">Por favor ingresa tu máximo de pruebas</strong>',
+        type: 'info',
+        html: '<input id="input_pruebas_number" type="number" placeholder="máximo de pruebas"><p id="unidad_prueba">kg</p>',
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Aceptar',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        ).then (result) ->
+          if result.value
+            if $("#input_pruebas_number").val() == ""
+              swal
+                type: 'error'
+                title: 'No se introdujo el resultado de la prueba.'
+                confirmButtonText: 'Entendido'
+                heightAuto: false
+            else
+              $.ajax
+                type: "POST"
+                url: "/routines/test_result"
+                data: result: $("#input_pruebas_number").val(), exercise_id: $this.closest(".sistema_r_ejercicio").find(".hidden_exercise").val(), routine_exercise_id: $this.closest(".sistema_r_ejercicio").find(".hidden_exercise").data("routine")
+                dataType: "text",
+                success: (data) ->
+                  routines_mark_done($this)
+    else
+      routines_mark_done($this)
+      return
   
   $("#sistema_r_siguientearrow").click ->
     parent = $(this).closest(".sistema_r_contenedorejercicios").find(".active")
@@ -155,15 +115,15 @@ RoutinesController::index = ->
         if group == "1"
           $("#barra_warmup").css("width", "100%")
           $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
-          $("#sistema_r_progresonombre").text(" TRICERIE #1 ")
-          $("#sistema_r_siguientefase").text(" TRICERIE #2 ")
+          $("#sistema_r_progresonombre").text(" SERIE #1 ")
+          $("#sistema_r_siguientefase").text(" SERIE #2 ")
         else if group == "2"
-          $("#sistema_r_anteriorfase").text(" TRICERIE #1 ")
-          $("#sistema_r_progresonombre").text(" TRICERIE #2 ")
+          $("#sistema_r_anteriorfase").text(" SERIE #1 ")
+          $("#sistema_r_progresonombre").text(" SERIE #2 ")
           $("#sistema_r_siguientefase").text(" FINISHERS ")
         else if group == "3"
           $("#barra_tricerie").css("width", "100%")
-          $("#sistema_r_anteriorfase").text(" TRICERIE #2 ")
+          $("#sistema_r_anteriorfase").text(" SERIE #2 ")
           $("#sistema_r_progresonombre").text(" FINISHERS ")
           $("#sistema_r_siguientefase").text(" DONE ")
         else if group == "4"
@@ -175,19 +135,19 @@ RoutinesController::index = ->
         if group == "1"
           $("#barra_warmup").css("width", "100%")
           $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
-          $("#sistema_r_progresonombre").text(" TRICERIE #1 ")
-          $("#sistema_r_siguientefase").text(" TRICERIE #2 ")
+          $("#sistema_r_progresonombre").text(" SERIE #1 ")
+          $("#sistema_r_siguientefase").text(" SERIE #2 ")
         else if group == "2"
-          $("#sistema_r_anteriorfase").text(" TRICERIE #1 ")
-          $("#sistema_r_progresonombre").text(" TRICERIE #2 ")
-          $("#sistema_r_siguientefase").text(" TRICERIE #3 ")
+          $("#sistema_r_anteriorfase").text(" SERIE #1 ")
+          $("#sistema_r_progresonombre").text(" SERIE #2 ")
+          $("#sistema_r_siguientefase").text(" SERIE #3 ")
         else if group == "3"
-          $("#sistema_r_anteriorfase").text(" TRICERIE #2 ")
-          $("#sistema_r_progresonombre").text(" TRICERIE #3 ")
+          $("#sistema_r_anteriorfase").text(" SERIE #2 ")
+          $("#sistema_r_progresonombre").text(" SERIE #3 ")
           $("#sistema_r_siguientefase").text(" FINISHERS ")
         else if group == "4"
           $("#barra_tricerie").css("width", "100%")
-          $("#sistema_r_anteriorfase").text(" TRICERIE #3 ")
+          $("#sistema_r_anteriorfase").text(" SERIE #3 ")
           $("#sistema_r_progresonombre").text(" FINISHERS ")
           $("#sistema_r_siguientefase").text(" DONE ")
         else if group == "5"
@@ -225,18 +185,18 @@ RoutinesController::index = ->
       if group == "2"
         $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
         $("#sistema_r_progresonombre").text(" WARM UP / PREHABS ")
-        $("#sistema_r_siguientefase").text(" TRICERIE #1 ")
+        $("#sistema_r_siguientefase").text(" SERIE #1 ")
       else if group == "3"
         $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
-        $("#sistema_r_progresonombre").text(" TRICERIE #1 ")
-        $("#sistema_r_siguientefase").text(" TRICERIE #2 ")
+        $("#sistema_r_progresonombre").text(" SERIE #1 ")
+        $("#sistema_r_siguientefase").text(" SERIE #2 ")
       else if group == "4"
-        $("#sistema_r_anteriorfase").text(" TRICERIE #1 ")
-        $("#sistema_r_progresonombre").text(" TRICERIE #2 ")
+        $("#sistema_r_anteriorfase").text(" SERIE #1 ")
+        $("#sistema_r_progresonombre").text(" SERIE #2 ")
         $("#sistema_r_siguientefase").text(" FINISHERS ")
         $(".sistema_r_centro_der").removeAttr("style")
       else
-        $("#sistema_r_anteriorfase").text(" TRICERIE #2 ")
+        $("#sistema_r_anteriorfase").text(" SERIE #2 ")
         $("#sistema_r_progresonombre").text(" FINISHERS ")
         $("#sistema_r_siguientefase").text(" DONE ")
         $(".sistema_r_centro_der").removeAttr("style")
@@ -244,19 +204,19 @@ RoutinesController::index = ->
       if group == "2"
         $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
         $("#sistema_r_progresonombre").text(" WARM UP / PREHABS ")
-        $("#sistema_r_siguientefase").text(" TRICERIE #1 ")
+        $("#sistema_r_siguientefase").text(" SERIE #1 ")
       else if group == "3"
         $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
-        $("#sistema_r_progresonombre").text(" TRICERIE #1 ")
-        $("#sistema_r_siguientefase").text(" TRICERIE #2 ")
+        $("#sistema_r_progresonombre").text(" SERIE #1 ")
+        $("#sistema_r_siguientefase").text(" SERIE #2 ")
       else if group == "4"
-        $("#sistema_r_anteriorfase").text(" TRICERIE #1 ")
-        $("#sistema_r_progresonombre").text(" TRICERIE #2 ")
-        $("#sistema_r_siguientefase").text(" TRICERIE #3 ")
+        $("#sistema_r_anteriorfase").text(" SERIE #1 ")
+        $("#sistema_r_progresonombre").text(" SERIE #2 ")
+        $("#sistema_r_siguientefase").text(" SERIE #3 ")
         $(".sistema_r_centro_der").removeAttr("style")
       else
-        $("#sistema_r_anteriorfase").text(" TRICERIE #2 ")
-        $("#sistema_r_progresonombre").text(" TRICERIE #3 ")
+        $("#sistema_r_anteriorfase").text(" SERIE #2 ")
+        $("#sistema_r_progresonombre").text(" SERIE #3 ")
         $("#sistema_r_siguientefase").text(" FINISHERS ")
         $(".sistema_r_centro_der").removeAttr("style")
 
@@ -330,3 +290,76 @@ RoutinesController::index = ->
             }).then (response) ->
               if response.value
                 swal('Exito','Tu rutina ha sido modificada','heightAuto: false','success',$("#sistema_rutina_cambio_table").css("display","none"))
+
+
+routines_mark_done = ($this) ->
+  $this.parents('.sistema_r_ejercicio').addClass 'ejer_terminado'
+  $this.css 'display', 'none'
+
+  parent = $this.closest(".sistema_r_centro")
+  count_exercises = parent.find(".sistema_r_ejercicio").length
+  count_exercises_done = parent.find(".ejer_terminado").length
+
+  if count_exercises == 2
+    porcentage = 50 * count_exercises_done
+  else if count_exercises == 3
+    porcentage = 33 * count_exercises_done
+  else if count_exercises == 4
+    porcentage = 25 * count_exercises_done
+
+  div_active =  $(".active")
+  group = div_active.find(".hidden_group").val()
+  group_total = $(".sistema_r_centro").find(".hidden_group").length
+  if group_total == 4
+    if group == "1"
+      $("#barra_warmup").css("width", porcentage + "%")
+    else if group == "2"
+      group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
+      group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
+      total_exercises = group_2_exercises_count + group_3_exercises_count
+      porcentage = Math.ceil(100 / total_exercises) * count_exercises_done
+      $("#barra_tricerie").css("width", porcentage + "%")
+    else if group == "3"
+      group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
+      group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
+      total_exercises = group_2_exercises_count + group_3_exercises_count
+      total_exercises_done = group_2_exercises_count + count_exercises_done
+      porcentage = Math.ceil(100 / total_exercises) * total_exercises_done
+      porcentage = 100 if porcentage > 100
+      $("#barra_tricerie").css("width", porcentage + "%")
+    else
+      $("#barra_finishers").css("width", porcentage + "%")
+
+  else if group_total == 5
+    if group == "1"
+      $("#barra_warmup").css("width", porcentage + "%")
+    else if group == "2"
+      group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
+      porcentage = parseInt(porcentage / group_2_exercises_count)
+      $("#barra_tricerie").css("width", porcentage + "%")
+    else if group == "3"
+      group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
+      group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
+      total_exercises = group_2_exercises_count + group_3_exercises_count
+      total_exercises_done = group_2_exercises_count + count_exercises_done
+      porcentage = Math.ceil(66 / total_exercises) * total_exercises_done
+      $("#barra_tricerie").css("width", porcentage + "%")
+    else if group == "4"
+      group_2_exercises_count = $(".hidden_group[value=2]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
+      group_3_exercises_count = $(".hidden_group[value=3]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
+      group_4_exercises_count = $(".hidden_group[value=4]").closest(".sistema_r_centro").find(".sistema_r_ejercicio").length
+      total_exercises = group_2_exercises_count + group_3_exercises_count + group_4_exercises_count
+      total_exercises_done = group_2_exercises_count + group_3_exercises_count + count_exercises_done
+      porcentage = Math.ceil(100 / total_exercises) * total_exercises_done
+      porcentage = 100 if porcentage > 100
+      $("#barra_tricerie").css("width", porcentage + "%")
+    else
+      $("#barra_finishers").css("width", porcentage + "%")
+  
+  $.ajax
+    type: "POST"
+    url: "/routines/mark_exercise_done"
+    data: id: $this.closest(".sistema_r_ejercicio").find(".hidden_exercise").data("routine")
+    dataType: "text",
+    success: (data) ->
+      return
