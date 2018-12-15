@@ -463,5 +463,19 @@ table tbody tr:hover {
   font-family: lato;
 }
 
+#exercise_graph{
+  border-radius:5px;
+  border:1px solid red;
+  background-color:transparent;
+  color:white;
+  font-family:lato;
+  padding:5px 0;
+  text-align: center;
+}
 
+
+#exercise_graph option{
+  color:grey;
+  font-family:lato;
+}
 /* ------------------------------------------------------ */
