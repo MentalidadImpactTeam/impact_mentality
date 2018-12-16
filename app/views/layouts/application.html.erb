@@ -38,7 +38,7 @@
     <%= favicon_link_tag asset_path('favicon.png') %>
   </head>
 
-  <body>
+  <body class="body_sistema">
     <!-- Menu Cellphone -->
     <div class="sistema_mobile_menu">
         <!-- Just an image -->
@@ -50,6 +50,9 @@
             <%= image_tag("hamburger-icon", class: "burger_menu_mobile", width: "25px", height: "25px" ) %>
         </nav>
         <ul id="menu_mobile_desplegado">
+            <li style="background-color:#5f5f5f;">
+                <a>Lista de Jugadores</a>
+            </li>
             <li style="background-color:#5f5f5f;">
                 <%= link_to 'Rutina', routines_path, { rel: "noopener noreferrer"} %>
             </li>
@@ -65,9 +68,6 @@
             </li>
             <li style="background-color:#5f5f5f;">
                 <%= link_to 'Cuenta', accounts_path, { rel: "noopener noreferrer"} %>
-            </li>
-            <li style="background-color:#5f5f5f;">
-                <a>Lista de Jugadores</a>
             </li>
             <li style="background-color:red;">
                 <%= link_to 'Salir', destroy_user_session_path, { method: :delete, rel: "noopener noreferrer" } %>
@@ -88,6 +88,10 @@
         <div class="seccion_menu_left">
             <%= image_tag("iconoLeftMenu-01", class: "burger_menu sistema_left_icon") %>
             <h3 class="sistema_descripcion_menu">Menú</h3>
+        </div>
+        <div class="seccion_menu_left">
+            <%= image_tag("iconoLeftMenu-01", class: "burger_menu sistema_left_icon") %>
+            <h3 class="sistema_descripcion_menu">Lista de Jugadores</h3>
         </div>
         <div class="seccion_menu_left">
             <%= link_to image_tag("iconoLeftMenu-02", class: "sistema_left_icon"), routines_path %>

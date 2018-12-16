@@ -10,6 +10,10 @@ body {
   background-color: #1e1e1e !important;
 }
 
+.body_sistema{
+  overflow-y: hidden;
+}
+
 
 #menu_administrador_mobile{
   background-color:red;
@@ -107,6 +111,9 @@ body {
   .sistema_container {
     height: auto;
     float: none;
+  }
+  .body_sistema{
+    overflow-y: auto;
   }
 }
 
