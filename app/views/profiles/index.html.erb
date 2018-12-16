@@ -27,7 +27,7 @@
                 <div class="d-flex flex-row perfil_editable"> <b class="bold">Estatura: </b> <div id="perfil_altura"><%= @user.user_information.height %></div>   m </div>
                 <div class="d-flex flex-row perfil_editable"> <b class="bold">Peso: </b> <div id="perfil_peso"><%= @user.user_information.weight %></div> kg</div>
             </div>
-            <a href="#" class="sistema_p_editar">EDITAR</a> 
+            <a href="#" class="sistema_p_editar">EDITAR</a>
         </div>
         <div id="sistema_p_iz_abajo" class="d-flex justify-content-center align-items-center">
             <div class="d-flex flex-column justify-content-center">
@@ -59,9 +59,9 @@
         <div class="d-flex flex-column">
         <% if @card.present? %>
             <% if @card.brand == "visa" %>
-            <div><%= image_tag("visa", id: "sistema_p_creditoimg") %></div> 
+            <div><%= image_tag("visa", id: "sistema_p_creditoimg") %></div>
             <% elsif @card.brand == "mc" %>
-            <div><%= image_tag("mastercard", id: "sistema_p_creditoimg") %></div> 
+            <div><%= image_tag("mastercard", id: "sistema_p_creditoimg") %></div>
             <% end %>
             <div id="sistema_p_numcredito">**** **** **** <%= @card.last_digits %></div>
             <div id="sistema_p_fechacredito" class="d-flex flex-row">
@@ -74,12 +74,12 @@
         <% end %>
         <%= link_to "Cambiar forma de pago", accounts_path, class: "sistema_p_botoncredito align-self-center d-flex flex-column justify-content-center" %>
         </div>
-        <div class="d-flex flex-column"> 
-            <div class="d-flex flex-column"> 
+        <div class="d-flex flex-column">
+            <div class="d-flex flex-column">
                 <div style="font-size: 2vw; font-weight:bold; margin-left: 1vw;"> Entrenador: </div>
                 <div id="perfil_entrenador" style="margin-left: 1vw;"> No cuenta con entrenador </div>
             </div>
-            <div class="sistema_p_botoncredito d-flex flex-column justify-content-center align-self-center" id="perfil_botonentrenador"> Unirte a un entrenador</div>
+            <div class="sistema_p_botoncredito d-flex flex-column justify-content-center align-self-center" id="perfil_boton_entrenador"> Unirte a un entrenador</div>
         </div>
     </div>
 </div>

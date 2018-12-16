@@ -11,8 +11,23 @@ ProfileController::index = ->
 
   $(".sistema_p_imgupload").change ->
     $("form").submit()
-    
-  $('.sistema_p_editar ').on 'click', (event) -> 
+
+
+  $('#perfil_boton_entrenador').on 'click', ->
+    Swal
+      title: '<strong>Agrega el Código de tu Entrenador</strong>'
+      type: 'info'
+      html: '<input id="codigo_entrenador_input" placeholder="Código de entrenador">'
+      showCloseButton: true
+      showCancelButton: true
+      focusConfirm: false
+      confirmButtonText: 'Unirme'
+      showCancelButton: false,
+      cancelButtonAriaLabel: 'Thumbs down'
+    return
+
+
+  $('.sistema_p_editar ').on 'click', (event) ->
     event.preventDefault()
     es = $('#perfil_altura').text();
     pe = $('#perfil_peso').text();

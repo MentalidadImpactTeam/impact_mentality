@@ -11,6 +11,18 @@
   padding-right: .5vw;
   margin-right: 3.5vw;
 }
+#codigo_entrenador_input{
+  border-radius:10px;
+  border:1px solid red;
+  background-color:#424242;
+  color:white;
+  font-family:lato;
+  padding:10px;
+}
+.swal2-icon.swal2-info {
+  border-color:red !important;
+  color:#ff5050 !important;
+}
 
 #sistema_cuenta_paypal{
   background-image: url("../img/paypal.png");
