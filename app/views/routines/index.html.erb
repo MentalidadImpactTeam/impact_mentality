@@ -123,17 +123,17 @@
                     </div>
                     <div class="sistema_r_ejercicio_centro"></div>
                     <div class="sistema_r_ejercicio_abajo align-items-center flex-row justify-content-between">
-                        <div class="sistema_r_nombreejercicio"> 
+                        <div class="sistema_r_nombreejercicio">
                             <% if @test %>
                                 <% if group == 1 %>
-                                    <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps. 
+                                    <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps.
                                 <% end %>
 
                                 <% if exercise['id'] == 171 %>
                                     <%= exercise["yards"] %> yardas.
                                 <% end %>
                             <% else %>
-                                <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps. 
+                                <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps.
                             <% end %>
                         </div>
 
@@ -157,7 +157,7 @@
             <div class="row">
                 <div class="bounceIn col-12">
                     <center>
-                        <img src="img/gym.png" alt="" id="img_rutina_finalizada" style="width: 350px;">
+                        <img src="img/gym.png" alt="" id="img_rutina_finalizada">
                     </center>
                     <center>
                         <p class="terminado_txt bounceIn">Haz terminado tu rutina</p>

@@ -16,6 +16,9 @@
   line-height: 2.5vw;
   text-shadow: 0 0 1.5vw #ff1d25;
 }
+#img_rutina_finalizada{
+  width:15vw;
+}
 
 .sistema_r_ejercicio{
   background-color: #333333;
@@ -391,7 +394,7 @@
   }
   .sistema_cancel_tabla_ejercicios {
     width: 6vw;
-    height: 6vw;  
+    height: 6vw;
   }
 
 }
@@ -414,6 +417,12 @@
 
 
 @media (max-width:  1090px) {
+  #img_rutina_finalizada{
+    width: 56vw;
+  }
+  .terminado_txt{
+    font-size: 7vw !important;
+  }
   .checkmark_rutina {
     margin-left: 5vw;
   }

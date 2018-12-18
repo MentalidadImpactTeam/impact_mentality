@@ -108,38 +108,42 @@
 .input_box_num,
 .input_box_mes,
 .input_box_p,
+.input_box_ano,
 .input_box_exp,
 .input_box_cvc {
-    border: 1px solid grey;
-    margin: 15px 0;
-    height: auto;
-    overflow: hidden;
-    animation-delay: .5s;
+   border: 1px solid grey;
+   margin: 0 0;
+   height: auto;
+   overflow: hidden;
+   animation-delay: .5s;
 }
 
 .input_box_num:hover,
 .input_box_tutor:hover,
 .input_box_mes:hover,
 .input_box_p:hover,
+.input_box_ano:hover,
 .input_box_exp:hover,
 .input_box_cvc:hover {
-    background-color: #d1d1d1;
+   background-color: #d1d1d1;
 }
 
 .input_box_tutor i,
 .input_box_num i,
 .input_box_mes i,
 .input_box_exp i,
+.input_box_ano i,
 .input_box_cvc i,
 .input_box_p i {
-    font-size: 20px;
-    padding: 25px 15px;
-    border-right: 1px solid grey;
-    color: grey;
-    display: inline-block;
-    vertical-align: middle;
-    background-color: #f2f2f2;
+   font-size: 20px;
+   padding: 25px 15px;
+   border-right: 1px solid grey;
+   color: grey;
+   display: inline-block;
+   vertical-align: middle;
+   background-color: #f2f2f2;
 }
+
 
 #ID_deporte,
 #ID_exp,
@@ -293,39 +297,6 @@
     border: 2px solid red !important;
 }
 
-.input_box_tutor,
-.input_box_num,
-.input_box_mes,
-.input_box_ano,
-.input_box_cvc {
-    border: 1px solid grey;
-    margin: 15px 0;
-    height: auto;
-    overflow: hidden;
-    animation-delay: .5s;
-}
-
-.input_box_num:hover,
-.input_box_tutor:hover,
-.input_box_mes:hover,
-.input_box_ano:hover,
-.input_box_cvc:hover {
-    background-color: #f2f2f2;
-}
-
-.input_box_tutor i,
-.input_box_num i,
-.input_box_mes i,
-.input_box_ano i,
-.input_box_cvc i {
-    font-size: 20px;
-    padding: 25px 15px;
-    border-right: 1px solid grey;
-    color: grey;
-    display: inline-block;
-    vertical-align: middle;
-    background-color: #f2f2f2;
-}
 
 #IP_genero,
 #IP_Experiencia,
@@ -891,40 +862,6 @@ code {
 
 .input_error {
     border: 2px solid red !important;
-}
-
-.input_box_tutor,
-.input_box_num,
-.input_box_mes,
-.input_box_ano,
-.input_box_cvc {
-    border: 1px solid grey;
-    margin: 15px 0;
-    height: auto;
-    overflow: hidden;
-    animation-delay: .5s;
-}
-
-.input_box_num:hover,
-.input_box_tutor:hover,
-.input_box_mes:hover,
-.input_box_ano:hover,
-.input_box_cvc:hover {
-    background-color: #d1d1d1;
-}
-
-.input_box_tutor i,
-.input_box_num i,
-.input_box_mes i,
-.input_box_ano i,
-.input_box_cvc i {
-    font-size: 20px;
-    padding: 25px 15px;
-    border-right: 1px solid grey;
-    color: grey;
-    display: inline-block;
-    vertical-align: middle;
-    background-color: #f2f2f2;
 }
 
 #FPago_mes_vencimiento,
