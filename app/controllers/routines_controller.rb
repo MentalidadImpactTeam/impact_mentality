@@ -40,7 +40,8 @@ class RoutinesController < ApplicationController
                     "sets" => routine_exercise.set,
                     "reps" => routine_exercise.rep,
                     "done" => routine_exercise.done,
-                    "test" => routine_exercise.test
+                    "test" => routine_exercise.test,
+                    "yards" => routine_exercise.yards
                 }
                 @hash[routine_exercise.group]["exercises"].push(hash_exercise)
             end
@@ -705,7 +706,7 @@ class RoutinesController < ApplicationController
         result = 0
         values.each {|a| result += a.to_i }
         result_quiz = result
-        hash = { :sets => 0, :reps => 0 }
+        hash = { :sets => 0, :reps => 0, :yards => 0 }
 
         if category == 1
             # FUNDAMENTALES
@@ -720,7 +721,7 @@ class RoutinesController < ApplicationController
             hash[:reps] = 12
         end
 
-        if weekday == 1
+        if weekday == 1 and category == 22
             if ui.sport == "Beisbol"
                 hash[:yards] = 60
             else

@@ -5,6 +5,9 @@ class ProfilesController < ApplicationController
     else
       @user = current_user
     end
+
+    @trainer = TrainerPlayer.find_by(user_id: @user.id)
+
     @card = UserConektaToken.find_by(user_id: @user.id, default: 1)
     @trainings = UserRoutine.where(user_id: @user.id).count
     @trainings_complete = UserRoutine.where("user_id = #{@user.id} and done = 1 and day != 7").count
@@ -49,5 +52,22 @@ class ProfilesController < ApplicationController
     current_user.user_information.save
 
     redirect_to profiles_path
+  end
+
+  def add_trainer
+    user_information = UserInformation.find_by(uid: params["search_param"])
+
+    if user_information.blank?
+      response =  { :error => true }
+    elsif user_information.user_type_id != 2
+      response =  { :error => true }
+    else
+      tp = TrainerPlayer.new
+      tp.trainer_user_id = user_information.user_id
+      tp.user_id = current_user.id
+      tp.save
+      response =  { :error => false, :name => user_information.name }
+    end
+    render json: response
   end
 end

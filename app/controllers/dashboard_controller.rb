@@ -7,6 +7,9 @@ class DashboardController < ApplicationController
     else
       @user = current_user
     end
+
+    @trainer = TrainerPlayer.find_by(user_id: @user.id)
+    
     @trainings = UserRoutine.where("user_id = #{@user.id} and day != 7").count
     @trainings_complete = UserRoutine.where("user_id = #{@user.id} and done = 1 and day != 7").count
     @trainings_unfinished = UserRoutine.where("user_id = #{@user.id} and done = 0 and date >= '#{Date.today}'").count

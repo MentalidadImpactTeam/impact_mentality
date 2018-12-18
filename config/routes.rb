@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   resources :profiles do 
     collection do 
       post 'profile_image' => "profiles#update_profile_image"
+      post 'add_trainer' => "profiles#add_trainer"
     end
   end
   namespace :administrator do

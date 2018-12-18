@@ -79,7 +79,7 @@
     <!-- CENTRO -->
     <div class="sistema_r_contenedorejercicios d-flex justify-content-center">
         <!-- ANTERIOR -->
-        <div id="flecha_anterior" class="sistema_r_centro_iz d-flex flex-column justify-content-center" style="<%= if @routine_finished then  "display:none !important;" end %>">
+        <div id="flecha_anterior" class="sistema_r_centro_iz d-flex flex-column justify-content-center" style="<%= if @previous == "" then  "display:none !important;" end %>">
             <div id="sistema_r_siguiente"> ANTERIOR: </div>
             <div id="sistema_r_anteriorfase"><%= @previous %></div>
             <div id="sistema_r_anteriorarrow" class="d-flex flex-column justify-content-center align-items-center">
@@ -105,12 +105,16 @@
                                     <% if group == 1 %>
                                         <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps.
                                     <% end %>
+
+                                    <% if exercise['id'] == 171 %>
+                                        <%= exercise["yards"] %> yardas.
+                                    <% end %>
                                 <% else %>
                                     <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps.
                                 <% end %>
                             </div>
                         </div>
-                        <% if exercise["category_id"] != 1 %>
+                        <% if exercise["category_id"] != 1 and exercise['test'] == "0" %>
                         <div class="sistema_r_cambiaricono"> </div>
                         <% end %>
                         <% if exercise["done"] == 0 %>
@@ -123,6 +127,10 @@
                             <% if @test %>
                                 <% if group == 1 %>
                                     <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps. 
+                                <% end %>
+
+                                <% if exercise['id'] == 171 %>
+                                    <%= exercise["yards"] %> yardas.
                                 <% end %>
                             <% else %>
                                 <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps. 

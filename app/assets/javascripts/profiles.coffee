@@ -12,9 +12,8 @@ ProfileController::index = ->
   $(".sistema_p_imgupload").change ->
     $("form").submit()
 
-
   $('#perfil_boton_entrenador').on 'click', ->
-    Swal
+    swal({
       title: '<strong>Agrega el Código de tu Entrenador</strong>'
       type: 'info'
       html: '<input id="codigo_entrenador_input" placeholder="Código de entrenador">'
@@ -23,9 +22,25 @@ ProfileController::index = ->
       focusConfirm: false
       confirmButtonText: 'Unirme'
       showCancelButton: false,
-      cancelButtonAriaLabel: 'Thumbs down'
+      cancelButtonAriaLabel: 'Thumbs down',
+      preConfirm: ->
+        new Promise((resolve, reject) ->
+          $.ajax
+            type: "POST"
+            url: "/profiles/add_trainer"
+            data: search_param: $("#codigo_entrenador_input").val()
+            dataType: "json",
+            success: (data) ->
+              resolve(data)
+        )
+      }).then (response) ->
+        if response.value.error
+          swal('Alerta','No se encontro el entrenador ingresado','warning',"heightAuto: false")
+        else 
+          $("#perfil_boton_entrenador").remove()
+          $("#perfil_entrenador").text(response.value.name)
+          swal('Exito','Se asigno el entrenador exitosamente','success',"heightAuto: false")
     return
-
 
   $('.sistema_p_editar ').on 'click', (event) ->
     event.preventDefault()

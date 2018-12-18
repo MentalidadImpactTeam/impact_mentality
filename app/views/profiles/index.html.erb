@@ -77,9 +77,11 @@
         <div class="d-flex flex-column">
             <div class="d-flex flex-column">
                 <div style="" class="sistema_p_entrenador"> Entrenador: </div>
-                <div id="perfil_entrenador" style="margin-left: 1vw;"> No cuenta con entrenador </div>
+                <div id="perfil_entrenador" style="margin-left: 1vw;"> <%= profile_trainer_name(@trainer) %> </div>
             </div>
+            <% if @trainer.blank? %>
             <div class="sistema_p_botoncredito d-flex flex-column justify-content-center align-self-center" id="perfil_boton_entrenador"> Unirte a un entrenador</div>
+            <% end %>
         </div>
     </div>
 </div>

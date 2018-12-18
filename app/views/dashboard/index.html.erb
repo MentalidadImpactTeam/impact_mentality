@@ -6,9 +6,11 @@
 </div>
 
 <div class="sistema_db_container">
+    <% if @trainer.present? %>
     <div id="contenedor_entrenador_institucion">
-       <center class='animated zoomInUp'><span>Tu entrenador es:</span><span class="entrenador_institucion">  Hector Vildosola</span></center>
+       <center class='animated zoomInUp'><span>Tu entrenador es:</span><span class="entrenador_institucion">  <%= profile_trainer_name(@trainer) %></span></center>
     </div>
+    <% end %>
         <div class=" animated zoomInUp sistema_db_info_superior d-flex justify-content-betweeen align-items-end">
             <div class="sistema_info_three_containers">
                 <div class="d-flex flex-row align-items-end flex-wrap justify-content-center">
