@@ -8,7 +8,18 @@
   font-size: .7vw;
   font-weight: 600;
 }
-
+.swal2-activeprogressstep{
+  background-color:red !important;
+}
+.swal2-progressline{
+  background-color:#ff5252 !important;
+}
+.swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep~.swal2-progresscircle {
+  background-color:#fb4e54 !important;
+}
+.swal2-progresssteps .swal2-progresscircle{
+  background:red !important;
+}
 #sistema_r_progresonombre{
   color: #ff1d25;
   font-weight: bold;

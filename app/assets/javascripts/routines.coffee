@@ -91,7 +91,7 @@ RoutinesController::index = ->
     else
       routines_mark_done($this)
       return
-  
+
   $("#sistema_r_siguientearrow").click ->
     parent = $(this).closest(".sistema_r_contenedorejercicios").find(".active")
     count_exercises = parent.find(".sistema_r_ejercicio").length
@@ -167,7 +167,7 @@ RoutinesController::index = ->
         return
       ), 700
       return
-  
+
   $("#sistema_r_anteriorarrow").click ->
     div_active =  $(".active")
     $("#rutina_finalizada").css("display", "none")
@@ -355,7 +355,7 @@ routines_mark_done = ($this) ->
       $("#barra_tricerie").css("width", porcentage + "%")
     else
       $("#barra_finishers").css("width", porcentage + "%")
-  
+
   $.ajax
     type: "POST"
     url: "/routines/mark_exercise_done"
