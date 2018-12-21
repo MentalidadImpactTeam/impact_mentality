@@ -1,9 +1,5 @@
 
 
-#Terminar_modal {
-    background-color: white;
-}
-
 #ID_titulo {
     font-size: 50px;
     margin: 15px 0;
@@ -84,7 +80,7 @@
 
 .DP_input input[type="text"] {
     width: 75%;
-    padding: 15px;
+    padding: 0 15px;
     margin: 0;
     font-family: Lato;
     border: none;
@@ -136,7 +132,7 @@
 .input_box_cvc i,
 .input_box_p i {
    font-size: 20px;
-   padding: 25px 15px;
+   padding: 10px 15px;
    border-right: 1px solid grey;
    color: grey;
    display: inline-block;
@@ -148,7 +144,7 @@
 #ID_deporte,
 #ID_exp,
 #ID_pos_obj {
-    padding: 15px;
+    padding:0 15px;
     margin: 0px 0;
     width: 78%;
     border: none;
@@ -301,8 +297,10 @@
 #IP_genero,
 #IP_Experiencia,
 #IP_Estatura,
-#IP_peso {
-    padding: 15px;
+#IP_peso,
+#FPago_mes_vencimiento,
+#FPago_año_vencimiento{
+    padding: 0 15px;
     z-index: 109;
     margin: 0px 0;
     width: 78%;
@@ -316,9 +314,12 @@
 #IP_genero:focus,
 #IP_Experiencia:focus,
 #IP_Estatura,
-#IP_peso {
+#IP_peso,
+#FPago_mes_vencimiento:focus,
+#FPago_año_vencimiento:focus {
     outline: none;
 }
+
 
 .CVC_CODE {
     width: 65% !important;
@@ -591,12 +592,13 @@ button:focus {
 
 .titulos_seguimiento {
     color: red;
+    font-size: 1.5vw;
     font-family: Lato;
 }
 
 .subtitulos_seguimiento {
     font-family: lato;
-    font-size: 15px;
+    font-size: 12px;
     line-height: 100%;
     text-align: left;
     font-weight: lighter;
@@ -635,7 +637,7 @@ button:focus {
 }
 
 .inputGroup label {
-    padding: 12px 12px;
+    padding: 5px 12px;
     width: 100%;
     display: block;
     text-align: left;
@@ -776,9 +778,7 @@ code {
 }
 
 
-#Terminar_modal {
-    background-color: white;
-}
+
 
 #FPago_titulo {
     font-size: 50px;
@@ -834,47 +834,14 @@ code {
 
 
 
-.DP_input {
-    margin: 10px 0;
-}
 
-.DP_input input[type="text"]:focus {
-    outline: none;
-}
-
-.DP_input input[type="text"] {
-    width: 75%;
-    padding: 15px;
-    margin: 0;
-    font-family: Lato;
-    border: none;
-    color: #3e3e3e;
-    font-size: 20px;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-.DP_input input[type="text"]::placeholder {
-    font-size: 20px;
-    font-family: Lato;
-    color: #d1d1d1;
-}
 
 .input_error {
     border: 2px solid red !important;
 }
 
-#FPago_mes_vencimiento,
-#FPago_año_vencimiento {
-    padding: 15px;
-    margin: 0px 0;
-    width: 78%;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-size: 20px;
-    font-family: Lato;
-}
+
+
 
 #FPago_mes_vencimiento:focus,
 #FPago_año_vencimiento:focus {
@@ -904,10 +871,7 @@ code {
     background-color: #b52434;
 }
 
-#Terminar_modal {
-    background-color: white;
-    transition: all .5s;
-}
+
 
 .terminar_titulo h1 {
     font-size: 50px;
@@ -989,7 +953,7 @@ code {
 
 .tipos_de_usuario h5 {
     color: red;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     font-family: Lato;
     font-weight: bold;
 }
@@ -1029,20 +993,21 @@ code {
     #TU_info_text {
         font-size: 4vw;
     }
-}
-
-@media only screen and (max-width: 400px) {
     .tipos_de_usuario i {
         font-size: 6vw;
-        margin: 20px 10px;
     }
-    .tipos_de_usuario h5 {
-        font-size: 2.5vw;
+
+    #PP_info_text {
+        font-size: 4vw;
     }
-    #TU_info_text {
-        font-size: 5vw;
+    #PP_info_text {
+        font-size: 4vw;
+    }
+    .PP_precio {
+        font-size: 3vw;
     }
 }
+
 
 /* PANTALLA ENTRENADOR */
 
@@ -1171,12 +1136,7 @@ code {
     margin: 60px 0;
 }
 
-.tipos_de_usuario h5 {
-    color: red;
-    font-size: 1.5vw;
-    font-family: Lato;
-    font-weight: bold;
-}
+
 
 #TU_entrenador,
 #TU_escuela,
@@ -1218,21 +1178,6 @@ code {
     }
 }
 
-@media only screen and (max-width: 400px) {
-    .tipos_de_usuario i {
-        font-size: 6vw;
-        margin: 20px 10px;
-    }
-    .tipos_de_usuario h5 {
-        font-size: 2.5vw;
-    }
-    #TU_info_text {
-        font-size: 5vw;
-    }
-    #ientrenador_first_row i {
-        font-size: 9vw;
-    }
-}
 
 /* PANTALLA FINAL REGISTRO ENTRENADOR */
 
@@ -1319,7 +1264,7 @@ code {
     font-family: Lato;
     border: none;
     padding: 15px 45px;
-    margin: 25px 0px;
+    margin: 8px 0px;
     font-size: 20px;
     cursor: pointer;
 }
@@ -1364,13 +1309,6 @@ code {
     margin: 35px 0;
 }
 
-.tipos_de_usuario h5 {
-    color: red;
-    font-size: 1.5vw;
-    font-family: Lato;
-    font-weight: bold;
-}
-
 #PP_entrenador,
 #PP_escuela,
 #PP_usuario {
@@ -1396,23 +1334,6 @@ code {
     color: white !important;
 }
 
-@media only screen and (max-width: 992px) {
-    .tipos_de_usuario i {
-        font-size: 6vw;
-    }
-    .tipos_de_usuario h5 {
-        font-size: 3vw;
-    }
-    #PP_info_text {
-        font-size: 4vw;
-    }
-    #PP_info_text {
-        font-size: 4vw;
-    }
-    .PP_precio {
-        font-size: 3vw;
-    }
-}
 
 @media only screen and (max-width: 400px) {
     .tipos_de_usuario i {
@@ -1424,5 +1345,11 @@ code {
     }
     #PP_info_text {
         font-size: 5vw;
+    }
+    #TU_info_text {
+        font-size: 5vw;
+    }
+    #ientrenador_first_row i {
+        font-size: 9vw;
     }
 }

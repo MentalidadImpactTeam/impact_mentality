@@ -16,7 +16,7 @@ RegistrationController::new = ->
   $('#registro_close').on 'click', ->
     $('#registro_modal').addClass 'animated bounceOut'
     return
-  
+
   $('#DP_close').on 'click', ->
     $('#DP_modal').addClass 'animated bounceOut'
     return
@@ -244,7 +244,7 @@ eventos_datos_personales = ->
   $('#IP_Estatura').on 'click', ->
     $('#input_box_estatura').removeClass 'input_error'
     return
-  
+
   $('#IP_peso').on 'click', ->
     $('#IP_peso').val ''
     kg_var = 0
@@ -326,35 +326,6 @@ eventos_datos_personales = ->
               $('#input_box_exp').addClass 'input_error'
               return false
             else
-              $('#input_box_exp').removeClass 'input_error'
-              if $('#IP_genero').val() == ''
-                swal
-                  type: 'error'
-                  title: 'Alerta'
-                  text: 'Por favor Ingrese su Genero'
-                  allowEscapeKey: true
-                  allowOutsideClick: true
-                  heightAuto: false
-                  confirmButtonText: 'Regresar'
-                  confirmButtonClass: 'login_sweetalert'
-                $('#input_box_gen').addClass 'input_error'
-                return false
-              else
-                $('#input_box_gen').removeClass 'input_error'
-                if $('#IP_peso').val() == ''
-                  swal
-                    type: 'error'
-                    title: 'Alerta'
-                    text: 'Por favor Ingrese su Peso'
-                    allowEscapeKey: true
-                    allowOutsideClick: true
-                    heightAuto: false
-                    confirmButtonText: 'Regresar'
-                    confirmButtonClass: 'login_sweetalert'
-                  $('#input_box_peso').addClass 'input_error'
-                  return false
-                else
-                  $('#input_box_peso').removeClass 'input_error'
                   if $('#IP_Estatura').val() == ''
                     swal
                       type: 'error'
@@ -522,7 +493,7 @@ eventos_datos_deportivos = ->
       $('.input_box_p').addClass 'bounceIn'
       $('.input_box_p').removeClass 'bounceOut'
     return
-    
+
     $('.IDep_deporte_box').on 'click', ->
       $('.IDep_deporte_box').removeClass 'input_error'
       return
@@ -542,7 +513,7 @@ eventos_datos_deportivos = ->
     IDep_posicion = '0'
     IDep_lesiones = '0'
     #FUNCIONES DE VERIFICACION
-    
+
     if $('#user_user_information_attributes_sport').val() == ''
       swal
         type: 'error'
@@ -824,10 +795,10 @@ eventos_forma_pago = ->
       'cvc': $('.CVC_CODE').val()
     Conekta.Token.create tokenParams, conektaSuccessResponseHandler, conektaErrorResponseHandler
     return false
-  return 
+  return
 
 eventos_entrenador = ->
-  $("#ientrenador_btn").click -> 
+  $("#ientrenador_btn").click ->
     if $("#ientrenador_contacto").val() == ""
       swal
         type: 'error'
