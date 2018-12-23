@@ -130,7 +130,7 @@
 }
 
 .row_hover {
-  background-color: #333333;
+  background-color: #1b1b1b;
   transition: all .2s;
   cursor: pointer;
 }
@@ -166,7 +166,7 @@
 }
 
 #admin_tabla_usuarios tbody tr:hover {
-  background-color: #3e3e3e;
+  background-color: #3e3e3e !important;
 }
 
 @media (max-width: 795px) {

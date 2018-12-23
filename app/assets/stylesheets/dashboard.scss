@@ -353,18 +353,14 @@
   margin: 0 8px;
 }
 
-.row_hover {
-  background-color: #333333;
-  transition: all .2s;
-  cursor: pointer;
+#tabla_lista_miembros{
+  width:100%;
+  border-radius:10px;
+  overflow: hidden;
 }
-
-.row_hover:hover {
-  background-color: red;
-  box-shadow: 0px 0 40px red;
+#tabla_lista_miembros tr:hover{
+  background-color:#333333 !important;
 }
-
-
 
 table {
   border-spacing: 10px;
