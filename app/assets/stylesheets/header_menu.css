@@ -170,6 +170,7 @@ body {
   font-family: Lato;
   margin-left: 15px;
   font-size: 5vw;
+  vertical-align: middle;
 }
 
 #menu_mobile_desplegado li:hover {
@@ -179,6 +180,7 @@ body {
 
 #menu_mobile_desplegado li {
   padding: 13px 0;
+  font-weight: bold;
   border-top:1px solid #363636;
   border-bottom: 1px solid #363636;
 }
