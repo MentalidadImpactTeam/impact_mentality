@@ -11,7 +11,12 @@
   justify-content: space-between;
 }
 /*363636*/
-
+.iconos_mobile{
+  color:white;
+  margin:0 0 0 15px;
+  font-size:6vw;
+  vertical-align: middle;
+}
 #contenedor_entrenador_institucion{
   color:white;
   font-family:lato;
@@ -169,6 +174,7 @@
 
 #contenedor_entrenador_institucion{
   font-size:3.5vw;
+  margin:5vw 0;
 }
 .entrenador_institucion{
   font-size:4.2vw;
@@ -213,12 +219,14 @@
   .sistema_db_info_superior {
       flex-direction: column !important;
       padding: 4vw;
+      margin:5vw 0;
   }
   .db_contenedor_segundafila {
       flex-direction: column;
   }
   .sistema_db_info_grafica {
       width: 100% !important;
+      margin: 6vw 0;
   }
 
   .sistema_db_info_tabla {

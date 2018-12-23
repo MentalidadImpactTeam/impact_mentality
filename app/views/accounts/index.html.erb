@@ -7,11 +7,11 @@
 <div class="sistema_contenido d-flex flex-column">
     <input type="hidden" class="hidden_user" value="<%= current_user.id %>">
     <!-- POPUP AGREGAR TARJETA -->
-    <div id="sistema_cuenta_agregartarjeta" class="flex-column justify-content-between"> 
+    <div id="sistema_cuenta_agregartarjeta" class="flex-column justify-content-between">
     <div class="sistema_cuenta_cerrar align-self-end"></div>
     <div class="sistema_cuenta_marcanuevamov"></div>
         <div class="d-flex flex-column" id="sistema_cuenta_agregartarjeta_top">
-            
+
             <div class="d-flex justify-content-between align-items-start">
                 <div class="sistema_cuenta_marcanueva"></div>
                 <div class="d-flex flex-column" id="cuenta_csvv">
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="sistema_cuenta_agregartarjeta_mid" class="d-flex flex-column">
             <input class="sistema_cuenta_input" id="cuenta_num" placeholder="NÚMERO DE TARJETA">
             <p class="cuenta_input_label input-credit-card"> NÚMERO DE TARJETA </p>
@@ -37,20 +37,20 @@
         </div>
         <div class="sistema_p_botoncredito d-flex flex-row align-items-center justify-content-center align-self-center">AGREGAR TARJETA</div>
     </div>
-    <div class="sistema_cuenta_elige d-flex flex-row"> ELIGE O AGREGA TARJETA DE CRÉDITO </div>
+    <div class="sistema_cuenta_elige animated bounceInDown d-flex flex-row"> ELIGE O AGREGA TARJETA DE CRÉDITO </div>
     <!-- CONTENIDO -->
     <div id="sistema_cuenta_tarjetas" class="d-flex align-items-center justify-content-between">
         <!-- TARJETAS -->
-        <div class="sistema_cuenta_tarjetas_division d-flex align-items-center">
+        <div class="animated bounceInDown sistema_cuenta_tarjetas_division d-flex align-items-center">
             <% @cards.each do |card| %>
                 <!-- TARJETA -->
                 <div class="sistema_cuenta_tarjeta d-flex flex-column justify-content-between <%= if card.default == 1 then "sistema_cuenta_active" end %>">
                     <input type="hidden" class="hidden_card" value="<%= card.id %>">
                     <div class="sistema_cuenta_borrar"></div>
                     <% if card.brand == "visa" %>
-                    <div><%= image_tag("visa", class: "sistema_cuenta_marca") %></div> 
+                    <div><%= image_tag("visa", class: "sistema_cuenta_marca") %></div>
                     <% elsif card.brand == "mc" %>
-                    <div><%= image_tag("mastercard", class: "sistema_cuenta_marca") %></div> 
+                    <div><%= image_tag("mastercard", class: "sistema_cuenta_marca") %></div>
                     <% end %>
                     <div class="sistema_cuenta_numt"> **** **** **** <%= card.last_digits %></div>
                     <div class="d-flex flex-row">
@@ -59,28 +59,28 @@
                             <div> CAD. </div>
                         </div>
                         <div class="sistema_cuenta_num"> <%= card.exp_month %>/<%= card.exp_year %></div>
-                    </div> 
+                    </div>
                     <div class="sistema_cuenta_circulo <%= if card.default == 1 then "sistema_cuenta_circuloactive" end %>"></div>
                 </div>
             <% end %>
-            
+
 
             <!-- BOTON AGREGAR -->
             <div class="sistema_cuenta_agregar"></div>
         </div>
         <!-- INFO FACTURACION -->
         <div class="sistema_cuenta_tarjetas_division d-flex align-items-center justify-content-end">
-            <div class="sistema_cuenta_contenedorfacturacion d-flex flex-column">
+            <div class="animated bounceInDown sistema_cuenta_contenedorfacturacion d-flex flex-column">
                 <div class="sistema_cuenta_facturacion_texto" id="sistema_cuenta_facturacion_texto_plan"><%= account_subscription_plan(current_user.user_information) %></div>
                 <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit">MONTO A COBRAR: <div class="sistema_cuenta_facturacion_texto_var"><%= account_subscription_payment(current_user.user_information) %></div></div>
                 <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit">FECHA DE FACTURACIÓN: <div class="sistema_cuenta_facturacion_texto_var"> <%= account_subscription_billing_date(@subscription) %> </div></div>
             </div>
         </div>
-        
+
 
     </div>
 
-    <div class="sistema_cuenta d-flex flex-column">
+    <div class="sistema_cuenta  animated bounceInDown d-flex flex-column">
         <div class="sistema_cuenta_detalles d-flex flex-row align-items-center">
             <div class="sistema_cuenta_estado d-flex align-items-center">DETALLES DE CUENTA</div>
             <div class="sistema_cuenta_estadotxt d-flex">
@@ -103,7 +103,7 @@
                 <div class="sistema_cuenta_datos_editar" id="sistema_cuenta_datos_editar_num">Cambiar número teléfonico</div>
                 <div class="sistema_cuenta_datos_editar" id="sistema_cuenta_datos_editar_pass">Cambiar de contraseña</div>
             </div>
-            
+
         </div>
         <div class="sistema_cuenta_cancelar"> <a id="sistema_cuenta_cancelar_txt">Cancelar subscripción </a></div>
     </div>

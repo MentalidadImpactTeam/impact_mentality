@@ -6,7 +6,7 @@
 </div>
 <div class="sistema_contenido d-flex">
     <input type="hidden" class="hidden_user" value="<%= @user.id %>">
-    <div id="sistema_p_iz" class="d-flex flex-column justify-content-between">
+    <div id="sistema_p_iz" class="animated bounceInDown d-flex flex-column justify-content-between">
         <div id="sistema_p_iz_arriba" class="d-flex align-items-center justify-content-around">
             <div class="sistema_p_imgcontainer">
                 <div class="sistema_p_imgimg" style="background-image: url(<%= @user.user_information.img_url %>);"> </div>
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-    <div id="sistema_p_der" class="d-flex flex-column justify-content-around">
+    <div id="sistema_p_der" class="animated bounceInDown d-flex flex-column justify-content-around">
         <div class="d-flex flex-column">
         <% if @card.present? %>
             <% if @card.brand == "visa" %>
