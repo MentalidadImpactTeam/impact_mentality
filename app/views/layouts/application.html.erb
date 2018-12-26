@@ -99,22 +99,35 @@
                 <h3 class="sistema_descripcion_menu">Lista de Jugadores</h3>
             </div>
         <% end %>
+
         <div class="seccion_menu_left">
-            <%= link_to image_tag("iconoLeftMenu-02", class: "sistema_left_icon"), routines_path %>
+            <%= link_to routines_path do %>
+                <i class="sistema_left_icon fas fa-dumbbell"></i>
+            <% end %>
             <h3 class="sistema_descripcion_menu">Rutina</h3>
         </div>
+
         <div class="seccion_menu_left">
-            <%= link_to image_tag("iconoLeftMenu-03", class: "sistema_left_icon", width: "60px" ), root_path %>
+            <%= link_to root_path do %>
+                <i class="sistema_left_icon fas fa-chart-bar"></i>
+            <% end %>
             <h3 class="sistema_descripcion_menu">Analíticos</h3>
         </div>
+
         <div class="seccion_menu_left">
-            <%= link_to image_tag("iconoLeftMenu-05", class: "sistema_left_icon"), profiles_path %>
+            <%= link_to profiles_path do %>
+                <i class="sistema_left_icon fas fa-user-circle"></i>
+            <% end %>
             <h3 class="sistema_descripcion_menu">Perfil</h3>
         </div>
+
         <div class="seccion_menu_left">
-            <%= link_to image_tag("iconoLeftMenu-06", class: "sistema_left_icon"), accounts_path %>
+            <%= link_to accounts_path do %>
+                <i class="sistema_left_icon fas fa-credit-card"></i>
+            <% end %>
             <h3 class="sistema_descripcion_menu">Cuenta</h3>
         </div>
+
         <div  id="sistema_cerrarsesionalign">
             <%= link_to destroy_user_session_path, method: :delete, style: "color: white;" do %>
                 <div class="sistema_descripcion_menu" id="sistema_cerrarsesion">Cerrar sesión</div>

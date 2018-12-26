@@ -12,6 +12,7 @@ body {
 
 .body_sistema{
   overflow-y: hidden;
+  font-family: lato;
 }
 
 
@@ -40,8 +41,9 @@ body {
 }
 
 .menuVertical i {
-  font-size: 30px;
-  margin: 25px;
+  font-size: 25px;
+  margin: 30px 25px 30px 16px;
+  color:white;
 }
 
 .seccion_menu_left:hover {
