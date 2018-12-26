@@ -89,44 +89,55 @@
             <%= link_to image_tag("ImpactMentalityIcon-01", class: "sistema_left_icon", width: "60px" ), root_path %>
             <%= image_tag("MentalidadImpact-01", class: "sistema_descripcion_menu",  width: "120px" ) %>
         </div>
-        <div class="seccion_menu_left">
+        <div title="Desplegar el menú" class="seccion_menu_left">
             <%= image_tag("iconoLeftMenu-01", class: "burger_menu sistema_left_icon") %>
             <h3 class="sistema_descripcion_menu">Menú</h3>
         </div>
+
+            <!-- Menu desktop -->
         <% if current_user.user_information.user_type_id == 2 %>
-            <div class="seccion_menu_left">
-                <%= link_to image_tag("iconoLeftMenu-01", class: "sistema_left_icon", width: "60px" ), player_list_path %>
+            <%= link_to player_list_path do %>
+            <div title="Aquí podrás tener acceso a tu equipos." class="seccion_menu_left">
+                <%= image_tag("iconoLeftMenu-01", class: "sistema_left_icon", width: "60px" ) %>
                 <h3 class="sistema_descripcion_menu">Lista de Jugadores</h3>
+            </div>
+            <% end %>
+        <% end %>
+        <%= link_to routines_path do %>
+        <div title="Aquí podrás tener acceso a tu rutina de todos los días." class="seccion_menu_left">
+
+                <i class="sistema_left_icon fas fa-dumbbell"></i>
+
+            <h3 class="sistema_descripcion_menu">Rutina</h3>
+        </div>
+        <% end %>
+
+        <%= link_to root_path do %>
+                <div title="Aquí podrás observar tus analíticos." class="seccion_menu_left">
+
+                        <i class="sistema_left_icon fas fa-chart-bar"></i>
+
+                    <h3 class="sistema_descripcion_menu">Analíticos</h3>
+                </div>
+        <% end %>
+
+        <%= link_to profiles_path do %>
+            <div title="Aquí podrás tener acceso a tu perfil." class="seccion_menu_left">
+
+                    <i class="sistema_left_icon fas fa-user-circle"></i>
+
+                <h3 class="sistema_descripcion_menu">Perfil</h3>
             </div>
         <% end %>
 
-        <div class="seccion_menu_left">
-            <%= link_to routines_path do %>
-                <i class="sistema_left_icon fas fa-dumbbell"></i>
-            <% end %>
-            <h3 class="sistema_descripcion_menu">Rutina</h3>
-        </div>
+        <%= link_to accounts_path do %>
+            <div title="Aquí podrás tener acceso a tu cuenta." class="seccion_menu_left">
 
-        <div class="seccion_menu_left">
-            <%= link_to root_path do %>
-                <i class="sistema_left_icon fas fa-chart-bar"></i>
-            <% end %>
-            <h3 class="sistema_descripcion_menu">Analíticos</h3>
-        </div>
+                    <i class="sistema_left_icon fas fa-credit-card"></i>
 
-        <div class="seccion_menu_left">
-            <%= link_to profiles_path do %>
-                <i class="sistema_left_icon fas fa-user-circle"></i>
-            <% end %>
-            <h3 class="sistema_descripcion_menu">Perfil</h3>
-        </div>
-
-        <div class="seccion_menu_left">
-            <%= link_to accounts_path do %>
-                <i class="sistema_left_icon fas fa-credit-card"></i>
-            <% end %>
-            <h3 class="sistema_descripcion_menu">Cuenta</h3>
-        </div>
+                <h3 class="sistema_descripcion_menu">Cuenta</h3>
+            </div>
+        <% end %>
 
         <div  id="sistema_cerrarsesionalign">
             <%= link_to destroy_user_session_path, method: :delete, style: "color: white;" do %>

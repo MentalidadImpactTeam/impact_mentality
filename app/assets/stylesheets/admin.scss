@@ -1,5 +1,24 @@
 
+.contenedor_acciones_controlador_jugadores {
+  float: right;
+  margin: 25px 0 !important;
+}
 
+.contenedor_acciones_controlador_jugadores i:hover {
+  color: red;
+  opacity:1;
+  cursor: pointer;
+}
+
+.contenedor_acciones_controlador_jugadores i {
+  transition: all .5s;
+  font-size: 2vw;
+  opacity:.5;
+  vertical-align: middle;
+  color:white;
+  margin: 0 5px;
+  display: inline-block;
+}
 .dropdown-menu{
   font-size: 12px;
 }
@@ -170,6 +189,16 @@
 }
 
 @media (max-width: 795px) {
+
+  .contenedor_acciones_controlador_jugadores {
+    margin: 25px 0;
+}
+.contenedor_acciones_controlador_jugadores i {
+    font-size: 8vw;
+    vertical-align: middle;
+    margin: 0 2px;
+    display: inline-block;
+}
   .switch {
       margin:0 !important;
       transform: scale(.5);

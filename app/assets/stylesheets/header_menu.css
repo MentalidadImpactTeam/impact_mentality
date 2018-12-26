@@ -70,7 +70,9 @@ body {
   vertical-align: middle;
   font-size: 2vh;
   font-weight: bold;
-  margin: 0 50px 0 0;
+  margin: 0 0px 0 0;
+  color:white;
+  text-decoration: none;
 }
 
 .hide_text_menu {

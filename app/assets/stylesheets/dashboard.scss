@@ -9,7 +9,29 @@
   background-color: #191a1a;
   padding: 2vw 2vw 2vw 2vw;
   justify-content: space-between;
+  overflow-y: scroll;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .texto_mobile_menu{
   font-weight: bold;
 }
@@ -187,6 +209,7 @@
     align-items: center;
     padding: 10vh 8vw 5vh 8vw;
     height: auto;
+    overflow: hidden;
   }
 
   .sistema_p_ejericios{
@@ -292,26 +315,7 @@
   vertical-align: middle;
 }
 
-.contenedor_acciones_controlador_jugadores {
-  float: right;
-  margin: 25px 0;
-}
 
-.contenedor_acciones_controlador_jugadores i:hover {
-  color: red;
-  cursor: pointer;
-  opacity:1;
-}
-
-.contenedor_acciones_controlador_jugadores i {
-  transition: all .5s;
-  font-size: 2vw;
-  opacity:.5;
-  vertical-align: middle;
-  color:white;
-  margin: 0 5px;
-  display: inline-block;
-}
 .cantidad_jugadores{
   color:grey;
   display: table-cell;
@@ -440,15 +444,7 @@ table tbody tr:hover {
   #filtro_jugadores {
       height: 25px;
   }
-  .contenedor_acciones_controlador_jugadores {
-      margin: 25px 0;
-  }
-  .contenedor_acciones_controlador_jugadores i {
-      font-size: 8vw;
-      vertical-align: middle;
-      margin: 0 2px;
-      display: inline-block;
-  }
+
   .cantidad_jugadores{
     color:grey;
     margin-top:80px;
