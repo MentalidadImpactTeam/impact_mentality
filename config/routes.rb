@@ -47,10 +47,13 @@ Rails.application.routes.draw do
   end
   namespace :administrator do
     get "users" => "admin#list_users"
+    get "users/page" => "admin#page_users"
     post "users/search" => "admin#search_users"
+    post "users/delete" => "admin#delete_user"
     get "exercises" => "admin#list_exercises"
     get "exercises/change_list_exercises" => "admin#change_list_exercises"
-    post "exercises/edit_exercise" => "admin#edit_exercise"
+    post "exercises/edit_exercise" => "admin#add_edit_exercise"
+    post "exercises/delete_exercise" => "admin#delete_exercise"
     post "exercises/search" => "admin#search_exercises"
     get "users/:id" => "admin#show_user"
   end

@@ -2,8 +2,10 @@ class DashboardController < ApplicationController
   before_action :login_required
 
   def index
+    @from_admin = false
     if params[:id].present?
       @user = User.find(params[:id])
+      @from_admin = true if params[:admin] == "1"
     else
       @user = current_user
     end

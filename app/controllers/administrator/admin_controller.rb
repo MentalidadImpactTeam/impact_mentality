@@ -3,7 +3,26 @@ class Administrator::AdminController < ApplicationController
   layout "administrator"
 
   def list_users
-    @user = User.joins(:user_information).where("user_type_id != 1")
+    @user = User.joins(:user_information).where("user_type_id != 1 and active = 1").limit(15).offset(0)
+  end
+
+  def page_users
+    page = params[:page].present? ? params[:page] : 1
+    offset = 15 * (page.to_i - 1)
+    users = User.select("users.id, user_informations.uid, user_informations.name, user_informations.user_type_id ").joins(:user_information).where("user_type_id != 1 and active = 1").limit(15).offset(offset)
+    array = []
+    users.each do |user|
+      subscription = user.user_conekta_subscription
+      hash = { :id => user.id, :uid => user.uid, :name => user.name, :user_type_id => user.user_type_id }
+      if subscription.present?
+        subscription = subscription.last
+        hash[:start_date] = subscription.start_date.strftime("%d/%m/%Y")
+        hash[:end_date] = subscription.end_date.strftime("%d/%m/%Y")
+        hash[:estatus] = subscription.estatus
+      end
+      array.push(hash)
+    end
+    render json: { :users =>  array }
   end
 
   def show_user
@@ -27,6 +46,20 @@ class Administrator::AdminController < ApplicationController
     render json: { :users => users }
   end
 
+  def delete_user
+    user = User.find(params[:id])
+    user.update(active: 0)
+
+    ui = user.user_conekta_subscription.last
+    ui.estatus = 0
+    ui.save
+
+    customer = Conekta::Customer.find(user.customer_token)
+    subscription = customer.subscription.pause
+
+    render plain: "OK"
+  end
+
   def list_exercises
     @categories = Category.all.order(id: :asc)
     @exercises = Exercise.where(category_id: 1).order(id: :asc)
@@ -36,15 +69,19 @@ class Administrator::AdminController < ApplicationController
     render json: { :exercises => Exercise.where(category_id: params[:category_id]).order(id: :asc) }
   end
 
-  def edit_exercise
-    exercise = Exercise.find(params[:id])
-    if exercise.present?
-      exercise.category_id = params[:category_id]
-      exercise.name = params[:name].squish
-      exercise.description = params[:description]
-      exercise.url = params[:link]
-      exercise.save
-    end
+  def add_edit_exercise
+    exercise = params[:id].present? ? Exercise.find(params[:id]) : Exercise.new
+    exercise.category_id = params[:category_id]
+    exercise.name = params[:name].squish
+    exercise.description = params[:description]
+    exercise.url = params[:link]
+    exercise.save
+
+    render plain: "OK"
+  end
+
+  def delete_exercise
+    Exercise.delete(params[:id])
     render plain: "OK"
   end
 

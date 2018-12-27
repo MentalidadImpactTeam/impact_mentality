@@ -1,6 +1,8 @@
+page_users = 1
 AdministratorController = Paloma.controller('Administrator/Admin')
 AdministratorController::list_users = ->
   $("#menu_usuarios").addClass("admin_active")
+  administrator_users_table_events()
   $(".fa-search").click ->
     if $("#filtro_jugadores").val() == ""
       swal 'Error', 'Favor de ingresar un valor de busqueda.', 'warning'
@@ -56,12 +58,66 @@ AdministratorController::list_users = ->
             $('.row_hover').on 'click', ->
               window.location.href = "/administrator/users/" + $(this).find(".hidden_id").val()
               return
+  $('.back_arrow_jugadores, .foward_arrow_jugadores').on 'click', (event) ->
+    if $(event.currentTarget).hasClass("foward_arrow_jugadores")
+      page_users += 1
+    else
+      if page_users > 1
+        page_users -= 1
+    $.ajax
+      type: "GET"
+      url: "/administrator/users/page?page=" + page_users
+      dataType: "json",
+      success: (data) ->
+        if data.users.length > 0
+          html = ""
+          start = ""
+          end = ""
+          data.users.forEach (value) ->
+            estatus_class = "usuario_activo"
+            estatus = "ACTIVO"
+            if value.estatus != undefined
+              if value.estatus != 1
+                estatus_class = "usuario_inactivo"
+                estatus = "INACTIVO"
+            trainer = ""
+            if value.user_type_id == 2
+              trainer = "checked"
+            if value.start_date != undefined
+              start = value.start_date
+              end = value.end_date
 
-  $('.back_arrow_jugadores').on 'click', ->
-    alert 'flecha para atras'
-    return
-  $('.foward_arrow_jugadores').on 'click', ->
-    alert 'flecha para enfrente'
+            html += '<tr class="row_hover">
+                        <input type="hidden" class="hidden_id" value="' + value.id + '">
+                        <td>
+
+                            <p class="aliniar_contenido_tabla id_usuario">' + value.uid + '</p>
+                        </td>
+                        <td>
+                            <p class="aliniar_contenido_tabla nombre_usuario">' + value.name + '</p>
+                        </td>
+
+                        <td class="columna_eliminada aliniar_contenido_tabla fecha_cobro">' + end + '</td>
+                        <td class="aliniar_contenido_tabla fecha_intro">' + start + '</td>
+                        <td class="aliniar_contenido_tabla estado_usuario ' + estatus_class + '">' + estatus + '</td>
+                        <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
+
+                            <label class="switch">
+                                <input type="checkbox" ' + trainer + ' >
+                                <span class="slider round"></span>
+                        </label>
+                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-chart-line"></i>
+                        <i class="far fa-times-circle"></i>
+                        </td>
+                    </tr>'
+          $("#admin_tabla_usuarios tbody").html(html)
+          administrator_users_table_events()
+        else
+          if $(event.currentTarget).hasClass("foward_arrow_jugadores")
+            page_users -= 1
+          else
+            page_users += 1
     return
   $('.add_jugadores').on 'click', ->
     swal
@@ -74,9 +130,6 @@ AdministratorController::list_users = ->
       confirmButtonText: 'Agregar'
       confirmButtonAriaLabel: 'Thumbs up, great!'
       cancelButtonText: 'Cancelar'
-    return
-  $('.row_hover').on 'click', ->
-    window.location.href = "/administrator/users/" + $(this).find(".hidden_id").val()
     return
 
 AdministratorController::show_user = ->
@@ -111,7 +164,7 @@ AdministratorController::show_user = ->
 
 AdministratorController::list_exercises = ->
   $("#menu_ejercicios").addClass("admin_active")
-  administrator_exercises_edit()
+  administrator_exercises_table_events()
   $(".adminsearch").click ->
     if $("#filtro_jugadores").val() == ""
       swal 'Error', 'Favor de ingresar un valor de busqueda.', 'warning'
@@ -139,23 +192,8 @@ AdministratorController::list_exercises = ->
                       </tr>'
             $(".tabla_ejercicios tbody").html(html)
             $(".administradores_ejercicios_totales").text( data.exercises.length + " EJERCICIOS TOTALES")
-            administrator_exercises_edit()
-  $('.administrador_tacha').click ->
-    swal(
-      title: '¿Estás seguro que deseas borrar?'
-      text: 'No podras recuperar este ejercicio'
-      type: 'warning'
-      showCancelButton: true
-      confirmButtonColor: '#ff1d25'
-      cancelButtonColor: '#333333'
-      confirmButtonText: 'Eliminar').then (result) ->
-      if result.value
-        swal 'Eliminada', 'Tu ejercicio a sido borrado', 'success'
-      return
-    return
-  $('.swal2-confirm').click ->
-    $(this).closest('tr').slideUp 0
-    return
+            administrator_exercises_table_events()
+
   $('.administrador_add').click ->
     $(".banner_top h1").text("Nuevo Ejercicio")
     $(".btn_aceptar_nuevo_ejer").text("Agregar")
@@ -218,7 +256,67 @@ AdministratorController::list_exercises = ->
     return
   return
 
-administrator_exercises_edit = ->
+administrator_users_table_events = ->
+  $("input[type=checkbox]").change ->
+    console.log($(this).prop("checked"))
+  $('.fa-edit').on 'click', (event) ->
+    window.location.href = "/administrator/users/" + $(this).closest(".row_hover").find(".hidden_id").val() 
+    return
+  $('.fa-chart-line').on 'click', ->
+    window.location.href = "/dashboard/" + $(this).closest(".row_hover").find(".hidden_id").val() + "?admin=1"
+    return
+  $('.fa-times-circle').on 'click', ->
+    tr = $(this)
+    swal(
+      title: '¿Estás seguro que deseas borrar?'
+      text: 'No podras recuperar este usuario'
+      type: 'warning'
+      showCancelButton: true
+      confirmButtonColor: '#ff1d25'
+      cancelButtonColor: '#333333'
+      confirmButtonText: 'Eliminar').then (result) ->
+        if result.value
+          id = $(tr).closest(".row_hover").find(".hidden_id").val()
+          $.ajax
+            type: "POST"
+            url: "/administrator/users/delete"
+            data: id: id
+            dataType: "text",
+            success: (data) ->
+              $(tr).closest(".row_hover").remove()
+              swal 'Eliminado', 'El usuario ha sido eliminado', 'success'
+        return
+    return
+
+administrator_exercises_table_events = ->
+  $('.administrador_tacha').click ->
+    if $("#popup_select_categories").val() == "1"
+      swal 'Error', 'No se pueden eliminar ejercicios fundamentales.', 'warning'
+    else
+      tr = $(this).closest("tr")
+      swal(
+        title: '¿Estás seguro que deseas borrar?'
+        text: 'No podras recuperar este ejercicio'
+        type: 'warning'
+        showCancelButton: true
+        confirmButtonColor: '#ff1d25'
+        cancelButtonColor: '#333333'
+        confirmButtonText: 'Eliminar').then (result) ->
+        if result.value
+          id = $(tr).data("exercise")
+          $.ajax
+            type: "POST"
+            url: "/administrator/exercises/delete_exercise"
+            data: id: id
+            dataType: "text",
+            success: (data) ->
+              $(tr).remove()
+              swal 'Eliminado', 'El ejercicio ha sido eliminado.', 'success'
+        return
+      return
+  $('.swal2-confirm').click ->
+    $(this).closest('tr').slideUp 0
+    return
   $(".administrador_puntos").click ->
     $(".banner_top h1").text("Editar Ejercicio")
     $(".btn_aceptar_nuevo_ejer").text("Editar")
@@ -238,7 +336,7 @@ administrator_exercises_edit = ->
     $('#admin_popup').removeClass 'animated bounceOutUp'
     $('#admin_popup').removeAttr 'style'
     $('#admin_popup').show()
-
+  
 administrator_exercises_fill_table = (category_id) ->
   $.ajax
     type: "GET"
@@ -263,4 +361,4 @@ administrator_exercises_fill_table = (category_id) ->
                   </tr>'
         $(".tabla_ejercicios tbody").html(html)
         $(".administradores_ejercicios_totales").text( data.exercises.length + " EJERCICIOS TOTALES")
-        administrator_exercises_edit()
+        administrator_exercises_table_events()
