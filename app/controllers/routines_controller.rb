@@ -11,13 +11,17 @@ class RoutinesController < ApplicationController
         end
 
         today = Date.today
-        # today = Date.parse("20181218")
+        # today = Date.parse("20181222")
         if today.wday != 0
             @week_hash[today.wday - 1]["active"] = 1 
         end
         @restday = today.wday == 0 ? true : false
         @mostrar_modal =  false
-        @test = current_user.user_information.stage_week == 4 ? true : false
+        @test = false
+        if current_user.user_information.stage_week == 4 and [1,2].include?(today.wday) 
+            @test = true 
+        end
+
         if @restday
             routine_exist = 0
         else
@@ -155,7 +159,7 @@ class RoutinesController < ApplicationController
     end
 
     def create
-        user_routine = UserRoutine.where(user_id: current_user.id, date:  Date.today)
+        user_routine = UserRoutine.where(user_id: current_user.id, date: Date.today)
         if user_routine.blank?
             create_routine_complete()
             user_routine = UserRoutine.where(user_id: current_user.id, date: Date.today)

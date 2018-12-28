@@ -88,8 +88,29 @@
 .sistema_r_ejercicio_centro{
   height: 100%;
   width: 100%;
-  background-color: #fff;
+  background-image: url("https://img.youtube.com/vi/WtACQtpSSAA/hqdefault.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
+}
+
+.sistema_r_videopopup{
+  height: 42.5vw;
+  width: 70vw;
+  background-color: white;
+  position: absolute;
+  z-index: 5;
+  left: 10%;
+  top: 10%;
+}
+
+#sistema_r_cerrar{
+  position: absolute;
+  left: 78.5vw;
+  z-index: 6;
+  margin-top: 0;
+  top: 9%;
 }
 
 #sistema_r_abajo_abajo{
@@ -406,6 +427,18 @@
   .sistema_cancel_tabla_ejercicios {
     width: 6vw;
     height: 6vw;
+  }
+
+  .sistema_r_videopopup{
+    height: 54.643vw;
+    width: 90vw;
+    left: 5%;
+    top: 25%;
+  }
+  
+  #sistema_r_cerrar{
+    left: 90.5vw;
+    top: 23%;
   }
 
 }

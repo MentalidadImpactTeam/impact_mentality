@@ -52,11 +52,12 @@
                                     <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
 
                                         <label class="switch">
-                                            <input type="checkbox">
+                                            <input type="checkbox" <%= if user.user_information.user_type_id == 2 then 'checked' end %> >
                                             <span class="slider round"></span>
                                     </label>
-                                     <i class="fas fa-chart-line"></i>
-                                        <i class="far fa-times-circle"></i>
+                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-chart-line"></i>
+                                    <i class="far fa-times-circle"></i>
                                     </td>
                                 </tr>
                             <% end %>

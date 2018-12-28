@@ -26,6 +26,9 @@ class WebhookController < ApplicationController
         new_pay.start_date = Time.at(object['billing_cycle_start']).to_date
         new_pay.end_date = Time.at(object['billing_cycle_end']).to_date
         new_pay.save
+
+        user.active = 1
+        user.save
       end
     end
 
@@ -40,6 +43,9 @@ class WebhookController < ApplicationController
           subscription.estatus = 0
           subscription.payment_attemps += 1
           subscription.save
+
+          user.active = 0
+          user.save
         end
       end
     end
@@ -53,6 +59,9 @@ class WebhookController < ApplicationController
         if subscription.present?
           subscription.estatus = 0
           subscription.save
+
+          user.active = 0
+          user.save
         end
     end
 

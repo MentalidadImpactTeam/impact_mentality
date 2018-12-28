@@ -8,6 +8,7 @@ RoutinesController::index = ->
       customClass: 'questionario_modal'
       confirmButtonText: 'Siguiente'
       showCancelButton: false
+      heightAuto: false
       progressSteps: [
         '1'
         '2'
@@ -50,7 +51,7 @@ RoutinesController::index = ->
                 window.location.href = "/routines"
         else
           swal({
-            heightAuto: false
+            heightAuto: false,
             title: 'Favor de ingresar solo valores entre el rango del 1 al 5',
             confirmButtonText: 'Aceptar'
             }).then (response) ->
@@ -69,6 +70,7 @@ RoutinesController::index = ->
         html: '<input id="input_pruebas_number" type="number" placeholder="máximo de pruebas"><p id="unidad_prueba">kg</p>',
         showCloseButton: true,
         showCancelButton: true,
+        heightAuto: false,
         focusConfirm: false,
         confirmButtonText: '<i class="fa fa-thumbs-up"></i> Aceptar',
         confirmButtonAriaLabel: 'Thumbs up, great!',
