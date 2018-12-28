@@ -5,7 +5,7 @@ DashboardController::index = ->
   exercise_graph()
   $("#exercise_graph").change ->
     exercise_graph()
-  
+
 DashboardController::player_list = ->
   metodos_menu("LISTA JUGADORES")
   $('.dashboard_jugador').on 'click', ->
@@ -73,7 +73,6 @@ DashboardController::player_list = ->
             $('.profile_jugador').on 'click', ->
               window.location.href = "/profiles/" + $(this).closest(".row_hover").data("id")
             swal('Exito','Se agrego el jugador','success',"heightAuto: false")
-
   $('.delete_jugador').on 'click', ->
     $row =  $(this).closest(".row_hover")
     swal({
@@ -161,7 +160,7 @@ exercise_graph = ->
         type: 'line'
         data: data
         options: options)
-      
+
 @metodos_menu = (titulo) ->
   $(".titulo_mobile_header").text(titulo)
   $('.burger_menu').on 'click', ->
@@ -183,7 +182,7 @@ exercise_graph = ->
         $('.sistema_container').addClass 'sistema_container_reduce'
         return
       ), 400
-    return
+
   $('.burger_menu_mobile').on 'click', ->
     if $('#menu_mobile_desplegado').hasClass('desplegado') == false
       $('.burger_menu_mobile').attr 'src', 'img/cancel-music.png'

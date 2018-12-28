@@ -39,6 +39,7 @@
   </head>
 
   <body class="body_sistema">
+    <div class='animated bounceIn tooltip_mobile'>Aquí tendrás acceso a tu menú.</div>
     <!-- Menu Cellphone -->
     <div class="sistema_mobile_menu">
         <!-- Just an image -->
@@ -46,7 +47,7 @@
             <a class="navbar-brand" href="#">
                 <%= image_tag("ImpactMentalityIcon-01", style: "height: 30px; width:30px;" ) %>
             </a>
-            <span class="titulo_mobile_header" style=""></span>
+            <span class="titulo_mobile_header"></span>
             <%= image_tag("hamburger-icon", class: "burger_menu_mobile", width: "25px", height: "25px" ) %>
         </nav>
         <ul id="menu_mobile_desplegado">
@@ -158,3 +159,21 @@
     });
   </script>
 </html>
+
+<style>
+.tooltip_mobile{
+    animation-delay:1s;
+    display:block;
+    position:absolute;
+    transform-origin:top right;
+    z-index:10000;
+    background-color:#111012;
+    border-radius:15px 0px 15px 15px;
+    padding: 15px;
+    color:white;
+    font-family:lato;
+    top:13vw;
+    left:27vw;
+}
+</style>
+
