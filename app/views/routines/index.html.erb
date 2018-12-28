@@ -41,6 +41,8 @@
     </div>
 </div>
 <div class="sistema_contenido d-flex flex-column">
+    <div class="sistema_cuenta_cerrar" id="sistema_r_cerrar"></div>
+    <iframe class="sistema_r_videopopup" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <input type="hidden" class="hidden_modal" value="<%= @mostrar_modal %>">
     <!-- INFORMACION DE EJERCICIO -->
     <div id="sistema_r_contenedorinfo" class="flex-column justify-content-center align-items-center">
@@ -123,7 +125,7 @@
                         <i class="checkmark_rutina fas fa-check"></i>
                         <% end %>
                     </div>
-                    <div class="sistema_r_ejercicio_centro"></div>
+                    <div class="sistema_r_ejercicio_centro" id="https://www.youtube.com/embed/WtACQtpSSAA"></div>
                     <div class="sistema_r_ejercicio_abajo align-items-center flex-row justify-content-between">
                         <div class="sistema_r_nombreejercicio">
                             <% if @test %>
@@ -204,6 +206,8 @@
 <% end %>
 
 <script>
+    $(".sistema_r_videopopup").hide();
+    $("#sistema_r_cerrar").hide();
         var tabla = $("#sistema_rutina_cambio_table");
         var info = $("#sistema_r_contenedorinfo");
 
@@ -227,6 +231,19 @@
 
         $(".sistema_r_infoejercicio_boton").on("click", function(event){
             $(this).parent().parent().css("display","none");
+        });
+        
+        $(".sistema_r_ejercicio_centro").click(function(){
+            var src = $(this).attr('id'); 
+            src = src + "?&rel=0&loop=1&showinfo=0&modestbranding=1&controls=0&autoplay=1";
+            $(".sistema_r_videopopup").attr('src',src);
+            $("#sistema_r_cerrar").show();
+            $(".sistema_r_videopopup").show();
+            $("#sistema_r_cerrar").click(function(){
+                $(".sistema_r_videopopup").hide();
+                $(".sistema_r_videopopup").attr('src',"");
+                $("#sistema_r_cerrar").hide();
+            });
         });
 </script>
 
