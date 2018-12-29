@@ -39,21 +39,6 @@
   </head>
 
   <body class="body_sistema">
-<<<<<<< HEAD
-    <div class='animated bounceIn tooltip_mobile'>Aquí tendrás acceso a tu menú.</div>
-    <!-- Menu Cellphone -->
-    <div class="sistema_mobile_menu">
-        <!-- Just an image -->
-        <nav class="animated slideInDown navbar">
-            <a class="navbar-brand" href="#">
-                <%= image_tag("ImpactMentalityIcon-01", style: "height: 30px; width:30px;" ) %>
-            </a>
-            <span class="titulo_mobile_header"></span>
-            <%= image_tag("hamburger-icon", class: "burger_menu_mobile", width: "25px", height: "25px" ) %>
-        </nav>
-        <ul id="menu_mobile_desplegado">
-            <% if current_user.user_information.user_type_id == 2 %>
-=======
     <% if !@from_admin %>
         <!-- Menu Cellphone -->
         <div class="sistema_mobile_menu">
@@ -72,7 +57,6 @@
                         <%= link_to 'Jugadores', player_list_path, { rel: "noopener noreferrer"} %>
                     </li>
                 <% end %>
->>>>>>> 8256ab57fe2a5b5323b8ba196f22ee3fd599e1f4
                 <li style="background-color:#5f5f5f;">
                 <i class="iconos_mobile fas fa-dumbbell"></i>
                     <%= link_to 'Rutina', routines_path,{ rel: "noopener noreferrer"} %>
