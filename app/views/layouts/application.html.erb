@@ -4,6 +4,9 @@
     <title>Mentalidad Impact</title>
     <%= csrf_meta_tags %>
 
+    <!-- Include Tippy -->
+    <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
+
     <!-- Lastest Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.conekta.io/js/latest/conekta.js"></script>
@@ -41,14 +44,14 @@
   <body class="body_sistema">
     <% if !@from_admin %>
         <!-- Menu Cellphone -->
-        <div class="sistema_mobile_menu">
+        <div data-tippy="Dando clíc en el ícono de la derecha se desplegará el menú" class="sistema_mobile_menu">
             <!-- Just an image -->
             <nav class="animated slideInDown navbar">
                 <a class="navbar-brand" href="#">
                     <%= image_tag("ImpactMentalityIcon-01", style: "height: 30px; width:30px;" ) %>
                 </a>
-                <span class="titulo_mobile_header" style=""></span>
-                <%= image_tag("hamburger-icon", class: "burger_menu_mobile", width: "25px", height: "25px" ) %>
+                <span  class="titulo_mobile_header"></span>
+                <%= image_tag("hamburger-icon", class: "burger_menu_mobile", width: "25px", height: "25px") %>
             </nav>
             <ul id="menu_mobile_desplegado">
                 <% if current_user.user_information.user_type_id == 2 %>
@@ -154,26 +157,18 @@
   </body>
 
   <script>
+    tippy.setDefaults({
+    arrow: true,
+    arrowType: 'round',
+    duration: 0,
+    placement:'bottom',
+    trigger:'manual',
+    showOnInit:'true'
+    })
+
     $(document).ready(function(){
       Paloma.start();
     });
+
   </script>
 </html>
-
-<style>
-.tooltip_mobile{
-    animation-delay:1s;
-    display:block;
-    position:absolute;
-    transform-origin:top right;
-    z-index:10000;
-    background-color:#111012;
-    border-radius:15px 0px 15px 15px;
-    padding: 15px;
-    color:white;
-    font-family:lato;
-    top:13vw;
-    left:27vw;
-}
-</style>
-

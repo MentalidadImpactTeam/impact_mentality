@@ -18,3 +18,4 @@
 //= require accounts
 //= require profiles
 //= require cleave.min
+//= require popper
