@@ -279,6 +279,7 @@
   border: 1px solid grey;
   font-family: lato;
   width: 50%;
+  margin:0 0 4vw 0;
   text-align: center;
   height: 50px;
   transition: all .5s;
@@ -375,7 +376,7 @@ table {
 
 table thead tr th {
   background-color: red;
-  padding: 15px 0;
+  padding: 15px 0 15px 15px;
   color: white;
   font-family: lato;
   font-size: 1.3vw;
@@ -383,7 +384,7 @@ table thead tr th {
 }
 
 table tbody tr td {
-  padding: 10px 0;
+  padding: 10px 0 0 10px;
   color: white;
   font-family: lato;
   font-size: 1vw;
@@ -411,7 +412,7 @@ table tbody tr:hover {
   .iconos_ajustes_tabla_jugadores i {
       font-size: 5vw;
       transition: all .5s;
-      padding: 15px 0;
+      padding: 15px 5px;
   }
   .columna_eliminada {
       display: none;
@@ -436,13 +437,14 @@ table tbody tr:hover {
   }
   table thead tr th {
       padding: 5px 0;
+      text-align:center;
       transition: all .5s;
       color: white;
       font-size: 3vw;
   }
 
   #filtro_jugadores {
-      height: 25px;
+      height: 35px;
   }
 
   .cantidad_jugadores{

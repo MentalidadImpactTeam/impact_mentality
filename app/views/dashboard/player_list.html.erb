@@ -31,11 +31,9 @@
                 <table id="tabla_lista_miembros">
                     <thead>
                         <tr>
-                            <th></th>
                             <th>JUGADORES</th>
                             <th class="columna_eliminada">CORREO</th>
                             <th>POSICION</th>
-                            <th class="columna_eliminada aliniar_contenido_tabla">SEMANA</th>
                             <th class="columna_eliminada aliniar_contenido_tabla">FECHA INICIO</th>
                             <th class="aliniar_contenido_tabla">AJUSTES</th>
                         </tr>
@@ -44,11 +42,7 @@
                     <tbody>
                         <% @array.each do |player| %>
                           <tr class="row_hover" data-id="<%= player.id %>">
-                              <td>
-                                  <center>
-                                      <div class="imagen_jugador" style="background-image: url(<%= player.user_information.img_url %>);"></div>
-                                  </center>
-                              </td>
+
                               <td>
                                   <p class="nombre_jugador"><%= player.user_information.name %></p>
                                   <p class="escuela_jugador">Cetys Universidad</p>
@@ -60,7 +54,6 @@
                                   <p class="posicion_jugadores"><%= player.user_information.position %></p>
                                   <p class="deporte_jugadores"><%= player.user_information.sport %></p>
                               </td>
-                              <td class="columna_eliminada aliniar_contenido_tabla">5/15 </td>
                               <td class="columna_eliminada aliniar_contenido_tabla"><%= player.created_at.strftime("%d/%m/%Y") %></td>
                               <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
                                   <i class="fas fa-poll dashboard_jugador"></i>

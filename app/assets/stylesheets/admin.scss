@@ -132,11 +132,7 @@
   text-align: center;
 }
 
-.iconos_ajustes_tabla_jugadores i {
-  font-size: 2vw;
-  transition: all .5s;
-  margin: 0 8px;
-}
+
 
 .usuario_activo {
   color: rgb(48, 245, 48);
@@ -211,11 +207,7 @@
       margin: 10px;
       height: 10vw;
   }
-  .iconos_ajustes_tabla_jugadores i {
-      font-size: 5vw;
-      transition: all .5s;
-      padding: 15px 0;
-  }
+
   .columna_eliminada {
       display: none;
   }
