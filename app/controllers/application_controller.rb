@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     elsif resource.user_information.user_type_id == 2
       player_list_path
     elsif resource.user_information.user_type_id == 3
-      root_path
+      dashboard_path
     end
   end
 end
