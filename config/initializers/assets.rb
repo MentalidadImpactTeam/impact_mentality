@@ -16,3 +16,4 @@ Rails.application.config.assets.paths << Rails.root.join('app/assets/javascripts
 
 Rails.application.config.assets.precompile += %w( devise.css devise.js )
 Rails.application.config.assets.precompile += %w( administrator.css administrator.js )
+Rails.application.config.assets.precompile += %w( landing.css )

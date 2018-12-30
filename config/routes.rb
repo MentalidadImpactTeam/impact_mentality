@@ -8,7 +8,10 @@ Rails.application.routes.draw do
     get 'active_trainer_confirmation' => 'users/confirmations#active_trainer_confirmation'
   end
   
-  root to: 'dashboard#index'
+  root to: 'landing#index'
+  get "equipos" => "landing#equipos"
+  get "nosotros" => "landing#nosotros"
+  get "contacto" => "landing#contacto"
 
   get "player_list" => "dashboard#player_list"
   get "dashboard/:id" => 'dashboard#index'
