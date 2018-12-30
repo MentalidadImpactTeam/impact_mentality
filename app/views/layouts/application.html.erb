@@ -40,7 +40,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <%= favicon_link_tag asset_path('favicon.png') %>
   </head>
-
+<button data-tippy="Dando clíc en el ícono de la derecha se desplegará el menú">Tippy</button>
   <body class="body_sistema">
     <% if !@from_admin %>
         <!-- Menu Cellphone -->
@@ -162,7 +162,7 @@
     arrowType: 'round',
     duration: 0,
     placement:'bottom',
-    trigger:'manual',
+    trigger:'hover',
     showOnInit:'true'
     })
 
