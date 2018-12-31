@@ -39,6 +39,8 @@ gem 'devise'
 gem 'paloma', '~> 5.1.0'
 
 gem 'conekta'
+gem 'sidekiq'    
+gem 'whenever', require: false
 
 gem 'figaro'
 gem 'time_difference'
