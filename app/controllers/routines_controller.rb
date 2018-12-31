@@ -185,11 +185,15 @@ class RoutinesController < ApplicationController
     end
 
     def create
-        user_routine = UserRoutine.where(user_id: current_user.id, date: Date.today)
+        today = Date.today
+        if today.wday == 0
+            today = today - 2.day
+        end
+        user_routine = UserRoutine.where(user_id: current_user.id, date: today)
         # user_routine = UserRoutine.where(user_id: current_user.id, date: "20181229")
         if user_routine.blank?
             create_routine_complete()
-            user_routine = UserRoutine.where(user_id: current_user.id, date: Date.today)
+            user_routine = UserRoutine.where(user_id: current_user.id, date: today)
         end
 
         user_routine = user_routine.first
@@ -203,7 +207,7 @@ class RoutinesController < ApplicationController
         current_user.user_information.save
 
         # Si es sabado, hacer rutina de jueves
-        weekday =  Time.now.to_date.wday == 6 ? 4 : Time.now.to_date.wday
+        weekday =  today.wday == 6 ? 4 : today.wday
         # weekday =  5
         if current_user.user_information.stage_week == 4
             # Si es la cuarta semana, es semana de pruebas, crear rutina de pruebas
