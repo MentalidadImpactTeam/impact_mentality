@@ -361,6 +361,8 @@ class RoutinesController < ApplicationController
         elsif date.wday == 2
             # Martes Acondicimiento
             file = "PDFCondicionamiento.pdf"
+        elsif date.wday == 0
+            file = "PDFAgilidad#{week}.pdf"
         end
 
         send_file(
