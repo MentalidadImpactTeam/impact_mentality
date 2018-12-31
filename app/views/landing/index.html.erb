@@ -18,13 +18,13 @@
 
                     <div id="landingmovil_olvidaste" class="animated bounceInLeft"> ¿Olvidaste tu contraseña? </div>
 
-                    <div id="continuar_landing" class="animated bounceInLeft"> Continuar a mentalidadimpact.com</div>
+                    <center><div id="continuar_landing" class="animated bounceInLeft"> Continuar a mentalidadimpact.com</div></center>
 
                 </div>
             </div>
 
         <!-- LANDING NORMAL -->
-        <div class="container-fluid">
+        <div class="landing_normal container-fluid">
 
             <!-- HEADER -->
             <nav id="header_header" class="header_class navbar sticky-top navbar-expand-lg">
@@ -378,6 +378,7 @@
     </script>
 
 <script>
+var key='0';
         var ref = $('#landing_boton1');
         var popup = $('.popper');
         popup.show();
@@ -385,5 +386,12 @@
                 placement: 'bottom'
             });
 
-
+        $('#continuar_landing').on('click', function(){
+         $('#landingmovil_container').css('display','none');
+         $('.landing_normal').css('display','block');
+         window.localStorage.setItem(key, 1);
+         if(window.localStorage.getItem(key)===1){
+             alert('');
+         }
+        });
 </script>

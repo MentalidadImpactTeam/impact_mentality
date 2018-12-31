@@ -20,6 +20,9 @@
   padding:0;
 
   }
+  .landing_normal{
+    display:block;
+  }
 
 html, body {
   height: 100% !important;
@@ -185,8 +188,8 @@ body.swal2-height-auto{
       justify-content: center;
       width: 100%;
   }
-  .container-fluid {
-      display: none !important;
+    .landing_normal{
+      display:none;
     }
 }
 
@@ -2165,6 +2168,7 @@ margin-bottom:30px;
     font-family: lato;
     color: white;
     font-size: 4vw;
+    text-decoration:underline;
     animation-delay:1.6s;
   }
 
