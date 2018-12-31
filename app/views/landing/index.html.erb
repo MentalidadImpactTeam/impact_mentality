@@ -13,24 +13,24 @@
                     </form>
                     <div id="landingmovil_iniciar" class="landingmovil_botones"> Iniciar sesión </div>
                     <div id="landingmovil_registrate" class="landingmovil_botones"> Regístrate </div>
-        
-                    <div id="landingmovil_olvidaste"> ¿Olvidaste tu contraseña? </div> 
-        
-                    <div style="color: #1e1e1e; margin-top: 10vw;"> Continuar a mentalidadimpact.com</div>
-                    
+
+                    <div id="landingmovil_olvidaste"> ¿Olvidaste tu contraseña? </div>
+
+                    <div id="continuar_landing"> Continuar a mentalidadimpact.com</div>
+
                 </div>
             </div>
 
         <!-- LANDING NORMAL -->
         <div class="container-fluid">
-                
+
             <!-- HEADER -->
             <nav id="header_header" class="header_class navbar sticky-top navbar-expand-lg">
                 <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon" id="nav_icon"></span>
                 </button>
                 <a class="navbar-brand" href="/"> <img src="img/impactlogo.png"> </a>
-                
+
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav" >
                             <a href="/equipos" class="nav-item nav-link header_link"> <img src="img/icon.png"> EQUIPOS</a>
@@ -43,7 +43,7 @@
             </nav>
 
             <!-- TITULO -->
-            <div class="row">  
+            <div class="row">
                 <div id="landing_texto_titulo" class="d-flex flex-column">
                     <span id="landing_titulo1">EL SISTEMA DE PREPARACIÓN FÍSICA</span>
                     <span id="landing_titulo2">PARA ATLETAS</span>
@@ -54,7 +54,7 @@
                     <a href="/equipos" id="landing_boton2"> <p> EQUIPOS </p> </a>
                 </div>
             </div>
-            
+
             <!-- #LA REVOLUCION -->
             <div class="row">
                 <div id="landing_revoulucion" class="d-flex">
@@ -62,18 +62,18 @@
                         <span id="landing_revolucion_titulo_la"> #LA </span>
                         <span id="landing_revolucion_titulo_r"> REVOLUCIÓN </span>
                         <span id="landing_revolucion_linea"></span>
-                        <p id="landing_revolucion_titulo_texto"> 
+                        <p id="landing_revolucion_titulo_texto">
                             Somos la primer plataforma en todo Latino América enfocada en la preparación física de alto rendimiento  con más de 10 años de experiencia.
                         </p>
                         <p id="landing_revolucion_titulo_texto2">
-                                Nuestro enfoque es revolucionar la industria del deporte desarrollando atletas <b> más fuertes, más rápidos y con mejores habilidades atléticas </b> para que puedan crear un gran impacto dentro y fuera del campo de juego. 
+                                Nuestro enfoque es revolucionar la industria del deporte desarrollando atletas <b> más fuertes, más rápidos y con mejores habilidades atléticas </b> para que puedan crear un gran impacto dentro y fuera del campo de juego.
                         </p>
                         <div id="landing_boton_contacto"> <p> CONOCE COMO FUNCIONA </p> </div>
                     </span>
                     <span id="landing_revolucion2">
                         <div id="landing_cel"></div>
                         <div id="landing_lap"></div>
-                    </span>     
+                    </span>
                 </div>
             </div>
 
@@ -138,7 +138,7 @@
                     <div id="landing_funciona_right">
                         <div id="landing_funciona_right_img"></div>
                     </div>
-                   
+
                 </div>
             </div>
 
@@ -148,9 +148,9 @@
                     <div id="landing_deportes" class="d-flex flex-column align-items-center">
                         <div id="landing_sistema"> NUESTRO SISTEMA OFRECE MÁS DE 30 DEPORTES</div>
                         <div class="landing_deportes_contenedor d-flex flex-row justify-content-center">
-                            
+
                                 <div id="deportesleft" class="landing_arrow_left"></div>
-                            
+
 
                             <div class="landing_deportes_center">
                                 <div class="landing_deportes_deportes d-flex flex-row flex-wrap justify-content-between align-items-center">
@@ -191,10 +191,10 @@
                                 </div>
                             </div>
 
-                            
+
                                 <div id="deportesright" class="landing_arrow_right"></div>
-                            
-                            
+
+
                         </div>
                     </div>
                 </div>
@@ -236,13 +236,13 @@
                         </div>
 
                         <div class="landing_testimonios_right d-flex justify-content-around">
-                            <div id="testimoniosright" class="landing_arrow_right align-self-center"></div>    
+                            <div id="testimoniosright" class="landing_arrow_right align-self-center"></div>
                             <div class="landing_testimonios_right_img align-self-end"></div>
                         </div>
                     </div>
                 </div>
 
-                
+
             </div>
 
                 <!-- FOOTER -->
@@ -262,14 +262,14 @@
                         <div id="footer_contacto_2" class="">
                             <a href="#" class="footer_fb"> </a> <a href="#" class="footer_tw"> </a> <a href="#" class="footer_inst"> </a> <a href="#" class="footer_yt"> </a>
                         </div>
-                        
+
                         <div id="footer_contacto_3" class="">
                         <a href="/"> <img src="img/impactlogo.png"> </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>       
+        </div>
     </body>
 
     <!-- POPPER -->
@@ -302,7 +302,7 @@
                 /* TESTIMONIOS */
                 var $testimonios = $(".landing_testimonios_center_container_content");
                 var i = 0;
-                
+
                 $("#testimoniosright").on("click", function(){
                     if( i < 2 )
                     {
@@ -313,13 +313,13 @@
                         if(i == 1 || i == -1)
                         {
                             $testimonios.eq(i).css("background-image", "url('img/testimonio2.png')");
-                            
+
                         }
                         if(i == 2)
                         {
                             $testimonios.eq(i).css("background-image", "url('img/testimonio3.png')");
                         }
-                    }  
+                    }
                 });
 
                 $("#testimoniosleft").on("click", function(){
@@ -330,7 +330,7 @@
                         $testimonios.addClass("d-none");
                         $testimonios.eq(i).addClass("d-flex");
                     }
-                    
+
                 });
 
                 /* REGISTRO */
@@ -339,7 +339,7 @@
                         'Aquí va el pop up de registro'
                     );
                 });
-                
+
                 /* SCROLL */
                 $('#landing_boton_contacto').click(function (){
                     $('html, body').animate({
@@ -350,7 +350,7 @@
                 /* CARRUSEL DEPORTES */
                 var $deportes = $(".landing_deportes_deportes");
                 var a = 0;
-                
+
                 $("#deportesright").on("click", function(){
                     if( a < 5 )
                     {
@@ -358,7 +358,7 @@
                         $deportes.removeClass("d-flex");
                         $deportes.addClass("d-none");
                         $deportes.eq(a).addClass("d-flex");
-                    }  
+                    }
                 });
 
                 $("#deportesleft").on("click", function(){
@@ -369,19 +369,19 @@
                         $deportes.addClass("d-none");
                         $deportes.eq(a).addClass("d-flex");
                     }
-                    
+
                 });
-             
+
             });
     </script>
 
 <script>
-        var ref = $('#landing_boton1');        
+        var ref = $('#landing_boton1');
         var popup = $('.popper');
         popup.show();
         var popper = new Popper(ref,popup,{
                 placement: 'bottom'
             });
 
-        
+
 </script>
