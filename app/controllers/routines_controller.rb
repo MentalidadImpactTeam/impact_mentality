@@ -11,7 +11,7 @@ class RoutinesController < ApplicationController
         end
 
         today = Date.today
-        # today = Date.parse("20181222")
+        # today = Date.parse("20181229")
         if today.wday != 0
             @week_hash[today.wday - 1]["active"] = 1 
         end
@@ -32,7 +32,7 @@ class RoutinesController < ApplicationController
             @mostrar_modal = true
         elsif !@restday
             routine_exercises = RoutineExercise.where(user_routine_id: routine.id).order(group: :asc)
-            @hash = { 1 => { "show" => 0, "exercises" => []}, 2 => { "show" => 0, "exercises" => []}, 3 => { "show" => 0, "exercises" => []}, 4 => { "show" => 0, "exercises" => []}, 5 => { "show" => 0, "exercises" => []} }
+            @hash = { 0 => { "show" => 0, "corrida" => "" } ,1 => { "show" => 0, "exercises" => []}, 2 => { "show" => 0, "exercises" => []}, 3 => { "show" => 0, "exercises" => []}, 4 => { "show" => 0, "exercises" => []}, 5 => { "show" => 0, "exercises" => []} }
             routine_exercises.each do |routine_exercise|
                 exercise = Exercise.find(routine_exercise.exercise_id)
                 hash_exercise = { 
@@ -54,9 +54,14 @@ class RoutinesController < ApplicationController
                 group_count = RoutineExercise.where(user_routine_id: routine.id, group: i).count
                 group_done = RoutineExercise.where(user_routine_id: routine.id, group: i, done: 1).count
                 
-                if group_count != group_done
-                    @hash[i]["show"] = 1
+                if group_done == 0 and today.wday < 6
+                    @hash[0]["show"] = 1
                     break
+                else
+                    if group_count != group_done
+                        @hash[i]["show"] = 1
+                        break
+                    end
                 end
             end
 
@@ -69,6 +74,7 @@ class RoutinesController < ApplicationController
 
             array_groups = []
             @hash.keys.each do |key|
+                next if key == 0
                 group_count = @hash[key]["exercises"].length
                 done_count = 0
                 @hash[key]["exercises"].each do |exercise|
@@ -87,79 +93,96 @@ class RoutinesController < ApplicationController
             @previous = ""
             @next = " SERIE #1 "
             @routine_finished = false
-            array_groups.each_with_index do |group_counts, index|
-                group = index + 1
-                if group == 1
-                    if group_counts[:count] == group_counts[:done]
-                        @warm_width = 100
-                    else
-                        @warm_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * 100).to_i
-                    end
-                    @progress_name = " WARM UP / PREHABS "
-                    break if @hash[group]["show"] == 1
-                elsif group == 2
-                    if group_counts[:count] == group_counts[:done]
-                        @triserie_width = groups_total == 4 ? 50 : 33
-                    else
-                        total_porcentage = groups_total == 4 ? 50 : 33
-                        @triserie_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * total_porcentage).to_i
-                    end
-                    @progress_name = " SERIE #1 "
-                    @previous = " WARM UP / PREHABS "
-                    @next = " SERIE #2 "
-                    break if @hash[group]["show"] == 1
-                elsif group == 3
-                    @progress_name = " SERIE #2 "
-                    @previous = " SERIE #1 "
-                    @next = groups_total == 4 ? " FINISHERS " : " SERIE #3 "
-                    break if @hash[group]["show"] == 1
-                    if group_counts[:count] == group_counts[:done]
-                        @triserie_width = groups_total == 4 ? 100 : 66
-                    else
-                        total_porcentage = groups_total == 4 ? 100 : 66
-                        @triserie_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * total_porcentage).to_i
-                    end
-                elsif group == 4
-                    @progress_name = " SERIE #3 "
-                    @previous = " SERIE #2 "
-                    @next = " FINISHERS "         
-                    if groups_total == 4
-                        @progress_name = " FINISHERS "
+
+            if @hash[0]["show"] == 1
+                @next = " WARM UP / PREHABS "
+                @progress_name = " VELOCIDAD " if [1,4].include?(today.wday)
+                @progress_name = " AGILIDAD " if [3,5].include?(today.wday)
+                @progress_name = " ACONDICIONAMIENTO " if today.wday == 2
+
+                @hash[0]['corrida'] = @progress_name
+            else
+                array_groups.each_with_index do |group_counts, index|
+                    group = index + 1
+                    if group == 1
+                        if group_counts[:count] == group_counts[:done]
+                            @warm_width = 100
+                        else
+                            @warm_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * 100).to_i
+                        end
+                        @previous = " VELOCIDAD " if [1,4].include?(today.wday)
+                        @previous = " AGILIDAD " if [3,5].include?(today.wday)
+                        @previous = " ACONDICIONAMIENTO " if today.wday == 2
+                        @hash[0]['corrida'] = @previous
+
+                        @progress_name = " WARM UP / PREHABS "
+                        break if @hash[group]["show"] == 1
+                    elsif group == 2
+                        if group_counts[:count] == group_counts[:done]
+                            @triserie_width = groups_total == 4 ? 50 : 33
+                        else
+                            total_porcentage = groups_total == 4 ? 50 : 33
+                            @triserie_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * total_porcentage).to_i
+                        end
+                        @progress_name = " SERIE #1 "
+                        @previous = " WARM UP / PREHABS "
+                        @next = " SERIE #2 "
+                        break if @hash[group]["show"] == 1
+                    elsif group == 3
+                        @progress_name = " SERIE #2 "
+                        @previous = " SERIE #1 "
+                        @next = groups_total == 4 ? " FINISHERS " : " SERIE #3 "
+                        break if @hash[group]["show"] == 1
+                        if group_counts[:count] == group_counts[:done]
+                            @triserie_width = groups_total == 4 ? 100 : 66
+                        else
+                            total_porcentage = groups_total == 4 ? 100 : 66
+                            @triserie_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * total_porcentage).to_i
+                        end
+                    elsif group == 4
+                        @progress_name = " SERIE #3 "
                         @previous = " SERIE #2 "
+                        @next = " FINISHERS "         
+                        if groups_total == 4
+                            @progress_name = " FINISHERS "
+                            @previous = " SERIE #2 "
+                            @next = " DONE "
+                            if group_counts[:count] == group_counts[:done]
+                                @finisher_width = 100
+                                @routine_finished = true
+                                @progress_name = " DONE "
+                                @previous = " FINISHERS"
+                            else
+                                @finisher_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * 100).to_i
+                            end
+                            break if @hash[group]["show"] == 1    
+                        else
+                            if group_counts[:count] == group_counts[:done]
+                                @triserie_width = 100
+                            else
+                                @triserie_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * 100).to_i
+                            end
+                        end       
+                    elsif group == 5
+                        @progress_name = " FINISHERS "
+                        @previous = " SERIE #3 "
                         @next = " DONE "
                         if group_counts[:count] == group_counts[:done]
                             @finisher_width = 100
                             @routine_finished = true
-                            @progress_name = " DONE "
-                            @previous = " FINISHERS"
                         else
                             @finisher_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * 100).to_i
                         end
-                        break if @hash[group]["show"] == 1    
-                    else
-                        if group_counts[:count] == group_counts[:done]
-                            @triserie_width = 100
-                        else
-                            @triserie_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * 100).to_i
-                        end
-                    end       
-                elsif group == 5
-                    @progress_name = " FINISHERS "
-                    @previous = " SERIE #3 "
-                    @next = " DONE "
-                    if group_counts[:count] == group_counts[:done]
-                        @finisher_width = 100
-                        @routine_finished = true
-                    else
-                        @finisher_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * 100).to_i
                     end
                 end
             end
+
         end
     end
 
     def create
         user_routine = UserRoutine.where(user_id: current_user.id, date: Date.today)
+        # user_routine = UserRoutine.where(user_id: current_user.id, date: "20181229")
         if user_routine.blank?
             create_routine_complete()
             user_routine = UserRoutine.where(user_id: current_user.id, date: Date.today)
@@ -177,7 +200,7 @@ class RoutinesController < ApplicationController
 
         # Si es sabado, hacer rutina de jueves
         weekday =  Time.now.to_date.wday == 6 ? 4 : Time.now.to_date.wday
-        # weekday =  2
+        # weekday =  5
         if current_user.user_information.stage_week == 4
             # Si es la cuarta semana, es semana de pruebas, crear rutina de pruebas
             configuration =  TestConfiguration.where(day: weekday)
@@ -315,6 +338,28 @@ class RoutinesController < ApplicationController
         test_result.stage_id = UserRoutine.where(user_id: current_user.id, date:  Date.today).first.stage_id
         test_result.save
         render plain: "OK"    
+    end
+
+    def download_pdf
+        date = Date.today
+        week = current_user.user_information.stage_week
+
+        if [1,4].include?(date.wday)
+            # Lunes / Jueves Velocidad
+            file = "PDFVelocidad#{week}.pdf"
+        elsif [3,5].include?(date.wday)
+            # Miercoles / Viernes Agilidad
+            file = "PDFAgilidad#{week}.pdf"
+        elsif date.wday == 2
+            # Martes Acondicimiento
+            file = "PDFCondicionamiento.pdf"
+        end
+
+        send_file(
+            "#{Rails.root}/public/pdf/#{file}",
+            filename: file,
+            type: "application/pdf"
+        )
     end
 
     def date_description(date)

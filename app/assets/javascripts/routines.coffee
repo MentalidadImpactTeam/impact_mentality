@@ -108,55 +108,60 @@ RoutinesController::index = ->
     else
       div_active =  $(".active")
       group = div_active.find(".hidden_group").val()
-      group_total = $(".sistema_r_centro").find(".hidden_group").length
+      group_total = $(".sistema_r_centro").find(".hidden_group").length - 1
       $("#flecha_anterior").addClass("d-flex").show()
       if parseInt(group) == group_total
         $(".sistema_r_centro_der").hide().removeClass("d-flex")
 
-      if group_total == 4
-        if group == "1"
-          $("#barra_warmup").css("width", "100%")
-          $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
-          $("#sistema_r_progresonombre").text(" SERIE #1 ")
-          $("#sistema_r_siguientefase").text(" SERIE #2 ")
-        else if group == "2"
-          $("#sistema_r_anteriorfase").text(" SERIE #1 ")
-          $("#sistema_r_progresonombre").text(" SERIE #2 ")
-          $("#sistema_r_siguientefase").text(" FINISHERS ")
-        else if group == "3"
-          $("#barra_tricerie").css("width", "100%")
-          $("#sistema_r_anteriorfase").text(" SERIE #2 ")
-          $("#sistema_r_progresonombre").text(" FINISHERS ")
-          $("#sistema_r_siguientefase").text(" DONE ")
-        else if group == "4"
-          $("#barra_finishers").css("width", "100%")
-          $("#sistema_r_anteriorfase").text(" FINISHERS ")
-          $("#sistema_r_progresonombre").text(" DONE ")
-          $("#rutina_finalizada").css("display", "block")
-      else if group_total == 5
-        if group == "1"
-          $("#barra_warmup").css("width", "100%")
-          $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
-          $("#sistema_r_progresonombre").text(" SERIE #1 ")
-          $("#sistema_r_siguientefase").text(" SERIE #2 ")
-        else if group == "2"
-          $("#sistema_r_anteriorfase").text(" SERIE #1 ")
-          $("#sistema_r_progresonombre").text(" SERIE #2 ")
-          $("#sistema_r_siguientefase").text(" SERIE #3 ")
-        else if group == "3"
-          $("#sistema_r_anteriorfase").text(" SERIE #2 ")
-          $("#sistema_r_progresonombre").text(" SERIE #3 ")
-          $("#sistema_r_siguientefase").text(" FINISHERS ")
-        else if group == "4"
-          $("#barra_tricerie").css("width", "100%")
-          $("#sistema_r_anteriorfase").text(" SERIE #3 ")
-          $("#sistema_r_progresonombre").text(" FINISHERS ")
-          $("#sistema_r_siguientefase").text(" DONE ")
-        else if group == "5"
-          $("#barra_finishers").css("width", "100%")
-          $("#sistema_r_anteriorfase").text(" FINISHERS ")
-          $("#sistema_r_progresonombre").text(" DONE ")
-          $("#rutina_finalizada").css("display", "block")
+      if group == "0"
+        $("#sistema_r_anteriorfase").text(div_active.find(".hidden_corrida").val())
+        $("#sistema_r_progresonombre").text(" WARM UP / PREHABS ")
+        $("#sistema_r_siguientefase").text(" SERIE #1 ")
+      else
+        if group_total == 4
+          if group == "1"
+            $("#barra_warmup").css("width", "100%")
+            $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
+            $("#sistema_r_progresonombre").text(" SERIE #1 ")
+            $("#sistema_r_siguientefase").text(" SERIE #2 ")
+          else if group == "2"
+            $("#sistema_r_anteriorfase").text(" SERIE #1 ")
+            $("#sistema_r_progresonombre").text(" SERIE #2 ")
+            $("#sistema_r_siguientefase").text(" FINISHERS ")
+          else if group == "3"
+            $("#barra_tricerie").css("width", "100%")
+            $("#sistema_r_anteriorfase").text(" SERIE #2 ")
+            $("#sistema_r_progresonombre").text(" FINISHERS ")
+            $("#sistema_r_siguientefase").text(" DONE ")
+          else if group == "4"
+            $("#barra_finishers").css("width", "100%")
+            $("#sistema_r_anteriorfase").text(" FINISHERS ")
+            $("#sistema_r_progresonombre").text(" DONE ")
+            $("#rutina_finalizada").css("display", "block")
+        else if group_total == 5
+          if group == "1"
+            $("#barra_warmup").css("width", "100%")
+            $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
+            $("#sistema_r_progresonombre").text(" SERIE #1 ")
+            $("#sistema_r_siguientefase").text(" SERIE #2 ")
+          else if group == "2"
+            $("#sistema_r_anteriorfase").text(" SERIE #1 ")
+            $("#sistema_r_progresonombre").text(" SERIE #2 ")
+            $("#sistema_r_siguientefase").text(" SERIE #3 ")
+          else if group == "3"
+            $("#sistema_r_anteriorfase").text(" SERIE #2 ")
+            $("#sistema_r_progresonombre").text(" SERIE #3 ")
+            $("#sistema_r_siguientefase").text(" FINISHERS ")
+          else if group == "4"
+            $("#barra_tricerie").css("width", "100%")
+            $("#sistema_r_anteriorfase").text(" SERIE #3 ")
+            $("#sistema_r_progresonombre").text(" FINISHERS ")
+            $("#sistema_r_siguientefase").text(" DONE ")
+          else if group == "5"
+            $("#barra_finishers").css("width", "100%")
+            $("#sistema_r_anteriorfase").text(" FINISHERS ")
+            $("#sistema_r_progresonombre").text(" DONE ")
+            $("#rutina_finalizada").css("display", "block")
 
       div_active.addClass 'animated bounceOutLeft'
       setTimeout (->
@@ -178,13 +183,17 @@ RoutinesController::index = ->
     if div_active.length == 0
       div_active = $(".sistema_r_centro:last")
     group = div_active.find(".hidden_group").val()
-    group_total = $(".sistema_r_centro").find(".hidden_group").length
-    if group == "2"
+    group_total = $(".sistema_r_centro").find(".hidden_group").length - 1
+    if group == "1"
       $("#flecha_anterior").removeClass("d-flex").hide()
     else
       $("#flecha_anterior").addClass("d-flex").show()
     if group_total == 4
-      if group == "2"
+      if group == "1"
+        $("#sistema_r_anteriorfase").text($(".sistema_r_centro .hidden_corrida").val())
+        $("#sistema_r_progresonombre").text($(".sistema_r_centro .hidden_corrida").val())
+        $("#sistema_r_siguientefase").text(" WARM UP / PREHABS ")
+      else if group == "2"
         $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
         $("#sistema_r_progresonombre").text(" WARM UP / PREHABS ")
         $("#sistema_r_siguientefase").text(" SERIE #1 ")
@@ -203,7 +212,11 @@ RoutinesController::index = ->
         $("#sistema_r_siguientefase").text(" DONE ")
         $(".sistema_r_centro_der").removeAttr("style")
     else if group_total == 5
-      if group == "2"
+      if group == "1"
+        $("#sistema_r_anteriorfase").text($(".sistema_r_centro .hidden_corrida").val())
+        $("#sistema_r_progresonombre").text($(".sistema_r_centro .hidden_corrida").val())
+        $("#sistema_r_siguientefase").text(" WARM UP / PREHABS ")
+      else if group == "2"
         $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
         $("#sistema_r_progresonombre").text(" WARM UP / PREHABS ")
         $("#sistema_r_siguientefase").text(" SERIE #1 ")
@@ -226,15 +239,18 @@ RoutinesController::index = ->
       div_active.addClass 'animated bounceOutRight'
       setTimeout (->
         div_active.hide().removeClass("d-flex active")
-        div_active.parent().find(".sistema_r_centro input[value=" + (parseInt(group) - 1) + "]").parent().removeAttr("style").removeClass("bounceInRight animated bounceOutLeft").addClass("d-flex bounceInLeft animated active")
-        if group != "2"
+        find_text = ".sistema_r_centro input[value=" + (parseInt(group) - 1) + "]"
+        if group == "1"
+          find_text = ".sistema_r_centro .hidden_corrida"
+        div_active.parent().find(find_text).parent().removeAttr("style").removeClass("bounceInRight animated bounceOutLeft").addClass("d-flex bounceInLeft animated active")
+        if group != "1"
           $("#flecha_anterior").removeAttr("style")
         return
       ), 700
     else
       div_active.hide().removeClass("d-flex active")
       div_active.parent().find(".sistema_r_centro input[value=" + (parseInt(group) - 1) + "]").parent().removeAttr("style").removeClass("bounceInRight animated bounceOutLeft").addClass("d-flex bounceInLeft animated active")
-      if group != "2"
+      if group != "1"
         $("#flecha_anterior").removeAttr("style")
 
   $(".sistema_r_cambiaricono").click ->

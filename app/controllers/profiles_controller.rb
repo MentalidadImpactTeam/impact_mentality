@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
     @trainer = TrainerPlayer.find_by(user_id: @user.id)
 
     @card = UserConektaToken.find_by(user_id: @user.id, default: 1)
-    @trainings = UserRoutine.where(user_id: @user.id).count
+    @trainings = UserRoutine.where("user_id = #{@user.id} and day != 7").count
     @trainings_complete = UserRoutine.where("user_id = #{@user.id} and done = 1 and day != 7").count
 
     @stage_width = (((@user.user_information.stage_process.to_f - 1) / @user.user_information.stage_count.to_f) * 100).round

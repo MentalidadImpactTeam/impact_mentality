@@ -91,20 +91,68 @@
                 <div class="sistema_r_anteriormovil"><%= @previous %></div>
             </div>
         </div>
+
         <!-- EJERCICIOS -->
         <% @hash.keys.each do |group| %>
-            <div class="sistema_r_centro d-flex <%= if @hash[group]["show"] == 1 then "active" end %>" style="<%= if @hash[group]["show"] == 0 then "display: none !important" else "" end %>">
-            <input type="hidden" class="hidden_group" value="<%= group %>">
-            <% @hash[group]["exercises"].each do |exercise| %>
-                <!-- EJERCICIO -->
-                <div class="sistema_r_ejercicio d-flex <%= if exercise["done"] == 1 then "ejer_terminado" end %>">
-                    <input type="hidden" class="hidden_exercise" value="<%= exercise['id'] %>" data-routine="<%= exercise['routine_exercise_id']%>">
-                    <input type="hidden" class="hidden_exercise_description" value="<%= exercise['description'] %>">
-                    <input type="hidden" class="hidden_exercise_test" value="<%= exercise['test'] %>">
-                    <div class="sistema_r_ejercicio_arriba d-flex align-items-center flex-row justify-content-between">
-                        <div class="sistema_r_tipoejercicio d-flex flex-column">
-                            <div> <%= exercise['name'] %>  </div>
-                            <div class="sistema_r_repeticionesmovil">
+            <% if group == 0 %>
+                <!-- DESCARGA CORRIDA -->
+                <div class="sistema_r_centro d-flex <%= if @hash[group]["show"] == 1 then "active" end %>" style="<%= if @hash[group]["show"] == 0 then "display: none !important" else "" end %>">
+                    <input type="hidden" class="hidden_group" value="<%= group %>">
+                    <input type="hidden" class="hidden_corrida" value="<%= @hash[group]["corrida"] %>">
+                    <div class="sistema_r_ejercicio d-flex ejer_terminado">
+                        <div class="sistema_r_ejercicio_arriba d-flex align-items-center flex-row justify-content-between">
+                            <div class="sistema_r_tipoejercicio d-flex flex-column">
+                                <div>  </div>
+                                <div class="sistema_r_repeticionesmovil">
+                                </div>
+                            </div>
+                        </div>
+                        <%= link_to download_pdf_routines_path, data: { turbolinks: false } do %>
+                            <div class="sistema_r_download"> </div>
+                        <% end %>
+                        <div class="sistema_r_ejercicio_abajo align-items-center flex-row justify-content-between">
+                            <div class="sistema_r_nombreejercicio">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            <% else %>
+                <div class="sistema_r_centro d-flex <%= if @hash[group]["show"] == 1 then "active" end %>" style="<%= if @hash[group]["show"] == 0 then "display: none !important" else "" end %>">
+                <input type="hidden" class="hidden_group" value="<%= group %>">
+                <% @hash[group]["exercises"].each do |exercise| %>
+                    <!-- EJERCICIO -->
+                    <div class="sistema_r_ejercicio d-flex <%= if exercise["done"] == 1 then "ejer_terminado" end %>">
+                        <input type="hidden" class="hidden_exercise" value="<%= exercise['id'] %>" data-routine="<%= exercise['routine_exercise_id']%>">
+                        <input type="hidden" class="hidden_exercise_description" value="<%= exercise['description'] %>">
+                        <input type="hidden" class="hidden_exercise_test" value="<%= exercise['test'] %>">
+                        <div class="sistema_r_ejercicio_arriba d-flex align-items-center flex-row justify-content-between">
+                            <div class="sistema_r_tipoejercicio d-flex flex-column">
+                                <div> <%= exercise['name'] %>  </div>
+                                <div class="sistema_r_repeticionesmovil">
+                                    <% if @test %>
+                                        <% if group == 1 %>
+                                            <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps.
+                                        <% end %>
+
+                                        <% if exercise['id'] == 171 %>
+                                            <%= exercise["yards"] %> yardas.
+                                        <% end %>
+                                    <% else %>
+                                        <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps.
+                                    <% end %>
+                                </div>
+                            </div>
+                            <% if exercise["category_id"] != 1 and exercise['test'] == "0" %>
+                            <div class="sistema_r_cambiaricono"> </div>
+                            <% end %>
+                            <% if exercise["done"] == 0 %>
+                            <i class="checkmark_rutina fas fa-check"></i>
+                            <% end %>
+                        </div>
+                        <div class="sistema_r_ejercicio_centro" id="https://www.youtube.com/embed/WtACQtpSSAA"></div>
+                        <div class="sistema_r_ejercicio_abajo align-items-center flex-row justify-content-between">
+                            <div class="sistema_r_nombreejercicio">
                                 <% if @test %>
                                     <% if group == 1 %>
                                         <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps.
@@ -117,35 +165,13 @@
                                     <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps.
                                 <% end %>
                             </div>
-                        </div>
-                        <% if exercise["category_id"] != 1 and exercise['test'] == "0" %>
-                        <div class="sistema_r_cambiaricono"> </div>
-                        <% end %>
-                        <% if exercise["done"] == 0 %>
-                        <i class="checkmark_rutina fas fa-check"></i>
-                        <% end %>
-                    </div>
-                    <div class="sistema_r_ejercicio_centro" id="https://www.youtube.com/embed/WtACQtpSSAA"></div>
-                    <div class="sistema_r_ejercicio_abajo align-items-center flex-row justify-content-between">
-                        <div class="sistema_r_nombreejercicio">
-                            <% if @test %>
-                                <% if group == 1 %>
-                                    <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps.
-                                <% end %>
 
-                                <% if exercise['id'] == 171 %>
-                                    <%= exercise["yards"] %> yardas.
-                                <% end %>
-                            <% else %>
-                                <%= exercise["sets"] %> set de <%= exercise["reps"] %> reps.
-                            <% end %>
+                            <div class="sistema_r_infoicono"> </div>
                         </div>
-
-                        <div class="sistema_r_infoicono"> </div>
                     </div>
+                <% end %>
                 </div>
             <% end %>
-            </div>
         <% end %>
 
         <!-- SIG -->

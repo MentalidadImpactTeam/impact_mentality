@@ -40,7 +40,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <%= favicon_link_tag asset_path('favicon.png') %>
   </head>
-<button data-tippy="Dando clíc en el ícono de la derecha se desplegará el menú">Tippy</button>
   <body class="body_sistema">
     <% if !@from_admin %>
         <!-- Menu Cellphone -->
@@ -66,7 +65,7 @@
                 </li>
                 <li style="background-color:#5f5f5f;">
                 <i class="iconos_mobile fas fa-chart-bar"></i>
-                    <%= link_to 'Analíticos', root_path, { rel: "noopener noreferrer"} %>
+                    <%= link_to 'Analíticos', dashboard_path, { rel: "noopener noreferrer"} %>
                 </li>
                 <li style="background-color:#5f5f5f;">
                 <i class="iconos_mobile fas fa-user-circle"></i>
@@ -89,7 +88,7 @@
         <!-- Menu desktop -->
         <div class="menuVertical d--flex">
             <div>
-                <%= link_to image_tag("ImpactMentalityIcon-01", class: "sistema_left_icon", width: "60px" ), root_path %>
+                <%= link_to image_tag("ImpactMentalityIcon-01", class: "sistema_left_icon", width: "60px" ), dashboard_path %>
                 <%= image_tag("MentalidadImpact-01", class: "sistema_descripcion_menu",  width: "120px" ) %>
             </div>
             <div title="Desplegar el menú" class="seccion_menu_left">
@@ -115,7 +114,7 @@
             </div>
             <% end %>
 
-            <%= link_to root_path do %>
+            <%= link_to dashboard_path do %>
                     <div title="Aquí podrás observar tus analíticos." class="seccion_menu_left">
 
                             <i class="sistema_left_icon fas fa-chart-bar"></i>

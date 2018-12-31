@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   post 'rutinas' => "home#rutinas"
   resources :routines do 
     collection do 
+      get "download_pdf" => 'routines#download_pdf'
       post "list_exercises" => 'routines#list_exercises'
       post "change_exercise" => 'routines#change_exercise'
       post "mark_exercise_done" => 'routines#mark_exercise_done'
