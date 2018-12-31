@@ -69,4 +69,9 @@ class DashboardController < ApplicationController
     results = TestResult.where(user_id: current_user.id, exercise_id: params[:exercise_id]).order(id: :asc)
     render json: { :results => results }
   end
+
+  def mailer_test
+    AccountMailer.frase1("miguelbq88@gmail.com").deliver
+    render plain: "OK"
+  end
 end

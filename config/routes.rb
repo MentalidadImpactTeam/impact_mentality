@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post "add_trainer_user" => "dashboard#add_trainer_user"
   post "delete_trainer_user" => "dashboard#delete_trainer_user"
   post "exercise_graph" => "dashboard#exercise_graph"
+  get "mailer" => "dashboard#mailer_test"
 
   post 'rutinas' => "home#rutinas"
   resources :routines do 
