@@ -21,6 +21,6 @@
 set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
 env :PATH, ENV['PATH']
 
-every :monday, at: '4am', :roles => [:whenever_auto] do 
-  runner "ServicesWorker.seguimiento"
+every :sunday, at: '10:58pm', :roles => [:whenever_auto] do 
+  rake "Services:seguimiento"
 end
