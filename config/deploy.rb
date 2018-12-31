@@ -39,3 +39,8 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 # set :ssh_options, verify_host_key: :secure
 
 set :default_env, { path: "~/.rbenv/shims:~/.rbenv/bin:$PATH" }
+
+# Capistrano con Whenever
+set :whenever_roles, -> { [:whenever_auto] }
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+set :whenever_environment, fetch(:stage) # This fetches the appropriate environment
