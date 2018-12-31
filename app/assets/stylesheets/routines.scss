@@ -30,14 +30,20 @@
 #img_rutina_finalizada{
   width:15vw;
 }
+.corrida_container{
+  border: none;
+  box-shadow: none;
+}
 .link_descarga_corrida_container i{
   color: red;
+  margin-top:2vw;
   font-size: 3vw;
 }
 .link_descarga_corrida_container h3{
   font-size: 2vw;
   padding: 10px;
   color: white;
+  margin-top:1vw;
   font-family: lato;
   font-weight: bold;
 }
@@ -72,6 +78,9 @@
 .sistema_r_ejercicio_arriba, .sistema_r_ejercicio_abajo{
   padding: .8vw 1.5vw .8vw 1.5vw;
   display: flex;
+}
+.corrida_container{
+  height:30vw;
 }
 
 
@@ -326,6 +335,10 @@
   line-height: 1.5vw;
 }
 
+.corrida_container{
+  height:20vw !important;
+}
+
 .sistema_r_infoejercicio_texto{
   font-size: 1vw;
   line-height: 1vw;
@@ -417,7 +430,10 @@
   box-shadow: 0 0 100vw 50vw rgba(0,0,0,.7);
   border-radius: 1vw;
 }
-
+.link_descarga_corrida_container h3{
+  font-size:2vw;
+  margin-top:2vw;
+}
 #tabla_titulos{
   background-color: #ff1d25;
 }
@@ -488,6 +504,19 @@
 @media (max-width:  1090px) {
   #img_rutina_finalizada{
     width: 56vw;
+  }
+
+  .corrida_container{
+    height:50vw !important;
+
+  }
+  .link_descarga_corrida_container i{
+    font-size:7vw;
+    margin:30px 10px 10px 10px;
+  }
+  .link_descarga_corrida_container h3{
+    font-size:6vw;
+    margin:10px;
   }
   .terminado_txt{
     font-size: 7vw !important;
