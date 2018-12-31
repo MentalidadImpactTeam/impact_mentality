@@ -2156,6 +2156,9 @@ margin-bottom:30px;
     color: white;
     margin-bottom: 3vw;
   }
+  .landingmovil_botones:active{
+    background-color: #a10005;
+  }
   #continuar_landing{
     color: #1e1e1e;
     margin-top: 7vw;
