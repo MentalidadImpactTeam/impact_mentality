@@ -30,7 +30,31 @@
 #img_rutina_finalizada{
   width:15vw;
 }
-
+.link_descarga_corrida_container i{
+  color: red;
+  font-size: 3vw;
+}
+.link_descarga_corrida_container h3{
+  font-size: 2vw;
+  padding: 10px;
+  color: white;
+  font-family: lato;
+  font-weight: bold;
+}
+.link_descarga_corrida_container button{
+  border-radius: 15px;
+  border: none;
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  box-shadow: 0 0 5px red;
+}
+.link_descarga_corrida_container button:hover{
+  background-color: rgb(188, 3, 3);
+}
+.link_descarga_corrida_container button:active{
+  background-color: rgb(116, 1, 1);
+}
 .sistema_r_ejercicio{
   background-color: #333333;
   height: 18vw;
@@ -85,14 +109,6 @@
   cursor: pointer;
 }
 
-.sistema_r_download{
-  background-image: url('../img/download.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 1.5vw;
-  height: 1.5vw;
-  cursor: pointer;
-}
 
 .sistema_r_ejercicio_centro{
   height: 100%;
@@ -444,7 +460,7 @@
     left: 5%;
     top: 25%;
   }
-  
+
   #sistema_r_cerrar{
     left: 90.5vw;
     top: 23%;

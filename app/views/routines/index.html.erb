@@ -107,9 +107,16 @@
                                 </div>
                             </div>
                         </div>
+
+                        <center class="link_descarga_corrida_container">
+                        <i class="fas fa-arrow-alt-circle-down"></i>
+                        <h3>Corrida de Agilidad</h3>
                         <%= link_to download_pdf_routines_path, data: { turbolinks: false } do %>
-                            <div class="sistema_r_download"> </div>
+                        <button>Descargar PDF</button>
                         <% end %>
+                        </center>
+
+
                         <div class="sistema_r_ejercicio_abajo align-items-center flex-row justify-content-between">
                             <div class="sistema_r_nombreejercicio">
                             </div>
@@ -258,9 +265,9 @@
         $(".sistema_r_infoejercicio_boton").on("click", function(event){
             $(this).parent().parent().css("display","none");
         });
-        
+
         $(".sistema_r_ejercicio_centro").click(function(){
-            var src = $(this).attr('id'); 
+            var src = $(this).attr('id');
             src = src + "?&rel=0&loop=1&showinfo=0&modestbranding=1&controls=0&autoplay=1";
             $(".sistema_r_videopopup").attr('src',src);
             $("#sistema_r_cerrar").show();
