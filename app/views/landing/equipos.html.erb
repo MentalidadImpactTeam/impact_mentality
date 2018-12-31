@@ -1,26 +1,10 @@
 <body id="landingequipos_body">
         <div class="container-fluid">
-                
-             <!-- HEADER -->
-             <nav id="header_header" class="header_class navbar sticky-top navbar-expand-lg">
-                <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon" id="nav_icon"></span>
-                </button>
-                <a class="navbar-brand" href="/"> <img src="img/impactlogo.png"> </a>
-                
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav" >
-                            <a href="/equipos" class="nav-item nav-link header_link"> <img src="img/icon.png"> EQUIPOS</a>
-                            <a href="#" class="nav-item nav-link header_link"> <img src="img/icon.png" > BLOG</a>
-                            <a href="/nosotros" class="nav-item nav-link header_link"> <img src="img/icon.png" > NOSOTROS</a>
-                            <a href="/contacto" class="nav-item nav-link header_link"> <img src="img/icon.png"> CONTACTO</a>
-                            <a href="/users/sign_in" class="nav-item nav-link header_login d-flex justify-content-center"> <p class="align-self-center"> LOG IN </p></a>
-                    </div>
-                </div>
-            </nav>
+
+   <%= render "header_landing" %>
 
             <!-- TITULO -->
-            <div class="row">  
+            <div class="row">
                 <div id="landing2_texto_titulo" class="d-flex flex-wrap">
                     <span id="landing2_titulo1">DESARROLLA LAS HABILIDADES PARA CONQUISTAR </span>
                     <span id="landing2_titulo2">FÍSICA Y MENTALMENTE EL JUEGO</span>
@@ -45,7 +29,7 @@
                                         <li> Nuestro sistema para entrenadores y equipos esta diseñado en base a estudios científicos </li>
                                         <li> Disminuye lesiones y mejora el rendimiento en tu equipo </li>
                                         <li> Ponemos a tu disposición el expertise de nuestro staff altamente capacitado y certificado para que construyas un programa efectivo y seguro para que tu equipo se mantenga sano, sea competitivo y ganador </li>
-                                    </ul> 
+                                    </ul>
                                 </span>
                         <span id="landing2_plan2">
                             <div id="landing2_plan2_cel"></div>
@@ -60,12 +44,12 @@
             </div>
 
             <div class="row">
-                <div id="landingequipos_resultados" class="d-flex flex-row"> 
+                <div id="landingequipos_resultados" class="d-flex flex-row">
                     <div id="landingequipos_resultados_left">
                         <div id="resultados_laptop"></div>
                     </div>
                     <div id="landingequipos_resultados_right">
-                        <div class="d-flex flex-column"> 
+                        <div class="d-flex flex-column">
                             <div class="landingequipos_entrena"> ENTRENA MEJOR PARA </div>
                             <div class="landingequipos_mejores"> MEJORES RESULTADOS </div>
                         </div>
@@ -95,7 +79,7 @@
                         <div id="footer_contacto_2" class="">
                             <a href="#" class="footer_fb"> </a> <a href="#" class="footer_tw"> </a> <a href="#" class="footer_inst"> </a> <a href="#" class="footer_yt"> </a>
                         </div>
-                        
+
                         <div id="footer_contacto_3" class="">
                         <a href="/"> <img src="img/impactlogo.png"> </a>
                         </div>
@@ -105,7 +89,7 @@
         </div>
     </body>
     <script>
-        var ref = $('#landing_boton1');        
+        var ref = $('#landing_boton1');
         var popup = $('.popper');
         popup.show();
         var popper = new Popper(ref,popup,{

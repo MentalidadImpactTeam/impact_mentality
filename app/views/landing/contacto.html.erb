@@ -1,22 +1,9 @@
 <body id="contacto_body">
+
+
+
         <div class="container-fluid">
-          <!-- HEADER -->
-          <nav id="header_header" class="header_class navbar sticky-top navbar-expand-lg">
-            <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon" id="nav_icon"></span>
-            </button>
-            <a class="navbar-brand" href="/"> <img src="img/impactlogo.png"> </a>
-            
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav" >
-                  <a href="/equipos" class="nav-item nav-link header_link"> <img src="img/icon.png"> EQUIPOS</a>
-                  <a href="#" class="nav-item nav-link header_link"> <img src="img/icon.png" > BLOG</a>
-                  <a href="/nosotros" class="nav-item nav-link header_link"> <img src="img/icon.png" > NOSOTROS</a>
-                  <a href="/contacto" class="nav-item nav-link header_link"> <img src="img/icon.png"> CONTACTO</a>
-                  <a href="/users/sign_in" class="nav-item nav-link header_login d-flex justify-content-center"> <p class="align-self-center"> LOG IN </p></a>
-                </div>
-            </div>
-        </nav>
+        <%= render "header_landing" %>
 
     <!-- CONTENIDO -->
     <div class=" d-flex justify-content-center">
@@ -33,12 +20,12 @@
                         <img src="">
                         <div>Nombre</div>
                     </div>
-                    
+
                     <div class="d-flex contacto_input_container">
                         <i class="fa fa-user icon"></i>
                         <input class="contacto_input_field" maxlength="30" type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre...">
                     </div>
-                    
+
                     <div class="d-flex contacto_label_container">
                         <img src="">
                         <div>Correo</div>
@@ -47,7 +34,7 @@
                         <i class="fa fa-at icon"></i>
                         <input class="contacto_input_field"  maxlength="50"  type="text" id="email" name="email" placeholder="Escribe tu correo electrónico...">
                     </div>
-                    
+
                     <div class="d-flex contacto_label_container">
                         <img src="">
                         <div>Asunto</div>
@@ -78,11 +65,11 @@
                 <span class="contacto_contenido2_titulo"> Mándanos un correo </span>
                 <div class="contacto_contenido2_info">
                     <img src="img/mailicon.png"> <span class="contacto_contenido2_infos"> info@mentalidadimpact.com </span>
-                </div> 
+                </div>
             </div>
     </div>
 
-    
+
 
 
     <!-- FOOTER -->
@@ -101,7 +88,7 @@
                 <div id="footer_contacto_2" class="">
                     <a href="#" class="footer_fb"> </a> <a href="#" class="footer_tw"> </a> <a href="#" class="footer_inst"> </a> <a href="#" class="footer_yt"> </a>
                 </div>
-                
+
                 <div id="footer_contacto_3" class="">
                 <a href="/"> <img src="img/impactlogo.png"> </a>
                 </div>
@@ -109,5 +96,5 @@
         </div>
     </div>
     </div>
-        
+
     </body>

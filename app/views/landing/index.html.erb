@@ -18,31 +18,15 @@
 
                     <div id="landingmovil_olvidaste" class="animated bounceInLeft"> ¿Olvidaste tu contraseña? </div>
 
-                    <div id="continuar_landing" class="animated bounceInLeft"> Continuar a mentalidadimpact.com</div>
+                    <center><div id="continuar_landing" class="animated bounceInLeft"> Continuar a mentalidadimpact.com</div></center>
 
                 </div>
             </div>
 
         <!-- LANDING NORMAL -->
-        <div class="container-fluid">
+        <div class="landing_normal container-fluid">
 
-            <!-- HEADER -->
-            <nav id="header_header" class="header_class navbar sticky-top navbar-expand-lg">
-                <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon" id="nav_icon"></span>
-                </button>
-                <a class="navbar-brand" href="/"> <img src="img/impactlogo.png"> </a>
-
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav" >
-                            <a href="/equipos" class="nav-item nav-link header_link"> <img src="img/icon.png"> EQUIPOS</a>
-                            <a href="#" class="nav-item nav-link header_link"> <img src="img/icon.png" > BLOG</a>
-                            <a href="/nosotros" class="nav-item nav-link header_link"> <img src="img/icon.png" > NOSOTROS</a>
-                            <a href="/contacto" class="nav-item nav-link header_link"> <img src="img/icon.png"> CONTACTO</a>
-                            <a href="/users/sign_in" class="nav-item nav-link header_login d-flex justify-content-center"> <p class="align-self-center"> LOG IN </p></a>
-                    </div>
-                </div>
-            </nav>
+            <%= render "header_landing" %>
 
             <!-- TITULO -->
             <div class="row">
@@ -378,6 +362,7 @@
     </script>
 
 <script>
+var key='0';
         var ref = $('#landing_boton1');
         var popup = $('.popper');
         popup.show();
@@ -385,5 +370,12 @@
                 placement: 'bottom'
             });
 
-
+        $('#continuar_landing').on('click', function(){
+         $('#landingmovil_container').css('display','none');
+         $('.landing_normal').css('display','block');
+         window.localStorage.setItem(key, 1);
+         if(window.localStorage.getItem(key)===1){
+             alert('');
+         }
+        });
 </script>

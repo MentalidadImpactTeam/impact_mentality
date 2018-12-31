@@ -1,22 +1,6 @@
 <body>
   <div class="container-fluid">
-      <!-- HEADER -->
-      <nav id="header_header" class="header_class navbar sticky-top navbar-expand-lg">
-        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon" id="nav_icon"></span>
-        </button>
-        <a class="navbar-brand" href="/"> <img src="img/impactlogo.png"> </a>
-        
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav" >
-              <a href="/equipos" class="nav-item nav-link header_link"> <img src="img/icon.png"> EQUIPOS</a>
-              <a href="#" class="nav-item nav-link header_link"> <img src="img/icon.png" > BLOG</a>
-              <a href="/nosotros" class="nav-item nav-link header_link"> <img src="img/icon.png" > NOSOTROS</a>
-              <a href="/contacto" class="nav-item nav-link header_link"> <img src="img/icon.png"> CONTACTO</a>
-              <a href="/users/sign_in" class="nav-item nav-link header_login d-flex justify-content-center"> <p class="align-self-center"> LOG IN </p></a>
-            </div>
-        </div>
-    </nav>
+ <%= render "header_landing" %>
     <!---    OVERLAY PRIMER Y SEGUNDO CONTAINER  ---->
     <div id="about_overlay">
       <img src="img/about_overlay.png" alt="about overlay" id="about_overlay_image">
@@ -29,7 +13,7 @@
             <!---   DESCRIPCION PRIMER CONTAINER  ---->
             <p id="about_description_primer_container" >
               En Impact Training Systems desarrollamos tecnología para que todos los atletas puedan entrenar como profesionales. Todo atleta es capaz de cada día ser más fuerte, más rápido y mejorar sus habilidades atléticas para salir de la banca al campo de juego con todo su potencial. Nuestro programa de velocidad está basado en el sistema utilizado por Loren Seagrave, fundador de una de las mejores academias deportivas en Estados Unidos y colaborador para IMG Academy.
-              <br>A través de nuestro sistema "Mentalidad Impact" queremos formar el movimiento más grande de deportistas en Latino America buscando cambiar la manera en que se preparan física y mentalmente. 
+              <br>A través de nuestro sistema "Mentalidad Impact" queremos formar el movimiento más grande de deportistas en Latino America buscando cambiar la manera en que se preparan física y mentalmente.
             </p>
             <!---   BOTON PRIMER CONTAINER  ---->
             <a href="#target-element"><img src="img/about_mouse_icon.png" alt="mouse icon" class="animated infinite bounce slow img-fluid mx-auto d-block"></a>
@@ -43,7 +27,7 @@
         <div class="col-md-6 offset-md-3">
           <p class="about_red_title">NUESTRA FILOSOFÍA</p>
           <p id="about_description_segundo_container">
-            Creemos que trabajando duro todo es posible. Nos hacemos responsables y tomamos control total de todo lo que está en nuestras manos, nuestra actitud y esfuerzo. Somos dedicados. Ponemos acciones en donde otros ponen excusas. Tomamos riesgos. Nos apoyamos mutuamente. Alimentamos las ganas de seguir creciendo. Contribuimos a algo más grande que nosotros mismos. No buscamos oportunidades, las creamos. Seguimos aprendiendo. Crecemos juntos. No solo lo pensamos, LO HACEMOS. 
+            Creemos que trabajando duro todo es posible. Nos hacemos responsables y tomamos control total de todo lo que está en nuestras manos, nuestra actitud y esfuerzo. Somos dedicados. Ponemos acciones en donde otros ponen excusas. Tomamos riesgos. Nos apoyamos mutuamente. Alimentamos las ganas de seguir creciendo. Contribuimos a algo más grande que nosotros mismos. No buscamos oportunidades, las creamos. Seguimos aprendiendo. Crecemos juntos. No solo lo pensamos, LO HACEMOS.
             <br>Nunca es tarde para empezar a vivir tu sueño…. #MENTALIDADIMPACT
           </p>
         </div>
@@ -65,21 +49,21 @@
           <div>
             <div class="about_nombre"> MC. Hector Vildósola </div>
             <div class="about_puesto"> Fundador / Director Atlético </div>
-            <div class="about_info"> 
+            <div class="about_info">
               <br>
               <i>
               Hector cuenta con mas de 15 años de experiencia, egresado de la carrera de Negocios Internacionales de CETYS Universidad y Master in Exercise Science with emphasis in Sports and Health. Certified Strength and Conditioning Specialist por la NSCA
-              (National Strength and Conditioning Association). 
+              (National Strength and Conditioning Association).
               </i>
               <br>
-              <br> 
+              <br>
               <b>Trabajo: </b>
-              <br> - Encargado de Preparación Física y entrenador de los equipos de Baloncesto en Imperial Valley College en Imperial, CA. 
+              <br> - Encargado de Preparación Física y entrenador de los equipos de Baloncesto en Imperial Valley College en Imperial, CA.
               <br> - Preparador físico de la Selección Nacional
-              Varonil de Baloncesto (12 GUERREROS) en 2015 (Clasificatorio a Juegos Olímpicos) 
-              <br> - Entrenador asistente de la Selección Nacional Femenil de Baloncesto (Centro Basket en Islas Vírgenes en 2017 y FIBA Americup Buenos Aires, Argentina) 
+              Varonil de Baloncesto (12 GUERREROS) en 2015 (Clasificatorio a Juegos Olímpicos)
+              <br> - Entrenador asistente de la Selección Nacional Femenil de Baloncesto (Centro Basket en Islas Vírgenes en 2017 y FIBA Americup Buenos Aires, Argentina)
               <br>- Preparador
-              físico del equipo de futbol americano de CETYS Universidad Categoría Varsity logrando 10 CAMPEONATOS EN 12 años 
+              físico del equipo de futbol americano de CETYS Universidad Categoría Varsity logrando 10 CAMPEONATOS EN 12 años
               <br> - Preparador Físico de Soles de Mexicali LNBP en 2008 (Campeones Zona Norte)
             </div>
           </div>
@@ -91,7 +75,7 @@
             <div class="d-flex flex-column align-items-end">
               <div class="about_nombre"> Lic. Adrián Villalobos </div>
               <div class="about_puesto2"> Co-Fundador / Director Comercial </div>
-              <div class="about_info2"> 
+              <div class="about_info2">
                 <br>
                 <i>
                 Adrian cuenta con más de 10 años de experiencia, desde preparación física hasta cómo desarrollar al máximo la carrera deportiva de un jugador. Egresado de CETYS Universidad como Licenciado en Negocios Internacionales y con educación continua
@@ -106,7 +90,7 @@
           </div>
       </div>
     </div>
-        
+
     <!---    FOOTER CONTAINER  ---->
     <div id="footer_container" class="row">
       <div id="footer_contenido">
