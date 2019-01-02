@@ -56,10 +56,11 @@
     </div>
     <div style="justify-content:center;" class="animated zoomInUp db_contenedor_segundafila d-flex justify-content-between">
 
-        <div class="sistema_db_info_grafica d-flex flex-column justify-content-center">
-        <center><div class="mensaje_overlay">Al realizar tu primera prueba se activará tu graficá comparativa.</div></center>
+        <div style="position:relative;" class="sistema_db_info_grafica d-flex flex-column justify-content-center">
+        <center><div style="border-radius:15px; padding:10px; background-color:rgb(22,22,22); z-index:1000; font-family:lato; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); text-align:center;">Al realizar tu primera prueba se activará tu graficá comparativa.</div></center>
 
-        <div class="overlay_grafica"></div>
+        <div style="background-color:black; position:absolute;
+        height:100%; width:100%; left:0; opacity:.65;"></div>
             <select id="exercise_graph">
                 <option value="171">Sprint</option>
                 <option value="172">Salto Horizontal</option>
