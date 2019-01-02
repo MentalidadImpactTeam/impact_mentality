@@ -273,7 +273,7 @@ body.swal2-height-auto{
 
 .header_link img{
   padding-bottom: 4px;
-  height:3vw;
+  height:1.5vw;
 }
 
 
@@ -341,6 +341,7 @@ body.swal2-height-auto{
   .header_link img{
       margin-right: 5px;
       padding-left: 20px;
+      height:4vw;
   }
 
   .header_login{
