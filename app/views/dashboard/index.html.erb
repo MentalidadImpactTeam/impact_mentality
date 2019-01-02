@@ -56,10 +56,10 @@
     </div>
     <div style="justify-content:center;" class="animated zoomInUp db_contenedor_segundafila d-flex justify-content-between">
 
-        <div style="position:relative;" class="sistema_db_info_grafica d-flex flex-column justify-content-center">
+        <div style="position:relative; overflow:hidden;" class="sistema_db_info_grafica d-flex flex-column justify-content-center">
         <center><div style="border-radius:15px; padding:10px; background-color:rgb(22,22,22); z-index:1000; font-family:lato; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); text-align:center;">Al realizar tu primera prueba se activará tu graficá comparativa.</div></center>
 
-        <div style="background-color:black; position:absolute;
+        <div style="box-shadow:#0a0a0a; background-color:black; position:absolute;
         height:100%; width:100%; left:0; opacity:.65;"></div>
             <select id="exercise_graph">
                 <option value="171">Sprint</option>
@@ -79,10 +79,12 @@
             </div>
         </div>
 
-        <div class="animated zoomInUp sistema_db_info_tabla">
+        <div style="position:relative; overflow:hidden;" class="animated zoomInUp sistema_db_info_tabla">
 
-         <center><div class="mensaje_overlay">Al realizar tu primera prueba se activará tu lista de entradas.</div></center>
-        <div class="overlay_grafica"></div>
+        <center><div style="border-radius:15px; padding:10px; background-color:rgb(22,22,22); z-index:1000; font-family:lato; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); text-align:center;">se activará tu tabla al tener una entrada.</div></center>
+
+            <div style="box-shadow:#0a0a0a; background-color:black; position:absolute;
+            height:100%; width:100%; left:0; top:0; opacity:.65;"></div>
             <div>
                 <center>
                     <h1 style="font-size:1.5vw;">Entradas Recientes</h1>
