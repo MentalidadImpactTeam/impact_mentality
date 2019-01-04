@@ -107,7 +107,7 @@
                                   <i class="fas fa-arrow-alt-circle-down"></i>
                                 </div>
                                 <div class="col-lg-12 col-md-4">
-                                   <h3>Corrida de Agilidad</h3>
+                                   <h3>Corrida de <%= @hash[group]["corrida"].capitalize %></h3>
                                 </div>
                                 <div class="col-lg-12 col-md-4">
                                       <%= link_to download_pdf_routines_path, data: { turbolinks: false } do %>
