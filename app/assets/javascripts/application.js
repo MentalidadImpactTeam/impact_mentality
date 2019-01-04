@@ -19,3 +19,4 @@
 //= require profiles
 //= require cleave.min
 //= require popper
+//= require tippy

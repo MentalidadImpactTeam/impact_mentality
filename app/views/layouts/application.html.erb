@@ -7,6 +7,7 @@
     <!-- Include Tippy -->
     <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
 
+
     <!-- Lastest Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.conekta.io/js/latest/conekta.js"></script>
@@ -40,10 +41,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <%= favicon_link_tag asset_path('favicon.png') %>
   </head>
+
+
   <body class="body_sistema">
+
     <% if !@from_admin %>
         <!-- Menu Cellphone -->
-        <div data-tippy="Dando clíc en el ícono de la derecha se desplegará el menú" class="sistema_mobile_menu">
+        <div  class="sistema_mobile_menu">
             <!-- Just an image -->
             <nav class="animated slideInDown navbar">
                 <a class="navbar-brand" href="#">
@@ -86,7 +90,7 @@
         <!-- Menu Cellphone END  -->
 
         <!-- Menu desktop -->
-        <div class="menuVertical d--flex">
+        <div data-tippy="Dando clíc en el ícono de la derecha se desplegará el menú" class="menuVertical d--flex">
             <div>
                 <%= link_to image_tag("ImpactMentalityIcon-01", class: "sistema_left_icon", width: "60px" ), dashboard_path %>
                 <%= image_tag("MentalidadImpact-01", class: "sistema_descripcion_menu",  width: "120px" ) %>
@@ -156,14 +160,7 @@
   </body>
 
   <script>
-    tippy.setDefaults({
-    arrow: true,
-    arrowType: 'round',
-    duration: 0,
-    placement:'bottom',
-    trigger:'hover',
-    showOnInit:'true'
-    })
+
 
     $(document).ready(function(){
       Paloma.start();

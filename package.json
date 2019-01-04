@@ -1,5 +1,7 @@
 {
   "name": "impact_mentality",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "tippy.js": "^3.3.0"
+  }
 }

@@ -39,7 +39,7 @@ gem 'devise'
 gem 'paloma', '~> 5.1.0'
 
 gem 'conekta'
-gem 'sidekiq'    
+gem 'sidekiq'
 gem 'whenever', require: false
 
 gem 'figaro'
@@ -75,3 +75,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #Popper
 gem 'popper_js', '~> 1.14.5'
+
+#gemfile
+gem 'tippy_rails', '~> 2.5'
