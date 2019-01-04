@@ -15,10 +15,11 @@ class DashboardController < ApplicationController
     @trainings = UserRoutine.where("user_id = #{@user.id} and day != 7").count
     @trainings_complete = UserRoutine.where("user_id = #{@user.id} and done = 1 and day != 7").count
     @trainings_unfinished = UserRoutine.where("user_id = #{@user.id} and done = 0 and date >= '#{Date.today}'").count
-
+    
     @training_width = ((@trainings_complete.to_f / @trainings.to_f) * 100).round
-    @training_days_width = ((@trainings.to_f / @trainings_unfinished.to_f)).round
     @stage_width = (((@user.user_information.stage_process.to_f - 1) / @user.user_information.stage_count.to_f) * 100).round
+    past_days = (@trainings - @trainings_unfinished) * 100
+    @training_days_width = (past_days / @trainings.to_f).round
 
     @last_entries = TestResult.where(user_id: current_user.id).order(id: :desc).limit(10)
   end
