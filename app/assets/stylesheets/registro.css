@@ -775,6 +775,14 @@ code {
     .contenedor_objetivo {
         margin: 25px 0;
     }
+    .tipos_de_usuario i {
+        font-size: 6vw;
+        margin: 20px 10px;
+        color:red;
+    }
+    .titulos_seguimiento{
+        font-size:5,5vw;
+    }
 }
 
 
@@ -941,11 +949,6 @@ code {
 
 
 
-.tipos_de_usuario i {
-    color: red;
-    font-size: 3vw;
-    margin: 40px 10px;
-}
 
 .tipos_de_usuario {
     margin: 60px 0;
@@ -993,9 +996,7 @@ code {
     #TU_info_text {
         font-size: 4vw;
     }
-    .tipos_de_usuario i {
-        font-size: 6vw;
-    }
+
 
     #PP_info_text {
         font-size: 4vw;
@@ -1126,11 +1127,6 @@ code {
     font-weight: bold;
 }
 
-.tipos_de_usuario i {
-    color: red;
-    font-size: 3vw;
-    margin: 40px 10px;
-}
 
 .tipos_de_usuario {
     margin: 60px 0;
@@ -1164,9 +1160,7 @@ code {
 }
 
 @media only screen and (max-width: 992px) {
-    .tipos_de_usuario i {
-        font-size: 6vw;
-    }
+
     .tipos_de_usuario h5 {
         font-size: 3.5vw;
     }
@@ -1299,12 +1293,6 @@ code {
     margin: 0px;
 }
 
-.tipos_de_usuario i {
-    color: red;
-    font-size: 3vw;
-    margin: 40px 10px;
-}
-
 .tipos_de_usuario {
     margin: 35px 0;
 }
@@ -1336,10 +1324,7 @@ code {
 
 
 @media only screen and (max-width: 400px) {
-    .tipos_de_usuario i {
-        font-size: 6vw;
-        margin: 20px 10px;
-    }
+
     .tipos_de_usuario h5 {
         font-size: 2.5vw;
     }

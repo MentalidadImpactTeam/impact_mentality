@@ -382,19 +382,6 @@ eventos_datos_deportivos = ->
         $('#input_box_p').addClass 'input_error'
         return false
       else
-        if $('#lesiones_input').val() == ''
-          swal
-            type: 'error'
-            title: 'Alerta'
-            text: 'Por favor Ingrese su Lesion'
-            allowEscapeKey: true
-            heightAuto: false
-            allowOutsideClick: true
-            confirmButtonText: 'Regresar'
-            confirmButtonClass: 'login_sweetalert'
-          $('#input_box_les').addClass 'input_error'
-          return false
-        else
           if $('#ID_exp').val() == ''
             swal
               type: 'error'
