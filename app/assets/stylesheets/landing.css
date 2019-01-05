@@ -1114,6 +1114,7 @@ body.swal2-height-auto{
       width: 100%;
       height: auto;
       text-align: center;
+      margin-top: 6vw;
   }
 
   #landing_funciona_left{
@@ -1285,8 +1286,8 @@ body.swal2-height-auto{
   #landing_mentalidad_titulo{
       display: flex;
       flex-wrap: wrap !important;
-      margin-top: 0px;
-      width: 100%;
+      margin-top: 6vw;
+      width: 90%;
       justify-content: center;
   }
 
@@ -1385,26 +1386,34 @@ body.swal2-height-auto{
 
   .landing_testimonios_center_container{
       width: 100%;
-      height: 420px;
+      height: auto;
       padding: 5px 5.5px 5px 5.5px;
   }
 
+  .landing_testimonios_center_container_content{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+  }
+  
+
   .landing_testimonios_center_container_content_text{
-      width: 40%;
+      width: 100%;
       margin-top: 200px;
       margin-right: 0;
       background-color: rgba(0, 0, 0, .5);
   }
 
   .landing_testimonios_center_container_content_text_titulo{
-      width: 100%;
+      width: 90%;
       font-weight: 900;
-      font-size: 25px;
+      font-size: 5vw;
       color: #ff1d25;
       text-shadow: 0px 0px 2px #ff1d25;
-      line-height: 45px;
+      line-height: 5.2vw;
       margin: 0 0 0 0;
       text-align: center;
+      align-self: center;
   }
 
   .landing_testimonios_center_container_content_text_deporte{
@@ -1423,6 +1432,7 @@ body.swal2-height-auto{
       text-align: center;
       padding-left: 10px;
       padding-right: 10px;
+      align-self: center;
   }
 
 }
