@@ -33,6 +33,18 @@ class Administrator::AdminController < ApplicationController
     @subscription = UserConektaSubscription.where(user_id: params[:id]).order(id: :desc).limit(1).first
   end
 
+  def change_user_plan
+    user = User.find(params[:id])
+    customer = Conekta::Customer.find(user.customer_token)
+    plan = user.user_information.user_type_id == 2 ? "entrenador_" + params[:plan] : params[:plan]
+    subscription = customer.subscription.update({
+      :plan => plan
+    })
+    user.user_information.plan = params[:plan]
+    user.user_information.save
+    render plain: "OK"
+  end
+
   def search_users
     uis = UserInformation.where("name like '%" + params[:search] + "%'")
     users = []
