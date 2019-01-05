@@ -1099,6 +1099,14 @@ body.swal2-height-auto{
 
 
 @media (max-width: 1090px) {
+  .landing_testimonios_center_container_content_text_testimonio{
+    font-size:2vw;
+    overflow:scroll;
+  }
+  #landing_sistema{
+    font-size:7vw;
+    line-height: 7.2vw;
+  }
   #landing_body{
       overflow-x: hidden;
       width: 100%;
@@ -1144,6 +1152,7 @@ body.swal2-height-auto{
 
   #landing_funciona_right_img{
       width: 100vw;
+      margin-top:5vw;
       height: 56vw;
       margin-left: -10.5vw;
   }
@@ -1161,7 +1170,6 @@ body.swal2-height-auto{
 
   #landing_titulo1{
       font-size: 5vw;
-      line-height: 18px;
       width: 100%;
   }
 
@@ -1310,7 +1318,7 @@ body.swal2-height-auto{
       padding-left: 0%;
       padding-right: 0%;
       margin-top: 20px;
-      font-size: 5vw;
+      font-size: 4vw;
       line-height: 5.7vw;
       text-align: center;
   }
@@ -1401,7 +1409,8 @@ body.swal2-height-auto{
       width: 100%;
       margin-top: 200px;
       margin-right: 0;
-      background-color: rgba(0, 0, 0, .5);
+      overflow:scroll;
+      background-color: rgba(0, 0, 0, .8);
   }
 
   .landing_testimonios_center_container_content_text_titulo{
@@ -1419,17 +1428,16 @@ body.swal2-height-auto{
   .landing_testimonios_center_container_content_text_deporte{
       width: 100%;
       font-weight: 900;
-      font-size: 13px;
-      line-height: 15px;
+      font-size: 4vw;
       margin-bottom: 5px;
       text-align: center;
   }
 
   .landing_testimonios_center_container_content_text_testimonio{
       width: 100%;
-      font-size: 10px;
-      line-height: 13px;
-      text-align: center;
+      font-size: 2vw;
+      overflow:scroll;
+      text-align: left;
       padding-left: 10px;
       padding-right: 10px;
       align-self: center;
@@ -1868,18 +1876,13 @@ body.swal2-height-auto{
 #about_primer_container{
   padding-top: 120px;
 }
-#about_description_primer_container {
-  padding: 0 20px 40px 20px !important;
-  font-size: 3.5vw !important;
-  line-height: 3vw !important;;
-  }
+
 
 }
 
 #about_description_primer_container {
   font-weight: 700;
   font-size: 1.2vw;
-  line-height: 1.5vw;
   color: #FFFFFF;
   padding: 0 20px 160px 20px;
   width: 70%;
@@ -1902,7 +1905,6 @@ body.swal2-height-auto{
 #about_description_segundo_container {
   font-weight: 700;
   font-size: 1vw;
-  line-height: 1.2vw;
   color: #FFFFFF;
   padding: 0 20px 80px 20px;
 }
@@ -2079,6 +2081,23 @@ margin-bottom:30px;
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width:  1090px) {
   /* CONTACTO */
+  #about_subtitulo_tercer_container{
+    font-size:5vw;
+  }
+  #about_description_segundo_container{
+    font-size:3vw;
+
+  }
+  #about_description_primer_container {
+    padding: 0 20px 40px 20px !important;
+    font-size: 3.2vw
+    }
+    .about_red_title{
+      font-size:8vw;
+    }
+  .landing_testimonios_center_container_content_text_titulo{
+    font-size:4vw;
+  }
 
   .titulo_contacto_landing{
     margin-top:16vw !important;
