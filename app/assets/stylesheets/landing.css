@@ -1635,6 +1635,9 @@ body.swal2-height-auto{
   margin-right: 5%;
   letter-spacing: 2px;
 }
+.titulo_contacto_landing{
+  margin-top:7vw;
+}
 
 #contacto_rayaroja{
   height: 2px;
@@ -1860,6 +1863,7 @@ body.swal2-height-auto{
   font-size: 3.5vw !important;
   line-height: 3vw !important;;
   }
+
 }
 
 #about_description_primer_container {
@@ -2065,14 +2069,21 @@ margin-bottom:30px;
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width:  1090px) {
   /* CONTACTO */
+
+  .titulo_contacto_landing{
+    margin-top:16vw !important;
+  }
+
   #contacto_titulo{
       color: #ffffff;
-      font-size: 25px;
+      font-size: 7vw;
+      transition: all .5s;
       font-weight: bold;
       margin-left: 5%;
       margin-right: 5%;
       letter-spacing: 1px;
   }
+
   #contacto_rayaroja{
       height: 2px;
       width: 20%;
@@ -2086,7 +2097,7 @@ margin-bottom:30px;
   #contacto_contenido1_pregunta{
       position: relative;
       display: block;
-      font-size: 18px;
+      font-size: 4vw;
       font-weight: bold;
       color: #ffffff;
       text-align: center;
@@ -2096,7 +2107,8 @@ margin-bottom:30px;
   #contacto_contenido1_callto{
       display: block;
       position: relative;
-      font-size: 13px;
+      font-size: 3vw;
+      margin: 3vw 0;
   }
 
   .contacto_contenido2_titulo{

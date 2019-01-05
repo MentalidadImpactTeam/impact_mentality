@@ -10,7 +10,7 @@
 role :app, %w{ deploy@138.197.192.68 }
 role :whenever_auto, %w{ deploy@138.197.192.68 }
 
-server '138.197.192.68', user: 'deploy', roles: %w{app whenever_auto}
+server '138.197.192.68', user: 'deploy', roles: %w{app web whenever_auto}
 
 # role-based syntax
 # ==================

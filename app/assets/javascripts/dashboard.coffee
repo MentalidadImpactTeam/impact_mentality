@@ -110,6 +110,13 @@ exercise_graph = ->
     data: exercise_id: $("#exercise_graph").val()
     dataType: "json",
     success: (data) ->
+      if data.results.length > 0
+        $(".sistema_db_info_grafica").find("center").next().remove()
+        $(".sistema_db_info_grafica").find("center").remove()
+
+        $(".sistema_db_info_tabla").find("center").next().remove()
+        $(".sistema_db_info_tabla").find("center").remove()
+  
       data.results.forEach (value) ->
         labels.push('Etapa ' + value.stage_id)
         data_graph.push(value.result)
