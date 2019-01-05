@@ -695,8 +695,8 @@ body.swal2-height-auto{
   margin-left: 40px;
   margin-top: 15px;
   font-weight: bold;
-  font-size: 1.2vw;
-  line-height: 1.4vw;
+  font-size: 1.6vw;
+  line-height: 1.8vw;
   margin-bottom: 1.5vw;
 }
 
@@ -704,8 +704,8 @@ body.swal2-height-auto{
   margin-left: 40px;
   margin-top: 5px;
   font-weight: normal;
-  font-size: 1.2vw;
-  line-height: 1.4vw;
+  font-size: 1.4vw;
+  line-height: 1.6vw;
   width: 80%;
 }
 
@@ -824,11 +824,11 @@ body.swal2-height-auto{
 
 #landing_mentalidad_texto{
   width: 100%;
-  padding-left: 24%;
-  padding-right: 24%;
+  padding-left: 15%;
+  padding-right: 15%;
   color: #fff;
   text-align: center;
-  font-size: 1vw;
+  font-size: 1.5vw;
 }
 
 #landing_mentalidad_caracteristicas{
@@ -838,15 +838,15 @@ body.swal2-height-auto{
 }
 
 .landing_mentalidad_caracteristicas_contenedor{
-  width:200px;
+  width: 18vw;
   color: #fff;
   text-align: center;
 }
 
 .landing_mentalidad_caracteristicas_contenedor_texto{
   margin-top: 20px;
-  line-height: 1.2vw;
-  font-size: 1vw;
+  line-height: 1.45vw;
+  font-size: 1.25vw;
 }
 
 .landing_testimonios{
@@ -1100,7 +1100,6 @@ body.swal2-height-auto{
 
 @media (max-width: 1090px) {
   #landing_body{
-      background-image: none;
       overflow-x: hidden;
       width: 100%;
       height: auto;
@@ -1621,6 +1620,10 @@ body.swal2-height-auto{
 #contacto_body{
   overflow-x: hidden;
   background-color: #1E1E1E;
+}
+
+.contacto_todo{
+  margin-top: 5vw;
 }
 
 
