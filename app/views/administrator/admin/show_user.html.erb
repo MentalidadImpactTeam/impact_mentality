@@ -23,20 +23,23 @@
                 <div id="admin_formapago" class="justify-self-center">
                 <center>
                 <select id="forma_pago_usuario">
-                    <option>Plan mensual</option>
-                    <option>Plan Trimestral</option>
-                    <option>Plan Anual</option>
-                    <option>1 - 10 usuarios</option>
-                    <option>1 - 20 usuarios</option>
-                    <option>1 - 30 usuarios</option>
-                    <option>1 - 40 usuarios</option>
-                    <option>1 - 50 usuarios</option>
-                    <option>1 - 60 usuarios</option>
-                    <option>1 - 70 usuarios</option>
-                    <option>1 - 80 usuarios</option>
-                    <option>1 - 90 usuarios</option>
-                    <option>1 - 100 usuarios</option>
-                    <option>100 - 150 usuarios</option>
+                    <% if @user.user_information.user_type_id == 3 %>
+                        <option value="mensual" <%= if @user.user_information.plan == "mensual" then "selected" end %> >Plan mensual</option>
+                        <option value="trimestral" <%= if @user.user_information.plan == "trimestral" then "selected" end %> >Plan Trimestral</option>
+                        <option value="anual" <%= if @user.user_information.plan == "anual" then "selected" end %> >Plan Anual</option>
+                    <% else %>
+                        <option value="10" <%= if @user.user_information.plan == "anual" then "selected" end %> >1 - 10 usuarios</option>
+                        <option value="20" <%= if @user.user_information.plan == "anual" then "selected" end %> >1 - 20 usuarios</option>
+                        <option value="30" <%= if @user.user_information.plan == "anual" then "selected" end %> >1 - 30 usuarios</option>
+                        <option value="40" <%= if @user.user_information.plan == "anual" then "selected" end %> >1 - 40 usuarios</option>
+                        <option value="50" <%= if @user.user_information.plan == "anual" then "selected" end %> >1 - 50 usuarios</option>
+                        <option value="60" <%= if @user.user_information.plan == "anual" then "selected" end %> >1 - 60 usuarios</option>
+                        <option value="70" <%= if @user.user_information.plan == "anual" then "selected" end %> >1 - 70 usuarios</option>
+                        <option value="80" <%= if @user.user_information.plan == "anual" then "selected" end %> >1 - 80 usuarios</option>
+                        <option value="90" <%= if @user.user_information.plan == "anual" then "selected" end %> >1 - 90 usuarios</option>
+                        <option value="100" <%= if @user.user_information.plan == "anual" then "selected" end %> >1 - 100 usuarios</option>
+                        <option value="150" <%= if @user.user_information.plan == "anual" then "selected" end %> >100 - 150 usuarios</option>
+                    <% end %>
                 </select></center>
                 </div>
                 <div>

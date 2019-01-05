@@ -25,6 +25,9 @@ class Administrator::AdminController < ApplicationController
     render json: { :users =>  array }
   end
 
+  def new_user
+  end
+
   def show_user
     @user = User.find(params[:id])
     @subscription = UserConektaSubscription.where(user_id: params[:id]).order(id: :desc).limit(1).first
@@ -56,6 +59,14 @@ class Administrator::AdminController < ApplicationController
 
     customer = Conekta::Customer.find(user.customer_token)
     subscription = customer.subscription.pause
+
+    render plain: "OK"
+  end
+
+  def change_user_type
+    user = User.find(params[:user_id])
+    user.user_information.user_type_id = eval(params[:type]) ? 2 : 3
+    user.user_information.save
 
     render plain: "OK"
   end

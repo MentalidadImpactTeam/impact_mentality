@@ -258,7 +258,13 @@ AdministratorController::list_exercises = ->
 
 administrator_users_table_events = ->
   $("input[type=checkbox]").change ->
-    console.log($(this).prop("checked"))
+    $.ajax
+      type: "POST"
+      url: "/administrator/users/change_type"
+      data: type: $(this).prop("checked"), user_id: $(this).closest(".row_hover").find(".hidden_id").val()
+      dataType: "text",
+      success: (data) ->
+        console.log(data)
   $('.fa-edit').on 'click', (event) ->
     window.location.href = "/administrator/users/" + $(this).closest(".row_hover").find(".hidden_id").val() 
     return

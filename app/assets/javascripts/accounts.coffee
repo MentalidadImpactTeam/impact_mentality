@@ -137,7 +137,7 @@ account_add_card = ->
           confirmButtonText: 'Entendido'
           heightAuto: false
         return
-       
+      
       
       tokenParams = 'card':
         'number':num
@@ -169,7 +169,7 @@ account_cancelar_suscripcion = ->
       heightAuto: false
       showCloseButton: true).then (result) ->
         if result.value
-           $.ajax
+          $.ajax
             type: "POST"
             url: "/accounts/cancel_subscription"
             dataType: "text",
