@@ -2120,7 +2120,8 @@ margin-bottom:30px;
   }
   #contacto_contenido2, #contacto_contenido1{
       width: 100%;
-      margin: 20px 0 0 8%;
+      margin: 0;
+      padding: 0 8% 0 8%;
   }
 
   #contacto_contenido1_pregunta{
