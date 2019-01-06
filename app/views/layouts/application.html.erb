@@ -145,6 +145,15 @@
                 </div>
             <% end %>
 
+               <%= link_to planes_path do %>
+                <div title="Aquí podrás ver los planes de pago." class="seccion_menu_left">
+                        <i class="sistema_left_icon fas fa-boxes"></i>
+
+
+                    <h3 class="sistema_descripcion_menu">Planes</h3>
+                </div>
+            <% end %>
+
             <div  id="sistema_cerrarsesionalign">
                 <%= link_to destroy_user_session_path, method: :delete, style: "color: white;" do %>
                     <div class="sistema_descripcion_menu" id="sistema_cerrarsesion">Cerrar sesión</div>

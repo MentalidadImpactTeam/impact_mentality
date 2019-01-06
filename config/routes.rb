@@ -7,11 +7,12 @@ Rails.application.routes.draw do
     get 'active_confirmation' => 'users/confirmations#active_confirmation'
     get 'active_trainer_confirmation' => 'users/confirmations#active_trainer_confirmation'
   end
-  
+
   root to: 'landing#index'
   get "equipos" => "landing#equipos"
   get "nosotros" => "landing#nosotros"
   get "contacto" => "landing#contacto"
+
 
   get "player_list" => "dashboard#player_list"
   get "dashboard" => 'dashboard#index'
@@ -22,8 +23,8 @@ Rails.application.routes.draw do
   get "mailer" => "dashboard#mailer_test"
 
   post 'rutinas' => "home#rutinas"
-  resources :routines do 
-    collection do 
+  resources :routines do
+    collection do
       get "download_pdf" => 'routines#download_pdf'
       post "list_exercises" => 'routines#list_exercises'
       post "change_exercise" => 'routines#change_exercise'
@@ -32,21 +33,28 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :planes do
+    collection do
+      get "planes" => "planes#index"
+    end
+  end
+
+
   resources :webhook, only: [:index] do
     collection do
       post "conekta" => "webhook#procesar"
     end
   end
   resources :accounts do
-    collection do 
+    collection do
       post "add_card" => 'accounts#add_card'
       post "delete_card" => 'accounts#delete_card'
       post "card_default" => 'accounts#card_default'
       post "cancel_subscription" => 'accounts#cancel_subscription'
     end
   end
-  resources :profiles do 
-    collection do 
+  resources :profiles do
+    collection do
       post 'profile_image' => "profiles#update_profile_image"
       post 'add_trainer' => "profiles#add_trainer"
     end
