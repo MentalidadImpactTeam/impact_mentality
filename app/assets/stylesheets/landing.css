@@ -191,6 +191,11 @@ body.swal2-height-auto{
     .landing_normal{
       display:none;
     }
+    .popper{
+      font-size: 3vw;
+      line-height: 6vw;
+    }
+    
 }
 
 
@@ -798,6 +803,15 @@ body.swal2-height-auto{
   border-left: 100vw solid transparent;
 }
 
+.landing2_division{
+  background: #1E1E1E;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  width: 100%;
+  border-top: 3vw solid #fff;
+  border-left: 100vw solid transparent;
+}
+
 #landing_mentalidad{
   background: #1E1E1E;
   padding-bottom: 100px;
@@ -888,21 +902,25 @@ body.swal2-height-auto{
 
 .landing_arrow_left{
   width: 25px;
-  height: 47px;
+  height: 100%;
   background-image: url('../img/arrow.png');
   background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center;
   margin-right: 20px;
   cursor: pointer;
 
-}
+} 
 
 .landing_arrow_right{
   width: 25px;
-  height: 47px;
+  height: 100%;
   background-image: url('../img/arrow.png');
-  background-repeat: no-repeat;
   transform: rotate(180deg);
-  margin-left: 20px;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center;
+  margin-right: 20px;
   cursor: pointer;
 
 }
@@ -980,13 +998,9 @@ body.swal2-height-auto{
 
 #landing_deportes{
   width: 100%;
-  padding: 10vw 0;
-  background-color: #1e1e1e;
   justify-content: center;
-  background-image: url('../img/grunge1.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: bottom;
+  align-content: center; 
+  background-color: rgba(0, 0, 0, .6);
 }
 
 .landing_deportes_deportes{
@@ -995,10 +1009,8 @@ body.swal2-height-auto{
 
 .landing_deportes_deporte{
   color: #fff;
-  background-color: #ff1d25;
   width: 15vw;
   height: 4.5vw;
-  border-radius: .2vw;
   font-weight: bold;
   font-size: 1.3vw;
   line-height: 1.3vw;
@@ -1093,9 +1105,6 @@ body.swal2-height-auto{
   width: 90%;
 }
 
-#deportesright, #deportesleft{
-  margin-top: .8vw;
-}
 
 
 @media (max-width: 1090px) {
@@ -1108,9 +1117,8 @@ body.swal2-height-auto{
     line-height: 7.2vw;
   }
   #landing_body{
-      overflow-x: hidden;
-      width: 100%;
-      height: auto;
+    background-size: 140%;
+    background-position-y: 15vw;
   }
   #landing_funciona{
       flex-direction: column;
@@ -1589,6 +1597,7 @@ body.swal2-height-auto{
 #landingequipos_resultados{
   width: 100%;
   background-color: #1e1e1e;
+  flex-direction: row;
 }
 
 #landingequipos_resultados_left{
@@ -1611,8 +1620,8 @@ body.swal2-height-auto{
 
 .landingequipos_entrena{
   color: #fff;
-  font-size: 4vw;
-  line-height: 4vw;
+  font-size: 7.5vw;
+  line-height: 7.5vw;
   font-weight: 300;
   font-style: italic;
   margin-top: 2vw;
@@ -1620,8 +1629,8 @@ body.swal2-height-auto{
 
 .landingequipos_mejores{
   color: #ff1d25;
-  font-size: 4vw;
-  line-height: 4vw;
+  font-size: 7.5vw;
+  line-height: 7.5vw;
   font-weight: bold;
   text-shadow: 0 0 1vw #ff1d25;
   font-style: italic;
@@ -1631,6 +1640,126 @@ body.swal2-height-auto{
 #landingequipos_lista{
   display: inline-block;
   color: #000;
+}
+
+#landing2_plan_izyd{
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+@media only screen and (max-width: 767.98px) {
+  #landingequipos_body{
+    background-size: 100%;
+    background-position-y: 15vw;
+  }
+
+  #landing2_titulo1{
+    font-size: 5.3vw;
+    line-height: 5.3vw;
+    padding-right: 10vw;
+ }
+ 
+ #landing2_titulo2{
+    font-size: 4.7vw;
+    line-height: 5vw;
+ }
+  
+  #landing2_lista{
+    font-size: 3.5vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+  }
+
+  #landing2_plan_contenido{
+    width: 100%;
+    padding: 0 5% 0 5%;
+    margin-bottom: 0;
+  }
+  
+  #landing2_plan_titulo{
+    width: 100%;
+    margin-bottom: 2vw;
+  }
+
+  #landing2_plan_titulo_plan{
+    font-size: 8.5vw;
+    line-height: 11vw;
+    text-align: center;
+  }
+  
+  #landing2_plan_titulo_pz{
+    font-size: 8.5vw;
+    text-align: center;
+  }
+  
+  #landing2_plan_linea{
+    width: 64vw;
+    height: .6vw;
+    margin-top: 4vw;
+    align-self: center;
+  }
+
+  #landing2_plan_izyd{
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #landing2_plan2{
+    margin-top: 0vw;
+    margin-bottom: 4vw;
+  }
+
+  #landing2_plan2_cel{
+    width: 30vw;
+    height: 40vw;
+  }
+  
+  #landing2_plan2_lap{
+    width: 80vw;
+    height: 45vw;
+    margin-left: -8vw;
+  }
+
+  .landing2_division{
+    margin-top: -3vw;
+  }
+
+  #landingequipos_resultados{
+    width: 100%;
+    background-color: #1e1e1e;
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  .landingequipos_entrena{
+    text-align: center;
+    font-size: 5.5vw;
+    line-height: 5.5vw;
+  }
+  
+  .landingequipos_mejores{
+    text-align: center;
+    font-size: 5.5vw;
+    line-height: 5.5vw;
+  }
+
+  .landingequipos_lista{
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 3.5vw;
+  }
+  #landingequipos_resultados_left{
+    width: 80vw;
+    height: 45vw;
+    margin-top: 0vw;
+    margin-left: 0vw;
+    align-self: center;
+  }
+  #landingequipos_resultados_right{
+    margin-top: 4vw;
+  }
+  
 }
 
 

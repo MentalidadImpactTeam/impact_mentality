@@ -160,6 +160,27 @@ AdministratorController::show_user = ->
         $('#admin_correo').text nuevomail
         return
     return
+  
+  $("#forma_pago_usuario").change ->
+    $("#admin_btn_cambio_plan").removeAttr("disabled").removeClass("disabled_button")
+
+  $("#admin_btn_cambio_plan").click ->
+    swal(
+      title: '¿Estás seguro que deseas cambiar el plan?'
+      type: 'warning'
+      showCancelButton: true
+      confirmButtonColor: '#ff1d25'
+      cancelButtonColor: '#333333'
+      confirmButtonText: 'Cambiar').then (result) ->
+      if result.value
+        $.ajax
+          type: "POST"
+          url: "/administrator/users/change_plan"
+          data: plan: $("#forma_pago_usuario").val(), id: $(".hidden_user").val()
+          dataType: "text",
+          success: (data) ->
+            swal 'Plan', 'El plan ha cambiado con exito.', 'success'
+      return
   return
 
 AdministratorController::list_exercises = ->
