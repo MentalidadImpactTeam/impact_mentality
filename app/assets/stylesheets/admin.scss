@@ -9,7 +9,64 @@
   opacity:1;
   cursor: pointer;
 }
+.input_creacion_usuario{
+  border-radius:10px;
+  border:2px solid grey;
+  background-color:#282828;
+  margin:10px 0;
+  width:100%;
+  padding:10px;
+  font-family: lato;
+}
+#fondo_negro{
+  background-color:#191a1a;
+  position:absolute;
+  height:100%;
+  width:100%;
+  z-index: -1;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+.input_creacion_usuario:hover{
+  background-color:grey;
+  cursor:pointer;
+  color:white;
+}
+.select_creacion_usuario{
+  border-radius:10px;
+  border:2px solid grey;
+  background-color:#282828;
+  margin:10px 0;
+  width:100%;
+  font-family: lato;
+  padding:10px;
+  color:white;
+}
+.select_creacion_usuario:hover{
+  background-color:grey;
+  cursor:pointer;
 
+}
+#titulo_creacion_usuario{
+  color:white;
+  font-family: lato;
+  margin:25px 0;
+  font-weight: bold;
+}
+#btn_crear_usuario{
+  font-family: lato;
+  padding:15px;
+  background-color:red;
+  border-radius:10px;
+  border:none;
+  color:white;
+  margin:25px;
+}
+#btn_crear_usuario:hover{
+  background-color:rgb(131, 0, 0);
+}
 .contenedor_acciones_controlador_jugadores i {
   transition: all .5s;
   font-size: 2vw;
