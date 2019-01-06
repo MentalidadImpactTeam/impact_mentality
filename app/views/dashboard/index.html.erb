@@ -11,8 +11,10 @@
 <div class="sistema_db_container">
     <% if @trainer.present? %>
     <div id="contenedor_entrenador_institucion">
-    <i class="regreso_dashboard animated zoomInUp far fa-arrow-alt-circle-left"></i>
-       <center style="display:inline-block;" class='animated zoomInUp'><span>Tu entrenador es:</span><span class="entrenador_institucion">  <%= profile_trainer_name(@trainer) %></span></center>
+        <%= link_to url_for(:back) do %>
+            <i class="regreso_dashboard animated zoomInUp far fa-arrow-alt-circle-left"></i>
+        <% end %>
+        <center style="display:inline-block;" class='animated zoomInUp'><span>Tu entrenador es:</span><span class="entrenador_institucion">  <%= profile_trainer_name(@trainer) %></span></center>
     </div>
     <% end %>
         <div class=" animated zoomInUp sistema_db_info_superior d-flex justify-content-betweeen align-items-end">
