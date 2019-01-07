@@ -15,6 +15,7 @@
  *= require dashboard
  *= require routines
  *= require accounts
+ *= require planes
  *= require profiles
  *= require_self
  */
