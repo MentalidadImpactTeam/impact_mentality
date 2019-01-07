@@ -501,7 +501,7 @@ body.swal2-height-auto{
   background-image: url('../img/yt3.png');
 }
 
-@media (max-width:  1090px) {
+@media (max-width: 767.98px) {
   /* FOOTER */
   #footer_links{
       display: none;
@@ -1107,7 +1107,7 @@ body.swal2-height-auto{
 
 
 
-@media (max-width: 1090px) {
+@media (max-width: 767.98px) {
   .landing_testimonios_center_container_content_text_testimonio{
     font-size:2vw;
     overflow:scroll;
@@ -1450,8 +1450,8 @@ body.swal2-height-auto{
       padding-bottom: 3vw;
   }
   .landing_img{
-    width: 40vw;
-    height: 40vw;
+    width: 50vw;
+    height: 57.339vw;
   }
 
   .landing_funciona_linea{
@@ -2216,7 +2216,7 @@ margin-bottom:30px;
 
 
 /* Extra small devices (portrait phones, less than 576px) */
-@media (max-width:  1090px) {
+@media (max-width: 767.98px) {
   /* CONTACTO */
   #about_subtitulo_tercer_container{
     font-size:5vw;
@@ -2293,7 +2293,7 @@ margin-bottom:30px;
   display: none;
 }
 
-@media (max-width: 1090px) {
+@media (max-width: 767.98px) {
   #landingmovil_container{
       display: flex;
       width: 100vw;
