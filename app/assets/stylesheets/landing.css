@@ -176,7 +176,7 @@ body.swal2-height-auto{
   background-color: rgba(0, 0, 0, .7) !important;
 }
 
-@media (max-width: 1090px) {
+@media only screen and (max-width: 1090px) {
   .progress{
       height: 1vw !important;
       margin-top: 2vw;
@@ -286,7 +286,7 @@ body.swal2-height-auto{
   color: #ffffff;
 }
 
-@media (max-width: 1090px) {
+@media only screen and (max-width: 1090px) {
   .container-fluid{
      margin: 0 0 0 0 !important;
      padding: 0 0 0 0 !important;
@@ -501,7 +501,7 @@ body.swal2-height-auto{
   background-image: url('../img/yt3.png');
 }
 
-@media (max-width: 767.98px) {
+@media only screen and (max-width: 1090px) {
   /* FOOTER */
   #footer_links{
       display: none;
@@ -1107,7 +1107,7 @@ body.swal2-height-auto{
 
 
 
-@media (max-width: 767.98px) {
+@media only screen and (max-width: 1090px) {
   .landing_testimonios_center_container_content_text_testimonio{
     font-size:2vw;
     overflow:scroll;
@@ -1655,7 +1655,7 @@ body.swal2-height-auto{
   flex-direction: row;
 }
 
-@media only screen and (max-width: 767.98px) {
+@media only screen and (max-width: 1090px) {
   #landingequipos_body{
     background-size: 100%;
     background-position-y: 15vw;
@@ -2004,7 +2004,7 @@ body.swal2-height-auto{
   width: 80%;
 }
 
-@media only screen and (max-width: 767.98px) {
+@media only screen and (max-width: 1090px) {
 
 
   #about_title_primer_container {
@@ -2184,7 +2184,7 @@ margin-bottom:30px;
 
 
 
-@media (max-width: 767.98px) {
+@media only screen and (max-width: 1090px) {
   #about_adrian_mobil{
     display: block!important;
   }
@@ -2216,7 +2216,7 @@ margin-bottom:30px;
 
 
 /* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 767.98px) {
+@media only screen and (max-width: 1090px) {
   /* CONTACTO */
   #about_subtitulo_tercer_container{
     font-size:5vw;
@@ -2293,7 +2293,7 @@ margin-bottom:30px;
   display: none;
 }
 
-@media (max-width: 767.98px) {
+@media only screen and (max-width: 1090px) {
   #landingmovil_container{
       display: flex;
       width: 100vw;
