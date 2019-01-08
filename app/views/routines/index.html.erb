@@ -88,7 +88,7 @@
             <div id="sistema_r_anteriorfase"><%= @previous %></div>
             <div id="sistema_r_anteriorarrow" class="d-flex flex-column justify-content-center align-items-center">
                 <div class="sistema_r_anteriormovil">ANTERIOR:</div>
-                <div class="sistema_r_anteriormovil"><%= @previous %></div>
+                <div id="sistema_r_anteriormovil" class="sistema_r_anteriormovil"><%= @previous %></div>
             </div>
         </div>
 
@@ -189,7 +189,7 @@
             <div id="sistema_r_siguientefase"><%= @next %></div>
             <div id="sistema_r_siguientearrow" class="d-flex flex-column justify-content-center align-items-center">
                 <div class="sistema_r_siguientemovil">SIGUIENTE:</div>
-                <div class="sistema_r_siguientemovil"><%= @next %></div>
+                <div id="sistema_r_siguientemovil" class="sistema_r_siguientemovil"><%= @next %></div>
             </div>
         </div>
         <div style="background-color: #191a1a; <%= if !@routine_finished then  "display:none !important;" end %>" class="container-fluid" id="rutina_finalizada">

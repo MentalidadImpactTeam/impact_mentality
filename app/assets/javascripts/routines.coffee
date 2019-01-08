@@ -115,51 +115,69 @@ RoutinesController::index = ->
 
       if group == "0"
         $("#sistema_r_anteriorfase").text(div_active.find(".hidden_corrida").val())
+        $("#sistema_r_anteriormovil").text(div_active.find(".hidden_corrida").val())
         $("#sistema_r_progresonombre").text(" WARM UP / PREHABS ")
         $("#sistema_r_siguientefase").text(" SERIE #1 ")
+        $("#sistema_r_siguientemovil").text(" SERIE #1 ")
       else
         if group_total == 4
           if group == "1"
             $("#barra_warmup").css("width", "100%")
             $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
+            $("#sistema_r_anteriormovil").text(" WARM UP / PREHABS ")
             $("#sistema_r_progresonombre").text(" SERIE #1 ")
             $("#sistema_r_siguientefase").text(" SERIE #2 ")
+            $("#sistema_r_siguientemovil").text(" SERIE #2 ")
           else if group == "2"
             $("#sistema_r_anteriorfase").text(" SERIE #1 ")
+            $("#sistema_r_anteriormovil").text(" SERIE #1 ")
             $("#sistema_r_progresonombre").text(" SERIE #2 ")
             $("#sistema_r_siguientefase").text(" FINISHERS ")
+            $("#sistema_r_siguientemovil").text(" FINISHERS ")
           else if group == "3"
             $("#barra_tricerie").css("width", "100%")
             $("#sistema_r_anteriorfase").text(" SERIE #2 ")
+            $("#sistema_r_anteriormovil").text(" SERIE #2 ")
             $("#sistema_r_progresonombre").text(" FINISHERS ")
             $("#sistema_r_siguientefase").text(" DONE ")
+            $("#sistema_r_siguientemovil").text(" DONE ")
           else if group == "4"
             $("#barra_finishers").css("width", "100%")
             $("#sistema_r_anteriorfase").text(" FINISHERS ")
+            $("#sistema_r_anteriormovil").text(" FINISHERS ")
             $("#sistema_r_progresonombre").text(" DONE ")
             $("#rutina_finalizada").css("display", "block")
         else if group_total == 5
           if group == "1"
             $("#barra_warmup").css("width", "100%")
             $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
+            $("#sistema_r_anteriormovil").text(" WARM UP / PREHABS ")
             $("#sistema_r_progresonombre").text(" SERIE #1 ")
             $("#sistema_r_siguientefase").text(" SERIE #2 ")
+            $("#sistema_r_siguientemovil").text(" SERIE #2 ")
           else if group == "2"
             $("#sistema_r_anteriorfase").text(" SERIE #1 ")
+            $("#sistema_r_anteriormovil").text(" SERIE #1 ")
             $("#sistema_r_progresonombre").text(" SERIE #2 ")
             $("#sistema_r_siguientefase").text(" SERIE #3 ")
+            $("#sistema_r_siguientemovil").text(" SERIE #3 ")
           else if group == "3"
             $("#sistema_r_anteriorfase").text(" SERIE #2 ")
+            $("#sistema_r_anteriormovil").text(" SERIE #2 ")
             $("#sistema_r_progresonombre").text(" SERIE #3 ")
             $("#sistema_r_siguientefase").text(" FINISHERS ")
+            $("#sistema_r_siguientemovil").text(" FINISHERS ")
           else if group == "4"
             $("#barra_tricerie").css("width", "100%")
             $("#sistema_r_anteriorfase").text(" SERIE #3 ")
+            $("#sistema_r_anteriormovil").text(" SERIE #3 ")
             $("#sistema_r_progresonombre").text(" FINISHERS ")
             $("#sistema_r_siguientefase").text(" DONE ")
+            $("#sistema_r_siguientemovil").text(" DONE ")
           else if group == "5"
             $("#barra_finishers").css("width", "100%")
             $("#sistema_r_anteriorfase").text(" FINISHERS ")
+            $("#sistema_r_anteriormovil").text(" FINISHERS ")
             $("#sistema_r_progresonombre").text(" DONE ")
             $("#rutina_finalizada").css("display", "block")
 
@@ -191,48 +209,68 @@ RoutinesController::index = ->
     if group_total == 4
       if group == "1"
         $("#sistema_r_anteriorfase").text($(".sistema_r_centro .hidden_corrida").val())
+        $("#sistema_r_anteriormovil").text($(".sistema_r_centro .hidden_corrida").val())
         $("#sistema_r_progresonombre").text($(".sistema_r_centro .hidden_corrida").val())
         $("#sistema_r_siguientefase").text(" WARM UP / PREHABS ")
+        $("#sistema_r_siguientemovil").text(" WARM UP / PREHABS ")
       else if group == "2"
         $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
+        $("#sistema_r_anteriormovil").text(" WARM UP / PREHABS ")
         $("#sistema_r_progresonombre").text(" WARM UP / PREHABS ")
         $("#sistema_r_siguientefase").text(" SERIE #1 ")
+        $("#sistema_r_siguientemovil").text(" SERIE #1 ")
       else if group == "3"
         $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
+        $("#sistema_r_anteriormovil").text(" WARM UP / PREHABS ")
         $("#sistema_r_progresonombre").text(" SERIE #1 ")
         $("#sistema_r_siguientefase").text(" SERIE #2 ")
+        $("#sistema_r_siguientemovil").text(" SERIE #2 ")
       else if group == "4"
         $("#sistema_r_anteriorfase").text(" SERIE #1 ")
+        $("#sistema_r_anteriormovil").text(" SERIE #1 ")
         $("#sistema_r_progresonombre").text(" SERIE #2 ")
         $("#sistema_r_siguientefase").text(" FINISHERS ")
+        $("#sistema_r_siguientemovil").text(" FINISHERS ")
         $(".sistema_r_centro_der").removeAttr("style")
       else
         $("#sistema_r_anteriorfase").text(" SERIE #2 ")
+        $("#sistema_r_anteriormovil").text(" SERIE #2 ")
         $("#sistema_r_progresonombre").text(" FINISHERS ")
         $("#sistema_r_siguientefase").text(" DONE ")
+        $("#sistema_r_siguientemovil").text(" DONE ")
         $(".sistema_r_centro_der").removeAttr("style")
     else if group_total == 5
       if group == "1"
         $("#sistema_r_anteriorfase").text($(".sistema_r_centro .hidden_corrida").val())
+        $("#sistema_r_anteriormovil").text($(".sistema_r_centro .hidden_corrida").val())
         $("#sistema_r_progresonombre").text($(".sistema_r_centro .hidden_corrida").val())
         $("#sistema_r_siguientefase").text(" WARM UP / PREHABS ")
+        $("#sistema_r_siguientemovil").text(" WARM UP / PREHABS ")
       else if group == "2"
         $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
+        $("#sistema_r_anteriormovil").text(" WARM UP / PREHABS ")
         $("#sistema_r_progresonombre").text(" WARM UP / PREHABS ")
         $("#sistema_r_siguientefase").text(" SERIE #1 ")
+        $("#sistema_r_siguientemovil").text(" SERIE #1 ")
       else if group == "3"
         $("#sistema_r_anteriorfase").text(" WARM UP / PREHABS ")
+        $("#sistema_r_anteriormovil").text(" WARM UP / PREHABS ")
         $("#sistema_r_progresonombre").text(" SERIE #1 ")
         $("#sistema_r_siguientefase").text(" SERIE #2 ")
+        $("#sistema_r_siguientemovil").text(" SERIE #2 ")
       else if group == "4"
         $("#sistema_r_anteriorfase").text(" SERIE #1 ")
+        $("#sistema_r_anteriormovil").text(" SERIE #1 ")
         $("#sistema_r_progresonombre").text(" SERIE #2 ")
         $("#sistema_r_siguientefase").text(" SERIE #3 ")
+        $("#sistema_r_siguientemovil").text(" SERIE #3 ")
         $(".sistema_r_centro_der").removeAttr("style")
       else
         $("#sistema_r_anteriorfase").text(" SERIE #2 ")
+        $("#sistema_r_anteriormovil").text(" SERIE #2 ")
         $("#sistema_r_progresonombre").text(" SERIE #3 ")
         $("#sistema_r_siguientefase").text(" FINISHERS ")
+        $("#sistema_r_siguientemovil").text(" FINISHERS ")
         $(".sistema_r_centro_der").removeAttr("style")
 
     if $(".sistema_r_centro.active").length > 0
