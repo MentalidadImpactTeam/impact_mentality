@@ -106,7 +106,7 @@ RoutinesController::index = ->
         text: 'No se han registrado como terminados todos los ejercicios.'
         confirmButtonText: 'Entendido'
     else
-      div_active =  $(".active")
+      div_active =  $(".sistema_r_centro.active")
       group = div_active.find(".hidden_group").val()
       group_total = $(".sistema_r_centro").find(".hidden_group").length - 1
       $("#flecha_anterior").addClass("d-flex").show()
@@ -176,7 +176,7 @@ RoutinesController::index = ->
       return
 
   $("#sistema_r_anteriorarrow").click ->
-    div_active =  $(".active")
+    div_active =  $(".sistema_r_centro.active")
     $("#rutina_finalizada").css("display", "none")
     $("#img_rutina_finalizada").css("display", "none")
     $(".terminado_txt").css("display", "none")
@@ -235,7 +235,7 @@ RoutinesController::index = ->
         $("#sistema_r_siguientefase").text(" FINISHERS ")
         $(".sistema_r_centro_der").removeAttr("style")
 
-    if $(".active").length > 0
+    if $(".sistema_r_centro.active").length > 0
       div_active.addClass 'animated bounceOutRight'
       setTimeout (->
         div_active.hide().removeClass("d-flex active")
@@ -325,7 +325,7 @@ routines_mark_done = ($this) ->
   else if count_exercises == 4
     porcentage = 25 * count_exercises_done
 
-  div_active =  $(".active")
+  div_active =  $(".sistema_r_centro.active")
   group = div_active.find(".hidden_group").val()
   group_total = $(".sistema_r_centro").find(".hidden_group").length
   if group_total == 4
