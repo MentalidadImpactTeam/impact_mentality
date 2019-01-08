@@ -530,10 +530,10 @@ body.swal2-height-auto{
 
   #footer_contenido{
       width: 100%;
-      padding-left: 31.5px;
-      padding-right: 31.5px;
-      padding-top: 13.5px;
-      padding-bottom: 13.5px;
+      padding-left: 3vw;
+      padding-right: 3vw;
+      padding-top: 3vw;
+      padding-bottom: 3vw;
   }
   #footer_contacto_1, #footer_contacto_2, #footer_contacto_3 {
       width: 100%;
@@ -1150,7 +1150,7 @@ body.swal2-height-auto{
   }
   #landing_body{
     background-size: 140%;
-    background-position-y: 8vh;
+    background-position-y: 7vh;
   }
   #landing_funciona{
       flex-direction: column;
@@ -1445,9 +1445,9 @@ body.swal2-height-auto{
 
   .landing_testimonios_center_container_content_text{
       width: 100%;
-      margin-top: 200px;
+      margin-top:  56vw;
       margin-right: 0;
-      overflow:scroll;
+      overflow: auto;
       background-color: rgba(0, 0, 0, .8);
   }
 
@@ -1482,14 +1482,25 @@ body.swal2-height-auto{
       padding-bottom: 3vw;
   }
   .landing_img{
-    width: 50vw;
-    height: 57.339vw;
+    width: 35vw;
+    height: 40.138vw;
   }
 
   .landing_funciona_linea{
     width: 77%;
     height: .6vw;
     margin-bottom: 3vw;
+  }
+  
+  .landing_deportes_deporte{
+    color: #fff;
+    width: 15vw;
+    height: 4.5vw;
+    font-weight: bold;
+    font-size: 1.3vw;
+    line-height: 1.3vw;
+    margin: 0 2vw;
+    opacity: .8;
   }
 }
 
@@ -1690,7 +1701,7 @@ body.swal2-height-auto{
 @media only screen and (max-width: 1090px) {
   #landingequipos_body{
     background-size: 100%;
-    background-position-y: 15vw;
+    background-position-y: 7vh;
   }
 
   #landing2_titulo1{

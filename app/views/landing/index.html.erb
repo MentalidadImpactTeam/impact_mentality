@@ -6,15 +6,16 @@
                 <div class="animated bounceInDown landingmovil_logo"></div>
                 <div  id="landingmovil_login">
                     <center>
-                    <form style="animation-delay:1s;" class="animated fadeInLeft">
+                    <%= form_for(:user, url: session_path(:user), :html => { :style => 'animation-delay:1s;', :class => 'animated fadeInLeft' }) do |f| %>
                         <label class="landingmovil_label">Correo electrónico</label>
-                        <input class="landingmovil_input" placeholder="Correo electrónico..." type="text">
+                        <%= f.email_field :email, placeholder: "Correo Electrónico...", class: "landingmovil_input"  %>
                         <label class="landingmovil_label">Contraseña</label>
-                        <input class="landingmovil_input" placeholder="Contraseña..." type="password">
+                        <%= f.password_field :password, placeholder: "Contraseña", class: "landingmovil_input" %>
                         <!-- <input type="button" class="sistema_cuenta_input" style="width: 50%"> -->
                     </form>
                     </center>
                     <div id="landingmovil_iniciar" class="animated bounceInLeft landingmovil_botones"> Iniciar sesión </div>
+                    <% end %>
                     <div id="landingmovil_registrate" class="animated bounceInLeft landingmovil_botones"> Regístrate </div>
 
                     <div id="landingmovil_olvidaste" class="animated bounceInLeft"> ¿Olvidaste tu contraseña? </div>
@@ -307,6 +308,18 @@
                     swal(
                         'Aquí va el pop up de registro'
                     );
+                });
+
+                $("#landingmovil_iniciar").on("click", function(){
+                    $("form").submit();
+                });
+
+                $("#landingmovil_registrate").on("click", function(){
+                    window.location.href = "/users/sign_up"
+                });
+
+                $("#landingmovil_olvidaste").on("click", function(){
+                    window.location.href = "/users/password/new"
                 });
 
                 /* SCROLL */
