@@ -28,6 +28,7 @@
         <div class="landing_normal container-fluid">
 
             <%= render "header_landing" %>
+            <%= render "login_landing" %>
 
             <!-- TITULO -->
             <div class="row">
@@ -307,6 +308,11 @@
                     swal(
                         'Aquí va el pop up de registro'
                     );
+                });
+                
+                /* LOG IN */ 
+                $('.header_login').on("click",function(){
+                    $("#contenedor_login").css("display", "block");
                 });
 
                 /* SCROLL */
