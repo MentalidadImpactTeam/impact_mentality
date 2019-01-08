@@ -1017,7 +1017,10 @@ body.swal2-height-auto{
   margin: 0 2vw;
   opacity: .8;
 }
-
+.renglones_soporte i{
+  font-size:2vw;
+  margin:15px 0;
+}
 #integrantes_soporte{
   color:white;
   font-family: lato;
@@ -1029,7 +1032,7 @@ body.swal2-height-auto{
 #integrantes_soporte h4{
   text-align:left;
   font-weight: bold;
-  margin-left:10px;
+
 }
 #integrantes_soporte h2{
   font-weight: bold;
@@ -1491,7 +1494,7 @@ body.swal2-height-auto{
     height: .6vw;
     margin-bottom: 3vw;
   }
-  
+
   .landing_deportes_deporte{
     color: #fff;
     width: 15vw;
