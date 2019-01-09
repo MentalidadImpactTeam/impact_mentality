@@ -164,7 +164,6 @@ body.swal2-height-auto{
 }
 
 .sistema_container {
-  display: inline-block;
   position: relative;
   float: right;
   height: 100%;
@@ -580,6 +579,13 @@ body.swal2-height-auto{
   height: 3.8vw;
 }
 
+.landing2_botonson{
+  margin-top: 15px;
+  margin-bottom: 13%;
+  width: 30vw;
+  height: 3.8vw;
+  margin-left: 9%;
+}
 
 #landing_titulo1{
   color: #ffffff;
@@ -981,9 +987,6 @@ body.swal2-height-auto{
   color: #fff;
 }
 
-.landing_testimonios_center_container_content_text_titulo, .landing_testimonios_center_container_content_text_deporte, .landing_testimonios_center_container_content_text_testimonio{
-
-}
 
 #landing_sistema{
   color: #fff;
@@ -1530,10 +1533,10 @@ body.swal2-height-auto{
 }
 
 #landing2_plan_titulo_plan{
-  font-size: 2.5vw;
+  font-size: 3.7vw;
   margin: 0 0 0 0 ;
   padding: 0 0 0 0;
-  line-height: 1vw;
+  line-height: 4vw;
   font-weight: 300;
   font-style: italic;
   width: 100%;
@@ -1637,23 +1640,26 @@ body.swal2-height-auto{
   margin-top: 1vw;
 }
 
+
 .landingequipos_entrena{
+  font-size: 3.7vw;
+  line-height: 4vw;
   color: #fff;
-  font-size: 7.5vw;
-  line-height: 7.5vw;
   font-weight: 300;
   font-style: italic;
   margin-top: 2vw;
 }
 
 .landingequipos_mejores{
+  font-size: 3.7vw;
+  line-height: 4vw;
   color: #ff1d25;
-  font-size: 7.5vw;
-  line-height: 7.5vw;
-  font-weight: bold;
-  text-shadow: 0 0 1vw #ff1d25;
-  font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 0 1vw #ff1d25;
+    font-style: italic;
 }
+
+
 
 /* ------------------------ LANDING EQUIPOS ------------------------ */
 #landingequipos_lista{
@@ -1672,15 +1678,28 @@ body.swal2-height-auto{
     background-position-y: 7vh;
   }
 
+  .landing2_botonson{
+    justify-content: center !important;
+    width: 100% !important;
+    height: 8.5vw;
+    display: flex;
+    margin-top: 3vw;
+    margin-bottom: 5vw;
+  }
+
   #landing2_titulo1{
-    font-size: 5.3vw;
-    line-height: 5.3vw;
-    padding-right: 10vw;
+    font-size: 9vw;
+    line-height: 9vw;
+    padding-right: 0;
+    text-align: center;
  }
  
  #landing2_titulo2{
-    font-size: 4.7vw;
-    line-height: 5vw;
+    font-size: 7vw;
+    line-height: 7vw;
+    padding-right: 16vw;
+    padding-top: 3vw;
+    text-align: center;
  }
   
   #landing2_lista{
@@ -1751,15 +1770,22 @@ body.swal2-height-auto{
   }
 
   .landingequipos_entrena{
+    color: #fff;
+    font-size: 7.5vw;
+    line-height: 7.5vw;
+    font-weight: 300;
+    font-style: italic;
+    margin-top: 2vw;
     text-align: center;
-    font-size: 5.5vw;
-    line-height: 5.5vw;
   }
   
   .landingequipos_mejores{
-    text-align: center;
-    font-size: 5.5vw;
-    line-height: 5.5vw;
+    color: #ff1d25;
+    font-size: 7.5vw;
+    line-height: 7.5vw;
+    font-weight: bold;
+    text-shadow: 0 0 1vw #ff1d25;
+    font-style: italic;
   }
 
   .landingequipos_lista{
@@ -1934,6 +1960,7 @@ body.swal2-height-auto{
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
+    flex-direction: row;
 }
 
 .about_persona2{
@@ -1941,6 +1968,7 @@ body.swal2-height-auto{
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
+  flex-direction: row-reverse;
 }
 
 .about_fotos{
@@ -1952,13 +1980,13 @@ body.swal2-height-auto{
 
 }
 
-.about_fotos2{
-  width: 40vw;
-  height: 100%;
-  margin-left: 2vw;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+  .about_fotos2{
+    width: 40vw;
+    height: 100%;
+    margin-left: 2vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 
 #about_vildo{
     background-image: url('../img/vildo.png');
@@ -2015,14 +2043,66 @@ body.swal2-height-auto{
   width: 80%;
 }
 
+.about_infotodo{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
 @media only screen and (max-width: 1090px) {
+
+  .about_infotodo{
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .about_persona{
+    background-image: none;
+    background-color: #fff;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about_fotos, .about_fotos2{
+    width: 80vw;
+    height: 85vw;
+}
+
+.about_persona2{
+  background-image: none;
+  background-color: #333333;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
 
 
   #about_title_primer_container {
-    font-size: 50px;
+    font-size: 12vw;
+    margin-top: 15vw;
+    line-height: 12vw;
 }
 #about_primer_container{
   padding-top: 120px;
+}
+
+.about_nombre{
+  padding-top: 10vw;
+  font-size: 7.5vw;
+  letter-spacing: 0;
+}
+
+.about_puesto, .about_puesto2{
+  letter-spacing: 0;
+  font-size: 4vw;
+  text-align: start
+}
+
+.about_info, .about_info2{
+  padding-bottom: 10vw;
+  text-align: start;
 }
 
 
@@ -2196,6 +2276,15 @@ margin-bottom:30px;
 
 
 @media only screen and (max-width: 1090px) {
+
+  #about_tercer_container {
+    padding-top: 10vw;
+  }
+
+  #about_segundo_container {
+    padding-top: 10vw;
+  }
+
   #about_adrian_mobil{
     display: block!important;
   }
@@ -2230,18 +2319,23 @@ margin-bottom:30px;
 @media only screen and (max-width: 1090px) {
   /* CONTACTO */
   #about_subtitulo_tercer_container{
-    font-size:5vw;
+    padding: 0;
+    margin-bottom: 10vw;
+    font-size: 6vw;
   }
   #about_description_segundo_container{
     font-size:3vw;
+    padding: 0 10% 10vw 10%;
 
   }
   #about_description_primer_container {
     padding: 0 20px 40px 20px !important;
-    font-size: 3.2vw
+    font-size: 3.2vw;
+    width: 80%;
     }
     .about_red_title{
-      font-size:8vw;
+      font-size: 12vw;
+      line-height: 13vw;
     }
   .landing_testimonios_center_container_content_text_titulo{
     font-size:4vw;
@@ -2253,7 +2347,7 @@ margin-bottom:30px;
 
   #contacto_titulo{
       color: #ffffff;
-      font-size: 7vw;
+      font-size: 15vw;
       transition: all .5s;
       font-weight: bold;
       margin-left: 5%;
@@ -2262,14 +2356,17 @@ margin-bottom:30px;
   }
 
   #contacto_rayaroja{
-      height: 2px;
-      width: 20%;
-      background-color: #ff1d25;
+      display: none;
   }
   #contacto_contenido2, #contacto_contenido1{
       width: 100%;
       margin: 0;
       padding: 0 8% 0 8%;
+  }
+
+  #contacto_contenido2{
+    margin-top: 10vw;
+    margin-bottom: 10vw;
   }
 
   #contacto_contenido1_pregunta{
@@ -2285,8 +2382,8 @@ margin-bottom:30px;
   #contacto_contenido1_callto{
       display: block;
       position: relative;
-      font-size: 3vw;
-      margin: 3vw 0;
+      font-size: 3.5vw;
+      margin: 1vw 0;
   }
 
   .contacto_contenido2_titulo{
