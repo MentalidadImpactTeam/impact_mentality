@@ -1021,6 +1021,8 @@ body.swal2-height-auto{
 .renglones_soporte i{
   font-size:2vw;
   margin:15px 0;
+  color: red;
+  text-shadow: 0 2px 10px #870000;
 }
 #integrantes_soporte{
   color:white;
@@ -1037,7 +1039,7 @@ body.swal2-height-auto{
 }
 #integrantes_soporte h2{
   font-weight: bold;
-  margin:0 0 55px 0;
+  margin:0;
   font-size:3vw;
 }
 #landing_funciona{
@@ -1487,8 +1489,9 @@ body.swal2-height-auto{
       padding-bottom: 3vw;
   }
   .landing_img{
-    width: 35vw;
-    height: 40.138vw;
+    width: 17vw;
+    height: 20.138vw;
+    margin: 5vw;
   }
 
   .landing_funciona_linea{
@@ -1713,6 +1716,18 @@ body.swal2-height-auto{
 }
 
 @media only screen and (max-width: 1090px) {
+  #integrantes_soporte h2{
+    font-size:7vw;
+  }
+  .renglones_soporte i{
+  font-size:7vw;
+  margin:43px 0;
+  margin-right:72vw;
+  color: red;
+  text-shadow: 0 2px 21px #870000;
+
+  }
+
   #landingequipos_body{
     background-size: 100%;
     background-position-y: 7vh;
@@ -1913,6 +1928,7 @@ body.swal2-height-auto{
 .contacto_input_field{
   width: 100%;
   padding: 10px;
+  font-size:2vw;
   outline: none;
   overflow: hidden;
 }
@@ -2090,7 +2106,9 @@ body.swal2-height-auto{
 }
 
 @media only screen and (max-width: 1090px) {
+.iconos_devteam{
 
+}
   .about_infotodo{
     align-items: center;
     flex-direction: column;
@@ -2106,8 +2124,8 @@ body.swal2-height-auto{
 }
 
 .about_fotos, .about_fotos2{
-    width: 80vw;
-    height: 85vw;
+    width: 60vw;
+    height: 58vw;
 }
 
 .about_persona2{
@@ -2143,6 +2161,7 @@ body.swal2-height-auto{
 .about_info, .about_info2{
   padding-bottom: 10vw;
   text-align: start;
+  font-size:3.5vw;
 }
 
 
