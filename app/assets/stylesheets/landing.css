@@ -1716,7 +1716,6 @@ body.swal2-height-auto{
 }
 
 @media only screen and (max-width: 1090px) {
-<<<<<<< HEAD
   #integrantes_soporte h2{
     font-size:7vw;
   }
@@ -1727,10 +1726,6 @@ body.swal2-height-auto{
   color: red;
   text-shadow: 0 2px 21px #870000;
 
-=======
-  #landing2_texto_titulo{
-    margin-left: 0;
->>>>>>> ef630d1a4cbc4d9f7f7cd7b83f4c550ee1b849e1
   }
 
   #landingequipos_body{
@@ -1753,15 +1748,15 @@ body.swal2-height-auto{
     line-height: 9vw;
     padding-right: 0;
     text-align: center;
- }
+}
 
- #landing2_titulo2{
+#landing2_titulo2{
     font-size: 7vw;
     line-height: 7vw;
     padding-right: 0;
     padding-top: 3vw;
     text-align: center;
- }
+}
 
   #landing2_lista{
     font-size: 3.5vw;

@@ -1,6 +1,4 @@
-// Place all the styles related to the corridas controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
 #sistema_libreria_contejercicios{
     flex-direction: row;
 }
@@ -19,7 +17,7 @@
     order: unset;
     margin-left: none;
     padding: 2vw 0;
-    
+
 }
 
 .sistema_r_tipoejercicio{
@@ -37,5 +35,5 @@
 }
 
 @media (max-width: 1090px) {
-    
+
 }
