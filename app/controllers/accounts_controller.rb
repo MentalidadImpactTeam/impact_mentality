@@ -13,10 +13,12 @@ class AccountsController < ApplicationController
     customer = Conekta::Customer.find(current_user.customer_token)
     payment_source   = customer.create_payment_source(type: "card", token_id: params["customer_token"])
     
+    tiene_tarjeta = UserConektaToken.find_by(user_id: current_user.id).present?
+
     user_conekta = UserConektaToken.new
     user_conekta.user_id = current_user.id
     user_conekta.token =  payment_source["id"]
-    user_conekta.default = 0
+    user_conekta.default = tiene_tarjeta ? 0 : 1
     user_conekta.last_digits = payment_source["last4"]
     user_conekta.exp_month = payment_source["exp_month"]
     user_conekta.exp_year = payment_source["exp_year"]
@@ -62,8 +64,22 @@ class AccountsController < ApplicationController
 
   def cancel_subscription
     customer = Conekta::Customer.find(current_user.customer_token)
-    subscription = customer.subscription.pause
+    subscription = customer.subscription.cancel()
 
     render plain: "OK"
+  end
+
+  def add_subscription
+    customer = Conekta::Customer.find(current_user.customer_token)
+    subscription = customer.create_subscription({
+      :plan => current_user.user_information.plan
+    })
+    if subscription['status'] == "active"
+      response = "OK"
+    else
+      response = "BAD"
+    end
+
+    render plain: response
   end
 end

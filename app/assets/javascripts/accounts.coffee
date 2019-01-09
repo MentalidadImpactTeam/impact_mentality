@@ -111,6 +111,7 @@ account_add_card = ->
             data: customer_token: token.id
             dataType: "json",
             success: (data) ->
+              swal.close();
               $('<div class="sistema_cuenta_tarjeta d-flex flex-column"><input type="hidden" class="hidden_card" value="'+data["id"]+'"><div class="sistema_cuenta_borrar"></div> <div class="sistema_cuenta_marca"></div> <div class="sistema_cuenta_numt">' + numv + '</div> <div class="d-flex flex-row"> <div class="sistema_cuenta_fechatxt d-flex flex-column"> <div> FECHA </div> <div> CAD. </div> </div> <div class="sistema_cuenta_num">' + fecha + '</div> </div> <div class="sistema_cuenta_circulo"></div> </div>').insertBefore '.sistema_cuenta_agregar'
               $('.sistema_cuenta_circulo').click ->
                 account_card_default(this)
@@ -130,6 +131,8 @@ account_add_card = ->
         return
 
       conektaErrorResponseHandler = (response) ->
+        swal.stopLoading();
+        swal.close();
         swal
           type: 'error'
           title: 'No se puede agregar su tarjeta'
@@ -145,6 +148,7 @@ account_add_card = ->
         'exp_year': fechav.split("/")[1]
         'exp_month': fechav.split("/")[0]
         'cvc': csvv
+      swal.showLoading();
       Conekta.Token.create tokenParams, conektaSuccessResponseHandler, conektaErrorResponseHandler
     else
       swal
@@ -157,34 +161,84 @@ account_add_card = ->
 
 account_cancelar_suscripcion = ->
   $('#sistema_cuenta_cancelar_txt').click ->
-    swal(
-      title: '¿Estas seguro de cancelar tu suscripción?'
-      footer: 'Al cancelar tu suscripción, perderdas acceso a tus rutinas anteriores al terminar el mes'
-      type: 'warning'
-      showCancelButton: true
-      confirmButtonColor: '#3085d6'
-      cancelButtonColor: '#d33'
-      cancelButtonText: 'No, quiero seguir suscrito'
-      confirmButtonText: 'Sí, quiero cancelar mi suscripción'
-      heightAuto: false
-      showCloseButton: true).then (result) ->
-        if result.value
-          $.ajax
-            type: "POST"
-            url: "/accounts/cancel_subscription"
-            dataType: "text",
-            success: (data) ->
-              $(".sistema_cuenta_estadoa").text("SUSPENDIDA")
+    if $(".sistema_cuenta_estadoa").text() == "ACTIVA"
+      swal(
+        title: '¿Estas seguro de cancelar tu suscripción?'
+        footer: 'Al cancelar tu suscripción, perderdas acceso a tus rutinas anteriores al terminar el mes'
+        type: 'warning'
+        showCancelButton: true
+        confirmButtonColor: '#3085d6'
+        cancelButtonColor: '#d33'
+        cancelButtonText: 'No, quiero seguir suscrito'
+        confirmButtonText: 'Sí, quiero cancelar mi suscripción'
+        heightAuto: false
+        showCloseButton: true).then (result) ->
+          if result.value
+            swal
+              text: 'Procesando...'
+              allowOutsideClick: false
+              allowEscapeKey: false
+              allowEnterKey: false
+              heightAuto: false
+              onOpen: ->
+                swal.showLoading()
+            $.ajax
+              type: "POST"
+              url: "/accounts/cancel_subscription"
+              dataType: "text",
+              success: (data) ->
+                $(".sistema_cuenta_estadoa").text("SUSPENDIDA")
+                $("#sistema_cuenta_cancelar_txt").text("Reanudar subscripción")
+                swal.close();
+                swal
+                  type: 'success'
+                  title: 'Exito'
+                  text: 'Suscripcion Cancelada'
+                  confirmButtonText: 'Entendido'
+                  heightAuto: false
+    else
+      if $(".sistema_cuenta_tarjeta").length == 0
+        swal('Error','No tiene ninguna tarjeta agregada.','heightAuto: false','warning')
+      else
+        swal(
+          title: '¿Estas seguro de reanudar tu suscripción?'
+          footer: 'Al reanudar tu suscripción, se volvera a cobrar el costo mensual'
+          type: 'warning'
+          showCancelButton: true
+          confirmButtonColor: '#3085d6'
+          cancelButtonColor: '#d33'
+          cancelButtonText: 'No, quiero seguir suspendido'
+          confirmButtonText: 'Sí, quiero reanudar mi suscripción'
+          heightAuto: false
+          showCloseButton: true).then (result) ->
+            if result.value
               swal
-                type: 'success'
-                title: 'Exito'
-                text: 'Suscripcion Cancelada'
-                confirmButtonText: 'Entendido'
+                text: 'Procesando...'
+                allowOutsideClick: false
+                allowEscapeKey: false
+                allowEnterKey: false
                 heightAuto: false
-        
+                onOpen: ->
+                  swal.showLoading()
+              $.ajax
+                type: "POST"
+                url: "/accounts/add_subscription"
+                dataType: "text",
+                success: (data) ->
+                    swal.close();
+                    if data == "OK"
+                      $(".sistema_cuenta_estadoa").text("ACTIVA")
+                      $("#sistema_cuenta_cancelar_txt").text("Cancelar subscripción")
+                      swal
+                        type: 'success'
+                        title: 'Exito'
+                        text: 'Suscripcion Reanudada'
+                        confirmButtonText: 'Entendido'
+                        heightAuto: false
+                    else
+                      swal('Error','Hubo un error al tratar de reanudar su suscripcion, favor de revisar su tarjeta.','heightAuto: false','warning')
     return
-    
-      
+
 account_update = ->
   ### CORREO ###
   $('#sistema_cuenta_datos_editar_correo').click ->
