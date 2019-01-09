@@ -403,7 +403,7 @@ eventos_datos_deportivos = ->
             ), 500
     return false
   FootballA = '<option value="skill">Skill</option><option value="linea">Linea</option><option value="pateador">Pateador</option><option value="Mariscal">Mariscal de campo</option>'
-  Basket = '<option value="poste">Poste</option><option value="botador">Batoador-Ala</option>'
+  Basket = '<option value="poste">Poste</option><option value="botador">Botador-Ala</option>'
   beisbol = '<option value="field">Infield/Outfield</option><option value="Pitcher">Pitcher</option>'
   soccer = '<option value="Campo">Campo</option><option value="Portero">Portero</option>'
   hockey = ''
