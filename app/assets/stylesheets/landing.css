@@ -1552,7 +1552,7 @@ body.swal2-height-auto{
    text-shadow: 0px 0px 5px #ffffff;
    margin: 0 0 0 0;
    padding: 0 0 0 0;
-   line-height: 42px;
+   line-height: 2.3vw;
 }
 
 #landing2_titulo2{
@@ -1716,6 +1716,7 @@ body.swal2-height-auto{
 }
 
 @media only screen and (max-width: 1090px) {
+<<<<<<< HEAD
   #integrantes_soporte h2{
     font-size:7vw;
   }
@@ -1726,6 +1727,10 @@ body.swal2-height-auto{
   color: red;
   text-shadow: 0 2px 21px #870000;
 
+=======
+  #landing2_texto_titulo{
+    margin-left: 0;
+>>>>>>> ef630d1a4cbc4d9f7f7cd7b83f4c550ee1b849e1
   }
 
   #landingequipos_body{
@@ -1740,6 +1745,7 @@ body.swal2-height-auto{
     display: flex;
     margin-top: 3vw;
     margin-bottom: 5vw;
+    margin-left: 0;
   }
 
   #landing2_titulo1{
@@ -1752,7 +1758,7 @@ body.swal2-height-auto{
  #landing2_titulo2{
     font-size: 7vw;
     line-height: 7vw;
-    padding-right: 16vw;
+    padding-right: 0;
     padding-top: 3vw;
     text-align: center;
  }
@@ -1822,6 +1828,7 @@ body.swal2-height-auto{
     background-color: #1e1e1e;
     flex-direction: column-reverse;
     justify-content: center;
+    padding-bottom: 10vw;
   }
 
   .landingequipos_entrena{
@@ -1841,6 +1848,7 @@ body.swal2-height-auto{
     font-weight: bold;
     text-shadow: 0 0 1vw #ff1d25;
     font-style: italic;
+    text-align: center;
   }
 
   .landingequipos_lista{
