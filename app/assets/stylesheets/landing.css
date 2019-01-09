@@ -194,7 +194,7 @@ body.swal2-height-auto{
       font-size: 3vw;
       line-height: 6vw;
     }
-    
+
 }
 
 
@@ -916,7 +916,7 @@ body.swal2-height-auto{
   margin-right: 20px;
   cursor: pointer;
 
-} 
+}
 
 .landing_arrow_right{
   width: 25px;
@@ -1002,7 +1002,7 @@ body.swal2-height-auto{
 #landing_deportes{
   width: 100%;
   justify-content: center;
-  align-content: center; 
+  align-content: center;
   background-color: rgba(0, 0, 0, .6);
 }
 
@@ -1020,7 +1020,28 @@ body.swal2-height-auto{
   margin: 0 2vw;
   opacity: .8;
 }
+.renglones_soporte i{
+  font-size:2vw;
+  margin:15px 0;
+}
+#integrantes_soporte{
+  color:white;
+  font-family: lato;
+  margin: 35px 0;
+}
+#integrantes_soporte p{
+  text-align:left;
+}
+#integrantes_soporte h4{
+  text-align:left;
+  font-weight: bold;
 
+}
+#integrantes_soporte h2{
+  font-weight: bold;
+  margin:0 0 55px 0;
+  font-size:3vw;
+}
 #landing_funciona{
   background: #fff;
   padding-bottom: 100px;
@@ -1114,6 +1135,20 @@ body.swal2-height-auto{
   .landing_testimonios_center_container_content_text_testimonio{
     font-size:2vw;
     overflow:scroll;
+  }
+  #integrantes_soporte{
+    margin:50px 0 !important;
+  }
+
+  #integrantes_soporte h4 {
+   font-size:4vw;
+  }
+  .renglones_soporte{
+    margin:15px 0 !important;
+  }
+
+  #integrantes_soporte p{
+    font-size:3vw;
   }
   #landing_sistema{
     font-size:7vw;
@@ -1412,7 +1447,7 @@ body.swal2-height-auto{
     background-repeat: no-repeat;
     background-position: top;
   }
-  
+
 
   .landing_testimonios_center_container_content_text{
       width: 100%;
@@ -1462,7 +1497,7 @@ body.swal2-height-auto{
     height: .6vw;
     margin-bottom: 3vw;
   }
-  
+
   .landing_deportes_deporte{
     color: #fff;
     width: 15vw;
@@ -1693,7 +1728,7 @@ body.swal2-height-auto{
     padding-right: 0;
     text-align: center;
  }
- 
+
  #landing2_titulo2{
     font-size: 7vw;
     line-height: 7vw;
@@ -1701,7 +1736,7 @@ body.swal2-height-auto{
     padding-top: 3vw;
     text-align: center;
  }
-  
+
   #landing2_lista{
     font-size: 3.5vw;
     margin-left: 3vw;
@@ -1713,7 +1748,7 @@ body.swal2-height-auto{
     padding: 0 5% 0 5%;
     margin-bottom: 0;
   }
-  
+
   #landing2_plan_titulo{
     width: 100%;
     margin-bottom: 2vw;
@@ -1724,12 +1759,12 @@ body.swal2-height-auto{
     line-height: 11vw;
     text-align: center;
   }
-  
+
   #landing2_plan_titulo_pz{
     font-size: 8.5vw;
     text-align: center;
   }
-  
+
   #landing2_plan_linea{
     width: 64vw;
     height: .6vw;
@@ -1751,7 +1786,7 @@ body.swal2-height-auto{
     width: 30vw;
     height: 40vw;
   }
-  
+
   #landing2_plan2_lap{
     width: 80vw;
     height: 45vw;
@@ -1778,7 +1813,7 @@ body.swal2-height-auto{
     margin-top: 2vw;
     text-align: center;
   }
-  
+
   .landingequipos_mejores{
     color: #ff1d25;
     font-size: 7.5vw;
@@ -1804,7 +1839,7 @@ body.swal2-height-auto{
   #landingequipos_resultados_right{
     margin-top: 4vw;
   }
-  
+
 }
 
 
