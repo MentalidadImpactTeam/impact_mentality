@@ -497,29 +497,28 @@
                                         <%= ui_fields.text_field :history_injuries, placeholder: 'Lesiones', id: 'lesiones_input', class: 'FPago_tarjeta_tutor' %>
                                     </div>
                                 </div>
-                                <div class="DP_input col-lg-6 col-md-6">
-                                    <div class="input_box_exp animated bounceIn">
-                                        <i class="far fa-calendar-alt"></i>
-                                        <%= ui_fields.select :experience, options_for_select([['Experiencia', ''],['Novato', 'novato'],['Experimentado', 'experimentado'], ['Atleta', 'atleta']]), {}, { :id => 'ID_exp' } %>
-                                    </div>
-                                </div>
+
                             </div>
 
                             <div class="row">
-                                <div class="DP_input col-lg-6 col-md-6">
-                                    <div style="animation-delay: .7s;" class="  animated bounceIn">
-                                        <center>
-                                            <h4 style=" color:red;display:inline-block; position:relative; vertical-align: middle; padding-top: 30px; ">Proxima Competencia</h4>
-                                        </center>
-                                    </div>
-                                </div>
-                                <div class="DP_input col-lg-6 col-md-6">
+                              <div class="DP_input col-lg-6 col-md-6">
                                     <div class="input_box_tutor  animated bounceIn">
                                         <i class="far fa-id-badge"></i>
                                         <%= ui_fields.date_field :next_competition, id: 'ID_Competencia_fecha' %>
                                     </div>
                                 </div>
-
+                                <div class="DP_input col-lg-6 col-md-6">
+                                    <div style="animation-delay: .7s;" class="  animated bounceIn">
+                                        <center>
+                                            <h4>Proxima Competencia</h4>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <p class="animated bounceIn" style="color:red; margin:2vw 0; font-family:lato;">En caso de no contar con fecha de competencia, simplemente no selecciones una fecha.</p>
+                                </div>
                             </div>
                         </div>
                     </div>

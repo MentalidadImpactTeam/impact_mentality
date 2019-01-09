@@ -13,6 +13,11 @@
     font-weight: lighter;
     margin: 25px 0;
 }
+.tipos_de_usuario i{
+    font-size:3vw;
+    margin:2vw;
+    color:red;
+}
 
 #terminar_btn {
     background-color: #b52434;
@@ -70,6 +75,13 @@
     display: block;
 }
 
+.DP_input h4{
+    color:red;
+    display:inline-block;
+    position:relative;
+    vertical-align: middle;
+    padding-top: 6px;
+}
 .DP_input {
     margin: 10px 0;
 }
@@ -771,6 +783,16 @@ code {
 /* ---------------------------------- media screen ---------------------------------------- */
 
 @media only screen and (max-width: 991px) {
+    #FPago_titulo {
+        font-size:9vw;
+
+    }
+    ..PP_titulo{
+        font-size:7vw;
+    }
+    .desaparecer_columna{
+        display:none;
+    }
     .contenedor_metas,
     .contenedor_objetivo {
         margin: 25px 0;
@@ -781,7 +803,7 @@ code {
         color:red;
     }
     .titulos_seguimiento{
-        font-size:5,5vw;
+        font-size:5.5vw;
     }
 }
 
@@ -789,10 +811,12 @@ code {
 
 
 #FPago_titulo {
-    font-size: 50px;
+    font-size: 3vw;
     margin: 15px 0;
     color: red !important;
     animation-delay: .5s;
+    font-family: lato;
+    font-weight: bold
 }
 
 .terminar_mensaje {
@@ -956,7 +980,7 @@ code {
 
 .tipos_de_usuario h5 {
     color: red;
-    font-size: 1.2vw;
+    font-size: 1.5vw;
     font-family: Lato;
     font-weight: bold;
 }
@@ -987,9 +1011,7 @@ code {
 }
 
 @media only screen and (max-width: 992px) {
-    .tipos_de_usuario i {
-        font-size: 6vw;
-    }
+
     .tipos_de_usuario h5 {
         font-size: 3.5vw;
     }
@@ -999,11 +1021,9 @@ code {
 
 
     #PP_info_text {
-        font-size: 4vw;
+        font-size: 4vw !important;
     }
-    #PP_info_text {
-        font-size: 4vw;
-    }
+
     .PP_precio {
         font-size: 3vw;
     }
@@ -1328,9 +1348,7 @@ code {
     .tipos_de_usuario h5 {
         font-size: 2.5vw;
     }
-    #PP_info_text {
-        font-size: 5vw;
-    }
+
     #TU_info_text {
         font-size: 5vw;
     }
