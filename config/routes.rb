@@ -40,6 +40,13 @@ Rails.application.routes.draw do
   end
 
 
+  resources :corridas do
+    collection do
+      get "corridas" => "corridas#index"
+    end
+  end
+
+
   resources :webhook, only: [:index] do
     collection do
       post "conekta" => "webhook#procesar"
