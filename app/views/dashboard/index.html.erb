@@ -64,7 +64,11 @@
     <div style="justify-content:center;" class="animated zoomInUp db_contenedor_segundafila d-flex justify-content-between">
 
         <div  class="sistema_db_info_grafica d-flex flex-column justify-content-center">
-        <center><div class="mensaje_overlay_graph">Al realizar tu primera prueba se activará tu graficá comparativa.</div></center>
+        <center>
+            <% if @last_entries.present? %>
+                <div class="mensaje_overlay_graph">Al realizar tu primera prueba se activará tu graficá comparativa.</div>
+            <% end %>
+        </center>
 
         <div class="overlay_graph"></div>
             <select id="exercise_graph">
@@ -87,7 +91,11 @@
 
         <div style="position:relative; overflow:hidden;" class="animated zoomInUp sistema_db_info_tabla">
 
-        <center><div class="mensaje_overlay_graph">Se activará tu tabla al tener una entrada.</div></center>
+            <center>
+                <% if @last_entries.present? %>
+                    <div class="mensaje_overlay_graph">Se activará tu tabla al tener una entrada.</div>
+                <% end %>
+            </center>
 
             <div class="overlay_graph"></div>
             <div>
