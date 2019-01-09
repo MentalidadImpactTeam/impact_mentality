@@ -108,11 +108,9 @@ textarea{
 
 .popper{
   color: #fff;
-  margin-left: -1vw;
-  font-weight: 500;
-  font-size: 1vw;
-  line-height: 2vw;
-  font-style: italic;
+  font-weight: bold;
+  font-size: 1.2vw;
+  line-height: 3vw;
   text-shadow: 0 0 .5vw #000;
 }
 
@@ -1214,6 +1212,7 @@ body.swal2-height-auto{
       justify-content: space-between !important;
       width: 50%;
       height: 8.5vw;
+      margin-bottom: 0;
   }
 
   #landing_titulo1{
@@ -1501,12 +1500,18 @@ body.swal2-height-auto{
   .landing_deportes_deporte{
     color: #fff;
     width: 15vw;
-    height: 4.5vw;
+    height: auto;
     font-weight: bold;
-    font-size: 1.3vw;
-    line-height: 1.3vw;
+    font-size: 3vw;
+    line-height: 3vw;
     margin: 0 2vw;
     opacity: .8;
+    padding: 2vw 0;
+  }
+
+  #landing_deportes{
+    text-align: center;
+    margin-top: 5vw;
   }
 }
 
