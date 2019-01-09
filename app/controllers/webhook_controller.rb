@@ -25,6 +25,7 @@ class WebhookController < ApplicationController
         new_pay.estatus = 1
         new_pay.start_date = Time.at(object['billing_cycle_start']).to_date
         new_pay.end_date = Time.at(object['billing_cycle_end']).to_date
+        new_pay.conekta_subscription_token = object["id"]
         new_pay.save
 
         user.active = 1
@@ -50,7 +51,7 @@ class WebhookController < ApplicationController
       end
     end
 
-    if data['type'] == 'subscription.paused'
+    if data['type'] == 'subscription.canceled'
       ct = ConektaTransaction.new
       ct.json = data
       ct.save

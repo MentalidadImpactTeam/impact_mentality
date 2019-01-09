@@ -792,10 +792,8 @@ class RoutinesController < ApplicationController
 
     private
     def check_user_subscription
-        if current_user.user_conekta_subscription.present?
-            if current_user.user_conekta_subscription.last.estatus == 0
-                redirect_back(fallback_location: root_path)
-            end
+        if current_user.active == 0
+            redirect_back(fallback_location: root_path)
         end
     end
 end
