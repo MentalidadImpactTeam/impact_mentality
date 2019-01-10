@@ -27,7 +27,7 @@
             <h5>Suscripción Mensual</h5>
             <h3>$150 M.X.N.</h3>
             <p>Rutinas y tus analíticos</p>
-            <button>Cambiar / Comprar</button>
+            <button id="plan_mensual">Cambiar / Comprar</button>
          </div>
         </div>
         <div class="col-md-4 col-sm-12">
@@ -36,7 +36,7 @@
             <h5>Suscripción Trimestral</h5>
             <h3>$400 M.X.N.</h3>
             <p>Ahorra un 10%</p>
-            <button>Cambiar / Comprar</button>
+            <button id="plan_trimestral">Cambiar / Comprar</button>
          </div>
         </div>
         <div class="col-md-4 col-sm-12">
@@ -45,7 +45,7 @@
             <h5>Suscripción Anual</h5>
             <h3>$1500 M.X.N.</h3>
             <p>Ahorra un 12.5%</p>
-            <button>Cambiar / Comprar</button>
+            <button id="plan_anual">Cambiar / Comprar</button>
          </div>
         </div>
     </div>
@@ -55,4 +55,52 @@
 
 <script>
 metodos_menu('PLANES');
+
+$('#plan_mensual, #plan_trimestral, #plan_anual').on('click', function() {
+  Swal({
+    title: '<strong>HTML <u>example</u></strong>',
+    type: 'info',
+    html: 'You can use <b>bold text</b>, ' + '<a href="//github.com">links</a> ' + 'and other HTML tags',
+    showCloseButton: true,
+    showCancelButton: true,
+    focusConfirm: false,
+    confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
+    confirmButtonAriaLabel: 'Thumbs up, great!',
+    cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
+    cancelButtonAriaLabel: 'Thumbs down',
+    heightAuto:false
+  });
+});
+
+$('#plan_trimestral').on('click', function() {
+  Swal({
+    title: '<strong>HTML <u>example</u></strong>',
+    type: 'info',
+    html: 'You can use <b>bold text</b>, ' + '<a href="//github.com">links</a> ' + 'and other HTML tags',
+    showCloseButton: true,
+    showCancelButton: true,
+    focusConfirm: false,
+    confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
+    confirmButtonAriaLabel: 'Thumbs up, great!',
+    cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
+    cancelButtonAriaLabel: 'Thumbs down',
+    heightAuto:false
+  });
+});
+
+$('#plan_anual').on('click', function() {
+  Swal({
+    title: '<strong>HTML <u>example</u></strong>',
+    type: 'info',
+    html: 'You can use <b>bold text</b>, ' + '<a href="//github.com">links</a> ' + 'and other HTML tags',
+    showCloseButton: true,
+    showCancelButton: true,
+    focusConfirm: false,
+    confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
+    confirmButtonAriaLabel: 'Thumbs up, great!',
+    cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
+    cancelButtonAriaLabel: 'Thumbs down',
+    heightAuto:false
+  });
+});
 </script>
