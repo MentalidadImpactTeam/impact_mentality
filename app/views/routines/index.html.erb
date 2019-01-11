@@ -94,7 +94,7 @@
 
         <!-- EJERCICIOS -->
         <% @hash.keys.each do |group| %>
-            <% if group == 0 %>
+            <% if group == 0 and current_user.user_information.stage_week != 4 %>
                 <!-- DESCARGA CORRIDA -->
                 <div class=" sistema_r_centro d-flex <%= if @hash[group]["show"] == 1 then "active" end %>" style="<%= if @hash[group]["show"] == 0 then "display: none !important" else "" end %>">
                     <input type="hidden" class="hidden_group" value="<%= group %>">
