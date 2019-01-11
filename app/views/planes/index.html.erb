@@ -49,10 +49,40 @@
          </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12">
+            <center><h5 style="color:white; font-family:lato; margin:30px 0 10px 0;">Estas son las tarjetas disponibles para adquirir suscripción</h5></center>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <%= image_tag("logotarjetavisa", class: "planes_tarjetas_aceptables") %>
+        </div>
+          <div class="col-4">
+            <%= image_tag("logotarjetamastercard", class: "planes_tarjetas_aceptables") %>
+
+        </div>
+          <div class="col-4">
+            <%= image_tag("logotarjetaamerican", class: "planes_tarjetas_aceptables") %>
+
+        </div>
+    </div>
 </center>
+
 
 </div>
 
+<style>
+.planes_tarjetas_aceptables{
+    width:40%;
+}
+
+@media only screen and (max-width: 991px) {
+.planes_tarjetas_aceptables{
+    width:100%;
+}
+}
+</style>
 <script>
 metodos_menu('PLANES');
 
