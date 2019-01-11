@@ -108,7 +108,11 @@ RoutinesController::index = ->
     else
       div_active =  $(".sistema_r_centro.active")
       group = div_active.find(".hidden_group").val()
-      group_total = $(".sistema_r_centro").find(".hidden_group").length - 1
+      first_group = $(".sistema_r_centro:first").find(".hidden_group")
+      if first_group.val() == "1"
+        group_total = $(".sistema_r_centro").find(".hidden_group").length
+      else
+        group_total = $(".sistema_r_centro").find(".hidden_group").length - 1
       $("#flecha_anterior").addClass("d-flex").show()
       if parseInt(group) == group_total
         $(".sistema_r_centro_der").hide().removeClass("d-flex")
@@ -201,7 +205,11 @@ RoutinesController::index = ->
     if div_active.length == 0
       div_active = $(".sistema_r_centro:last")
     group = div_active.find(".hidden_group").val()
-    group_total = $(".sistema_r_centro").find(".hidden_group").length - 1
+    first_group = $(".sistema_r_centro:first").find(".hidden_group").val()
+    if first_group == "1"
+      group_total = $(".sistema_r_centro").find(".hidden_group").length
+    else
+      group_total = $(".sistema_r_centro").find(".hidden_group").length - 1
     if group == "1"
       $("#flecha_anterior").removeClass("d-flex").hide()
     else
