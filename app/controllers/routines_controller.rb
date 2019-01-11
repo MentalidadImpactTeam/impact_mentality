@@ -49,18 +49,26 @@ class RoutinesController < ApplicationController
                     "reps" => routine_exercise.rep,
                     "done" => routine_exercise.done,
                     "test" => routine_exercise.test,
-                    "yards" => routine_exercise.yards
+                    "yards" => routine_exercise.yards,
+                    "url" => exercise.url.present? ? exercise.url.split("v=")[1] : ""
                 }
                 @hash[routine_exercise.group]["exercises"].push(hash_exercise)
             end
-
+            
             for i in 1..5
                 group_count = RoutineExercise.where(user_routine_id: routine.id, group: i).count
                 group_done = RoutineExercise.where(user_routine_id: routine.id, group: i, done: 1).count
                 
                 if group_done == 0 and today.wday < 6
-                    @hash[0]["show"] = 1
-                    break
+                    if current_user.user_information.stage_week != 4
+                        @hash[0]["show"] = 1
+                        break
+                    else
+                        if group_count != group_done
+                            @hash[i]["show"] = 1
+                            break
+                        end
+                    end
                 else
                     if group_count != group_done
                         @hash[i]["show"] = 1
@@ -89,7 +97,7 @@ class RoutinesController < ApplicationController
                 hash_group = { :count => group_count, :done => done_count }
                 array_groups.push(hash_group)
             end
-
+    
             @warm_width = 0
             @triserie_width = 0
             @finisher_width = 0
@@ -114,10 +122,12 @@ class RoutinesController < ApplicationController
                         else
                             @warm_width = ((group_counts[:done].to_f / group_counts[:count].to_f) * 100).to_i
                         end
-                        @previous = " VELOCIDAD " if [1,4].include?(today.wday)
-                        @previous = " AGILIDAD " if [3,5].include?(today.wday)
-                        @previous = " ACONDICIONAMIENTO " if today.wday == 2
-                        @hash[0]['corrida'] = @previous
+                        if current_user.user_information.stage_week != 4
+                            @previous = " VELOCIDAD " if [1,4].include?(today.wday)
+                            @previous = " AGILIDAD " if [3,5].include?(today.wday)
+                            @previous = " ACONDICIONAMIENTO " if today.wday == 2
+                            @hash[0]['corrida'] = @previous 
+                        end
 
                         @progress_name = " WARM UP / PREHABS "
                         break if @hash[group]["show"] == 1
