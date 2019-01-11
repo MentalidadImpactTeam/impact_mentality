@@ -1965,7 +1965,7 @@ body.swal2-height-auto{
 .contacto_input_field{
   width: 100%;
   padding: 10px;
-  font-size:2vw;
+  font-size: 1vw;
   outline: none;
   overflow: hidden;
 }
@@ -2147,6 +2147,10 @@ body.swal2-height-auto{
 }
 
 @media only screen and (max-width: 1090px) {
+  .contacto_input_field{
+    font-size: 3vw;
+  }
+  
   #about_infoadrian{
     align-items: center;
   }
