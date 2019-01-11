@@ -50,8 +50,20 @@ class RoutinesController < ApplicationController
                     "done" => routine_exercise.done,
                     "test" => routine_exercise.test,
                     "yards" => routine_exercise.yards,
+                    "seconds" => "",
+                    "sec_down" => routine_exercise.seconds_down,
+                    "sec_hold" => routine_exercise.seconds_hold,
+                    "sec_up" => routine_exercise.seconds_up,
+                    "porcentage" => routine_exercise.porcentage,
                     "url" => exercise.url.present? ? exercise.url.split("v=")[1] : ""
                 }
+                seconds = ""
+                if routine_exercise.seconds_down.present? or routine_exercise.seconds_hold.present? or routine_exercise.seconds_up.present?
+                    seconds += routine_exercise.seconds_down? ? routine_exercise.seconds_down.to_s + ":" : "0:"
+                    seconds += routine_exercise.seconds_hold? ? routine_exercise.seconds_hold.to_s + ":" : "0:"
+                    seconds += routine_exercise.seconds_up? ? routine_exercise.seconds_up.to_s : "0"
+                end
+                hash_exercise['seconds'] = seconds
                 @hash[routine_exercise.group]["exercises"].push(hash_exercise)
             end
             

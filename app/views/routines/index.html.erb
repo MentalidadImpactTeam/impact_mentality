@@ -171,9 +171,9 @@
                             </div>
                             <div>
 
-                            <span style="font-family:lato; color:white;">1:0:0</span>
+                            <span style="font-family:lato; color:white;"><%= if exercise['seconds'].present? then exercise['seconds'] else "" end %></span>
                             <br>
-                            <span style="font-family:lato; color:white;">50%</span>
+                            <span style="font-family:lato; color:white;"><%= if exercise['porcentage'].present? then exercise['porcentage'] + "%" else "" end %></span>
                             </div>
                             <div class="sistema_r_infoicono"> </div>
 
