@@ -2149,8 +2149,12 @@ body.swal2-height-auto{
 @media only screen and (max-width: 1090px) {
   .contacto_input_field{
     font-size: 3vw;
+    
   }
-  
+  #contacto_enviar{
+    width: 100%;
+    margin-left: 0;
+  }
   #about_infoadrian{
     align-items: center;
   }
