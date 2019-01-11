@@ -117,7 +117,7 @@ class RoutinesController < ApplicationController
             @previous = ""
             @next = " SERIE #1 "
             @routine_finished = false
-
+            
             if @hash[0]["show"] == 1
                 @next = " WARM UP / PREHABS "
                 @progress_name = " VELOCIDAD " if [1,4].include?(today.wday)
