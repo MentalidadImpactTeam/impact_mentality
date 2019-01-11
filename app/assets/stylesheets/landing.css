@@ -538,7 +538,8 @@ body.swal2-height-auto{
       border-color: #ff1d25;
       background-repeat: no-repeat;
       background-position: center;
-      margin-left: 7.5px;
+      margin-left: 1.5vw;
+      margin-right: 1.5vw;
       transition: .3s;
   }
 
