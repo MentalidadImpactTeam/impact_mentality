@@ -518,11 +518,8 @@ body.swal2-height-auto{
   }
 
   #footer_container{
-      height: 200px;
-      padding-top: 24px;
-      padding-bottom: 24px;
-      padding-left: 28px;
-      padding-right: 28px;
+      height: auto;
+      padding: 2vw 10%;
   }
 
   #footer_contenido{
@@ -531,6 +528,7 @@ body.swal2-height-auto{
       padding-right: 3vw;
       padding-top: 3vw;
       padding-bottom: 3vw;
+      height: 35vw;
   }
   #footer_contacto_1, #footer_contacto_2, #footer_contacto_3 {
       width: 100%;
