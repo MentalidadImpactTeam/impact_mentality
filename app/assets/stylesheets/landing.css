@@ -504,12 +504,12 @@ body.swal2-height-auto{
     font-size: 2.5vw;
     margin-bottom: 1vw;
   }
-  
+
   .footer_contacto_info{
     font-size: 2.5vw;
     margin-bottom: 1vw;
   }
-  
+
   .footer_fb, .footer_inst, .footer_tw, .footer_yt{
     position: relative;
     display: inline-block;
@@ -588,7 +588,7 @@ body.swal2-height-auto{
 
 /* ------------------------ LANDING ------------------------ */
 #landing_body{
-  background-image: url('../img/stock3.png');
+  background-image: url('../img/Corriendo.png');
   background-repeat: no-repeat;
   overflow-x: hidden;
   background-size: cover;
@@ -1554,7 +1554,7 @@ body.swal2-height-auto{
 
 /* ------------------------ LANDING EQUIPOS ------------------------ */
 #landingequipos_body{
-  background-image: url('../img/coach1.png');
+  background-image: url('../img/couch1.jpg');
   background-repeat: no-repeat;
   overflow-x: hidden;
   background-size: cover;
@@ -2031,7 +2031,7 @@ body.swal2-height-auto{
 /* ------------------------ NOSOTROS ------------------------ */
 
 #about_primer_container {
-  background-image: url('../img/about_background_image2.png');
+  background-image: url('../img/about_background_image2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -2149,7 +2149,7 @@ body.swal2-height-auto{
 @media only screen and (max-width: 1090px) {
   .contacto_input_field{
     font-size: 3vw;
-    
+
   }
   #contacto_enviar{
     width: 100%;
