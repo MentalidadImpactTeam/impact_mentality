@@ -198,8 +198,10 @@ metodos_menu('CORRIDAS');
 $(".sistema_r_videopopup").hide();
 $("#sistema_r_cerrar").hide();
 
-$(".sistema_libreria_ejerciciovid").click(function(){
+$(".sistema_libreria_ejerciciovid").click(function(){ 
+    var aid = "https://www.youtube.com/embed/" ;
     var src2 = $(this).attr('id');
+    var src2 = aid + src2;
     src2 = src2 + "?&rel=0&loop=1&showinfo=0&modestbranding=1&controls=0&autoplay=1";
     $(".sistema_r_videopopup").attr('src',src2);
     $("#sistema_r_cerrar").show();
