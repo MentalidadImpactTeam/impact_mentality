@@ -1554,7 +1554,7 @@ body.swal2-height-auto{
 
 /* ------------------------ LANDING EQUIPOS ------------------------ */
 #landingequipos_body{
-  background-image: url('../img/couch1.jpg');
+  background-image: url('../img/background_equipos.png');
   background-repeat: no-repeat;
   overflow-x: hidden;
   background-size: cover;
@@ -2031,9 +2031,9 @@ body.swal2-height-auto{
 /* ------------------------ NOSOTROS ------------------------ */
 
 #about_primer_container {
-  background-image: url('../img/about_background_image2.jpg');
+  background-image: url('../img/about_background_image2.png');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size:2120px 1400px ;
   background-position: center;
   padding-top: 300px;
   padding-bottom: 45px;
