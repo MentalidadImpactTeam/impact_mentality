@@ -2,6 +2,7 @@ namespace :services do
   task seguimiento: :environment do
     @users = User.where(active: 1)
     @users.each do |user|
+      next if user.user_information.user_type_id == 1
       random = Random.rand(1...28)
       case random
       when 1
