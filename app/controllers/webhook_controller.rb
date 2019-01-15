@@ -29,6 +29,7 @@ class WebhookController < ApplicationController
         new_pay.save
 
         user.active = 1
+        user.user_information.plan = object["plan_id"]
         user.save
       end
     end

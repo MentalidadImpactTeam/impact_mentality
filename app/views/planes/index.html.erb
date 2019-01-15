@@ -87,6 +87,8 @@
 metodos_menu('PLANES');
 
 $('#plan_mensual, #plan_trimestral, #plan_anual').on('click', function() {
+    plan = $(this).attr("id").split("_")[1]
+    console.log(plan)
     Swal({
     title: '¿Estás seguro?',
     text: "Tu plan será alterado despues de tu fecha de facturación",
@@ -98,11 +100,26 @@ $('#plan_mensual, #plan_trimestral, #plan_anual').on('click', function() {
     heightAuto: false
     }).then((result) => {
     if (result.value) {
-        Swal(
-        'Listo',
-        'Tu plan será cambiado despues de tu fecha de facturación',
-        'success',
-        )
+        swal({
+            text: 'Procesando...',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+            heightAuto: false,
+            onOpen: function() {
+            return swal.showLoading();
+            }
+        });
+        return $.ajax({
+            type: "POST",
+            url: "/planes/change_plan",
+            data: { plan: plan },
+            dataType: "text",
+            success: function(data) {
+                swal.close();
+                return swal('Listo','Tu plan será cambiado despues de tu fecha de facturación','success');
+            }
+        });
     }
     })
 });

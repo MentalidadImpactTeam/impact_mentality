@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
   resources :planes do
     collection do
-      get "planes" => "planes#index"
+      post "change_plan" => "planes#change_user_plan"
     end
   end
 

@@ -40,8 +40,8 @@ class Administrator::AdminController < ApplicationController
     subscription = customer.subscription.update({
       :plan => plan
     })
-    user.user_information.plan = params[:plan]
-    user.user_information.save
+    # user.user_information.plan = params[:plan]
+    # user.user_information.save
     render plain: "OK"
   end
 
