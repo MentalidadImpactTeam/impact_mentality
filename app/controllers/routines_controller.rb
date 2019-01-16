@@ -285,7 +285,7 @@ class RoutinesController < ApplicationController
             routine_exercise.rep = hash[:reps] if hash[:reps].present?
             routine_exercise.seconds_down = hash[:down] if hash[:down].present?
             routine_exercise.seconds_hold = hash[:hold] if hash[:hold].present?
-            routine_exercise.seconds_uo = hash[:up] if hash[:up].present?
+            routine_exercise.seconds_up = hash[:up] if hash[:up].present?
             routine_exercise.porcentage = hash[:porcentage] if hash[:porcentage].present?
             routine_exercise.yards = hash[:yards] if hash[:yards].present?
             routine_exercise.save
