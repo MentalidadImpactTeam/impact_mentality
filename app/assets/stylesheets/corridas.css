@@ -1,6 +1,39 @@
 #sistema_libreria_contejercicios{
     flex-direction: row;
 }
+.container_filtro_corridas{
+    margin:3vw -3vw 3vw 3vw;
+    color:white;
+
+}
+#filtro_corridas{
+    border-radius:15px;
+    border:2px solid red;
+    background-color:#1b1e1e;
+    font-family:lato;
+    color:white;
+    padding:15px;
+}
+
+#filtro_corridas:hover{
+    background-color:#373a3a;
+
+}
+#btn_filtro_corridas{
+    background-color:red;
+    border:none;
+    border-radius:10px;
+    padding:15px;
+    margin:0 20px;
+    color:white;
+    font-family: lato;
+}
+#btn_filtro_corridas:hover{
+    background-color:rgb(176, 0, 0);
+}
+#btn_filtro_corridas:active{
+    background-color:rgb(130, 0, 0);
+}
 
 .sistema_libreria_ejercicio{
     height: 18vw;
@@ -34,7 +67,6 @@
     width: 100% !important;
     height: 100% !important;
     background-color: #191a1a;
-    padding: 2vw 2vw 2vw 2vw;
     flex-direction: row;
     justify-content: space-between;
     overflow-y: auto;
@@ -45,10 +77,16 @@
     font-weight: bold;
     font-size: .8vw;
   }
-  
+
 
 
 @media (max-width: 1090px) {
+    .container_filtro_corridas{
+        margin:23vw 3vw 0vw 3vw;
+        color:white;
+
+    }
+
     .sistema_libreria_ejercicio_arriba{
         border-radius: 5vw 5vw 0 0;
     }
@@ -65,7 +103,7 @@
     .sistema_libreria_contenido{
         flex-direction: column;
         align-items: center;
-        padding: 10vh 8vw 5vh 8vw;
+        padding: 6vh 8vw 5vh 8vw;
         height: auto;
     }
 
@@ -74,25 +112,25 @@
         width: 100%;
         align-items: center;
     }
-    
+
     .sistema_libreria_ejercicio{
         width: 80vw;
         height: 80vw;
         margin-bottom: 5vw;
         cursor: pointer;
     }
-    
+
     .sistema_r_ejercicio_arriba{
         order: unset;
         margin-left: none;
         padding: 2vw 0;
-        
+
     }
-    
+
     .sistema_libreria_tipoejercicio{
         font-size: 4vw;
     }
-    
+
     .sistema_libreria_calentamiento{
         color: #fff;
         font-weight: bold;
@@ -103,3 +141,5 @@
         margin-bottom: 4vw;
     }
 }
+
+
