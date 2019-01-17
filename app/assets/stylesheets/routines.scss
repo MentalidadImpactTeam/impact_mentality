@@ -132,14 +132,14 @@
   height: 42.5vw;
   width: 70vw;
   background-color: white;
-  position: absolute;
+  position: fixed;
   z-index: 5;
   left: 10%;
   top: 10%;
 }
 
 #sistema_r_cerrar{
-  position: absolute;
+  position: fixed;
   left: 78.5vw;
   z-index: 6;
   margin-top: 0;
