@@ -17,8 +17,8 @@
  *= require accounts
  *= require planes
  *= require profiles
- *= require_self
  *= require corridas
+ *= require_self
  */
 
 .swal2-popup{
