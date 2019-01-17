@@ -1,12 +1,17 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <div class="subbanners_sistema_menu">
     <div style="background-color:#202020;" class="sistema_banner d-flex flex-row align-items-center">
         <div class="sistema_icono"></div>
         <h2>PERFIL</h2>
     </div>
 </div>
+
+
+
 <div class="sistema_contenido d-flex">
     <input type="hidden" class="hidden_user" value="<%= @user.id %>">
     <div id="sistema_p_iz" class="animated bounceInDown d-flex flex-column justify-content-between">
+
         <div id="sistema_p_iz_arriba" class="d-flex align-items-center justify-content-around">
             <div class="sistema_p_imgcontainer">
                 <div class="sistema_p_imgimg" style="background-image: url(<%= @user.user_information.img_url %>);"> </div>
