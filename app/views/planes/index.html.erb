@@ -27,7 +27,11 @@
             <h5>Suscripción Mensual</h5>
             <h3>$150 M.X.N.</h3>
             <p>Rutinas y tus analíticos</p>
-            <button id="plan_mensual">Cambiar / Comprar</button>
+            <% if current_user.user_information.plan == "mensual" %>
+                <button id="plan_mensual plan_seleccionado">Plan Actual</button>
+            <% else %>
+                <button id="plan_mensual">Cambiar / Comprar</button>
+            <% end %>
          </div>
         </div>
         <div class="col-md-4 col-sm-12">
@@ -36,7 +40,11 @@
             <h5>Suscripción Trimestral</h5>
             <h3>$400 M.X.N.</h3>
             <p>Ahorra un 10%</p>
-            <button class="plan_seleccionado">Plan Actual</button>
+            <% if current_user.user_information.plan == "trimestral" %>
+                <button class="plan_trimestral plan_seleccionado">Plan Actual</button>
+            <% else %>
+                <button class="plan_trimestral">Cambiar / Comprar</button>
+            <% end %>
          </div>
         </div>
         <div class="col-md-4 col-sm-12">
@@ -45,7 +53,11 @@
             <h5>Suscripción Anual</h5>
             <h3>$1500 M.X.N.</h3>
             <p>Ahorra un 12.5%</p>
-            <button id="plan_anual">Cambiar / Comprar</button>
+            <% if current_user.user_information.plan == "anual" %>
+                <button id="plan_anual plan_seleccionado">Plan Actual</button>
+            <% else %>
+                <button id="plan_anual">Cambiar / Comprar</button>
+            <% end %>
          </div>
         </div>
     </div>
@@ -87,6 +99,9 @@
 metodos_menu('PLANES');
 
 $('#plan_mensual, #plan_trimestral, #plan_anual').on('click', function() {
+    if ($(this).hasClass("plan_seleccionado")) {
+        return false;
+    }
     plan = $(this).attr("id").split("_")[1]
     console.log(plan)
     Swal({
