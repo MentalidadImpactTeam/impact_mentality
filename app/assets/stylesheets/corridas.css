@@ -101,21 +101,22 @@
     }
 
     .sistema_libreria_contenido{
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        padding: 6vh 8vw 5vh 8vw;
+        padding: 5vh 8vw 5vh 8vw;
         height: auto;
+        flex-wrap: wrap;
     }
 
     #sistema_libreria_contejercicios{
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
         align-items: center;
     }
 
     .sistema_libreria_ejercicio{
-        width: 80vw;
-        height: 80vw;
+        width: 35vw;
+        height: 35vw;
         margin-bottom: 5vw;
         cursor: pointer;
     }
@@ -128,7 +129,7 @@
     }
 
     .sistema_libreria_tipoejercicio{
-        font-size: 4vw;
+        font-size: 2vw;
     }
 
     .sistema_libreria_calentamiento{
