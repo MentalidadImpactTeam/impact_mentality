@@ -100,9 +100,24 @@
   left:0;
   opacity:.65;
 }
-.burger_menu{
-
+.contenedor_acciones_controlador_jugadores i:hover {
+  color: red;
+  opacity:1;
+  cursor: pointer;
 }
+.contenedor_acciones_controlador_jugadores i {
+  font-size: 2vw;
+  transition: all .5s;
+  opacity:.5;
+  vertical-align: middle;
+  color:white;
+  margin: 0 5px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 2px;
+  display: inline-block;
+}
+
 .mensaje_overlay_graph{
   border-radius:15px;
   padding:10px;

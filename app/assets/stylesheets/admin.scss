@@ -4,11 +4,8 @@
   margin: 25px 0 !important;
 }
 
-.contenedor_acciones_controlador_jugadores i:hover {
-  color: red;
-  opacity:1;
-  cursor: pointer;
-}
+
+
 .input_creacion_usuario{
   border-radius:10px;
   border:2px solid grey;
@@ -69,7 +66,7 @@
 }
 .contenedor_acciones_controlador_jugadores i {
   transition: all .5s;
-  font-size: 2vw;
+  font-size: 3vw;
   opacity:.5;
   vertical-align: middle;
   color:white;
