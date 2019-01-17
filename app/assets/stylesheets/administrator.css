@@ -203,6 +203,11 @@
 
 }
 
+#usuario_activo{
+  height:20px;
+  width:20px;
+  background-color:white;
+}
 /* menu cellphone CSS*/
 
 .sistema_mobile_menu {

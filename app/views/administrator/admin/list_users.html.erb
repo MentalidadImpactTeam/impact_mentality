@@ -27,13 +27,13 @@
                             <tr>
                                 <th class="aliniar_contenido_tabla">ID</th>
                                 <th class="aliniar_contenido_tabla">USUARIO</th>
-
-
                                 <th class="columna_eliminada aliniar_contenido_tabla">PRÓXIMA <br> FECHA DE PAGO</th>
                                 <th class="aliniar_contenido_tabla">ÚLTIMO <br> PAGO</th>
                                 <th class="aliniar_contenido_tabla">ESTADO</th>
-
                                 <th class="aliniar_contenido_tabla">USUARIO/ <br> ENTRENADOR</th>
+                                <th class="aliniar_contenido_tabla">AJUSTES</th>
+                                <th class="aliniar_contenido_tabla">ACTIVO <br> INACTIVO</th>
+
                             </tr>
                         </thead>
 
@@ -58,10 +58,17 @@
                                             <input type="checkbox" <%= if user.user_information.user_type_id == 2 then 'checked' end %> >
                                             <span class="slider round"></span>
                                     </label>
-                                    <i class="fas fa-edit"></i>
-                                    <i class="fas fa-chart-line"></i>
-                                    <i class="far fa-times-circle"></i>
                                     </td>
+                                 <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
+                                    <i title="Cambio de plan" class="fas fa-edit"></i>
+                                    <i title="Acceso a dashboard" class="fas fa-chart-line"></i>
+                                    <i title="Borrar usuario" class="far fa-times-circle"></i>
+                                    </td>
+
+                                     <td class="aliniar_contenido_tabla">
+                                        <input id="usuario_activo" type="checkbox">
+                                    </td>
+
                                 </tr>
                             <% end %>
                         </tbody>

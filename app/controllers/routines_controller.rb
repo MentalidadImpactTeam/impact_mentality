@@ -249,15 +249,15 @@ class RoutinesController < ApplicationController
                 routine_exercise.exercise_id = conf.exercise_id
             else
                 if conf.subcategory_id.present?
-                    exercises = Exercise.where(subcategory_id: conf.subcategory_id).to_a
+                    exercises = Exercise.where(subcategory_id: conf.subcategory_id)
                 elsif conf.category_id.present?
-                    exercises = Exercise.where(category_id: conf.category_id).to_a
+                    exercises = Exercise.where(category_id: conf.category_id)
                 end
 
                 exercises = exercises.where(bar: 1) if conf.bar == 1
                 exercises = exercises.where(liga: 1) if conf.liga == 1
 
-                exercises = exercises.shuffle
+                exercises = exercises.to_a.shuffle
                 exercises.each do |exe_cat|
                     existe = RoutineExercise.find_by(user_routine_id: user_routine.id, exercise_id: exe_cat.id)
                     if existe.present?
@@ -285,7 +285,7 @@ class RoutinesController < ApplicationController
             routine_exercise.rep = hash[:reps] if hash[:reps].present?
             routine_exercise.seconds_down = hash[:down] if hash[:down].present?
             routine_exercise.seconds_hold = hash[:hold] if hash[:hold].present?
-            routine_exercise.seconds_uo = hash[:up] if hash[:up].present?
+            routine_exercise.seconds_up = hash[:up] if hash[:up].present?
             routine_exercise.porcentage = hash[:porcentage] if hash[:porcentage].present?
             routine_exercise.yards = hash[:yards] if hash[:yards].present?
             routine_exercise.save
