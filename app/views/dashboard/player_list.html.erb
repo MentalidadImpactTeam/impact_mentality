@@ -8,7 +8,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 col-lg-6">
-            <center><p class="cantidad_jugadores">Se muestran 10 jugadores de 50</p></center>
+            <center><p class="cantidad_jugadores">Se muestran <%= @count_min.to_s %> jugadores de <%= @count_max.to_s %></p></center>
         </div>
         <div class="col-sm-12 col-lg-6 jugadores_controlador">
            <center>
@@ -47,7 +47,7 @@
 
                               <td>
                                   <p class="nombre_jugador"><%= player.user_information.name %></p>
-                                  <p class="escuela_jugador">Cetys Universidad</p>
+                                  <p class="escuela_jugador"></p>
                               </td>
                               <td class="columna_eliminada">
                                   <p class="correos_jugadores"> <%= player.email %></p>

@@ -1,4 +1,5 @@
 chartInstance = ""
+page_users = 1
 DashboardController = Paloma.controller('Dashboard')
 DashboardController::index = ->
   metodos_menu("ANALÍTICOS")
@@ -8,10 +9,7 @@ DashboardController::index = ->
 
 DashboardController::player_list = ->
   metodos_menu("LISTA JUGADORES")
-  $('.dashboard_jugador').on 'click', ->
-    window.location.href = "/dashboard/" + $(this).closest(".row_hover").data("id")
-  $('.profile_jugador').on 'click', ->
-    window.location.href = "/profiles/" + $(this).closest(".row_hover").data("id")
+  player_list_table_events()
   $('.add_jugadores').on 'click', ->
       swal({
         title: '<strong>Agrega Jugador</strong>',
@@ -100,7 +98,96 @@ DashboardController::player_list = ->
         if response.value
             $row.remove()
             swal('Exito','La relacion con el jugador a sido eliminada','success','heightAuto: false')
-
+  $('.back_arrow_jugadores, .foward_arrow_jugadores').on 'click', (event) ->
+    if $(event.currentTarget).hasClass("foward_arrow_jugadores")
+      page_users += 1
+    else
+      if page_users > 1
+        page_users -= 1
+    $.ajax
+      type: "GET"
+      url: "/dashboard/players/page?page=" + page_users
+      dataType: "json",
+      success: (data) ->
+        if data.users.length > 0
+          html = ""
+          data.users.forEach (value) ->
+            # console.log(JSON.parse(value))
+            value = JSON.parse(value)
+            date = value.created_at.split("T")[0].split("-")
+            date = date[2] + "/" + date[1] + "/" + date[0]
+            html += '<tr class="row_hover" data-id="' + value.id + '">
+                      <td>
+                          <p class="nombre_jugador">' + value.user_information.name + '</p>
+                          <p class="escuela_jugador"></p>
+                      </td>
+                      <td class="columna_eliminada">
+                          <p class="correos_jugadores"> ' + value.email + '</p>
+                      </td>
+                      <td>
+                          <p class="posicion_jugadores">' + value.user_information.position + '</p>
+                          <p class="deporte_jugadores">' + value.user_information.sport + '</p>
+                      </td>
+                      <td class="columna_eliminada aliniar_contenido_tabla">' + date + '</td>
+                      <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
+                          <i class="fas fa-poll dashboard_jugador"></i>
+                          <i class="fas fa-user profile_jugador"></i>
+                          <i class="fas fa-trash-alt delete_jugador"></i>
+                      </td>
+                  </tr>'
+            $("#tabla_lista_miembros tbody").html(html)
+            $(".cantidad_jugadores").text("Se muestran " + data.users.length + " jugadores de " + data.max)
+            player_list_table_events()
+        else
+          if $(event.currentTarget).hasClass("foward_arrow_jugadores")
+            page_users -= 1
+          else
+            page_users += 1
+    return
+  $(".fa-search").click ->
+    if $("#filtro_jugadores").val() == ""
+      swal 'Error', 'Favor de ingresar un valor de busqueda.', 'warning'
+    else
+      $.ajax
+        type: "POST"
+        url: "/dashboard/search"
+        data: search: $("#filtro_jugadores").val()
+        dataType: "json",
+        success: (data) ->
+          if data.users.length == 0
+            swal 'Error', 'No se encontraron registros con la busqueda ingresada.', 'warning'
+          else
+            html = ""
+            data.users.forEach (value) ->
+              # console.log(JSON.parse(value))
+              value = JSON.parse(value)
+              date = value.created_at.split("T")[0].split("-")
+              date = date[2] + "/" + date[1] + "/" + date[0]
+              html += '<tr class="row_hover" data-id="' + value.id + '">
+                        <td>
+                            <p class="nombre_jugador">' + value.user_information.name + '</p>
+                            <p class="escuela_jugador"></p>
+                        </td>
+                        <td class="columna_eliminada">
+                            <p class="correos_jugadores"> ' + value.email + '</p>
+                        </td>
+                        <td>
+                            <p class="posicion_jugadores">' + value.user_information.position + '</p>
+                            <p class="deporte_jugadores">' + value.user_information.sport + '</p>
+                        </td>
+                        <td class="columna_eliminada aliniar_contenido_tabla">' + date + '</td>
+                        <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
+                            <i class="fas fa-poll dashboard_jugador"></i>
+                            <i class="fas fa-user profile_jugador"></i>
+                            <i class="fas fa-trash-alt delete_jugador"></i>
+                        </td>
+                    </tr>'
+            $("#tabla_lista_miembros tbody").html(html)
+            $(".cantidad_jugadores").text("Se muestran " + data.users.length + " jugadores de " + data.max)
+            player_list_table_events()
+          return
+      return
+    return
 exercise_graph = ->
   labels = []
   data_graph = []
@@ -167,6 +254,12 @@ exercise_graph = ->
         type: 'line'
         data: data
         options: options)
+
+player_list_table_events = ->
+  $('.dashboard_jugador').on 'click', ->
+    window.location.href = "/dashboard/" + $(this).closest(".row_hover").data("id")
+  $('.profile_jugador').on 'click', ->
+    window.location.href = "/profiles/" + $(this).closest(".row_hover").data("id")
 
 @metodos_menu = (titulo) ->
   $(".titulo_mobile_header").text(titulo)

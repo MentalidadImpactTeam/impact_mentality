@@ -90,7 +90,6 @@ AdministratorController::list_users = ->
             html += '<tr class="row_hover">
                         <input type="hidden" class="hidden_id" value="' + value.id + '">
                         <td>
-
                             <p class="aliniar_contenido_tabla id_usuario">' + value.uid + '</p>
                         </td>
                         <td>
@@ -102,9 +101,9 @@ AdministratorController::list_users = ->
                         <td class="aliniar_contenido_tabla estado_usuario ' + estatus_class + '">' + estatus + '</td>
                         <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
 
-                            <label class="switch">
-                                <input type="checkbox" ' + trainer + ' >
-                                <span class="slider round"></span>
+                        <label class="switch">
+                            <input type="checkbox" ' + trainer + ' >
+                            <span class="slider round"></span>
                         </label>
                         <i class="fas fa-edit"></i>
                         <i class="fas fa-chart-line"></i>
