@@ -19,6 +19,10 @@
  transition:all .5s;
  display:inline-block;
 }
+.jugadores_controlador{
+
+  margin:30px 0 0 0;
+}
 .regreso_dashboard:hover{
   color:red;
 }
@@ -276,6 +280,12 @@
 }
 
 @media (max-width: 991.98px) {
+  .contenedor_acciones_controlador_jugadores i {
+    font-size:6vw;
+  }
+  .contenedor_acciones_controlador_jugadores{
+    margin-bottom:5vw;
+  }
   .regreso_dashboard{
     font-size:8vw;
   }
@@ -365,7 +375,7 @@
   border: 1px solid grey;
   font-family: lato;
   width: 50%;
-  margin:0 0 4vw 0;
+
   text-align: center;
   height: 50px;
   transition: all .5s;
@@ -398,7 +408,7 @@
 #filtro_jugadores::placeholder {
   font-family: lato;
   display: inline-block;
-  color: #d1d1d1;
+  color: #807e7e;
   vertical-align: middle;
 }
 
