@@ -103,11 +103,7 @@
     .sistema_libreria_contenido{
         flex-direction: row;
         align-items: center;
-<<<<<<< HEAD
         padding: 5vh 8vw 5vh 8vw;
-=======
-        padding: 6vh 8vw 5vh 8vw;
->>>>>>> 1577ee08d0d65d593a4bce444ea49e297a68edbb
         height: auto;
         flex-wrap: wrap;
     }
