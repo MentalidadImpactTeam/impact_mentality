@@ -40,6 +40,7 @@
     width: 18vw;
     flex-direction: column;
     margin: 1vw .5vw;
+    box-shadow: 1vw 2vw 5vw .5vw rgba(0,0,0,0.75);
 }
 
 .sistema_libreria_ejercicio_arriba{
