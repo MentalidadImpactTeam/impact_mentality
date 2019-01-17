@@ -114,6 +114,8 @@ DashboardController::player_list = ->
           data.users.forEach (value) ->
             # console.log(JSON.parse(value))
             value = JSON.parse(value)
+            date = value.created_at.split("T")[0].split("-")
+            date = date[2] + "/" + date[1] + "/" + date[0]
             html += '<tr class="row_hover" data-id="' + value.id + '">
                       <td>
                           <p class="nombre_jugador">' + value.user_information.name + '</p>
@@ -126,7 +128,7 @@ DashboardController::player_list = ->
                           <p class="posicion_jugadores">' + value.user_information.position + '</p>
                           <p class="deporte_jugadores">' + value.user_information.sport + '</p>
                       </td>
-                      <td class="columna_eliminada aliniar_contenido_tabla">25/11/2018</td>
+                      <td class="columna_eliminada aliniar_contenido_tabla">' + date + '</td>
                       <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
                           <i class="fas fa-poll dashboard_jugador"></i>
                           <i class="fas fa-user profile_jugador"></i>
@@ -159,6 +161,8 @@ DashboardController::player_list = ->
             data.users.forEach (value) ->
               # console.log(JSON.parse(value))
               value = JSON.parse(value)
+              date = value.created_at.split("T")[0].split("-")
+              date = date[2] + "/" + date[1] + "/" + date[0]
               html += '<tr class="row_hover" data-id="' + value.id + '">
                         <td>
                             <p class="nombre_jugador">' + value.user_information.name + '</p>
@@ -171,7 +175,7 @@ DashboardController::player_list = ->
                             <p class="posicion_jugadores">' + value.user_information.position + '</p>
                             <p class="deporte_jugadores">' + value.user_information.sport + '</p>
                         </td>
-                        <td class="columna_eliminada aliniar_contenido_tabla">25/11/2018</td>
+                        <td class="columna_eliminada aliniar_contenido_tabla">' + date + '</td>
                         <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
                             <i class="fas fa-poll dashboard_jugador"></i>
                             <i class="fas fa-user profile_jugador"></i>
