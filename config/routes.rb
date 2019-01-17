@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get "player_list" => "dashboard#player_list"
   get "dashboard" => 'dashboard#index'
   get "dashboard/:id" => 'dashboard#index'
+  post "dashboard/search" => 'dashboard#search_trainer_users'
+  get "dashboard/players/page" => 'dashboard#page_trainer_users'
   post "add_trainer_user" => "dashboard#add_trainer_user"
   post "delete_trainer_user" => "dashboard#delete_trainer_user"
   post "exercise_graph" => "dashboard#exercise_graph"

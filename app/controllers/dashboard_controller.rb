@@ -25,12 +25,15 @@ class DashboardController < ApplicationController
   end
 
   def player_list
-    players = TrainerPlayer.where(trainer_user_id: current_user.id)
+    players = TrainerPlayer.where(trainer_user_id: current_user.id).limit(10).offset(0)
     @array = []
     players.each do |player|
       user = User.find(player.user_id)
       @array.push(user) if user.present?
     end
+
+    @count_min =  @array.length > 10 ? 10 : @array.length
+    @count_max =  TrainerPlayer.where(trainer_user_id: current_user.id).count
   end
 
   def add_trainer_user
@@ -74,5 +77,72 @@ class DashboardController < ApplicationController
   def mailer_test
     AccountMailer.frase1("miguelbq88@gmail.com").deliver
     render plain: "OK"
+  end
+
+  def search_trainer_users
+    response = { :error => true, :users => [], :max => 0 }
+    user_ids = []
+    users = User.where("email like '%#{params[:search]}%'")
+    if users.present?
+      users.each do |user|
+        next if TrainerPlayer.where(user_id: user.id, trainer_user_id: current_user.id).blank?
+        response[:error] = false
+        response[:users].push(user.to_json(:include => [:user_information]))
+        user_ids.push(user.id)
+      end
+    end
+
+    uis = UserInformation.where("name like '%#{params[:search]}%'")
+    uis = uis.where.not(user_id: user_ids) if user_ids.present?
+    if uis.present?
+      uis.each do |ui|
+        user = User.find(ui.user_id)
+        if user.present?
+          next if TrainerPlayer.where(user_id: user.id, trainer_user_id: current_user.id).blank?
+          response[:error] = false
+          response[:users].push(user.to_json(:include => [:user_information]))
+        end
+      end
+    end
+
+    uis = UserInformation.where("sport like '%#{params[:search]}%'")
+    uis = uis.where.not(user_id: user_ids) if user_ids.present?
+    if uis.present?
+      uis.each do |ui|
+        user = User.find(ui.user_id)
+        if user.present?
+          next if TrainerPlayer.where(user_id: user.id, trainer_user_id: current_user.id).blank?
+          response[:error] = false
+          response[:users].push(user.to_json(:include => [:user_information]))
+        end
+      end
+    end
+    
+    players = TrainerPlayer.where(trainer_user_id: current_user.id)
+    response[:max] = players.length
+    # ui = UserInformation.where("name like %#{params[:search]}%") if ui.blank?
+    # if uis.present?
+    #   uis.each do |ui|
+    #     user = User.find(ui.user_id)
+    #     if user.present?
+    #       response[:error] = false
+    #       response[:users].push(user)
+    #     end
+    #   end
+    # end
+
+    render json: response
+  end
+
+  def page_trainer_users
+    page = params[:page].present? ? params[:page] : 1
+    offset = 10 * (page.to_i - 1)
+    players = TrainerPlayer.where(trainer_user_id: current_user.id).limit(10).offset(offset)
+    array = []
+    players.each do |player|
+      user = User.find(player.user_id)
+      array.push(user.to_json(:include => [:user_information])) if user.present?
+    end
+    render json: { :users =>  array, :max => TrainerPlayer.where(trainer_user_id: current_user.id).count }
   end
 end
