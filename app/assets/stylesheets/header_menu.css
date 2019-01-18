@@ -114,6 +114,7 @@ body {
   .sistema_container {
     height: auto;
     float: none;
+    overflow-x: hidden;
   }
   .body_sistema{
     overflow-y: auto;
