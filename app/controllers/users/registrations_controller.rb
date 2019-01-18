@@ -79,7 +79,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     user.save
 
-    user.user_information.uid =  Random.rand(000000...999999).to_s.rjust(6, "0")
+    user.user_information.uid = get_random_uid()
 
     if params['user']['user_information_attributes']['next_competition'].present?
       difference = TimeDifference.between(Time.now.to_date, params['user']['user_information_attributes']['next_competition'].to_date).in_general
@@ -264,6 +264,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     ['Hockey', 'Hockey'],['Hockey Sobre Pasto', 'Hockeycpasto'],['Atletismo', 'Atletismo'],['Golf', 'Golf'],['Tennis', 'Tennis'],['Tennis Country', 'TennisC'],
     ['Deporte de Combate', 'Combate'],['Rugby', 'Rugby'],['Lacrosse', 'Lacrosse'],['Natación', 'Natación'],['Voleibol', 'Voleibol'],['Lucha Olímpica', 'LuchaOli'],
     ['Porras y Baile', 'Porras'],['Ciclismo', 'Ciclismo'],['Maratón', 'Maratón'],['Correr', 'Correr'],['Handball', 'Handball'],['Triathlon', 'Triathlon'],['Carrera de Obstaculos', 'Carrera'],['Water Polo', 'Water']]
+  end
+
+  def get_random_uid
+    uid = ""
+    while true
+      uid = Random.rand(000000...999999).to_s.rjust(6, "0")
+      break if UserInformation.find_by(uid: uid).blank?
+    end
+    return uid
   end
 
   protected

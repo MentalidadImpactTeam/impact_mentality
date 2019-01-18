@@ -74,6 +74,7 @@ Rails.application.routes.draw do
     get "users/page" => "admin#page_users"
     post "users/search" => "admin#search_users"
     get "users/new" => "admin#new_user"
+    post "users/create" => "admin#create_user"
     post "users/change_plan" => "admin#change_user_plan"
     post "users/delete" => "admin#delete_user"
     post "users/change_type" => "admin#change_user_type"
