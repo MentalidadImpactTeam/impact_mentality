@@ -596,30 +596,32 @@ body.swal2-height-auto{
   padding: 1vw 0vw;
   align-items: center;
   margin-top: 13.5vw;
-  
+
 }
 
 .deportes_deporte{
   display: inline-block;
+  font-family: lato;
+  font-weight: bold;
   color: #fff;
   font-size: 2vw;
   margin-right: 5vw;
   width: 20vw;
   text-align: center;
   transform: translateX(490%);
-  animation: scroll-left1 30s linear infinite;
+  animation: scroll-left1 70s linear infinite;
   }
 
   @keyframes scroll-left1{
-      0%   { 
+      0%   {
       -moz-transform: translateX(490%); /* Browser bug fix */
       -webkit-transform: translateX(490%); /* Browser bug fix */
-      transform: translateX(490%); 		
+      transform: translateX(490%);
       }
-      100% { 
+      100% {
       -moz-transform: translateX(-3000%); /* Browser bug fix */
       -webkit-transform: translateX(-3000%); /* Browser bug fix */
-      transform: translateX(-3000%); 
+      transform: translateX(-3000%);
       }
   }
 
@@ -1206,7 +1208,7 @@ body.swal2-height-auto{
     height: 10vw;
     margin-top: 15vw;
   }
-  
+
   .deportes_deporte{
     font-size: 3vw;
     width: 30vw;
