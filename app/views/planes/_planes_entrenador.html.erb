@@ -1,0 +1,176 @@
+<div class="planes_container_full container-fluid">
+
+    <div class="row">
+
+        <div class="planes_entrenador_padding col-md-6 col-sd-12">
+            <div class="plan_actual_entrenador">
+                <center>
+                <i class="fas fa-box-open"></i>
+                <h1>Plan Personalizado</h1>
+                <p>Como entrenador cuentas con un plan personalizado para ti</p>
+                <button id="btn_plan_entrenador">Cambir plan</button>
+                </center>
+            </div>
+        </div>
+
+        <div class="planes_entrenador_padding col-md-6 col-sd-12">
+            <div class="plan_entrenador_informacion">
+                <i class="alert_icon fas fa-exclamation-circle"></i>
+                <p>Debido a que esta cuenta esta categorizada como entrenador. Para cambiar el plan tendras que ponerte en contacto con nosotros.</p>
+                <div><i class="fas fa-phone"></i> <span id="telefono_contacto_planes">686 - 392 - 7585</span></div>
+                <div><i class="fas fa-envelope"></i><span id="correo_contacto_planes">adrian.villalobos@mentalidadimpact.com</span></div>
+            </div>
+        </div>
+
+    </div>
+<center>
+    <div  class="row">
+        <div  class="col-12">
+            <div style="margin:0 35px 15vw 35px; background-color:#333333; padding: 0 55px; border-radius:25px; box-shadow: 0 5px 10px black;" class="row">
+                <div class="col-12">
+                        <center><h5 style="color:white; font-family:lato; margin:30px 0 30px 0;">Estas son las tarjetas disponibles para adquirir suscripción</h5></center>
+                </div>
+<div class="col-12">
+                <div style="margin-bottom:25px;" class="row">
+                    <div class="col-4">
+                        <%= image_tag("logotarjetavisa", class: "planes_tarjetas_aceptables") %>
+                    </div>
+
+                    <div class="col-4">
+                        <%= image_tag("logotarjetamastercard", class: "planes_tarjetas_aceptables") %>
+                    </div>
+
+                    <div class="col-4">
+                        <%= image_tag("logotarjetaamerican", class: "planes_tarjetas_aceptables") %>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+
+</div>
+
+
+
+<style>
+.planes_container_full{
+    margin-top:0vw;
+}
+.planes_entrenador_padding{
+    padding:55px;
+}
+.planes_tarjetas_aceptables{
+    width:15vw;
+    vertical-align:middle;
+}
+.planes_entrenador_titulo h1{
+    color:white;
+    font-family:lato;
+    font-size:2vw;
+    margin:45px 0 0 0;
+    font-weight:bold;
+}
+.alert_icon{
+    color:white;
+    font-size:6vw;
+    text-shadow: 0 0 5px white;
+    margin:25px 0;
+}
+
+.plan_actual_entrenador i{
+    color:white;
+    font-size:6vw;
+    margin:20px;
+}
+.plan_actual_entrenador{
+    background-color:#333333;
+    padding:20px;
+    border-radius:25px;
+    font-family:lato;
+    box-shadow:0 5px 10px #0a0a0a;
+}
+.plan_actual_entrenador h1{
+    color:white;
+    font-family:lato;
+    font-weight:bold;
+}
+.plan_actual_entrenador p{
+    color:white;
+}
+.plan_actual_entrenador button{
+    color:white;
+    font-family:lato;
+    padding:12px 35px 12px 35px;
+    border-radius:15px;
+    font-weight:bold;
+    border:none;
+    background-color:red;
+    margin:25px;
+}
+.plan_entrenador_informacion{
+    color:white;
+    font-family:lato;
+}
+.plan_entrenador_informacion p{
+    font-size:1.5vw;
+}
+.plan_entrenador_informacion div{
+    margin:25px 0;
+}
+.plan_entrenador_informacion div span{
+    font-size:1.5vw;
+    vertical-align:middle;
+}
+.plan_entrenador_informacion div i{
+    font-size:30px;
+    margin:0 15px 0 0;
+    vertical-align:middle;
+}
+
+
+@media only screen and (max-width: 900px) {
+    .planes_entrenador_padding{
+        padding:0 55px;
+    }
+    .alert_icon{
+        font-size:15vw;
+    }
+    .plan_entrenador_informacion p{
+        font-size:4vw;
+    }
+    #telefono_contacto_planes{
+        font-size:7vw;
+    }
+    #correo_contacto_planes{
+        font-size:3vw;
+    }
+
+.planes_container_full{
+    margin-top:25vw;
+}
+}
+</style>
+
+<script>
+
+$('#btn_plan_entrenador').on('click', function(){
+
+Swal.fire({
+  title: '<strong>Recuerda</strong>',
+  type: 'info',
+  html:
+    'para realizar cambios en tu plan personalizado debes comunicarte con Mentalidad Impact',
+  showCloseButton: true,
+  showCancelButton: true,
+  focusConfirm: false,
+  confirmButtonText:
+    '<i class="fa fa-thumbs-up"></i> Continuar',
+  confirmButtonAriaLabel: 'Thumbs up, great!',
+  heightAuto:false,
+  showCancelButton:false
+})
+});
+
+</script>

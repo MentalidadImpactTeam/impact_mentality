@@ -10,4 +10,5 @@ class PlanesController < ApplicationController
         })
         render plain: "OK"
     end
+
 end
