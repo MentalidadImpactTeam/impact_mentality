@@ -50,11 +50,12 @@
         <div  class="sistema_mobile_menu">
             <!-- Just an image -->
             <nav class="animated slideInDown navbar">
+            <%= image_tag("hamburger-icon", class: "burger_menu_mobile", width: "25px", height: "25px") %>
+            <span  class="titulo_mobile_header"></span>
                 <a class="navbar-brand" href="#">
                     <%= image_tag("ImpactMentalityIcon-01", style: "height: 30px; width:30px;" ) %>
                 </a>
-                <span  class="titulo_mobile_header"></span>
-                <%= image_tag("hamburger-icon", class: "burger_menu_mobile", width: "25px", height: "25px") %>
+                
             </nav>
             <ul id="menu_mobile_desplegado">
                 <% if current_user.user_information.user_type_id == 2 %>
