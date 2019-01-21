@@ -215,6 +215,12 @@
                         <div class="col-12">
                             <button style="display:none;" id="TU_btn">Seleccionar Tipo</button>
                         </div>
+                           <div class="col-12">
+                            <div style="display:none;" id="registro_trainer_code">
+                                <p>Si cuenta con un codigo de entrenador ingreselo aqui</p>
+                                <input type="text" placeholder="Entrenador Code">
+                            </div>
+                        </div>
                     </div>
                 </center>
             </div>
@@ -676,5 +682,37 @@ body, html{
 .registro_sweetalert{
     background-color:#b52434 !important;
     border-radius:0px !important;
+}
+#registro_trainer_code p{
+    color: red;
+    font-family: lato;
+    font-weight: bold;
+    font-size: 1.3vw;
+}
+#registro_trainer_code input{
+        border-radius: 5px;
+    border: 2px solid #686868;
+    padding: 14px;
+    font-size: 1vw;
+    margin-bottom: 2vw;
+    font-family: lato;
+}
+
+@media (max-width:  900px) {
+
+#registro_trainer_code p{
+    color: red;
+    font-family: lato;
+    font-weight: bold;
+    font-size: 3.3vw;
+}
+#registro_trainer_code input {
+    border-radius: 5px;
+    border: 2px solid #686868;
+    padding: 8px;
+    font-size: 4vw;
+    margin-bottom: 6vw;
+    font-family: lato;
+}
 }
 </style>

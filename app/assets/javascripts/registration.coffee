@@ -183,6 +183,7 @@ eventos_tipos_usuarios = ->
     $('#TU_entrenador, #TU_escuela').removeClass 'tipo_seleccionado animated pulse'
     $('#TU_entrenador i, #TU_entrenador h5, #TU_escuela i, #TU_escuela h5').removeClass 'tipo_seleccionado, deseleccion'
     $('#TU_btn').show 500
+    $('#registro_trainer_code').show 500
     validacion_usuario = true
     validacion_escuela = false
     validacion_entrenador = false
