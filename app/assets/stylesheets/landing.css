@@ -2216,6 +2216,7 @@ body.swal2-height-auto{
   .about_infotodo{
     align-items: center;
     flex-direction: column;
+    width: 90%;
   }
 
   .about_persona{
@@ -2228,8 +2229,20 @@ body.swal2-height-auto{
 }
 
 .about_fotos, .about_fotos2{
-    width: 60vw;
-    height: 58vw;
+    width: 100%;
+    height: 70vw;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+#about_vildo{
+  padding: 0;
+  background-position: center;
+}
+
+#about_adrian{
+  margin-right: 0;
+  background-position-x: -4vw;
 }
 
 .about_persona2{
@@ -2252,9 +2265,10 @@ body.swal2-height-auto{
 }
 
 .about_nombre{
-  padding-top: 10vw;
+  padding-top: 5vw;
   font-size: 7.5vw;
   letter-spacing: 0;
+  text-align: center;
 }
 
 .about_puesto, .about_puesto2{
