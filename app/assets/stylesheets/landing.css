@@ -2117,7 +2117,7 @@ body.swal2-height-auto{
 }
 
 .about_fotos{
-    width: 70vw;
+    width: 35%;
     height: 100%;
     margin-right: 2vw;
     background-size: cover;
@@ -2126,7 +2126,7 @@ body.swal2-height-auto{
 }
 
   .about_fotos2{
-    width: 40vw;
+    width: 35%;
     height: 100%;
     margin-left: 2vw;
     background-size: cover;
@@ -2134,11 +2134,14 @@ body.swal2-height-auto{
   }
 
 #about_vildo{
-    background-image: url('new_vildo_photo');
+    background-image: url('../img/vildo_transparente.png');
+    background-position-x:-10vw;
+    padding-right: 4vw;
 }
 
 #about_adrian{
-  background-image: url('../img/adrian.png');
+  background-image: url('../img/adrian_transparente.png');
+  margin-right: 2vw
   }
 
 .about_nombre{
@@ -2192,6 +2195,7 @@ body.swal2-height-auto{
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  width: 65%;
 }
 
 @media only screen and (max-width: 1090px) {
