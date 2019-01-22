@@ -2101,6 +2101,7 @@ body.swal2-height-auto{
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
+    height: 65vh;
     flex-direction: row;
 }
 
@@ -2109,6 +2110,7 @@ body.swal2-height-auto{
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
+  height: 29vw;
   flex-direction: row-reverse;
 }
 
@@ -2117,7 +2119,7 @@ body.swal2-height-auto{
 }
 
 .about_fotos{
-    width: 70vw;
+    width: 35%;
     height: 100%;
     margin-right: 2vw;
     background-size: cover;
@@ -2126,7 +2128,7 @@ body.swal2-height-auto{
 }
 
   .about_fotos2{
-    width: 40vw;
+    width: 35%;
     height: 100%;
     margin-left: 2vw;
     background-size: cover;
@@ -2134,11 +2136,14 @@ body.swal2-height-auto{
   }
 
 #about_vildo{
-    background-image: url('new_vildo_photo');
+    background-image: url('../img/vildo_transparente.png');
+    background-position-x: -8vw;
+    padding-right: 4vw;
 }
 
 #about_adrian{
-  background-image: url('../img/adrian.png');
+  background-image: url('../img/adrian_transparente.png');
+  background-position-x: -5vw;
   }
 
 .about_nombre{
@@ -2148,6 +2153,8 @@ body.swal2-height-auto{
     font-size: 2.5vw;
     text-shadow: 0 0 1vw #ff1d25;
     letter-spacing: 6px;
+    width: 100%;
+
 }
 
 .about_nombre2{
@@ -2158,6 +2165,7 @@ body.swal2-height-auto{
   text-shadow: 0 0 1vw #ff1d25;
   letter-spacing: 6px;
   text-align: right;
+  width: 100%;
 }
 
 .about_puesto{
@@ -2165,6 +2173,7 @@ body.swal2-height-auto{
     letter-spacing: 4px;
     font-weight: 300;
     font-size: 1.2vw;
+    width: 100%;
 }
 
 .about_puesto2{
@@ -2172,6 +2181,8 @@ body.swal2-height-auto{
   letter-spacing: 4px;
   font-weight: 300;
   font-size: 1.2vw;
+  width: 100%;
+  text-align: end;
 }
 
 .about_info{
@@ -2185,13 +2196,15 @@ body.swal2-height-auto{
   color: #fff;
   text-align: right;
   padding-bottom: 2vw;
-  width: 80%;
+  width: 100%;
+  padding-left: 12%;
 }
 
 .about_infotodo{
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  width: 65%;
 }
 
 @media only screen and (max-width: 1090px) {
@@ -2212,6 +2225,7 @@ body.swal2-height-auto{
   .about_infotodo{
     align-items: center;
     flex-direction: column;
+    width: 90%;
   }
 
   .about_persona{
@@ -2224,8 +2238,20 @@ body.swal2-height-auto{
 }
 
 .about_fotos, .about_fotos2{
-    width: 60vw;
-    height: 58vw;
+    width: 100%;
+    height: 70vw;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+#about_vildo{
+  padding: 0;
+  background-position: center;
+}
+
+#about_adrian{
+  margin-right: 0;
+  background-position-x: -4vw;
 }
 
 .about_persona2{
@@ -2248,9 +2274,10 @@ body.swal2-height-auto{
 }
 
 .about_nombre{
-  padding-top: 10vw;
+  padding-top: 5vw;
   font-size: 7.5vw;
   letter-spacing: 0;
+  text-align: center;
 }
 
 .about_puesto, .about_puesto2{
@@ -2278,23 +2305,22 @@ body.swal2-height-auto{
 
 #about_segundo_container {
   background-color: #333333;
-  padding-top: 95px;
+  padding:6vw 0;
 }
 
 .about_red_title {
   font-weight: 700;
   color: #FF1D25;
   text-shadow: 0px 0px 5px #ff1d25;
-  font-size: 45px;
-  letter-spacing: 10px;
-  padding: 0 20px 0 20px;
+  font-size: 6vw;
+  letter-spacing: 0px;
+  padding:0;
 }
 
 #about_description_segundo_container {
   font-weight: 700;
-  font-size: 1vw;
+  font-size: 1.8vw;
   color: #FFFFFF;
-  padding: 0 20px 80px 20px;
 }
 
 #about_overlay {
