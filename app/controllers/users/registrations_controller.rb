@@ -75,7 +75,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     elsif params['user']['user_information_attributes']['user_type_id'].to_i == 2
       # Si es entrenador
-      user.active = 1
+      user.active = 0
     end
     user.save
 

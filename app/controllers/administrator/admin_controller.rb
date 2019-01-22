@@ -76,6 +76,16 @@ class Administrator::AdminController < ApplicationController
     subscription = customer.subscription.update({
       :plan => plan
     })
+
+    if subscription['status'] == "active"
+      user.active = 1
+      user.save
+
+      if user.user_information.user_type_id == 2 
+        user.user_information.player_count = params[:plan]
+        user.user_information.save
+      end
+    end
     # user.user_information.plan = params[:plan]
     # user.user_information.save
     render plain: "OK"

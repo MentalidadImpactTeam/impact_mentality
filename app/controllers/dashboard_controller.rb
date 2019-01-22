@@ -54,11 +54,17 @@ class DashboardController < ApplicationController
       if player_exists.present?
         response =  { :existe => true }
       else
+        player_count = TrainerPlayer.where(trainer_user_id: current_user.id).count
+
+
         response = user_obj.to_json(:include => [:user_information])
         tp = TrainerPlayer.new
         tp.trainer_user_id = current_user.id
         tp.user_id = user_obj.id
         tp.save
+
+        user_obj.user_information.has_trainer = 0
+        user_obj.user_information.save
       end
     end
     render json: response
@@ -66,6 +72,11 @@ class DashboardController < ApplicationController
 
   def delete_trainer_user
     TrainerPlayer.where(trainer_user_id: current_user.id, user_id: params[:id]).destroy_all
+    
+    user = User.find(params[:id])
+    user.user_information.has_trainer = 0
+    user.user_information.save
+
     render plain: "OK"
   end
 
