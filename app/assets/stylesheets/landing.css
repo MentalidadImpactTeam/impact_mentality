@@ -2154,7 +2154,7 @@ body.swal2-height-auto{
     text-shadow: 0 0 1vw #ff1d25;
     letter-spacing: 6px;
     width: 100%;
-  
+
 }
 
 .about_nombre2{
@@ -2305,23 +2305,22 @@ body.swal2-height-auto{
 
 #about_segundo_container {
   background-color: #333333;
-  padding-top: 95px;
+  padding:6vw 0;
 }
 
 .about_red_title {
   font-weight: 700;
   color: #FF1D25;
   text-shadow: 0px 0px 5px #ff1d25;
-  font-size: 45px;
-  letter-spacing: 10px;
-  padding: 0 20px 0 20px;
+  font-size: 6vw;
+  letter-spacing: 0px;
+  padding:0;
 }
 
 #about_description_segundo_container {
   font-weight: 700;
-  font-size: 1vw;
+  font-size: 1.8vw;
   color: #FFFFFF;
-  padding: 0 20px 80px 20px;
 }
 
 #about_overlay {
