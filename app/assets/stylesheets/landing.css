@@ -2101,6 +2101,7 @@ body.swal2-height-auto{
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
+    height: 65vh;
     flex-direction: row;
 }
 
@@ -2109,6 +2110,7 @@ body.swal2-height-auto{
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
+  height: 29vw;
   flex-direction: row-reverse;
 }
 
@@ -2135,13 +2137,13 @@ body.swal2-height-auto{
 
 #about_vildo{
     background-image: url('../img/vildo_transparente.png');
-    background-position-x:-10vw;
+    background-position-x: -8vw;
     padding-right: 4vw;
 }
 
 #about_adrian{
   background-image: url('../img/adrian_transparente.png');
-  margin-right: 2vw
+  background-position-x: -5vw;
   }
 
 .about_nombre{
@@ -2151,6 +2153,8 @@ body.swal2-height-auto{
     font-size: 2.5vw;
     text-shadow: 0 0 1vw #ff1d25;
     letter-spacing: 6px;
+    width: 100%;
+  
 }
 
 .about_nombre2{
@@ -2161,6 +2165,7 @@ body.swal2-height-auto{
   text-shadow: 0 0 1vw #ff1d25;
   letter-spacing: 6px;
   text-align: right;
+  width: 100%;
 }
 
 .about_puesto{
@@ -2168,6 +2173,7 @@ body.swal2-height-auto{
     letter-spacing: 4px;
     font-weight: 300;
     font-size: 1.2vw;
+    width: 100%;
 }
 
 .about_puesto2{
@@ -2175,6 +2181,8 @@ body.swal2-height-auto{
   letter-spacing: 4px;
   font-weight: 300;
   font-size: 1.2vw;
+  width: 100%;
+  text-align: end;
 }
 
 .about_info{
@@ -2188,7 +2196,8 @@ body.swal2-height-auto{
   color: #fff;
   text-align: right;
   padding-bottom: 2vw;
-  width: 80%;
+  width: 100%;
+  padding-left: 12%;
 }
 
 .about_infotodo{
