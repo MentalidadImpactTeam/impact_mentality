@@ -23,6 +23,9 @@
                 </div>
             </div>
             <div class="row">
+                               <div class="col-6">
+                           <center> <h4 style="margin:25px 0; color:red; vertical-align:middle; font-family:lato; font-weight:bold;">Fecha de siguiente competencia</h4></center>
+                    </div>
                 <div class="col-6">
                     <%= ui_fields.date_field :next_competition, class: 'input_creacion_usuario', style: 'color:white;' %>
                 </div>
@@ -73,12 +76,28 @@
                     </select>
 
                 </div>
-                <div class="row">
+
+
+            </div>
+
+              <div class="row">
+                    <div class="col-6">
+                           <center> <h4 style="margin:25px 0; color:red; vertical-align:middle; font-family:lato; font-weight:bold;">Plan de pago</h4></center>
+                    </div>
+                    <div class="col-6">
+                        <select class="select_creacion_usuario">
+                            <option>ELige el plan de pago:</option>
+                            <option>Plan Mensual</option>
+                            <option>PLan Trimestral</option>
+                            <option>Plan Anual</option>
+                        </select>
+                    </div>
+                </div>
+                    <div class="row">
                     <div class="col-12">
                         <center><button id="btn_crear_usuario" onclick="loading()">Crear Usuario</button></center>
                     </div>
                 </div>
-            </div>
         <% end %>
     <% end %>
 </div>
