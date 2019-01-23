@@ -2121,7 +2121,6 @@ body.swal2-height-auto{
 .about_fotos{
     width: 35%;
     height: 100%;
-    margin-right: 2vw;
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -2190,12 +2189,14 @@ body.swal2-height-auto{
   text-align: left;
   padding-bottom: 2vw;
   width: 80%;
+  font-size: 1vw;
 }
 
 .about_info2{
   color: #fff;
   text-align: right;
   padding-bottom: 2vw;
+  font-size: 1vw;
   width: 100%;
   padding-left: 12%;
 }
@@ -2241,7 +2242,7 @@ body.swal2-height-auto{
     justify-content: center;
     align-items: center;
     height: auto;
-    
+
 }
 
 .about_fotos, .about_fotos2{
@@ -2319,6 +2320,7 @@ body.swal2-height-auto{
 .about_red_title {
   font-weight: 700;
   color: #FF1D25;
+  margin:0;
   text-shadow: 0px 0px 5px #ff1d25;
   font-size: 6vw;
   letter-spacing: 0px;
