@@ -47,8 +47,8 @@
                 </div>
 
                 <%- if controller_name != 'sessions' %>
-  <%= link_to "<< Log in", new_session_path(resource_name),:class=> 'links_ventana_login' %><br />
-<% end -%>
+                    <%= link_to "<< Log in", new_session_path(resource_name),:class=> 'links_ventana_login' %><br />
+                <% end -%>
 
             </div>
             <div class="col-lg-3"></div>
@@ -215,10 +215,10 @@
                         <div class="col-12">
                             <button style="display:none;" id="TU_btn">Seleccionar Tipo</button>
                         </div>
-                           <div class="col-12">
+                            <div class="col-12">
                             <div style="display:none;" id="registro_trainer_code">
                                 <p>Si cuenta con un codigo de entrenador ingreselo aqui</p>
-                                <input type="text" placeholder="Entrenador Code">
+                                <%= f.text_field :trainer_code, placeholder: "Entrenador Code" %>
                             </div>
                         </div>
                     </div>

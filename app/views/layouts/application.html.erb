@@ -181,14 +181,15 @@
         <!--  END MENU desktop -->
     <% end %>
     <div class="sistema_container d-flex flex-column">
+    <% if flash[:error] %>
+    <p id="flash_error"style="display: none !important;"><%= flash[:error] %></p>
+    <% end %>
     <%= yield %>
     </div>
     <%= insert_paloma_hook %>
 </body>
 
 <script>
-
-
     $(document).ready(function(){
         Paloma.start();
     });

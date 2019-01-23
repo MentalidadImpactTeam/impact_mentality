@@ -37,34 +37,43 @@ class DashboardController < ApplicationController
   end
 
   def add_trainer_user
-    user = User.find_by(email: params["search_param"])
-    user_information = UserInformation.find_by(uid: params["search_param"])
-    
-    user_obj = ""
-    if user.present?
-      user_obj = user
-    elsif user_information.present?
-      user_obj = user_information.user
-    end
-
-    if user_obj == ""
-      response =  { :error => true }
+    if current_user.active == 0
+      response =  { :error => true, :mensaje => "No tiene su cuenta activa, favor de comunicarse con soporte." }
     else
-      player_exists = TrainerPlayer.where(user_id: user_obj.id, trainer_user_id: current_user.id)
-      if player_exists.present?
-        response =  { :existe => true }
+      user = User.find_by(email: params["search_param"])
+      user_information = UserInformation.find_by(uid: params["search_param"])
+      
+      user_obj = ""
+      if user.present?
+        user_obj = user
+      elsif user_information.present?
+        user_obj = user_information.user
+      end
+  
+      if user_obj == ""
+        response =  { :error => true, :mensaje => "No se encontro el jugador ingresado." }
       else
-        player_count = TrainerPlayer.where(trainer_user_id: current_user.id).count
-
-
-        response = user_obj.to_json(:include => [:user_information])
-        tp = TrainerPlayer.new
-        tp.trainer_user_id = current_user.id
-        tp.user_id = user_obj.id
-        tp.save
-
-        user_obj.user_information.has_trainer = 0
-        user_obj.user_information.save
+        player_exists = TrainerPlayer.where(user_id: user_obj.id)
+        if player_exists.present?
+          if user_obj.user_information.user_type_id == 2
+            response =  { :error => true, :mensaje => "No se puede agregar un entrenador como jugador." }
+          else
+            response =  { :existe => true }
+          end
+        else
+          user_ids = TrainerPlayer.select(:user_id).where(trainer_user_id: current_user.id)
+          player_count = user_ids.count
+          
+          if (player_count + 1) > current_user.user_information.player_plan
+            response =  { :error => true, :mensaje => "Ya estan ingresados el numero maximo de jugadores de su plan." }
+          else
+            response = user_obj.to_json(:include => [:user_information])
+            tp = TrainerPlayer.new
+            tp.trainer_user_id = current_user.id
+            tp.user_id = user_obj.id
+            tp.save
+          end
+        end
       end
     end
     render json: response
@@ -72,11 +81,6 @@ class DashboardController < ApplicationController
 
   def delete_trainer_user
     TrainerPlayer.where(trainer_user_id: current_user.id, user_id: params[:id]).destroy_all
-    
-    user = User.find(params[:id])
-    user.user_information.has_trainer = 0
-    user.user_information.save
-
     render plain: "OK"
   end
 

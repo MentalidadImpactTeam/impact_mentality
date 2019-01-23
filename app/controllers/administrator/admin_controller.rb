@@ -78,12 +78,17 @@ class Administrator::AdminController < ApplicationController
     })
 
     if subscription['status'] == "active"
-      user.active = 1
-      user.save
-
       if user.user_information.user_type_id == 2 
-        user.user_information.player_count = params[:plan]
+        user.active = 1
+        user.save
+        
+        user.user_information.player_plan = params[:plan]
         user.user_information.save
+      end
+
+      if user.active == 0
+        user.active = 1
+        user.save
       end
     end
     # user.user_information.plan = params[:plan]

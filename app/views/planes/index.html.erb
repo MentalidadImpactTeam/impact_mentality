@@ -114,7 +114,6 @@ $('#plan_mensual, #plan_trimestral, #plan_anual').on('click', function() {
         return false;
     }
     plan = $(this).attr("id").split("_")[1]
-    console.log(plan)
     Swal({
     title: '¿Estás seguro?',
     text: "Tu plan será alterado despues de tu fecha de facturación",

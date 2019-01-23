@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_scope :user do
     post 'checkuser' => 'users/registrations#checkuser'
+    post 'checktrainercode' => 'users/registrations#check_trainer_code'
     post 'create_conekta_subscription' => 'users/registrations#create_conekta_subscription'
     get 'active_confirmation' => 'users/confirmations#active_confirmation'
     get 'active_trainer_confirmation' => 'users/confirmations#active_trainer_confirmation'

@@ -34,9 +34,9 @@ DashboardController::player_list = ->
           )
         }).then (response) ->
           if response.value.error
-            swal('Alerta','No se encontro el jugador ingresado','warning',"heightAuto: false")
+            swal('Alerta',response.value.mensaje,'warning',"heightAuto: false")
           else if response.value.existe
-            swal('Alerta','El jugador ingresado ya fue agregado anteriormente','warning',"heightAuto: false")
+            swal('Alerta','El jugador ingresado ya tiene un entrenador registrado.','warning',"heightAuto: false")
           else
             user = response.value
             date = user.created_at.substring(8,10) + "/" + user.created_at.substring(5,7) + "/" + user.created_at.substring(0,4)
@@ -263,6 +263,9 @@ player_list_table_events = ->
 
 @metodos_menu = (titulo) ->
   $(".titulo_mobile_header").text(titulo)
+  if $("#flash_error").text() != ""
+    swal('Alerta',$("#flash_error").text(),'warning',"heightAuto: false")
+
   $('.burger_menu').on 'click', ->
     if $('.sistema_descripcion_menu').hasClass('hide_text_menu')
       $('.sistema_descripcion_menu').removeClass 'display_text_menu'
@@ -282,7 +285,6 @@ player_list_table_events = ->
         $('.sistema_container').addClass 'sistema_container_reduce'
         return
       ), 400
-
   $('.burger_menu_mobile').on 'click', ->
     if $('#menu_mobile_desplegado').hasClass('desplegado') == false
       $('.burger_menu_mobile').attr 'src', 'img/cancel-music.png'

@@ -35,7 +35,7 @@ ProfileController::index = ->
         )
       }).then (response) ->
         if response.value.error
-          swal('Alerta','No se encontro el entrenador ingresado','warning',"heightAuto: false")
+          swal('Alerta',response.value.mensaje,'warning',"heightAuto: false")
         else 
           $("#perfil_boton_entrenador").remove()
           $("#perfil_entrenador").text(response.value.name)

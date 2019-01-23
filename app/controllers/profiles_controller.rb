@@ -58,14 +58,17 @@ class ProfilesController < ApplicationController
     user_information = UserInformation.find_by(uid: params["search_param"])
 
     if user_information.blank?
-      response =  { :error => true }
+      response =  { :error => true, :mensaje => 'No se encontro el entrenador ingresado.' }
     elsif user_information.user_type_id != 2
-      response =  { :error => true }
+      response =  { :error => true, :mensaje => 'El codigo ingresado no es de un entrenador.' }
+    elsif user_information.user.active == 0
+      response =  { :error => true, :mensaje => 'La cuenta del entrenador no esta activa.' }
     else
       tp = TrainerPlayer.new
       tp.trainer_user_id = user_information.user_id
       tp.user_id = current_user.id
       tp.save
+
       response =  { :error => false, :name => user_information.name }
     end
     render json: response
