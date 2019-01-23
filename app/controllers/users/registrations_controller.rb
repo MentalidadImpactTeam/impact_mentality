@@ -18,8 +18,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    trainer_code =  params['user']['trainer_code']
     build_resource(sign_up_params)
     resource.skip_confirmation! if params['user']['user_information_attributes']['user_type_id'].to_i == 2
+    resource.trainer_code = nil
     resource.save
     yield resource if block_given?
     if resource.persisted?
@@ -45,37 +47,49 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user.user_information.name = user.user_information.name.split.map(&:capitalize).join(' ')
       user.user_information.weight = user.user_information.weight.remove("kg").squish
 
-      customer = Conekta::Customer.find(params["user"]["customer_token"])
-      payment_source = customer.payment_sources.last
-  
-      user_conekta = UserConektaToken.new
-      user_conekta.user_id = user.id
-      user_conekta.token =  payment_source["id"]
-      user_conekta.default = 1
-      user_conekta.last_digits = payment_source["last4"]
-      user_conekta.exp_month = payment_source["exp_month"]
-      user_conekta.exp_year = payment_source["exp_year"]
-      user_conekta.brand = payment_source["brand"].downcase
-      user_conekta.save
-  
-      user.customer_token = params["user"]["customer_token"]
-      user.active = 1
-      
-      subscription = customer.subscription
-      
-      user.user_information.plan = subscription.plan_id
-  
-      user_subscription = UserConektaSubscription.new
-      user_subscription.user_id = user.id 
-      user_subscription.estatus = 1 
-      user_subscription.start_date = Time.at(subscription.billing_cycle_start).to_date
-      user_subscription.end_date = Time.at(subscription.billing_cycle_end).to_date
-      user_subscription.conekta_subscription_token = subscription.id
-      user_subscription.save
+      if trainer_code.present?
+        user_information = UserInformation.find_by(uid: trainer_code)
 
+        tp = TrainerPlayer.new
+        tp.trainer_user_id = user_information.user_id
+        tp.user_id = user.id
+        tp.save
+
+        user.active = 2
+      end
+
+      if params["user"]["customer_token"].present? and trainer_code.blank?
+        customer = Conekta::Customer.find(params["user"]["customer_token"])
+        payment_source = customer.payment_sources.last
+    
+        user_conekta = UserConektaToken.new
+        user_conekta.user_id = user.id
+        user_conekta.token =  payment_source["id"]
+        user_conekta.default = 1
+        user_conekta.last_digits = payment_source["last4"]
+        user_conekta.exp_month = payment_source["exp_month"]
+        user_conekta.exp_year = payment_source["exp_year"]
+        user_conekta.brand = payment_source["brand"].downcase
+        user_conekta.save
+    
+        user.customer_token = params["user"]["customer_token"]
+        user.active = 1
+        
+        subscription = customer.subscription
+        
+        user.user_information.plan = subscription.plan_id
+    
+        user_subscription = UserConektaSubscription.new
+        user_subscription.user_id = user.id 
+        user_subscription.estatus = 1 
+        user_subscription.start_date = Time.at(subscription.billing_cycle_start).to_date
+        user_subscription.end_date = Time.at(subscription.billing_cycle_end).to_date
+        user_subscription.conekta_subscription_token = subscription.id
+        user_subscription.save
+      end
     elsif params['user']['user_information_attributes']['user_type_id'].to_i == 2
       # Si es entrenador
-      user.active = 1
+      user.active = 0
     end
     user.save
 
@@ -257,6 +271,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render :json => { 'existe' => User.find_by(email: params[:username]).present? }
   end
 
+  def check_trainer_code
+    user_information = UserInformation.find_by(uid: params["trainer"])
+
+    if user_information.blank?
+      response =  { :error => true, :mensaje => 'No se encontro el entrenador ingresado.' }
+    elsif user_information.user_type_id != 2
+      response =  { :error => true, :mensaje => 'El codigo ingresado no es de un entrenador.' }
+    elsif user_information.user.active == 0
+      response =  { :error => true, :mensaje => 'La cuenta del entrenador no esta activa.' }
+    else
+      player_count = TrainerPlayer.where(trainer_user_id: user_information.user_id).count
+      if (player_count + 1) > user_information.player_plan
+        response =  { :error => true, :mensaje => "Ya estan ingresados el numero maximo de jugadores para el entrenador seleccionado." }
+      else
+        response =  { :error => false }
+      end
+    end
+    render json: response
+  end
+
   def catalogos_registro
     @heights = [['Estatura', ''],['-1.00m', '-1'],['1.00m', '1.00'],['1.10m', '1.10'],['1.20m', '1.20'],['1.30m', '1.30'],['1.40m', '1.40'],['1.50m', '1.50'],
     ['1.60m', '1.60'],['1.70m', '1.70'],['1.80m', '1.80'],['1.90m', '1.90'],['2.00m', '2.00'],['2.10m', '2.10'],['2.20m', '2.20'],['2.30m', '2.30'],['2.40m', '2.40'],['+2.40m', '+2.4']]
@@ -278,7 +312,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:customer_token, :user_information_attributes => [:user_type_id, :name, :first_name, :last_name, :phone, :birth_date, :genre, :height, :weight, :sport, :position, :next_competition, :experience, :history_injuries, :pay_day, :pay_program, :goal_1, :goal_2]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:customer_token, :trainer_code, :user_information_attributes => [:user_type_id, :name, :first_name, :last_name, :phone, :birth_date, :school, :genre, :height, :weight, :sport, :position, :next_competition, :experience, :history_injuries, :pay_day, :pay_program, :goal_1, :goal_2]])
   end
 
   def user_params

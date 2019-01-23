@@ -10,6 +10,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :confirmable
 
-  attr_accessor :first_name, :last_name
+  attr_accessor :first_name, :last_name, :trainer_code
 
 end

@@ -815,7 +815,24 @@ class RoutinesController < ApplicationController
     private
     def check_user_subscription
         if current_user.active == 0
-            redirect_back(fallback_location: root_path)
+            flash[:error] = "Su cuenta no esta activa."
+            redirect_back(fallback_location: dashboard_path)
+        end
+
+        # Verificamos si el jugador tiene un entrenador
+        player_exists = TrainerPlayer.find_by(user_id: current_user.id)
+        if player_exists.present?
+            trainer = User.find(player_exists.trainer_user_id)
+            if trainer.present?
+                # Si el entrenador no esta activo, sus jugadores no pueden entrar a rutinas
+                if trainer.active == 0
+                    flash[:error] = "La cuenta del entrenador no esta activa"
+                    redirect_back(fallback_location: dashboard_path)
+                end
+            else
+                flash[:error] = "La cuenta del entrenador ligada a esta cuenta no existe."
+                redirect_back(fallback_location: dashboard_path)
+            end
         end
     end
 end

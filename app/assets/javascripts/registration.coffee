@@ -153,6 +153,8 @@ eventos_tipos_usuarios = ->
     $('#TU_escuela, #TU_usuario').removeClass 'tipo_seleccionado animated pulse'
     $('#TU_escuela i, #TU_escuela h5, #TU_usuario i, #TU_usuario h5').removeClass 'tipo_seleccionado, deseleccion'
     $('#TU_btn').show 500
+    $('#registro_trainer_code').hide 500
+    $('#registro_trainer_code input').val("")
     validacion_entrenador = true
     validacion_escuela = false
     validacion_usuario = false
@@ -168,6 +170,8 @@ eventos_tipos_usuarios = ->
     $('#TU_entrenador, #TU_usuario').removeClass 'tipo_seleccionado animated pulse'
     $('#TU_entrenador i, #TU_entrenador h5, #TU_usuario i, #TU_usuario h5').removeClass 'tipo_seleccionado, deseleccion'
     $('#TU_btn').show 500
+    $('#registro_trainer_code').hide 500
+    $('#registro_trainer_code input').val("")
     validacion_escuela = true
     validacion_entrenador = false
     validacion_usuario = false
@@ -189,41 +193,29 @@ eventos_tipos_usuarios = ->
     validacion_entrenador = false
     return
   $('#TU_btn').on 'click', ->
-    if validacion_entrenador == true
-      $('#TU_usuario').hide 400
-      $('#TU_escuela').hide 400
-      $('#TU_modal').addClass 'animated bounceOutLeft'
-      $("#div_datos_personales").remove()
-      $("#div_informacion_deportiva").remove()
-      $("#div_metas_objetivos").remove()
-      $("#user_type_id").val(2)
-      setTimeout (->
-        $("#div_tipo_usuario").css('display','none')
-        $("#div_entrenador_modal").removeAttr("style")
-        return
-      ), 800
+    if $('#registro_trainer_code input').val() != ""
+      $.ajax
+        type: "POST"
+        url: "/checktrainercode"
+        data: trainer: $('#registro_trainer_code input').val()
+        dataType: "json",
+        success: (data) ->
+          if data.error
+            swal
+              type: 'error'
+              heightAuto: false
+              title: 'Alerta'
+              text: data.mensaje
+              allowEscapeKey: true
+              allowOutsideClick: true
+              confirmButtonText: 'Regresar'
+              confirmButtonClass: 'login_sweetalert'
+          else
+            eventos_btn_tipos_usuarios(validacion_usuario,validacion_entrenador,validacion_escuela)
+          return false
+      return false
     else
-      if validacion_escuela == true
-        $('#TU_usuario').hide 400
-        $('#TU_entrenador').hide 400
-        $('#TU_modal').addClass 'animated bounceOutLeft'
-        setTimeout (->
-          $("#div_tipo_usuario").css('display','none')
-          $("#div_datos_personales").removeAttr("style")
-          return
-        ), 800
-      else
-        if validacion_usuario == true
-          $('#TU_entrenador').hide 400
-          $('#TU_escuela').hide 400
-          $('#TU_modal').addClass 'animated bounceOutLeft'
-          $("#div_entrenador_modal").remove()
-          $("#user_type_id").val(3)
-          setTimeout (->
-            $("#div_tipo_usuario").css('display','none')
-            $("#div_datos_personales").removeAttr("style")
-            return
-          ), 800
+      eventos_btn_tipos_usuarios(validacion_usuario,validacion_entrenador,validacion_escuela)
     return false
 
 eventos_datos_personales = ->
@@ -576,13 +568,21 @@ eventos_datos_deportivos = ->
 
 eventos_metas_objetivos = ->
   $('#metas_objetivos_btn').on 'click', ->
-    $('#div_metas_objetivos').addClass 'animated bounceOutLeft'
-    setTimeout (->
-      $("#div_metas_objetivos").css('display','none')
-      $("#div_planes").removeAttr("style")
-      return
-    ), 500
-    return false
+    if $('#registro_trainer_code input').val() != ""
+      swal({
+          title: 'Creando su rutina...',
+          allowOutsideClick: false
+      });
+      swal.showLoading();
+      return true
+    else
+      $('#div_metas_objetivos').addClass 'animated bounceOutLeft'
+      setTimeout (->
+        $("#div_metas_objetivos").css('display','none')
+        $("#div_planes").removeAttr("style")
+        return
+      ), 500
+      return false
   $('#metas_objetivos_close').on 'click', ->
     $('#metas_objetivos_modal').addClass 'animated bounceOut'
     return false
@@ -816,6 +816,48 @@ eventos_entrenador = ->
     });
     swal.showLoading();
   return
+
+eventos_btn_tipos_usuarios = (validacion_usuario,validacion_entrenador,validacion_escuela) ->
+  if validacion_entrenador == true
+    $('#TU_usuario').hide 400
+    $('#TU_escuela').hide 400
+    $('#TU_modal').addClass 'animated bounceOutLeft'
+    $("#div_datos_personales").remove()
+    $("#div_informacion_deportiva").remove()
+    $("#div_metas_objetivos").remove()
+    $("#user_type_id").val(2)
+    setTimeout (->
+      $("#div_tipo_usuario").css('display','none')
+      $("#div_entrenador_modal").removeAttr("style")
+      return
+    ), 800
+  else
+    if validacion_escuela == true
+      $('#TU_usuario').hide 400
+      $('#TU_entrenador').hide 400
+      $('#TU_modal').addClass 'animated bounceOutLeft'
+      $("#div_datos_personales").remove()
+      $("#div_informacion_deportiva").remove()
+      $("#div_metas_objetivos").remove()
+      $("#user_type_id").val(2)
+      setTimeout (->
+        $("#div_tipo_usuario").css('display','none')
+        $("#div_entrenador_modal").removeAttr("style")
+        return
+      ), 800
+    else
+      if validacion_usuario == true
+        $('#TU_entrenador').hide 400
+        $('#TU_escuela').hide 400
+        $('#TU_modal').addClass 'animated bounceOutLeft'
+        $("#div_entrenador_modal").remove()
+        $("#user_type_id").val(3)
+        setTimeout (->
+          $("#div_tipo_usuario").css('display','none')
+          $("#div_datos_personales").removeAttr("style")
+          return
+        ), 800
+  return false
 
 addkg = ->
   contenido_tmp = $('#IP_peso').val() + ' kg'

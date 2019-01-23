@@ -47,8 +47,8 @@
                 </div>
 
                 <%- if controller_name != 'sessions' %>
-  <%= link_to "<< Log in", new_session_path(resource_name),:class=> 'links_ventana_login' %><br />
-<% end -%>
+                    <%= link_to "<< Log in", new_session_path(resource_name),:class=> 'links_ventana_login' %><br />
+                <% end -%>
 
             </div>
             <div class="col-lg-3"></div>
@@ -215,10 +215,10 @@
                         <div class="col-12">
                             <button style="display:none;" id="TU_btn">Seleccionar Tipo</button>
                         </div>
-                           <div class="col-12">
+                            <div class="col-12">
                             <div style="display:none;" id="registro_trainer_code">
                                 <p>Si cuenta con un codigo de entrenador ingreselo aqui</p>
-                                <input type="text" placeholder="Entrenador Code">
+                                <%= f.text_field :trainer_code, placeholder: "Entrenador Code" %>
                             </div>
                         </div>
                     </div>
@@ -430,7 +430,7 @@
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div id="input_box_exp" class="input_box_ano animated bounceIn">
                                         <i class="fas fa-school"></i>
-                                        <%= ui_fields.text_field :last_name, placeholder: 'Institución', id: 'IP_escuela' %>
+                                        <%= ui_fields.text_field :school, placeholder: 'Institución', id: 'IP_escuela' %>
                                     </div>
                                 </div>
                                 <div class="DP_input col-lg-6 col-md-6">
@@ -451,7 +451,7 @@
                                 </div>
                                 <div class="DP_input col-lg-6 col-md-6">
                                     <div id="input_box_estatura" class="input_box_ano animated bounceIn">
-                                      <i class="fas fa-ruler-vertical"></i>
+                                        <i class="fas fa-ruler-vertical"></i>
                                         <%= ui_fields.select :height, options_for_select(@heights), {}, { :id => 'IP_Estatura' } %>
                                     </div>
                                 </div>
