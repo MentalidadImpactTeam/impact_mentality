@@ -2081,7 +2081,7 @@ body.swal2-height-auto{
 #about_primer_container {
   background-image: url('../img/about_background_image2.png');
   background-repeat: no-repeat;
-  background-size:2120px 1400px ;
+  background-size: 150% ;
   background-position: center;
   padding-top: 300px;
   padding-bottom: 45px;
@@ -2121,7 +2121,6 @@ body.swal2-height-auto{
 .about_fotos{
     width: 35%;
     height: 100%;
-    margin-right: 2vw;
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -2190,12 +2189,14 @@ body.swal2-height-auto{
   text-align: left;
   padding-bottom: 2vw;
   width: 80%;
+  font-size: 1vw;
 }
 
 .about_info2{
   color: #fff;
   text-align: right;
   padding-bottom: 2vw;
+  font-size: 1vw;
   width: 100%;
   padding-left: 12%;
 }
@@ -2208,6 +2209,11 @@ body.swal2-height-auto{
 }
 
 @media only screen and (max-width: 1090px) {
+  #about_primer_container {
+    background-image: url('../img/about_background_image2.png');
+    background-size: cover ;
+  }
+
   .contacto_input_field{
     font-size: 3vw;
 
@@ -2235,6 +2241,8 @@ body.swal2-height-auto{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: auto;
+
 }
 
 .about_fotos, .about_fotos2{
@@ -2261,6 +2269,7 @@ body.swal2-height-auto{
   flex-direction: column;
   align-items: center;
   text-align: end;
+  height: auto;
 }
 
 
@@ -2273,7 +2282,7 @@ body.swal2-height-auto{
   padding-top: 120px;
 }
 
-.about_nombre{
+.about_nombre, .about_nombre2{
   padding-top: 5vw;
   font-size: 7.5vw;
   letter-spacing: 0;
@@ -2283,7 +2292,7 @@ body.swal2-height-auto{
 .about_puesto, .about_puesto2{
   letter-spacing: 0;
   font-size: 4vw;
-  text-align: start
+  text-align: center;
 }
 
 .about_info, .about_info2{
@@ -2311,6 +2320,7 @@ body.swal2-height-auto{
 .about_red_title {
   font-weight: 700;
   color: #FF1D25;
+  margin:0;
   text-shadow: 0px 0px 5px #ff1d25;
   font-size: 6vw;
   letter-spacing: 0px;

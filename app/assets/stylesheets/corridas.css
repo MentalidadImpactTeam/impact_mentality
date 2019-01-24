@@ -1,5 +1,7 @@
 #sistema_libreria_contejercicios{
     flex-direction: row;
+    display: block;
+    width: 100%;
 }
 .container_filtro_corridas{
     margin:3vw -3vw 3vw 3vw;
@@ -36,10 +38,12 @@
 }
 
 .sistema_libreria_ejercicio{
+    display: inline-block;
     height: 18vw;
+    border-radius:15px;
     width: 18vw;
     flex-direction: column;
-    margin: 1vw .5vw;
+    margin: 1vw 2.66vw;
     box-shadow: 1vw 2vw 5vw .5vw rgba(0,0,0,0.75);
 }
 
@@ -111,6 +115,7 @@
 
     #sistema_libreria_contejercicios{
         flex-direction: row;
+        display: block;
         width: 100%;
         align-items: center;
     }
