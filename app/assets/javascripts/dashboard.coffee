@@ -264,7 +264,7 @@ player_list_table_events = ->
 @metodos_menu = (titulo) ->
   $(".titulo_mobile_header").text(titulo)
   if $("#flash_error").text() != ""
-    swal('Alerta',$("#flash_error").text(),'warning',"heightAuto: false")
+    swal('Aviso',$("#flash_error").text(),'error',"heightAuto: false")
 
   $('.burger_menu').on 'click', ->
     if $('.sistema_descripcion_menu').hasClass('hide_text_menu')

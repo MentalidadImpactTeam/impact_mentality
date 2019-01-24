@@ -815,7 +815,7 @@ class RoutinesController < ApplicationController
     private
     def check_user_subscription
         if current_user.active == 0
-            flash[:error] = "Su cuenta no esta activa."
+            flash[:error] = "Es necesario que pagues tu mensualidad"
             redirect_back(fallback_location: dashboard_path)
         end
 
@@ -826,7 +826,7 @@ class RoutinesController < ApplicationController
             if trainer.present?
                 # Si el entrenador no esta activo, sus jugadores no pueden entrar a rutinas
                 if trainer.active == 0
-                    flash[:error] = "La cuenta del entrenador no esta activa"
+                    flash[:error] = "Tu entrenador no ha pagado la mensualidad, si quieres continuar por tu cuenta agrega una forma de pago"
                     redirect_back(fallback_location: dashboard_path)
                 end
             else
