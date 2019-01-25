@@ -73,7 +73,6 @@
     height: 100% !important;
     background-color: #191a1a;
     flex-direction: row;
-    justify-content: space-between;
     overflow-y: auto;
   }
 
