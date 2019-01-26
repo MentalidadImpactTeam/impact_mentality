@@ -3,7 +3,7 @@ class Administrator::AdminController < ApplicationController
   layout "administrator"
 
   def list_users
-    @user = User.joins(:user_information).where("user_type_id != 1 and active = 1").limit(15).offset(0)
+    @user = User.joins(:user_information).where("user_type_id != 1").limit(15).offset(0)
   end
 
   def page_users
@@ -122,6 +122,22 @@ class Administrator::AdminController < ApplicationController
 
     customer = Conekta::Customer.find(user.customer_token)
     subscription = customer.subscription.pause
+
+    render plain: "OK"
+  end
+
+  def user_active
+    user = User.find(params[:id])
+    user.update(active: eval(params[:active]))
+
+    if user.customer_token.present?
+      ui = user.user_conekta_subscription.last
+      ui.estatus = eval(params[:active])
+      ui.save
+
+      customer = Conekta::Customer.find(user.customer_token)
+      subscription = eval(params[:active]) ? customer.subscription.resume : customer.subscription.pause
+    end
 
     render plain: "OK"
   end

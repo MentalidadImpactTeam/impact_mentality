@@ -105,6 +105,6 @@
             </div>
 
         </div>
-        <div class="sistema_cuenta_cancelar"> <a id="sistema_cuenta_cancelar_txt"><%= if current_user.active == 1 then "Cancelar" else "Reanudar" end %> subscripción </a></div>
+        <div class="sistema_cuenta_cancelar"><a id="sistema_cuenta_cancelar_txt"><% if current_user.active != 2 %><%= if current_user.active == 1 then "Cancelar" else "Reanudar" end %> subscripción <% end %></a></div>
     </div>
 </div>

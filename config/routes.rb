@@ -79,6 +79,7 @@ Rails.application.routes.draw do
     post "users/change_plan" => "admin#change_user_plan"
     post "users/delete" => "admin#delete_user"
     post "users/change_type" => "admin#change_user_type"
+    post "users/active" => "admin#user_active"
     get "exercises" => "admin#list_exercises"
     get "exercises/change_list_exercises" => "admin#change_list_exercises"
     post "exercises/edit_exercise" => "admin#add_edit_exercise"

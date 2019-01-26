@@ -7,6 +7,8 @@
 </div>
 <% if current_user.user_information.user_type_id == 3 %>
 <div class="contenedor_planes_sistema container-fluid">
+    <input type="hidden" class="hidden_usuario" value="<%= current_user.active %>">
+    <input type="hidden" class="hidden_cards" value="<%= @has_cards %>">
     <div class="top_renglon_planes_sistema row">
         <div class="col-12">
             <center><h3 style="font-weight:bold; margin:0 0 0px 0; color:white;">Planes de Pagos por medio de suscripción</h3></center>
@@ -43,9 +45,9 @@
             <h3>$400 M.X.N.</h3>
             <p>Ahorra un 10%</p>
             <% if current_user.user_information.plan == "trimestral" %>
-                <button class="plan_trimestral plan_seleccionado">Plan Actual</button>
+                <button id="plan_trimestral plan_seleccionado">Plan Actual</button>
             <% else %>
-                <button class="plan_trimestral">Cambiar / Comprar</button>
+                <button id="plan_trimestral">Cambiar / Comprar</button>
             <% end %>
          </div>
         </div>
@@ -114,39 +116,92 @@ $('#plan_mensual, #plan_trimestral, #plan_anual').on('click', function() {
         return false;
     }
     plan = $(this).attr("id").split("_")[1]
-    Swal({
-    title: '¿Estás seguro?',
-    text: "Tu plan será alterado despues de tu fecha de facturación",
-    type: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Aceptar',
-    heightAuto: false
-    }).then((result) => {
-    if (result.value) {
-        swal({
-            text: 'Procesando...',
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            allowEnterKey: false,
-            heightAuto: false,
-            onOpen: function() {
-            return swal.showLoading();
+
+    if ($(".hidden_cards").val() == "false"){
+        Swal.fire({
+            type: 'error',
+            title: 'Aviso',
+            text: 'Es necesario que agregues una forma de pago.',
+            heightAuto:false,
+            confirmButtonText:'Agregar Ahora',
+            showCancelButton:'true',
+            cancelButtonText:'Agregar Despues'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = "/accounts"
             }
         });
-        return $.ajax({
-            type: "POST",
-            url: "/planes/change_plan",
-            data: { plan: plan },
-            dataType: "text",
-            success: function(data) {
-                swal.close();
-                return swal('Listo','Tu plan será cambiado despues de tu fecha de facturación','success');
-            }
-        });
+        return false;
     }
-    })
+
+    if ($(".hidden_usuario").val() == "2"){
+        Swal.fire({
+            type: 'error',
+            title: 'Aviso',
+            text: 'Tu cobro se desligará de tu entrenador',
+            heightAuto:false,
+            confirmButtonText:'Renovar Ahora',
+            showCancelButton:'true',
+            cancelButtonText:'No renovar'
+        }).then((result) => {
+            if (result.value) {
+                swal({
+                    text: 'Procesando...',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    allowEnterKey: false,
+                    heightAuto: false,
+                    onOpen: function() {
+                    return swal.showLoading();
+                    }
+                });
+                return $.ajax({
+                    type: "POST",
+                    url: "/planes/change_plan",
+                    data: { plan: plan },
+                    dataType: "text",
+                    success: function(data) {
+                        swal.close();
+                        return swal('Listo','Tu plan ha sido activado.','success');
+                    }
+                });
+            }
+        });
+    }else{
+        Swal({
+        title: '¿Estás seguro?',
+        text: "Tu plan será alterado despues de tu fecha de facturación",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar',
+        heightAuto: false
+        }).then((result) => {
+        if (result.value) {
+            swal({
+                text: 'Procesando...',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                heightAuto: false,
+                onOpen: function() {
+                return swal.showLoading();
+                }
+            });
+            return $.ajax({
+                type: "POST",
+                url: "/planes/change_plan",
+                data: { plan: plan },
+                dataType: "text",
+                success: function(data) {
+                    swal.close();
+                    return swal('Listo','Tu plan será cambiado despues de tu fecha de facturación','success');
+                }
+            });
+        }
+        })
+    }
 });
 
 

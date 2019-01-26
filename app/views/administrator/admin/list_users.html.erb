@@ -54,24 +54,22 @@
 
                                     <td class="columna_eliminada aliniar_contenido_tabla fecha_cobro"><%= if user.user_conekta_subscription.present? then user.user_conekta_subscription.last.end_date.strftime("%d/%m/%Y") end %> </td>
                                     <td class="aliniar_contenido_tabla fecha_intro"><%= if user.user_conekta_subscription.present? then user.user_conekta_subscription.last.start_date.strftime("%d/%m/%Y") end %></td>
-                                    <td class="aliniar_contenido_tabla estado_usuario <%= if user.user_conekta_subscription.present? then if user.user_conekta_subscription.last.estatus == 1 then "usuario_activo" else "usuario_inactivo" end else "usuario_activo" end  %>"><%= lista_estatus(user.user_conekta_subscription) %></td>
+                                    <td class="aliniar_contenido_tabla estado_usuario <%= if user.active != 0 then "usuario_activo" else "usuario_inactivo" end  %>"><%= lista_estatus(user) %></td>
                                     <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
-
-                                        <label class="switch">
-                                            <input type="checkbox" <%= if user.user_information.user_type_id == 2 then 'checked' end %> >
-                                            <span class="slider round"></span>
+                                    <label class="switch">
+                                        <input class= "slider_change_user_type" type="checkbox" <%= if user.user_information.user_type_id == 2 then 'checked' end %> >
+                                        <span class="slider round"></span>
                                     </label>
                                     </td>
-                                 <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
-                                    <i title="Cambio de plan" class="fas fa-edit"></i>
-                                    <i title="Acceso a dashboard" class="fas fa-chart-line"></i>
-                                    <i title="Borrar usuario" class="far fa-times-circle"></i>
+                                    <td class="aliniar_contenido_tabla iconos_ajustes_tabla_jugadores">
+                                        <i title="Cambio de plan" class="fas fa-edit"></i>
+                                        <i title="Acceso a dashboard" class="fas fa-chart-line"></i>
+                                        <i title="Borrar usuario" class="far fa-times-circle"></i>
                                     </td>
 
-                                     <td class="aliniar_contenido_tabla">
-                                        <input id="usuario_activo" type="checkbox">
+                                    <td class="aliniar_contenido_tabla">
+                                        <input id="usuario_activo" class="checkbox_user_active" type="checkbox" <%= if user.active != 0 then 'checked' end %>>
                                     </td>
-
                                 </tr>
                             <% end %>
                         </tbody>

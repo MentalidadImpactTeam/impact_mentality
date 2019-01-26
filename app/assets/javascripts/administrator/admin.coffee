@@ -277,7 +277,7 @@ AdministratorController::list_exercises = ->
   return
 
 administrator_users_table_events = ->
-  $("input[type=checkbox]").change ->
+  $(".slider_change_user_type").change ->
     $.ajax
       type: "POST"
       url: "/administrator/users/change_type"
@@ -313,7 +313,47 @@ administrator_users_table_events = ->
               swal 'Eliminado', 'El usuario ha sido eliminado', 'success'
         return
     return
-
+  $(".checkbox_user_active").click ->
+    $this = $(this)
+    checked = $(this).prop("checked") ? false : true
+    $this.prop("checked", !checked)
+    if this.checked
+      title = "¿Estás seguro que deseas desactivar la cuenta?"
+      text = "Se suspendera sus cobros recurrentes."
+      button = "Desactivar"
+    else
+      title = "¿Estás seguro que deseas activar la cuenta?"
+      text = "Se reactivaran los cobros automaticos de acuerdo al plan."
+      button = "Activar"
+    swal(
+      title: title
+      text: text
+      type: 'warning'
+      showCancelButton: true
+      confirmButtonColor: '#ff1d25'
+      cancelButtonColor: '#333333'
+      confirmButtonText: button).then (result) ->
+        if result.value
+          id = $this.closest(".row_hover").find(".hidden_id").val()
+          $.ajax
+            type: "POST"
+            url: "/administrator/users/active"
+            data: id: id, active: !$this[0].checked
+            dataType: "text",
+            success: (data) ->
+              $this.prop("checked", !$this[0].checked)
+              tr = $($this).closest("tr")
+              if $this[0].checked
+                $(tr).find(".estado_usuario").removeClass("usuario_inactivo").addClass("usuario_activo")
+                $(tr).find(".estado_usuario").text("ACTIVO")
+                swal 'Activado', 'El usuario ha sido activado', 'success'
+              else
+                $(tr).find(".estado_usuario").removeClass("usuario_activo").addClass("usuario_inactivo")
+                $(tr).find(".estado_usuario").text("INACTIVO")     
+                swal 'Inactivo', 'El usuario ha sido inactivado', 'success'
+              return
+        return
+    return
 administrator_exercises_table_events = ->
   $('.administrador_tacha').click ->
     if $("#popup_select_categories").val() == "1"

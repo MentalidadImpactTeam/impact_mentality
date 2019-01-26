@@ -815,23 +815,25 @@ class RoutinesController < ApplicationController
     private
     def check_user_subscription
         if current_user.active == 0
-            flash[:error] = "Es necesario que pagues tu mensualidad"
+            flash[:error] = "jugador"
             redirect_back(fallback_location: dashboard_path)
         end
 
-        # Verificamos si el jugador tiene un entrenador
-        player_exists = TrainerPlayer.find_by(user_id: current_user.id)
-        if player_exists.present?
-            trainer = User.find(player_exists.trainer_user_id)
-            if trainer.present?
-                # Si el entrenador no esta activo, sus jugadores no pueden entrar a rutinas
-                if trainer.active == 0
-                    flash[:error] = "Tu entrenador no ha pagado la mensualidad, si quieres continuar por tu cuenta agrega una forma de pago"
+        if current_user.active == 2
+            # Verificamos si el jugador tiene un entrenador
+            player_exists = TrainerPlayer.find_by(user_id: current_user.id)
+            if player_exists.present?
+                trainer = User.find(player_exists.trainer_user_id)
+                if trainer.present?
+                    # Si el entrenador no esta activo, sus jugadores no pueden entrar a rutinas
+                    if trainer.active == 0
+                        flash[:error] = "entrenador"
+                        redirect_back(fallback_location: dashboard_path)
+                    end
+                else
+                    flash[:error] = "entrenador_no_existe"
                     redirect_back(fallback_location: dashboard_path)
                 end
-            else
-                flash[:error] = "La cuenta del entrenador ligada a esta cuenta no existe."
-                redirect_back(fallback_location: dashboard_path)
             end
         end
     end

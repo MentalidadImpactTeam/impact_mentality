@@ -31,7 +31,7 @@
                 <div class="d-flex flex-row perfil_editable"> <b class="bold">Edad: </b> <div id="perfil_edad"></div><%= @age %> años </div>
                 <div class="d-flex flex-row perfil_editable"> <b class="bold">Estatura: </b> <div id="perfil_altura"><%= @user.user_information.height %></div>   m </div>
                 <div class="d-flex flex-row perfil_editable"> <b class="bold">Peso: </b> <div id="perfil_peso"><%= @user.user_information.weight %></div> kg</div>
-                <div class="d-flex flex-row perfil_editable  user_code"> <b class="bold">Código de Usuario: </b> <div>2IEWRU</div></div>
+                <div class="d-flex flex-row perfil_editable  user_code"> <b class="bold">Código de Usuario: </b> <div><%= @user.user_information.uid %></div></div>
             </div>
             <a href="#" class="sistema_p_editar">EDITAR</a>
         </div>

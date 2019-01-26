@@ -10,7 +10,17 @@ class AccountsController < ApplicationController
   end
 
   def add_card
-    customer = Conekta::Customer.find(current_user.customer_token)
+
+    if current_user.customer_token.present?
+      customer = Conekta::Customer.find(current_user.customer_token)
+    else
+      customer = Conekta::Customer.create({
+        :name => current_user.user_information.name,
+        :email => current_user.email
+      })
+      current_user.customer_token = customer["id"]
+      current_user.save
+    end
     payment_source   = customer.create_payment_source(type: "card", token_id: params["customer_token"])
     
     tiene_tarjeta = UserConektaToken.find_by(user_id: current_user.id).present?

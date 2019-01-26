@@ -264,7 +264,32 @@ player_list_table_events = ->
 @metodos_menu = (titulo) ->
   $(".titulo_mobile_header").text(titulo)
   if $("#flash_error").text() != ""
-    swal('Aviso',$("#flash_error").text(),'error',"heightAuto: false")
+    if $("#flash_error").text() == "jugador"
+      Swal.fire({
+        type: 'error',
+        title: 'Aviso',
+        text: 'Es necesario que pagues tu mensualidad',
+        heightAuto:false,
+        confirmButtonText:'Renovar Ahora',
+        showCancelButton:'true',
+        cancelButtonText:'Renovar Despues'
+      }).then (response) ->
+        if response.value
+          window.location.href = "/planes"
+          return
+    if $("#flash_error").text() == "entrenador"
+      Swal.fire({
+        type: 'error',
+        title: 'Tu entrenador no ha pagado la suscripción',
+        text: 'Ponte en contacto con tu entrenador o contrata la suscripción por tí mismo.',
+        heightAuto:false,
+        confirmButtonText:'Renovar Ahora',
+        showCancelButton:'true',
+        cancelButtonText:'No renovar'
+      }).then (response) ->
+        if response.value
+          window.location.href = "/planes"
+          return
 
   $('.burger_menu').on 'click', ->
     if $('.sistema_descripcion_menu').hasClass('hide_text_menu')
