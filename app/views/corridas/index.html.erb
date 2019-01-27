@@ -206,7 +206,6 @@
 metodos_menu('CORRIDAS');
 
 $("#btn_filtro_corridas").click(function(){
-        alert('1');
         busqueda = $("#filtro_corridas").val();
         busqueda = busqueda.toUpperCase();
         $(".sistema_libreria_contejercicios").hide();
@@ -217,7 +216,6 @@ $("#btn_filtro_corridas").click(function(){
                 for(i=0; i <= espacios; i++)
                 {
                         $( "div[class*= " + busquedasep[i] + "]" ).show();
-                        alert(busquedasep[i]);
                 }
         }
         $( "div[class*= " + busqueda + "]" ).show();
