@@ -702,7 +702,6 @@ eventos_forma_pago = ->
     return
 
   conektaErrorResponseHandler = (response) ->
-    swal.stopLoading();
     swal.close();
     swal
       type: 'error'

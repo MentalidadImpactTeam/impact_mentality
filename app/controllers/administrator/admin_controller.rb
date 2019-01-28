@@ -114,14 +114,13 @@ class Administrator::AdminController < ApplicationController
 
   def delete_user
     user = User.find(params[:id])
-    user.update(active: 0)
+    if user.customer_token.present?
+      customer = Conekta::Customer.find(user.customer_token)
+      subscription = customer.subscription.cancel
 
-    ui = user.user_conekta_subscription.last
-    ui.estatus = 0
-    ui.save
-
-    customer = Conekta::Customer.find(user.customer_token)
-    subscription = customer.subscription.pause
+      customer.delete
+    end
+    user.destroy
 
     render plain: "OK"
   end

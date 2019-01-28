@@ -78,14 +78,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
         subscription = customer.subscription
         
         user.user_information.plan = subscription.plan_id
-    
-        user_subscription = UserConektaSubscription.new
-        user_subscription.user_id = user.id 
-        user_subscription.estatus = 1 
-        user_subscription.start_date = Time.at(subscription.billing_cycle_start).to_date
-        user_subscription.end_date = Time.at(subscription.billing_cycle_end).to_date
-        user_subscription.conekta_subscription_token = subscription.id
-        user_subscription.save
+        
+        if subscription['status'] == "active"
+          user_subscription = UserConektaSubscription.new
+          user_subscription.user_id = user.id 
+          user_subscription.estatus = 1 
+          user_subscription.start_date = Time.at(subscription.billing_cycle_start).to_date
+          user_subscription.end_date = Time.at(subscription.billing_cycle_end).to_date
+          user_subscription.conekta_subscription_token = subscription.id
+          user_subscription.save
+        end
       end
     elsif params['user']['user_information_attributes']['user_type_id'].to_i == 2
       # Si es entrenador

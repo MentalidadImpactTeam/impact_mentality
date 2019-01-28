@@ -14,12 +14,10 @@ class RoutinesController < ApplicationController
         # today = Date.parse("20181229")
         if today.wday != 0
             @week_hash[today.wday - 1]["active"] = 1 
-        else
-            @week_hash[4]["active"] = 1 
-            today = today - 2.day
         end
-        # @restday = today.wday == 0 ? true : false
-        @restday = false
+
+        @restday = today.wday == 0 ? true : false
+        
         @mostrar_modal =  false
         @test = false
         if current_user.user_information.stage_week == 4 and [1,2].include?(today.wday) 
