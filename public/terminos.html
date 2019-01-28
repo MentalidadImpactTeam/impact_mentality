@@ -21,19 +21,19 @@
     <body id="contacto_body">
         <div class="container-fluid">
           <!-- HEADER -->
-          <nav id="header_header" class="header_class navbar sticky-top navbar-expand-lg">
+          <nav id="header_header" class="header_class navbar sticky-top navbar-expand-lg scrolled">
             <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" id="nav_icon"></span>
             </button>
-            <a class="navbar-brand" href="landing.html"> <img src="img/impactlogo.png"> </a>
+            <a class="navbar-brand" href="/"> <img src="img/impactlogo.png"> </a>
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav" >
-                        <a href="landingequipos.html" class="nav-item nav-link header_link"> <img src="img/icon.png"> EQUIPOS</a>
-                        <a href="#" class="nav-item nav-link header_link"> <img src="img/icon.png" > BLOG</a>
-                        <a href="nosotros.html" class="nav-item nav-link header_link"> <img src="img/icon.png" > NOSOTROS</a>
-                        <a href="contacto.html" class="nav-item nav-link header_link"> <img src="img/icon.png"> CONTACTO</a>
-                        <a href="#" class="nav-item nav-link header_login d-flex justify-content-center"> <p class="align-self-center"> LOG IN </p></a>
+                        <a href="/equipos" class="nav-item nav-link header_link"> <img src="img/icon.png"> EQUIPOS</a>
+                        <a href="http://blog.mentalidadimpact.com" class="nav-item nav-link header_link"> <img src="img/icon.png" > BLOG</a>
+                        <a href="/nosotros" class="nav-item nav-link header_link"> <img src="img/icon.png" > NOSOTROS</a>
+                        <a href="/contacto" class="nav-item nav-link header_link"> <img src="img/icon.png"> CONTACTO</a>
+                        <a href="/users/sign_in" class="nav-item nav-link header_login d-flex justify-content-center"> <p class="align-self-center"> LOG IN </p></a>
                 </div>
             </div>
         </nav>
@@ -124,10 +124,6 @@
                     <div class="terminos_cuadro_textobullet2"> Los presentes términos y condiciones entran en vigor el día 1ro de diciembre de 2018.  </div>
                     <div class="terminos_cuadro_textobullet2ultimo2"> Cualquier comentario, inquietud o queja puede dirigirse al correo electrónico administracion@mentalidadimpact.com  </div>
             </div>
-            <div class="terminos_botones d-flex flex-row justify-content-end">
-                <div class="terminos_botones_si d-flex flex-column justify-content-center"> <div> Acepto los términos y condiciones</div></div>
-                <div class="terminos_botones_no d-flex flex-column justify-content-center"> <div> Cancelar </div> </div>
-            </div>
         </div>
 
 
@@ -142,15 +138,20 @@
             </nav>
             <div id="footer_contacto" class="d-flex justify-content-between">
                 <div id="footer_contacto_1" class="">
+<<<<<<< HEAD
                     <span class="footer_contacto_titulo"> E-MAIL: <p class="footer_contacto_info"> administrador@mentalidadimpact.com </p>  </span>
                     <span class="footer_contacto_titulo"> TEL.: <p class="footer_contacto_info"> +52 (686) 136 3889 </p>  </span>
+=======
+                    <span class="footer_contacto_titulo"> E-MAIL: <p class="footer_contacto_info"> mentalidadimpact@gmail.com </p>  </span>
+                    <span class="footer_contacto_titulo"> TEL.: <p class="footer_contacto_info"> (52) 1 686 123-4567 </p>  </span> 
+>>>>>>> b3ca2e8a4d047e596436c755a627e749feeab9d6
                 </div>
                 <div id="footer_contacto_2" class="">
-                    <a href="#" class="footer_fb"> </a> <a href="#" class="footer_tw"> </a> <a href="#" class="footer_inst"> </a> <a href="#" class="footer_yt"> </a>
+                        <a href="https://www.facebook.com/impacttrainingmx/" class="footer_fb" target="_blank"> </a> <a href="#" class="footer_tw" target="_blank"> </a> <a href="https://www.instagram.com/mentalidadimpact/" class="footer_inst" target="_blank"> </a> <a href="https://www.youtube.com/channel/UCfCI_Ndf0GCh2SOVdF-LGZw" class="footer_yt" target="_blank"> </a>
                 </div>
 
                 <div id="footer_contacto_3" class="">
-                <a href="landing.html"> <img src="img/impactlogo.png"> </a>
+                <a href="/"> <img src="img/impactlogo.png"> </a>
                 </div>
             </div>
         </div>
@@ -158,7 +159,22 @@
     </div>
 
     </body>
+    <!-- SCROLL COLOR  -->
+    <script>
+        $(function () {
+            $(document).scroll(function () {
+                var $nav = $("#header_header");
+                $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+            });
+        });
+    </script>
+    
     <style>
+        .scrolled{
+        background-color: rgba(0, 0, 0, .7) !important;
+        }
+        
+
 
         #contacto_body {
             overflow-x: hidden;
@@ -447,6 +463,10 @@
 .navbar-toggler-icon{
     color: #ffffff;
 }
+.container-fluid{
+       margin: 0 0 0 0 !important;
+       padding: 0 0 0 0 !important;
+    }
 
 @media (max-width: 1090px) {
     .container-fluid{
