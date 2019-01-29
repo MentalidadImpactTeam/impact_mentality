@@ -12,6 +12,7 @@
                         <div class="container_filtro_corridas col-12">
                                 <input id="filtro_corridas" placeholder="BUSCAR EJERCICIO" type="text">
                                 <button id="btn_filtro_corridas">Buscar</button>
+                                <a id="filtro_regresar" href="#"> Regresar a ver todos los resultados </a>
                         </div>
                       </center>
                 </div>
@@ -209,17 +210,21 @@ metodos_menu('CORRIDAS');
 $("#btn_filtro_corridas").click(function(){
         busqueda = $("#filtro_corridas").val();
         busqueda = busqueda.toUpperCase();
-        $(".sistema_libreria_contejercicios").hide();
-        $('.sistema_libreria_ejercicio').hide();
-        if(/\s/.test(busqueda)){
-                var espacios = busqueda.match(/([\s]+)/g).length;
-                var busquedasep = busqueda.split(" ");
-                for(i=0; i <= espacios; i++)
-                {
-                        $( "div[class*= " + busquedasep[i] + "]" ).show();
+        if($("#filtro_corridas").empty())
+        {
+                $(".sistema_libreria_contejercicios").hide();
+                $('.sistema_libreria_ejercicio').hide();
+                if(/\s/.test(busqueda)){
+                        var espacios = busqueda.match(/([\s]+)/g).length;
+                        var busquedasep = busqueda.split(" ");
+                        for(i=0; i <= espacios; i++)
+                        {
+                                $( "div[class*= " + busquedasep[i] + "]" ).show();
+                        }
                 }
+                $("#filtro_regresar").css("display","block");
+                $( "div[class*= " + busqueda + "]" ).show();
         }
-        $( "div[class*= " + busqueda + "]" ).show();
         
 });
 </script>

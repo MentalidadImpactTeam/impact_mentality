@@ -6,7 +6,8 @@
 .container_filtro_corridas{
     margin:3vw -3vw 3vw 3vw;
     color:white;
-
+    flex-wrap: wrap;
+    display: flex;
 }
 #filtro_corridas{
     border-radius:15px;
@@ -15,6 +16,11 @@
     font-family:lato;
     color:white;
     padding:15px;
+}
+
+#filtro_regresar{
+    color: #ff1d25;
+    display: none;
 }
 
 #filtro_corridas:hover{
@@ -85,6 +91,10 @@
 
 
 @media (max-width: 1090px) {
+    #filtro_regresar{
+        margin: 7vw 9vw 0vw 10vw;
+    }
+
     .container_filtro_corridas{
         margin:23vw 3vw 0vw 3vw;
         color:white;
