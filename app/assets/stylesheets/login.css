@@ -1,6 +1,7 @@
 .login_imagen_logo {
     width: 70%;
     animation-delay: .3s;
+    margin:2vw !important;
 }
 
 #login_close {
@@ -27,6 +28,7 @@
     color: grey;
     font-family: Lato;
     font-weight: bold;
+    font-size: 2.5vw;
     margin-top: 0px;
     animation-delay: .5s;
 }
@@ -38,7 +40,7 @@
     font-family: Lato;
     border: none;
     padding: 10px 15px;
-    margin: 25px 0px;
+    margin: 10px 0px;
     font-size: 20px;
     animation-delay: .6s;
     transition: all .5s;
@@ -61,7 +63,8 @@
 }
 
 #login_modal div center img {
-    margin: 20px 7px;
+    margin: 10px 7px;
+    transform: scale(.8);
 }
 
 .links_ventana_login{
