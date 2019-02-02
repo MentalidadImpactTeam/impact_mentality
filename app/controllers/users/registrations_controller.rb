@@ -47,7 +47,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user.user_information.name = user.user_information.name.split.map(&:capitalize).join(' ')
       user.user_information.weight = user.user_information.weight.remove("kg").squish
 
-      if trainer_code.present?
+      if trainer_code.present? and InfluencerCode.find_by(name: trainer_code).blank?
         user_information = UserInformation.find_by(uid: trainer_code)
 
         tp = TrainerPlayer.new
@@ -56,6 +56,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
         tp.save
 
         user.active = 2
+      end
+
+      if InfluencerCode.find_by(name: trainer_code).present?
+        user.user_information.influencer_code = trainer_code
+        trainer_code = "" 
       end
 
       if params["user"]["customer_token"].present? and trainer_code.blank?
@@ -150,8 +155,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     subscription = customer.create_subscription({
       :plan => params["plan"]
     })
-
-    if subscription['status'] == "active"
+    
+    if subscription['status'] == "in_trial"
       json = { :response => subscription } 
     else
       customer.delete
@@ -275,8 +280,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def check_trainer_code
     user_information = UserInformation.find_by(uid: params["trainer"])
+    influencer_code = InfluencerCode.find_by(name: params["trainer"])
 
-    if user_information.blank?
+    if influencer_code.present?
+      response =  { :error => false, :influencer => true }
+    elsif user_information.blank?
       response =  { :error => true, :mensaje => 'No se encontro el entrenador ingresado.' }
     elsif user_information.user_type_id != 2
       response =  { :error => true, :mensaje => 'El codigo ingresado no es de un entrenador.' }
@@ -314,7 +322,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:customer_token, :trainer_code, :user_information_attributes => [:user_type_id, :name, :first_name, :last_name, :phone, :birth_date, :school, :genre, :height, :weight, :sport, :position, :next_competition, :experience, :history_injuries, :pay_day, :pay_program, :goal_1, :goal_2]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:customer_token, :trainer_code, :user_information_attributes => [:user_type_id, :name, :first_name, :last_name, :phone, :birth_date, :school, :genre, :height, :weight, :sport, :position, :next_competition, :experience, :history_injuries, :pay_day, :pay_program, :goal_1, :goal_2, :influencer_code]])
   end
 
   def user_params

@@ -211,6 +211,15 @@ eventos_tipos_usuarios = ->
               confirmButtonText: 'Regresar'
               confirmButtonClass: 'login_sweetalert'
           else
+            if data.influencer
+              $("#influencer_code").val($('#registro_trainer_code input').val())
+              $("#row_influencer").removeAttr("style")
+              $("#row_influencer .PP_subtitulo").text("Descuento de 15% por codigo: " + $("#influencer_code").val())
+
+              $(".PP_mensual").text("$127.50 MXN")
+              $(".PP_trimestral").text("$306 MXN")
+              $(".PP_anual").text("$1241 MXN")
+
             eventos_btn_tipos_usuarios(validacion_usuario,validacion_entrenador,validacion_escuela)
           return false
       return false
@@ -568,7 +577,7 @@ eventos_datos_deportivos = ->
 
 eventos_metas_objetivos = ->
   $('#metas_objetivos_btn').on 'click', ->
-    if $('#registro_trainer_code input').val() != ""
+    if $('#registro_trainer_code input').val() != "" and $("#influencer_code").val() == ""
       swal({
           title: 'Creando su rutina...',
           allowOutsideClick: false
@@ -657,17 +666,26 @@ eventos_planes = ->
 
   $('#PP_btn').on 'click', ->
     if validacion_entrenador == true
-      $("#conekta_plan").val("trimestral")
+      if $("#influencer_code").val() == ""
+        $("#conekta_plan").val("trimestral")
+      else
+        $("#conekta_plan").val("trimestral_influencer")
       $('#PP_usuario').hide 400
       $('#PP_escuela').hide 400
     else
       if validacion_escuela == true
-        $("#conekta_plan").val("anual")
+        if $("#influencer_code").val() == ""
+          $("#conekta_plan").val("anual")
+        else
+          $("#conekta_plan").val("anual_influencer")
         $('#PP_usuario').hide 400
         $('#PP_entrenador').hide 400
       else
         if validacion_usuario == true
-          $("#conekta_plan").val("mensual")
+          if $("#influencer_code").val() == ""
+            $("#conekta_plan").val("mensual")
+          else
+            $("#conekta_plan").val("mensual_influencer")
           $('#PP_entrenador').hide 400
           $('#PP_escuela').hide 400
     $('#div_planes').addClass 'animated bounceOutLeft'

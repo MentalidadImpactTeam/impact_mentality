@@ -1,0 +1,2 @@
+class InfluencerCode < ApplicationRecord
+end
