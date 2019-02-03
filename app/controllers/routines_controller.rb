@@ -2,8 +2,8 @@ class RoutinesController < ApplicationController
     before_action :check_user_subscription
 
     def index
-        @week_hash = [{ "day" => "LUNES", "description" => "", "active" => "" }, { "day" => "MARTES", "description" => "", "active" => "" }, { "day" => "MIERCOLES", "description" => "", "active" => "" }, 
-                    { "day" => "JUEVES", "description" => "", "active" => "" }, { "day" => "VIERNES", "description" => "", "active" => "" }, { "day" => "SABADO", "description" => "", "active" => "" }]
+        @week_hash = [{ "day" => "LUNES", "description" => "", "active" => "" }, { "day" => "MARTES", "description" => "", "active" => "" }, { "day" => "MIÉRCOLES", "description" => "", "active" => "" }, 
+                    { "day" => "JUEVES", "description" => "", "active" => "" }, { "day" => "VIERNES", "description" => "", "active" => "" }, { "day" => "SÁBADO", "description" => "", "active" => "" }]
 
         for date in Time.now.to_date.all_week do
             next if date.wday == 0
@@ -14,10 +14,12 @@ class RoutinesController < ApplicationController
         # today = Date.parse("20181229")
         if today.wday != 0
             @week_hash[today.wday - 1]["active"] = 1 
+        else
+            @week_hash[4]["active"] = 1 
+            today = today - 2.day
         end
-
-        @restday = today.wday == 0 ? true : false
-        
+        # @restday = today.wday == 0 ? true : false
+        @restday = false
         @mostrar_modal =  false
         @test = false
         if current_user.user_information.stage_week == 4 and [1,2].include?(today.wday) 
