@@ -9,6 +9,8 @@
 </div>
 
 <div class="sistema_db_container">
+    <input type="hidden" id="hidden_show_modal_start" value="<%= @show_modal_test_days %>">
+    <input type="hidden" id="hidden_show_modal_expired" value="<%= @show_modal_expired %>">
     <% if @trainer.present? %>
     <div id="contenedor_entrenador_institucion">
         <% if current_user.user_information.user_type_id != 3 %>
