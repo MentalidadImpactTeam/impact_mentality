@@ -67,6 +67,8 @@ class Administrator::AdminController < ApplicationController
   def show_user
     @user = User.find(params[:id])
     @subscription = UserConektaSubscription.where(user_id: params[:id]).order(id: :desc).limit(1).first
+    @has_trainer = TrainerPlayer.find_by(user_id: @user.id)
+    @trainer = @has_trainer.present? ? User.find(@has_trainer.trainer_user_id) : false
   end
 
   def change_user_plan

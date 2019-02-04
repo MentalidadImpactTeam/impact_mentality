@@ -25,9 +25,9 @@
                     <center>
                     <select id="forma_pago_usuario">
                         <% if @user.user_information.user_type_id == 3 %>
-                            <option value="mensual" <%= if @user.user_information.plan == "mensual" then "selected" end %> >Plan mensual</option>
-                            <option value="trimestral" <%= if @user.user_information.plan == "trimestral" then "selected" end %> >Plan Trimestral</option>
-                            <option value="anual" <%= if @user.user_information.plan == "anual" then "selected" end %> >Plan Anual</option>
+                            <option value="mensual" <%= if @user.user_information.plan.include?("mensual") then "selected" end %> >Plan mensual</option>
+                            <option value="trimestral" <%= if @user.user_information.plan.include?("trimestral") then "selected" end %> >Plan Trimestral</option>
+                            <option value="anual" <%= if @user.user_information.plan.include?("anual") then "selected" end %> >Plan Anual</option>
                         <% else %>
                             <option></option>
                             <option value="10" <%= if @user.user_information.plan == "10" then "selected" end %> >1 - 10 usuarios</option>
@@ -53,8 +53,13 @@
                         <center>
                         <div class="sistema_cuenta_facturacion_texto admin_fecha_plan" id="sistema_cuenta_facturacion_texto_plan">PLAN MENSUAL</div>
                         </center>
-                          <center>
-                        <div style="font-family:lato;">Código de <span>entrenador/influencer</span>: XXXXXXX</div>
+                        <center>
+                        <% if @user.user_information.influencer_code.present? %>
+                            <div style="font-family:lato;">Código de <span>influencer</span>: <%= @user.user_information.influencer_code %></div>
+                        <% end %>
+                        <% if @has_trainer.present? %>
+                            <div style="font-family:lato;">Código de <span>entrenador</span>: <%= @trainer.user_information.uid %></div>
+                        <% end %>
                         </center>
                         <div class="sistema_cuenta_facturacion_texto sistema_cuenta_facturacion_texto_tit admin_fecha_titulos"><i class="far fa-money-bill-alt"></i> MONTO A COBRAR:
                             <div class="sistema_cuenta_facturacion_texto_var admin_fecha_titulos"><b>$150 M.N.</b></div>

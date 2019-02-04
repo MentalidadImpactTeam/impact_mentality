@@ -1,5 +1,5 @@
 kg_var = 0
-Conekta.setPublicKey("key_HcFQfz7edHvGnSxP8cettSA");
+Conekta.setPublicKey("key_WNFhLVfrxEbDMH8qTkdXo3Q");
 
 RegistrationController = Paloma.controller('Users/Registrations')
 RegistrationController::new = ->
@@ -31,6 +31,13 @@ eventos_registro = ->
     return
 
   $('#registro_btn').on 'click', (e) ->
+    if $("#checkbox_terminos").prop("checked") == false
+      Swal.fire
+        type: 'error',
+        title: 'Aviso',
+        text: 'Debes aceptar nuestros terminos y condiciones para poder registrarte',
+        heightAuto:false
+      return false
     if $('#user_email').val() == ''
       registro_correoval = 1
       swal
