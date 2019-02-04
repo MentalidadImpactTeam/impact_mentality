@@ -304,10 +304,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def catalogos_registro
     @heights = [['Estatura', ''],['-1.00m', '-1'],['1.00m', '1.00'],['1.10m', '1.10'],['1.20m', '1.20'],['1.30m', '1.30'],['1.40m', '1.40'],['1.50m', '1.50'],
     ['1.60m', '1.60'],['1.70m', '1.70'],['1.80m', '1.80'],['1.90m', '1.90'],['2.00m', '2.00'],['2.10m', '2.10'],['2.20m', '2.20'],['2.30m', '2.30'],['2.40m', '2.40'],['+2.40m', '+2.4']]
-    @sports = [['Deporte', ''],['Multi-deporte', 'Multi'],['Futbol Americano', 'Futbol'],['Balocensto', 'Balocensto'],['Beisbol', 'Beisbol'],['Soccer', 'Soccer'],
-    ['Hockey', 'Hockey'],['Hockey Sobre Pasto', 'Hockeycpasto'],['Atletismo', 'Atletismo'],['Golf', 'Golf'],['Tennis', 'Tennis'],['Tennis Country', 'TennisC'],
-    ['Deporte de Combate', 'Combate'],['Rugby', 'Rugby'],['Lacrosse', 'Lacrosse'],['Natación', 'Natación'],['Voleibol', 'Voleibol'],['Lucha Olímpica', 'LuchaOli'],
-    ['Porras y Baile', 'Porras'],['Ciclismo', 'Ciclismo'],['Maratón', 'Maratón'],['Correr', 'Correr'],['Handball', 'Handball'],['Triathlon', 'Triathlon'],['Carrera de Obstaculos', 'Carrera'],['Water Polo', 'Water']]
+    @sports = [['Deporte', ''],['Multi-deporte', 'Multi'],['Fútbol Americano', 'Fútbol Americano'],['Balocensto', 'Balocensto'],['Béisbol', 'Béisbol'],['Soccer', 'Soccer'],
+    ['Hockey', 'Hockey'],['Hockey Sobre Pasto', 'Hockey Sobre Pasto'],['Atletismo', 'Atletismo'],['Golf', 'Golf'],['Tennis', 'Tennis'],['Tennis Country', 'TennisC'],
+    ['Deporte de Combate', 'Combate'],['Rugby', 'Rugby'],['Lacrosse', 'Lacrosse'],['Natación', 'Natación'],['Voleibol', 'Voleibol'],['Lucha Olímpica', 'Lucha Olímpica'],
+    ['Porras y Baile', 'Porras'],['Ciclismo', 'Ciclismo'],['Maratón', 'Maratón'],['Correr', 'Correr'],['Handball', 'Handball'],['Triathlon', 'Triathlon'],['Carrera de Obstáculos', 'Carrera de Obstáculos'],['Water Polo', 'Water']]
   end
 
   def get_random_uid
