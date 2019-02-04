@@ -1,4 +1,4 @@
-Conekta.setPublicKey("key_WNFhLVfrxEbDMH8qTkdXo3Q");
+Conekta.setPublicKey("key_HcFQfz7edHvGnSxP8cettSA");
 
 AccountController = Paloma.controller('Accounts')
 AccountController::index = ->
