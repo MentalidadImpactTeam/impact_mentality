@@ -4,11 +4,6 @@
         <div id="contenedor_registro" class="animated bounceInDown row">
             <div class="col-lg-3"></div>
             <div id="registro_modal" class="col-sm-12 col-lg-6">
-
-                <!-- Cierre de Modal -->
-                <i id="registro_close" class="fas fa-times-circle"></i>
-                <!-- End Cierre de mdoal -->
-
                 <div style="z-index:-10;" class="col-12">
                     <center>
                         <%= image_tag("Logo-01.png", class: "registro_imagen_logo animated bounceInDown" ) %>
@@ -41,12 +36,12 @@
                         <%= f.password_field :password_confirmation, placeholder: "Contraseña" %>
                     </center>
                 </div>
-                    <center>
+                <center>
                 <div style="animation-delay:1s; margin:0;" class="animate bounceInDown col-12">
                     <input type="checkbox" id="checkbox_terminos">
                     <span style="color:red; font-weight:bold;"> Aceptar <a href="https://mentalidadimpact.com/terminos.html" target="blank">Términos y Condiciones</a></span>
                 </div>
-            </center>
+                </center>
 
                 <div class="col-12">
                     <center><button id="registro_btn" class="animated bounceInDown">Continuar</button></center>
@@ -234,6 +229,43 @@
             <div class="col-lg-3"></div>
         </div>
 
+        <div id="div_ticket" class="animated bounceInRight row" style='display: none'>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-3"></div>
+
+                    <div class="ticket_contenedor col-6">
+                        <div class="row">
+                            <div class="col-12">
+                                <i id="regresar_ticket" class="PP_regresar fas fa-arrow-circle-left"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                    <center><h2 class="animate bounceIn" id="registro_titulo_comprobante">Comprobante de tu compra</h2></center>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3"></div>
+                            <div class="animate bounceIn ticket_cuerpo col-6">
+                                <h4>Resumen de tu compra</h4>
+                                <p id="fecha_ticket"></p>
+                                <br>
+                                <hr>
+                                <p id="nombre_plan_ticket">Plan Mensual</p> <p id="precio_plan_ticket"style="float:right;">$150 M.X.N.</p>
+                                <br>
+                                <p>Subtotal</p><p id="subtotal_plan_ticket" style="float:right;">$2000</p><br>
+                                <p>Total</p><p id="total_plan_ticket" style="float:right;">$2000</p>
+                                <center> <button id="aceptar_ticket">Aceptar Compra</button> </center>
+                            </div>
+                            <div class="col-3"></div>
+                        </div>
+                    </div>
+                    <div class="col-3"></div>
+
+                </div>
+            </div>
+        </div>
 
         <%= f.fields_for :user_information do |ui_fields| %>
             <div id="div_planes" class="animated bounceInRight row" style='display: none'>

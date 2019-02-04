@@ -11,6 +11,21 @@ RegistrationController::new = ->
   eventos_forma_pago()
   eventos_planes()
   eventos_entrenador()
+  eventos_ticket()
+
+  today = new Date()
+  dd = today.getDate()
+  mm = today.getMonth() + 1 
+  yyyy = today.getFullYear()
+
+  if dd < 10
+    dd = '0' + dd
+
+  if mm < 10    
+    mm = '0' + mm
+
+  today = dd + '/' + mm + '/' + yyyy;
+  $("#fecha_ticket").text(today)
 
   #END OF CLICK EVENT REGISTRO BTN
   $('#registro_close').on 'click', ->
@@ -677,6 +692,10 @@ eventos_planes = ->
         $("#conekta_plan").val("trimestral")
       else
         $("#conekta_plan").val("trimestral_influencer")
+      $("#nombre_plan_ticket").text("Plan Trimestral")
+      $("#precio_plan_ticket").text( $(".PP_trimestral").text() )
+      $("#subtotal_plan_ticket").text( $(".PP_trimestral").text().split(" ")[0] )
+      $("#total_plan_ticket").text( $(".PP_trimestral").text().split(" ")[0] )
       $('#PP_usuario').hide 400
       $('#PP_escuela').hide 400
     else
@@ -685,6 +704,10 @@ eventos_planes = ->
           $("#conekta_plan").val("anual")
         else
           $("#conekta_plan").val("anual_influencer")
+        $("#nombre_plan_ticket").text("Plan Anual")
+        $("#precio_plan_ticket").text( $(".PP_anual").text() )
+        $("#subtotal_plan_ticket").text( $(".PP_anual").text().split(" ")[0] )
+        $("#total_plan_ticket").text( $(".PP_anual").text().split(" ")[0] )
         $('#PP_usuario').hide 400
         $('#PP_entrenador').hide 400
       else
@@ -693,6 +716,10 @@ eventos_planes = ->
             $("#conekta_plan").val("mensual")
           else
             $("#conekta_plan").val("mensual_influencer")
+          $("#nombre_plan_ticket").text("Plan Mensual")
+          $("#precio_plan_ticket").text( $(".PP_mensual").text() )
+          $("#subtotal_plan_ticket").text( $(".PP_mensual").text().split(" ")[0] )
+          $("#total_plan_ticket").text( $(".PP_mensual").text().split(" ")[0] )
           $('#PP_entrenador').hide 400
           $('#PP_escuela').hide 400
     $('#div_planes').addClass 'animated bounceOutLeft'
@@ -707,38 +734,6 @@ eventos_planes = ->
     return false
 
 eventos_forma_pago = ->
-  conektaSuccessResponseHandler = (token) ->
-    #Inserta el token_id en la forma para que se envíe al servidor
-    if $("#customer_token").length == 0
-      $("#div_forma_pago").append($('<input type="hidden" name="user[customer_token]" id="customer_token">').val(token.id))
-    $form = $("#new_user")
-    $.ajax
-      type: "POST"
-      url: "/create_conekta_subscription"
-      data: token: token.id, name: $('.FPago_tarjeta_tutor').val(), email: $("#user_email").val(), plan: $("#conekta_plan").val()
-      dataType: "json",
-      success: (data) ->
-        if data.error
-          swal.close();
-          swal 'Error', 'Hubo un problema con la tarjeta ingresada.', 'warning', 'heightAuto: false'
-        else
-          $("#customer_token").val(data.response.customer_id)
-          $form.get(0).submit()
-    return
-
-  conektaErrorResponseHandler = (response) ->
-    swal.close();
-    swal
-      type: 'error'
-      title: 'Alerta'
-      heightAuto: false
-      text: response.message_to_purchaser
-      allowEscapeKey: true
-      allowOutsideClick: true
-      confirmButtonText: 'Regresar'
-      confirmButtonClass: 'login_sweetalert'
-    return
-
   $('.FPago_tarjeta_tutor').on 'keypress', ->
     $('.input_box_tutor').removeClass 'input_error'
     return
@@ -794,18 +789,13 @@ eventos_forma_pago = ->
         confirmButtonClass: 'login_sweetalert'
       $('.input_box_cvc').addClass 'input_error'
       return false
-    swal({
-        title: 'Procesando...',
-        allowOutsideClick: false
-    });
-    swal.showLoading();
-    tokenParams = 'card':
-      'number': $('.FPago_tarjeta_num').val()
-      'name': $('.FPago_tarjeta_tutor').val()
-      'exp_year': $('#FPago_año_vencimiento option:selected').text()
-      'exp_month': $('#FPago_mes_vencimiento option:selected').text()
-      'cvc': $('.CVC_CODE').val()
-    Conekta.Token.create tokenParams, conektaSuccessResponseHandler, conektaErrorResponseHandler
+    $('#div_forma_pago').addClass 'animated bounceOutLeft'
+    setTimeout (->
+      $("#div_forma_pago").css('display','none')
+      $("#div_ticket").removeClass("bounceOutLeft")
+      $("#div_ticket").removeAttr("style")
+      return
+    ), 500
     return false
   return
 
@@ -882,6 +872,64 @@ eventos_btn_tipos_usuarios = (validacion_usuario,validacion_entrenador,validacio
           return
         ), 800
   return false
+
+eventos_ticket = ->
+  conektaSuccessResponseHandler = (token) ->
+    #Inserta el token_id en la forma para que se envíe al servidor
+    if $("#customer_token").length == 0
+      $("#div_forma_pago").append($('<input type="hidden" name="user[customer_token]" id="customer_token">').val(token.id))
+    $form = $("#new_user")
+    $.ajax
+      type: "POST"
+      url: "/create_conekta_subscription"
+      data: token: token.id, name: $('.FPago_tarjeta_tutor').val(), email: $("#user_email").val(), plan: $("#conekta_plan").val()
+      dataType: "json",
+      success: (data) ->
+        if data.error
+          swal.close();
+          swal 'Error', 'Hubo un problema con la tarjeta ingresada.', 'warning', 'heightAuto: false'
+        else
+          $("#customer_token").val(data.response.customer_id)
+          $form.get(0).submit()
+    return
+
+  conektaErrorResponseHandler = (response) ->
+    swal.close();
+    swal
+      type: 'error'
+      title: 'Alerta'
+      heightAuto: false
+      text: response.message_to_purchaser
+      allowEscapeKey: true
+      allowOutsideClick: true
+      confirmButtonText: 'Regresar'
+      confirmButtonClass: 'login_sweetalert'
+    return
+
+  $("#regresar_ticket").click ->
+    $('#div_ticket').addClass 'animated bounceOutLeft'
+    setTimeout (->
+      $("#div_ticket").css('display','none')
+      $("#div_forma_pago").removeClass("bounceOutLeft")
+      $("#div_forma_pago").removeAttr("style")
+      return
+    ), 500
+  
+  $("#aceptar_ticket").click ->
+    swal({
+        title: 'Procesando...',
+        allowOutsideClick: false
+    });
+    swal.showLoading();
+    tokenParams = 'card':
+      'number': $('.FPago_tarjeta_num').val()
+      'name': $('.FPago_tarjeta_tutor').val()
+      'exp_year': $('#FPago_año_vencimiento option:selected').text()
+      'exp_month': $('#FPago_mes_vencimiento option:selected').text()
+      'cvc': $('.CVC_CODE').val()
+    Conekta.Token.create tokenParams, conektaSuccessResponseHandler, conektaErrorResponseHandler
+    return false
+  return
 
 addkg = ->
   contenido_tmp = $('#IP_peso').val() + ' kg'

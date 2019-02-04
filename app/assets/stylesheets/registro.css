@@ -1356,3 +1356,58 @@ code {
         font-size: 9vw;
     }
 }
+
+#registro_titulo_comprobante{
+    margin:25px 0;
+    color:red;
+    font-family:lato;
+    font-weight: bold;
+}
+.ticket_contenedor{
+    background-color:white;
+    box-shadow: 0 0 10px black;
+    padding:10px;
+}
+#nombre_plan_ticket{
+    font-weight: bold;
+}
+
+.ticket_cuerpo{
+background-color:white;
+border-radius:15px;
+margin:25px 0;
+padding:25px;
+box-shadow: 0 6px 25px grey;
+font-family:lato;
+}
+.ticket_cuerpo p{
+display: inline-block;
+}
+.ticket_cuerpo button{
+margin:20px 0 0 0;
+border-radius:5px;
+border:none;
+background-color: red;
+font-family: lato;
+padding:10px;
+color:white;
+transition:all .5s cubic-bezier(1,0,0,1);
+cursor: pointer;
+
+}
+
+.ticket_cuerpo button:active{
+background-color:rgb(100, 0, 0);
+transform:scale(.7);
+}
+
+.ticket_cuerpo button:hover{
+background-color:rgb(164, 0, 0);
+transform:translateY(-5px);
+
+}
+#fecha_ticket{
+font-size:1vw;
+opacity:.5;
+float: right;
+}
