@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>Mentalidad Impact</title>
     <%= csrf_meta_tags %>
 
@@ -55,7 +56,7 @@
                 <a class="navbar-brand" href="#">
                     <%= image_tag("ImpactMentalityIcon-01", style: "height: 30px; width:30px;" ) %>
                 </a>
-                
+
             </nav>
             <ul id="menu_mobile_desplegado">
                 <% if current_user.user_information.user_type_id == 2 %>
@@ -80,7 +81,7 @@
                 <i class="iconos_mobile fas fa-credit-card"></i>
                     <%= link_to 'Cuenta', accounts_path, { rel: "noopener noreferrer"} %>
                 </li>
-                
+
                 <li style="background-color:#5f5f5f;">
                 <i class="iconos_mobile fas fas fa-boxes"></i>
                     <%= link_to 'Planes', planes_path, { rel: "noopener noreferrer"} %>
@@ -187,6 +188,16 @@
     <%= yield %>
     </div>
     <%= insert_paloma_hook %>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133738220-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-133738220-1');
+</script>
 </body>
 
 <script>
@@ -196,3 +207,4 @@
 
 </script>
 </html>
+
