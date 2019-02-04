@@ -31,6 +31,13 @@ eventos_registro = ->
     return
 
   $('#registro_btn').on 'click', (e) ->
+    if $("#checkbox_terminos").prop("checked") == false
+      Swal.fire
+        type: 'error',
+        title: 'Aviso',
+        text: 'Debes aceptar nuestros terminos y condiciones para poder registrarte',
+        heightAuto:false
+      return false
     if $('#user_email').val() == ''
       registro_correoval = 1
       swal
