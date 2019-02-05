@@ -4,6 +4,23 @@ DashboardController = Paloma.controller('Dashboard')
 DashboardController::index = ->
   metodos_menu("ANALÍTICOS")
   exercise_graph()
+
+  if $("#hidden_show_modal_start").val() == "true"
+    Swal.fire
+      position: 'top-end',
+      type: 'success',
+      title: 'Tus 7 días de prueba empiezan el dia de hoy',
+      showConfirmButton: false,
+      timer: 2000
+    return
+  if $("#hidden_show_modal_expired").val() == "true"
+    Swal.fire
+      position: 'top-end',
+      type: 'success',
+      title: 'Tus 7 días han expirado',
+      showConfirmButton: false,
+      timer: 2000
+    return
   $("#exercise_graph").change ->
     exercise_graph()
 

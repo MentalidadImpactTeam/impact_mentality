@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    resource.sign_in_count += 1
+    resource.save
+    
     if resource.user_information.user_type_id == 1
       administrator_users_path
     elsif resource.user_information.user_type_id == 2
