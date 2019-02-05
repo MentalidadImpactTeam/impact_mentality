@@ -1,5 +1,5 @@
 kg_var = 0
-Conekta.setPublicKey("key_HcFQfz7edHvGnSxP8cettSA");
+Conekta.setPublicKey("key_WNFhLVfrxEbDMH8qTkdXo3Q");
 
 RegistrationController = Paloma.controller('Users/Registrations')
 RegistrationController::new = ->
