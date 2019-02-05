@@ -15,13 +15,13 @@ RegistrationController::new = ->
 
   today = new Date()
   dd = today.getDate()
-  mm = today.getMonth() + 1 
+  mm = today.getMonth() + 1
   yyyy = today.getFullYear()
 
   if dd < 10
     dd = '0' + dd
 
-  if mm < 10    
+  if mm < 10
     mm = '0' + mm
 
   today = dd + '/' + mm + '/' + yyyy;
@@ -451,6 +451,7 @@ eventos_datos_deportivos = ->
   waterpolo = ''
   desaparece = 0
   $('#ID_deporte').on 'change', ->
+
     if $('#ID_deporte').val() == 'Futbol'
       $('#ID_pos_obj').empty()
       $('#ID_pos_obj').append FootballA
@@ -914,7 +915,7 @@ eventos_ticket = ->
       $("#div_forma_pago").removeAttr("style")
       return
     ), 500
-  
+
   $("#aceptar_ticket").click ->
     swal({
         title: 'Procesando...',
