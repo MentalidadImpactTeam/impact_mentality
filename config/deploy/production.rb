@@ -7,10 +7,11 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-role :app, %w{ deploy@138.197.192.68 }
-role :whenever_auto, %w{ deploy@138.197.192.68 }
+role :app, %w{ deploy@138.197.192.68 deploy@167.99.101.180 }
+role :whenever_auto, %w{ deploy@138.197.192.68 deploy@167.99.101.180 }
 
 server '138.197.192.68', user: 'deploy', roles: %w{app web whenever_auto}
+server '167.99.101.180', user: 'deploy', roles: %w{app web whenever_auto}
 
 # role-based syntax
 # ==================
