@@ -451,8 +451,12 @@ eventos_datos_deportivos = ->
   waterpolo = ''
   desaparece = 0
   $('#ID_deporte').on 'change', ->
+<<<<<<< HEAD
 
     if $('#ID_deporte').val() == 'Futbol'
+=======
+    if $('#ID_deporte').val() == 'Fútbol Americano'
+>>>>>>> cba765d796081f26a49552b5d63a4e79dfe9312c
       $('#ID_pos_obj').empty()
       $('#ID_pos_obj').append FootballA
       desaparece = 1
@@ -464,7 +468,7 @@ eventos_datos_deportivos = ->
         desaparece = 1
       else
         desaparece = 0
-        if $('#ID_deporte').val() == 'Beisbol'
+        if $('#ID_deporte').val() == 'Béisbol'
           $('#ID_pos_obj').empty()
           $('#ID_pos_obj').append beisbol
           desaparece = 1
