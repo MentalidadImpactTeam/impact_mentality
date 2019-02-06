@@ -302,6 +302,15 @@ administrator_users_table_events = ->
       cancelButtonColor: '#333333'
       confirmButtonText: 'Eliminar').then (result) ->
         if result.value
+          swal
+            text: 'Procesando...',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+            heightAuto: false,
+            onOpen: ->
+              swal.showLoading();
+              return
           id = $(tr).closest(".row_hover").find(".hidden_id").val()
           $.ajax
             type: "POST"
@@ -309,6 +318,7 @@ administrator_users_table_events = ->
             data: id: id
             dataType: "text",
             success: (data) ->
+              swal.close()
               $(tr).closest(".row_hover").remove()
               swal 'Eliminado', 'El usuario ha sido eliminado', 'success'
         return
@@ -334,6 +344,15 @@ administrator_users_table_events = ->
       cancelButtonColor: '#333333'
       confirmButtonText: button).then (result) ->
         if result.value
+          swal
+            text: 'Procesando...',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+            heightAuto: false,
+            onOpen: ->
+              swal.showLoading();
+              return
           id = $this.closest(".row_hover").find(".hidden_id").val()
           $.ajax
             type: "POST"
@@ -341,6 +360,7 @@ administrator_users_table_events = ->
             data: id: id, active: !$this[0].checked
             dataType: "text",
             success: (data) ->
+              swal.close()
               $this.prop("checked", !$this[0].checked)
               tr = $($this).closest("tr")
               if $this[0].checked
