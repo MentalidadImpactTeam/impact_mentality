@@ -23,16 +23,21 @@ class DashboardController < ApplicationController
 
     @last_entries = TestResult.where(user_id: current_user.id).order(id: :desc).limit(10)
     
-    if @user.user_information.modal_dias_prueba == 0
-      @show_modal_test_days = @user.sign_in_count > 1 ? false : true
-      @user.user_information.modal_dias_prueba = 1
-      @user.user_information.save
-    end
-
-    if @user.user_information.modal_dias_expirados == 0
-      @show_modal_expired = @user.created_at + 7.days <= Date.today ? true : false
-      @user.user_information.modal_dias_expirados = 1
-      @user.user_information.save
+    if params[:id].present?
+      @show_modal_test_days = false
+      @show_modal_expired = false
+    else
+      if @user.user_information.modal_dias_prueba == 0
+        @show_modal_test_days = @user.sign_in_count > 1 ? false : true
+        @user.user_information.modal_dias_prueba = 1
+        @user.user_information.save
+      end
+  
+      if @user.user_information.modal_dias_expirados == 0
+        @show_modal_expired = @user.created_at + 7.days <= Date.today ? true : false
+        @user.user_information.modal_dias_expirados = 1
+        @user.user_information.save
+      end
     end
   end
 
