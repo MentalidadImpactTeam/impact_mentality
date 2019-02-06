@@ -133,8 +133,10 @@ class Administrator::AdminController < ApplicationController
 
     if user.customer_token.present?
       ui = user.user_conekta_subscription.last
-      ui.estatus = eval(params[:active])
-      ui.save
+      if ui.present?
+        ui.estatus = eval(params[:active])
+        ui.save
+      end
 
       customer = Conekta::Customer.find(user.customer_token)
       subscription = eval(params[:active]) ? customer.subscription.resume : customer.subscription.pause

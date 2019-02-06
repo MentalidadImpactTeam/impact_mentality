@@ -11,14 +11,16 @@
 <div class="sistema_db_container">
     <input type="hidden" id="hidden_show_modal_start" value="<%= @show_modal_test_days %>">
     <input type="hidden" id="hidden_show_modal_expired" value="<%= @show_modal_expired %>">
-    <% if @trainer.present? %>
+    <% if @trainer.present? or current_user.user_information.user_type_id == 1 %>
     <div id="contenedor_entrenador_institucion">
         <% if current_user.user_information.user_type_id != 3 %>
             <%= link_to url_for(:back) do %>
                 <i class="regreso_dashboard animated zoomInUp far fa-arrow-alt-circle-left"></i>
             <% end %>
         <% end %>
+        <% if @trainer.present? %>
         <center style="display:inline-block;" class='animated zoomInUp'><span>Tu entrenador es:</span><span class="entrenador_institucion">  <%= profile_trainer_name(@trainer) %></span></center>
+        <% end %>
     </div>
     <% end %>
         <div class=" animated zoomInUp sistema_db_info_superior d-flex justify-content-betweeen align-items-end">
