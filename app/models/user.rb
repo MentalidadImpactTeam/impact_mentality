@@ -13,4 +13,12 @@ class User < ApplicationRecord
 
   attr_accessor :first_name, :last_name, :trainer_code
 
+  def after_confirmation
+    customer = Conekta::Customer.find(self.customer_token)
+    if customer.present?
+      subscription = customer.create_subscription({
+        :plan => self.user_information.plan
+      })
+    end
+  end
 end

@@ -46,6 +46,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       user.user_information.name = params['user']['user_information_attributes']['first_name'].squish.capitalize + " " + params['user']['user_information_attributes']['last_name'].squish.capitalize
       user.user_information.name = user.user_information.name.split.map(&:capitalize).join(' ')
       user.user_information.weight = user.user_information.weight.remove("kg").squish
+      user.user_information.plan = params['user']['user_information_attributes']['plan']
 
       if trainer_code.present? and InfluencerCode.find_by(name: trainer_code).blank?
         user_information = UserInformation.find_by(uid: trainer_code)
@@ -79,20 +80,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     
         user.customer_token = params["user"]["customer_token"]
         user.active = 1
-        
-        subscription = customer.subscription
-        
-        user.user_information.plan = subscription.plan_id
-        
-        if subscription['status'] == "active"
-          user_subscription = UserConektaSubscription.new
-          user_subscription.user_id = user.id 
-          user_subscription.estatus = 1 
-          user_subscription.start_date = Time.at(subscription.billing_cycle_start).to_date
-          user_subscription.end_date = Time.at(subscription.billing_cycle_end).to_date
-          user_subscription.conekta_subscription_token = subscription.id
-          user_subscription.save
-        end
       end
     elsif params['user']['user_information_attributes']['user_type_id'].to_i == 2
       # Si es entrenador
@@ -151,16 +138,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
         :token_id => params["token"]
       }]
     })
-    customer.payment_sources.first
-    subscription = customer.create_subscription({
-      :plan => params["plan"]
-    })
     
-    if subscription['status'] == "in_trial"
-      json = { :response => subscription } 
-    else
-      customer.delete
+    if customer.nil?
       json = { :error => true } 
+    else
+      json = { :response => customer } 
     end
 
     render json: json
@@ -322,7 +304,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:customer_token, :trainer_code, :user_information_attributes => [:user_type_id, :name, :first_name, :last_name, :phone, :birth_date, :school, :genre, :height, :weight, :sport, :position, :next_competition, :experience, :history_injuries, :pay_day, :pay_program, :goal_1, :goal_2, :influencer_code]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:customer_token, :trainer_code, :user_information_attributes => [:user_type_id, :name, :first_name, :last_name, :phone, :birth_date, :school, :genre, :height, :weight, :sport, :position, :next_competition, :experience, :history_injuries, :pay_day, :pay_program, :goal_1, :goal_2, :influencer_code, :plan]])
   end
 
   def user_params
