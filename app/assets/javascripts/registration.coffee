@@ -688,7 +688,7 @@ eventos_planes = ->
 
   $('#PP_btn').on 'click', ->
     if validacion_entrenador == true
-      if $("#influencer_code").val() == ""
+      if $("#influencer_code").val() == "" or  $("#influencer_code").val() == undefined
         $("#conekta_plan").val("trimestral")
       else
         $("#conekta_plan").val("trimestral_influencer")
@@ -700,7 +700,7 @@ eventos_planes = ->
       $('#PP_escuela').hide 400
     else
       if validacion_escuela == true
-        if $("#influencer_code").val() == ""
+        if $("#influencer_code").val() == "" or  $("#influencer_code").val() == undefined
           $("#conekta_plan").val("anual")
         else
           $("#conekta_plan").val("anual_influencer")
@@ -712,7 +712,7 @@ eventos_planes = ->
         $('#PP_entrenador').hide 400
       else
         if validacion_usuario == true
-          if $("#influencer_code").val() == ""
+          if $("#influencer_code").val() == "" or  $("#influencer_code").val() == undefined
             $("#conekta_plan").val("mensual")
           else
             $("#conekta_plan").val("mensual_influencer")
