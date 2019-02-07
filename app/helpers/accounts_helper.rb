@@ -9,30 +9,38 @@ module AccountsHelper
   end
 
   def account_subscription_plan(user)
-    if user.plan == "mensual" or user.plan == "mensual_influencer"
-      "PLAN MENSUAL"
-    elsif user.plan == "trimestral" or user.plan == "trimestral_influencer"
-      "PLAN TRIMESTRAL"
-    elsif user.plan == "anual" or user.plan == "anual_influencer"
-      "PLAN ANUAL"
+    if user.plan.present?
+      if user.plan == "mensual" or user.plan == "mensual_influencer"
+        "PLAN MENSUAL"
+      elsif user.plan == "trimestral" or user.plan == "trimestral_influencer"
+        "PLAN TRIMESTRAL"
+      elsif user.plan == "anual" or user.plan == "anual_influencer"
+        "PLAN ANUAL"
+      else
+        ""
+      end
     else
       ""
     end
   end
 
   def account_subscription_payment(user)
-    if user.plan == "mensual"
-      "$150 M.N."
-    elsif user.plan == "trimestral"
-      "$360 M.N."
-    elsif user.plan == "anual"
-      "$1460 M.N."
-    elsif user.plan == "mensual_influencer"
-      "$127.50 M.N."
-    elsif user.plan == "trimestral_influencer"
-      "$306 M.N."
-    elsif user.plan == "anual_influencer"
-      "$1241 M.N."
+    if user.plan.present?
+      if user.plan == "mensual"
+        "$150 M.N."
+      elsif user.plan == "trimestral"
+        "$360 M.N."
+      elsif user.plan == "anual"
+        "$1460 M.N."
+      elsif user.plan == "mensual_influencer"
+        "$127.50 M.N."
+      elsif user.plan == "trimestral_influencer"
+        "$306 M.N."
+      elsif user.plan == "anual_influencer"
+        "$1241 M.N."
+      else
+        ""
+      end
     else
       ""
     end
