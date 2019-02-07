@@ -118,7 +118,7 @@ class Administrator::AdminController < ApplicationController
     user = User.find(params[:id])
     if user.customer_token.present?
       customer = Conekta::Customer.find(user.customer_token)
-      subscription = customer.subscription.cancel
+      customer.subscription.cancel if !customer.subscription.nil?
 
       customer.delete
     end
