@@ -824,19 +824,6 @@ code {
     margin: 25px 0;
 }
 
-#terminar_btn {
-    background-color: #b52434;
-    transform: skew(-10deg);
-    color: white;
-    font-family: Lato;
-    border: none;
-    padding: 15px 22px;
-    margin: 25px 0px;
-    font-size: 20px;
-    animation-delay: 1s;
-    transition: all .6s;
-    cursor: pointer;
-}
 
 
 .FPago_metodo_Paypal {
@@ -915,24 +902,15 @@ code {
     margin: 25px 0;
 }
 
-#terminar_btn {
-    background-color: #b52434;
-    transform: skew(-10deg);
-    color: white;
-    font-family: Lato;
-    border: none;
-    padding: 15px 22px;
-    margin: 25px 0px;
-    font-size: 20px;
-    animation-delay: 1s;
-    transition: all .5s;
-    cursor: pointer;
-}
+
 
 #terminar_btn:hover {
     background-color: red;
 }
 
+#terminar_btn:active {
+    transform: translateX(-10px);
+}
 .delay_animacion_full {
     animation-delay: 1s;
 }

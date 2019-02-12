@@ -11,7 +11,8 @@ DashboardController::index = ->
       type: 'success',
       title: 'Tus 7 días de prueba empiezan el dia de hoy',
       showConfirmButton: false,
-      timer: 2000
+      timer: 2000,
+      heightAuto: true
     return
   if $("#hidden_show_modal_expired").val() == "true"
     Swal.fire
@@ -220,7 +221,7 @@ exercise_graph = ->
 
         $(".sistema_db_info_tabla").find("center").next().remove()
         $(".sistema_db_info_tabla").find("center").remove()
-  
+
       data.results.forEach (value) ->
         labels.push('Etapa ' + value.stage_id)
         data_graph.push(value.result)
