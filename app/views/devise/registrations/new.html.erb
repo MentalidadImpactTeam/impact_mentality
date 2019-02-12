@@ -269,7 +269,7 @@
 
         <%= f.fields_for :user_information do |ui_fields| %>
             <div id="div_planes" class="animated bounceInRight row" style='display: none'>
-                <input type="hidden" id="conekta_plan">
+                <%= ui_fields.hidden_field :plan, id: "conekta_plan" %>
                 <%= ui_fields.hidden_field :influencer_code %>
                 <div class="col-lg-3"></div>
                 <div id="PP_modal" class="col-sm-12 col-lg-6">

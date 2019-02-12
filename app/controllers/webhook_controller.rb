@@ -45,10 +45,9 @@ class WebhookController < ApplicationController
           subscription.estatus = 0
           subscription.payment_attemps += 1
           subscription.save
-
-          user.active = 0
-          user.save
         end
+        user.active = 0
+        user.save
       end
     end
 
@@ -58,13 +57,13 @@ class WebhookController < ApplicationController
       ct.save
       user = User.find_by(customer_token: object['customer_id'])
       subscription = UserConektaSubscription.find_by(user_id: user.id, estatus: 1)
-        if subscription.present?
-          subscription.estatus = 0
-          subscription.save
+      if subscription.present?
+        subscription.estatus = 0
+        subscription.save
 
-          user.active = 0
-          user.save
-        end
+      end
+      user.active = 0
+      user.save
     end
 
     render status: 200, layout: false

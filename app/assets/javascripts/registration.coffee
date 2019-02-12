@@ -889,7 +889,7 @@ eventos_ticket = ->
           swal.close();
           swal 'Error', 'Hubo un problema con la tarjeta ingresada.', 'warning', 'heightAuto: false'
         else
-          $("#customer_token").val(data.response.customer_id)
+          $("#customer_token").val(data.response.id)
           $form.get(0).submit()
     return
 
