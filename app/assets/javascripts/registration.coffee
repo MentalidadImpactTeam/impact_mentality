@@ -241,6 +241,9 @@ eventos_tipos_usuarios = ->
               $(".PP_mensual").text("$127.50 MXN")
               $(".PP_trimestral").text("$306 MXN")
               $(".PP_anual").text("$1241 MXN")
+            if data.code
+              $("#influencer_code").val($('#registro_trainer_code input').val())
+              $("#div_planes").remove()
 
             eventos_btn_tipos_usuarios(validacion_usuario,validacion_entrenador,validacion_escuela)
           return false
@@ -599,7 +602,7 @@ eventos_datos_deportivos = ->
 
 eventos_metas_objetivos = ->
   $('#metas_objetivos_btn').on 'click', ->
-    if $('#registro_trainer_code input').val() != "" and $("#influencer_code").val() == ""
+    if ($('#registro_trainer_code input').val() != "" and $("#influencer_code").val() == "") or $("#div_planes").length == 0
       swal({
           title: 'Creando su rutina...',
           allowOutsideClick: false

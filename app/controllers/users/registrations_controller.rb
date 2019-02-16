@@ -79,8 +79,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
         user_conekta.save
     
         user.customer_token = params["user"]["customer_token"]
-        user.active = 1
       end
+
+      user.active = 1
     elsif params['user']['user_information_attributes']['user_type_id'].to_i == 2
       # Si es entrenador
       user.active = 0
@@ -263,9 +264,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def check_trainer_code
     user_information = UserInformation.find_by(uid: params["trainer"])
     influencer_code = InfluencerCode.find_by(name: params["trainer"])
-
+    
     if influencer_code.present?
-      response =  { :error => false, :influencer => true }
+      if influencer_code.influencer == 1
+        response =  { :error => false, :influencer => true }
+      else
+        response =  { :error => false, :code => true }
+      end
     elsif user_information.blank?
       response =  { :error => true, :mensaje => 'No se encontro el entrenador ingresado.' }
     elsif user_information.user_type_id != 2
