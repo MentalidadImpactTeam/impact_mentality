@@ -64,10 +64,11 @@ RoutinesController::index = ->
     $this = $(this)
     is_test = $this.closest(".sistema_r_ejercicio").find(".hidden_exercise_test").val()
     if is_test == "1"
+      unit_type = routines_test_unit($this)
       swal(
         title: '<strong style="font-family:lato;">Por favor ingresa tu máximo de pruebas</strong>',
         type: 'info',
-        html: '<input id="input_pruebas_number" type="number" placeholder="máximo de pruebas"><p id="unidad_prueba">kg</p>',
+        html: '<input id="input_pruebas_number" type="number" placeholder="máximo de pruebas"><p id="unidad_prueba">' + unit_type + '</p>',
         showCloseButton: true,
         showCancelButton: true,
         heightAuto: false,
@@ -86,7 +87,7 @@ RoutinesController::index = ->
               $.ajax
                 type: "POST"
                 url: "/routines/test_result"
-                data: result: $("#input_pruebas_number").val(), exercise_id: $this.closest(".sistema_r_ejercicio").find(".hidden_exercise").val(), routine_exercise_id: $this.closest(".sistema_r_ejercicio").find(".hidden_exercise").data("routine")
+                data: result: $("#input_pruebas_number").val(), unit_type: $("#unidad_prueba").text(), exercise_id: $this.closest(".sistema_r_ejercicio").find(".hidden_exercise").val(), routine_exercise_id: $this.closest(".sistema_r_ejercicio").find(".hidden_exercise").data("routine")
                 dataType: "text",
                 success: (data) ->
                   routines_mark_done($this)
@@ -427,3 +428,15 @@ routines_mark_done = ($this) ->
     dataType: "text",
     success: (data) ->
       return
+
+
+
+routines_test_unit = ($this) ->
+  exercise = $this.closest(".sistema_r_ejercicio").find(".sistema_r_tipoejercicio div:first").text().trim()
+
+  if exercise == "Sprint" or exercise == "Plancha"
+    return "Segs"
+  if exercise == "Salto Horizontal" or exercise == "Pro Agility" or exercise == "Pull Ups" or exercise == "Lagartijas"
+    return "Reps"
+  if exercise == "Sentadillas" or exercise == "Bench Press" or exercise == "Peso Muerto"
+    return "Kgs"

@@ -113,13 +113,13 @@
             <table id="sistema_db_entradas">
                 <tr>
                     <th>Ejercicio</th>
-                    <th>Peso</th>
+                    <th>Resultado</th>
                     <th>Fecha</th>
                 </tr>
                 <% @last_entries.each do |entry| %>
                 <tr>
                     <td><%= dashboard_exercise_name(entry.exercise_id) %></td>
-                    <td><%= entry.result %></td>
+                    <td><%= entry.result + " " + entry.unit %></td>
                     <td><%= entry.created_at.strftime("%d/%m/%Y") %></td>
                 </tr>
                 <% end %>

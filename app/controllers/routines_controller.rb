@@ -365,6 +365,7 @@ class RoutinesController < ApplicationController
         test_result.exercise_id = params["exercise_id"]
         test_result.routine_exercise_id = params["routine_exercise_id"]
         test_result.result = params["result"]
+        test_result.unit = params["unit_type"]
         test_result.stage_id = UserRoutine.where(user_id: current_user.id, date:  Date.today).first.stage_id
         test_result.save
         render plain: "OK"    

@@ -131,7 +131,6 @@ account_add_card = ->
         return
 
       conektaErrorResponseHandler = (response) ->
-        swal.stopLoading();
         swal.close();
         swal
           type: 'error'
